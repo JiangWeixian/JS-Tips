@@ -3,4 +3,4 @@
 
 ## axios
 
-* [如何在请求失败之后多次重连]()
+* [如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/axioRetry.js)
