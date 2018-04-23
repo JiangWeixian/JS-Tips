@@ -26,4 +26,4 @@
 
 ## 网络基础
 
-* [请求头和响应头]()
+* [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/request%26responseHeader.md)
