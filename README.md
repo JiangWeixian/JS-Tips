@@ -22,7 +22,7 @@
 * [JS交集并集](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E4%BA%A4%E9%9B%86%E5%B9%B6%E9%9B%86%E7%AD%89.md)
 * [JS-falsy&turthy](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)
 * [JS-Promise&EventLoop，函数执行队列](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
-* [JS-iterator等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-iterator%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
+* [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
 
 ## CSS
 
