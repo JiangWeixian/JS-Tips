@@ -27,7 +27,7 @@
 
 ## Vue
 
-* [Vue - watch]()
+* [Vue - watch](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-watch.md)
 
 ## CSS
 

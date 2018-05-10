@@ -1,7 +1,7 @@
 # Vue - watch
 > 关于watch一些总结
 
-##　正文
+## 正文
 
 * 关于`vue-router`。在watch中我们一般都会使用
     ```JavaScript
