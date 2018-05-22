@@ -41,6 +41,7 @@
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
 * [各种情况下的div元素居中]()
 * [和float相关]()
+* [css选择器优先级]()
 
 ## 1.6. 网络基础
 
