@@ -15,7 +15,7 @@
 
 ## 1.1. axios
 
-* [如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/axioRetry.js)
+* [如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
 
 ## 1.2. 语法
 
@@ -25,6 +25,7 @@
 * [JS-falsy&turthy](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)
 * [JS-Promise&EventLoop，函数执行队列](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
 * [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
+* [模块话]()
 
 ## 1.3. Vue
 
@@ -38,6 +39,8 @@
 
 * [position和marigin二三事](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/position%E5%92%8Cmargin.md)
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
+* [各种情况下的div元素居中]()
+* [和float相关]()
 
 ## 1.6. 网络基础
 

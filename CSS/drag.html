@@ -1,0 +1,33 @@
+<!doctyle>
+<head>
+  <meta name="">
+  <title></title>
+  <style>
+    .parent {
+      margin: 0 auto;
+      width: 400px;
+      height: 400px;
+      background-color: red  
+    }
+    .child {
+      width: 150px;
+      height: 150px; 
+      margin: 0 auto;
+      background-color: blue; 
+    }
+  </style>  
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>  
+  </div>
+  <script>
+    (function () {
+      var child = document.querySelector('.child'),
+        parent = document.querySelector('.parent')
+      child.addEventListener('click', function (e) {
+        console.log(e)  
+      })    
+    })()
+  </script>  
+</body> 
