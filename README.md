@@ -4,18 +4,19 @@
 <!-- TOC -->
 
 - [1. JS Tips](#1-js-tips)
-    - [1.1. axios](#11-axios)
+    - [1.1. NPM](#11-npm)
     - [1.2. 语法](#12-语法)
     - [1.3. Vue](#13-vue)
     - [1.4. webpack](#14-webpack)
+    - [1.6 HTML](#16-html)
     - [1.5. CSS](#15-css)
     - [1.6. 网络基础](#16-网络基础)
 
 <!-- /TOC -->
 
-## 1.1. axios
+## 1.1. NPM
 
-* [如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
+* [axios如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
 
 ## 1.2. 语法
 
@@ -34,6 +35,10 @@
 ## 1.4. webpack
 
 * [postcss速写](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/postcss.md)
+
+## 1.6 HTML
+
+* [HTML5&CSS3新特性]()
 
 ## 1.5. CSS
 
