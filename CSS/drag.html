@@ -25,9 +25,44 @@
     (function () {
       var child = document.querySelector('.child'),
         parent = document.querySelector('.parent')
-      child.addEventListener('click', function (e) {
-        console.log(e)  
-      })    
+      child.addEventListener('mousedown', function _onMouseDown (e) {
+        var x = e.clientX,
+           y = e.clientY,
+           oX = this.getBoundingClientRect().left,
+           oY = this.getBoundingClientRect().top,
+           dx = e.clientX - oX
+           dy = e.clientY - oY
+        document.addEventListener('mousemove', _onMouseMove)
+        function _onMouseMove (e) {
+          x = `${e.clientX - dx}px`  
+          y = `${e.clientY - dy}px`
+          console.log(x, y, dx, dy)
+          child.style.cssText = `position: absolute; top: ${y}; left: ${x}`
+        }
+        child.addEventListener('mouseup', function() {
+          document.removeEventListener('mousemove', _onMouseMove)
+        })  
+      })
+      // child.addEventListener('mousedown', function _onMouseDown (e) {
+      //   var x = e.clientX,
+      //      y = e.clientY,
+      //      oX = this.getBoundingClientRect().left,
+      //      oY = this.getBoundingClientRect().top,
+      //      dx = e.clientX - oX
+      //      dy = e.clientY - oY
+      //   document.addEventListener('mousemove', _onMouseMove.bind(this, dx, dy))
+        
+          
+      // })
+      // function _onMouseMove (dx, dy, e) {
+      //     x = `${e.clientX - dx}px`  
+      //     y = `${e.clientY - dy}px`
+      //     console.log(x, y, dx, dy)
+      //     child.style.cssText = `position: absolute; top: ${y}; left: ${x}`
+      // }
+      // child.addEventListener('mouseup', function() {
+      //     document.removeEventListener('mousemove', _onMouseMove)
+      // })    
     })()
   </script>  
 </body> 
