@@ -1,16 +1,15 @@
-# 1. JS Tips
-> JavaScript技巧，容易忘，记录一下。
+[![lovefrontend](https://img.shields.io/badge/LOVE-FRONTEND-red.svg?style=for-the-badge)]() [![webtips](https://img.shields.io/badge/TIPS-WEB-blue.svg?style=for-the-badge)]()
 
 <!-- TOC -->
 
-- [1. JS Tips](#1-js-tips)
-    - [1.1. NPM](#11-npm)
-    - [1.2. 语法](#12-语法)
-    - [1.3. Vue](#13-vue)
-    - [1.4. webpack](#14-webpack)
-    - [1.6 HTML](#16-html)
-    - [1.5. CSS](#15-css)
-    - [1.6. 网络基础](#16-网络基础)
+- [1.1. NPM](#11-npm)
+- [1.2. 语法](#12-语法)
+- [1.3. Vue](#13-vue)
+- [1.4. webpack](#14-webpack)
+- [1.6 HTML](#16-html)
+- [1.5. CSS](#15-css)
+- [1.6. 网络基础](#16-网络基础)
+- [1.7. Database](#17-database)
 
 <!-- /TOC -->
 
@@ -55,3 +54,7 @@
 * [跨域处理](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86.md)
 * [tcp+udp+http等](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP%2BUDP%2BHTTP%2B%E8%BD%AE%E8%AF%A2%2BWebsocket.md)
 * [攻击方式xss+csrf](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md)
+
+## 1.7. Database
+
+* [数据库简介]()
