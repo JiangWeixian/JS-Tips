@@ -10,6 +10,7 @@
 - [1.5. CSS](#15-css)
 - [1.6. 网络基础](#16-网络基础)
 - [1.7. Database](#17-database)
+- [1.8. Demos](#18-demos)
 
 <!-- /TOC -->
 
@@ -57,4 +58,8 @@
 
 ## 1.7. Database
 
-* [数据库简介]()
+* [数据库简介](https://github.com/JiangWeixian/JS-Tips/blob/master/DataBase/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B.md)
+
+## 1.8. Demos
+
+* [原生js实现的小程序,重点在于思路](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
