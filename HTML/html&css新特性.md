@@ -8,6 +8,7 @@
 * 表单输入`input`标签指定类型
 * `div`设定`content`(名字不太记得了)，可以让`div`元素变为富文本框。
 * `video&audio`(这居然也是)，`video`还可以设置属性加上进度条之类的。
+* `contenteditable` - 可以让所有元素都变为富文本框
 
 #### css部分
 
@@ -39,6 +40,10 @@
 **表单**
 
 * 设定`autocomplete=on`可以在下一次输入的时候，自动提示上一次输入内容。
+
+**无障碍**
+
+即`aria-*`如此结构的标签。设置以`aria-*`前缀的标签，并不会出现具体的功能，如`aria-multiline=true`并不会让文本框变为多行，而是声明了一种行为，让别人知道这是一个多行的元素，如同这个[链接](https://stackoverflow.com/questions/24865098/aria-multiline-purpose?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)所说。
 
 ### css
 
