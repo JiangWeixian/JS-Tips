@@ -51,7 +51,7 @@
     
 假设我们有以下树结构：
 
-![virtual dom tree]()
+![virtual dom tree](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Vue/img/virtualdomtree.PNG)
 
 * 对树进行[深度遍历](https://zh.wikipedia.org/zh-hans/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2)，得到数组结构，得到每个节点标识，有利于比较虚拟`DOM`差异，以及后续更新。（**看了维基百科还是有问题，请看[这里](https://juejin.im/entry/5912bb9544d904007b0384f1)**）  
 * 节点差异记录在数组内，并记录差异类型。不同差异决定如何对真实`dom`如何操作。甚至节点只是移动了也会有差异类型，让框架知道只需要移动节点而不需要重新创建和差异节点。
@@ -70,13 +70,31 @@
     * v和m之间都要通过p来进行传递数据
 * MVVM - VM含义为`viewmodel`，主流框架基本都是这个类型。类如`MVP`，不过v和vm之间是自动双向通信过程。
 
+区分这三者有点难度，因为是很细节的差别。可以看[这里](http://www.cnblogs.com/xishuai/p/mvc-mvp-mvvm-angularjs-knockoutjs-backbonejs-reactjs-emberjs-avalonjs.html)，简单总结为：
+
+1. 视图渲染，`MVC`有`View`控制渲染(`compiler`)，`Controller`负责的只是通知作用。而在`MVP`是`P`，而在`MVVM`内部则是`Viewmodel`。
+2. `MVVM`是`MVP`的进化版本，最重要就是双向绑定（自动挡），任何一个方面发生变化，都会进一步影响到其他两个方面。
+
+将`HTML`节点是为**View**，将数据视为`Model`。`ViewModel`就是两者之间的桥梁。
+
+* 在`Vue`就是类比`ViewModel`的就是数据劫持（包含观察者，订阅者，compile）。`React`应该也是。
+
 ### Vue
 
 类似`React`，因为使用到了`virtual dom`。不过最新的`Angular`好像也加入了。
 
 * 语法上更接近`html js css`结构，不像是`react`全是`js`
+* 数据监听上是**数据劫持**
+* 重点在于双向绑定的方式
 
 [生命周期图示可以帮组理解](https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA)
+
+**如何实现双向绑定的方式？**，实现方式有发布订阅模式，`Angular`的脏检查模式，或者是`Vue`的数据劫持模式。可以参考[这里](https://segmentfault.com/a/1190000006599500)。`Vue`数据集劫持模式结合了发布订阅，其关键点在于：
+
+1. 实现`Observer`(观察者) - 也就是对某些属性，定义`setter&getter`。关键就在于这个`setter`，监听数据变化。也相当于一个观察者。
+2. 定义一个**订阅者**（`Watcher`，可以是一个数组，来维护谁需要这些数据），也就是谁需要这些数据。
+3. `setter`改变数据之后，通知订阅者，每一个订阅者本身可能有一个`update`函数，当被通知的时候，就更新视图之类的。
+
 
 ### Angular
 
@@ -90,6 +108,7 @@ MVVM
 
 * 任意发生事件，都会触发观察者
 * 只会更新部分`DOM`，不会重新渲染全部页面
+* 数据监听上是**脏检查**
 
 ### React
 
