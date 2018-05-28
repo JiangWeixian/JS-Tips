@@ -34,6 +34,7 @@
 
 * [Vue-watch](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-watch.md)
 * [Vue-dom](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-dom.md)
+* [Vue-前端框架对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94.md)
 
 ## 1.4. webpack
 
