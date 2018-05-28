@@ -10,3 +10,26 @@
 
 `mdn`上的[refences](https://developer.mozilla.org/en-US/docs/Web/API/Selection)
 
+## 代码段
+
+### 将光标移动到最后
+
+```javascript
+keepLastIndex (obj) {
+    let range
+    if (window.getSelection) {
+        obj.focus() // 之后focus的对象才有可能有光标
+        range = window.getSelection() // 获得光标操作的实例（权限） 
+        range.selectAllChildren(obj) //  传递的obj是dom对象，选择dom对象下所有子节点
+        range.collapseToEnd() // 将光标移动到最后一个子节点
+    } else if (document.selection) {
+        // 适配ie浏览器
+        range = document.selection.createRange()
+        range.moveToElementText(obj) // 等价range.collapseToEnd()
+        range.collapse(false) // 将起始光标和结尾光标合并
+        range.select()
+    }
+}
+```
+
+* `selectAllChildren` - 我们只能够获取某个节点，无法获取某个节点内部的具体位置
