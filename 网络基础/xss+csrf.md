@@ -1,6 +1,18 @@
 # xss+osrf+csrf
 > 黑客攻击
 
+<!-- TOC -->
+
+- [xss+osrf+csrf](#xssosrfcsrf)
+        - [xss](#xss)
+            - [如何防范xss](#如何防范xss)
+        - [osrf](#osrf)
+        - [csrf](#csrf)
+            - [如何防范csrf](#如何防范csrf)
+        - [防范TIPS](#防范tips)
+
+<!-- /TOC -->
+
 ### xss
 
 XSS 漏洞有多种形式，分为三类，反射型、保存型和基于 `DOM`的`XSS`攻击
@@ -81,3 +93,7 @@ XSS 漏洞有多种形式，分为三类，反射型、保存型和基于 `DOM`�
 * 服务器通过请求头的`referer`来判断请求来源
 * 表单中加入了一个随机的`token`来验证。`token`随着其他请求数据一起被提交到服务器，服务器通过验证`token`的值来判断`post`请求是否合法。由于攻击者没有办法获取到页面信息,所以它没有办法知道`token`的值.那么伪造的表单中就没有该`token`值。服务器就可以判断出这个请求是伪造的。
 
+
+### 防范TIPS
+
+* [避免使用document.write](http://www.cnblogs.com/ziyunfei/p/5881426.html)，因为这么做是会加载`script`标签。
