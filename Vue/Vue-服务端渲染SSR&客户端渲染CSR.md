@@ -53,7 +53,7 @@
 
 1. 优化视觉体验 - 骨架屏，就是在数据还有加载进来的时候，出现类似下图的效果：
 
-![首屏优化]()
+![首屏优化](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Vue/img/%E9%A6%96%E5%B1%8F%E4%BC%98%E5%8C%96.PNG)
 
 **优化思路：**写出数据未加载时候默认样式，图片，字体背景等。可是如何在加载完成之后去掉？
 
