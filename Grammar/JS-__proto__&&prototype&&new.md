@@ -22,7 +22,7 @@
   > 可总结__proto__包含construtor，construtor包含prototype。而这仅仅是一层次关系，因为prototype可以指向父级。包含父级的__proto__ && construtor
 
 3. 什么是原型？
-  * JS中有[几大数据类型]()，这些就是原型(至于这些数据类型又指向`Object`)就是另外一回事。
+  * JS中有[几大数据类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)，这些就是原型(至于这些数据类型又指向`Object`)就是另外一回事。
   * 原型 = `Number or String etc...`
 
 4. 引用类型。特别涉及到`__proto__ && prototype && construtor`的时候，可以理解为指针。那么其中任意一个赋值都不是简单的赋值，而是指针的传递。
@@ -39,7 +39,7 @@
 
 * `prototype`比较常用，**继承基本就是它**。在以上第二点我们知道`prototype`的存在位置。
 
-但是在[JS-继承]()中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
+但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
 
 ```javascript
 var newfoo = new foo() // 只能够通过上述第二点查看到prototype
@@ -108,7 +108,7 @@ console.log(
 
 上面代码我们得到下图：
 
-![构造函数和原型]()
+![构造函数和原型](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB.PNG)
 
 ## new 关键字
 
@@ -120,7 +120,7 @@ new关键字到底做了什么?
 
 更为具体例子可以看[这里](https://juejin.im/post/584e1ac50ce463005c618ca2)，我截了个图关键部分：
 
-![new干了什么]()
+![new干了什么](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/newdowhat.PNG)
 
 ## 分析为什么能够继承？
 
