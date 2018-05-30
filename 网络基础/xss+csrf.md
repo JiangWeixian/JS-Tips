@@ -97,3 +97,4 @@ XSS 漏洞有多种形式，分为三类，反射型、保存型和基于 `DOM`�
 ### 防范TIPS
 
 * [避免使用document.write](http://www.cnblogs.com/ziyunfei/p/5881426.html)，因为这么做是会加载`script`标签。
+* 自发的向请求头加入`token`或者任何可以二次验证的数据都可以防止`csrf`攻击。

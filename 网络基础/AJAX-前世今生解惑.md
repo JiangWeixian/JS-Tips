@@ -45,7 +45,7 @@ function loadXMLDoc()
 
 具体可以参考`W3CSHCOOL-XMLHttpRequest`。
 
-* `readyState`不等于`status`，后者是[`HTTP`状态码]()。前者只有4个状态，`=4`的时候代表成功。
+* `readyState`不等于`status`，后者是[`HTTP`状态码](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E7%8A%B6%E6%80%81%E7%A0%81.md)。前者只有4个状态，`=4`的时候代表成功。
 * `responseText`获取响应结果
 * 流程基本为：
     1. 创建对象
@@ -75,4 +75,4 @@ function loadXMLDoc()
 
 **为什么？**
 
-这就要涉及到[`CSRF`攻击特点]()，就像是`JWT`可以防止`CSRF`一样。因为这种自发的（需要额外代码操作而不是浏览器的自发行为），给`cookie`上或者在向服务器发送的请求上加上额外的验证。都能够防止`CSRF`。
+这就要涉及到[`CSRF`攻击特点](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md)，就像是`JWT`可以防止`CSRF`一样。因为这种自发的（需要额外代码操作而不是浏览器的自发行为），给`cookie`上或者在向服务器发送的请求上加上额外的验证。都能够防止`CSRF`。
