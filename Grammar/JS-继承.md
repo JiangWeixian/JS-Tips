@@ -75,6 +75,8 @@ function Bar(name,label) {
 * 添加额外的函数`Bar.speak`而前面两个是`Bar.prototype.speak`
 * 如果直接打印`Bar`（第二点和第三点），可以发现第三点的`__proto__`更少，指向更清晰。
 
+**注意：** 如果直接使用`Bar.prototype = Foo.prototype`虽然起到了指向作用，但是`Foo.prototype`并不是新创建的，所以指向的是原始的`Foo`。任何一方的改动都会影响到两者。
+
 ### ES6-继承
 
 添加了`class`关键字，[MDN教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)
