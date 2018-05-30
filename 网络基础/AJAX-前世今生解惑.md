@@ -76,3 +76,11 @@ function loadXMLDoc()
 **为什么？**
 
 这就要涉及到[`CSRF`攻击特点](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md)，就像是`JWT`可以防止`CSRF`一样。因为这种自发的（需要额外代码操作而不是浏览器的自发行为），给`cookie`上或者在向服务器发送的请求上加上额外的验证。都能够防止`CSRF`。
+
+## Ftech
+
+[@update 2018-05-29]()
+
+新时代新特性。
+
+替换`XMLHttpRequest`的存在，不过暂时先不要用使用这个东西，不太稳定。
