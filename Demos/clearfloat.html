@@ -1,0 +1,36 @@
+<!doctype>
+<html>
+  <header>
+    <meta name="viewpint" content"width=device-with, initial-scale=1.0">
+    <title>清除浮动</title>
+    <style>
+      .parent {
+        width: 500px;
+        background-color: blue
+      }
+      .child {
+        width: 200px;
+        height: 200px;
+        background-color: red
+      }
+      .pull-left {
+        float: left
+      }
+      .clearfloat-overflow {
+        overflow: hidden;
+      }
+      .clearfloat-fake:after, .clearfloat-fake:before {
+        content: '';
+        clear: both!important;
+        display: table;
+        height: 0;
+        visibility: hidden;
+      }
+    </style>
+  </header>
+  <body>
+    <div class="parent clearfloat-fake">
+      <div class="child pull-left"></div>
+    </div>
+  </body>
+</html>

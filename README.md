@@ -58,7 +58,7 @@
 * [position和marigin二三事](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/position%E5%92%8Cmargin.md)
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
 * [各种情况下的div元素居中](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E5%90%84%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD.md)
-* [和float相关](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E5%92%8Cfloat%E7%9B%B8%E5%85%B3.md)
+* [css-清除浮动](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E5%92%8Cfloat%E7%9B%B8%E5%85%B3.md)
 * [css选择器优先级](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7.md)
 * [stylus解惑](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/stylus%E8%A7%A3%E6%83%91.md)
 * [css-display](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-display.md)
