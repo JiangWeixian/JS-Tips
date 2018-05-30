@@ -1,5 +1,16 @@
 # __proto__ && prototype && new
 
+<!-- TOC -->
+
+- [__proto__ && prototype && new](#__proto__--prototype--new)
+  - [前置知识](#前置知识)
+  - [__proto__ && prototype 进一步](#__proto__--prototype-进一步)
+  - [new 关键字](#new-关键字)
+  - [分析为什么能够继承？](#分析为什么能够继承)
+  - [链接](#链接)
+
+<!-- /TOC -->
+
 ## 前置知识
 
 1. 这三个数值怎么查看？
@@ -18,7 +29,7 @@
 
 5. `new`关键字会创造原型
 
-## 进一步
+## __proto__ && prototype 进一步
 
 * `__proto__ && prototype && construtor`指向问题？
   * `__proto__`默认指向原型(见上一条)，第三第五点。更准确的说是`原型.prototype`
@@ -99,7 +110,19 @@ console.log(
 
 ![构造函数和原型]()
 
-### 分析为什么能够继承？
+## new 关键字
+
+[new-mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)
+
+new关键字到底做了什么?
+
+> 1.一个继承自 Foo.prototype 的新对象被创建；2. 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况；3. 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）
+
+更为具体例子可以看[这里](https://juejin.im/post/584e1ac50ce463005c618ca2)，我截了个图关键部分：
+
+![new干了什么]()
+
+## 分析为什么能够继承？
 
 在[JS继承]()中，我总结了可以通过以下方式继承！
 
@@ -127,5 +150,15 @@ function Bar(name,label) {
 
 `Bar.prototype = new Foo()`, `Bar.prototype`在没有经过这操作之前
 
-1. `Bar`指向原型，也就是`function`
-2. `Bar.prototype`含有`construtor && __proto__`现在经过了`Bar.prototype = new Foo()`相当于我们改变了`Bar.prototype`指向(或者说将)
+1. `Bar.__proto__`指向原型，也就是`function`
+2. `Bar.prototype`含有`construtor && __proto__`（就像是第二点提到的）现在经过了`Bar.prototype = new Foo()`相当于我们改变了`Bar.prototype`指向(或者说将里面东西全部替换掉了为**新创建的Foo，而不是原始的Foo**)
+3. 以上两步骤就是先了继承。可以通过`Bar.prototype.xxx`在继承之后，实现添加新函数
+4. 然后我们`var newbar = new Bar()`。
+  1. `newbar`是通过`new`创建的，就没有了`prototype`，我们无法直接操作`prototype`
+  2. `newbar.__proto__`指向`Bar.prototype`，而`Bar.prototype`已经被我们改掉了。所以可以使用`Foo`的方法。
+
+
+
+## 链接
+
+* [外文解析-我觉得写的不错](http://dmitrysoshnikov.com/ecmascript/javascript-the-core/)  
