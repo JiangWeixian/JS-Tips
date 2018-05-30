@@ -66,7 +66,27 @@ function Bar(name,label) {
 ```
 
 1. 因为`new`可以创建指针，所以`Bar.prototype = new Foo()`改变`prototype`这个指向。
-2. `Object.create`同样有创建指针的工作。因此可以通过`Bar.prototype=Foo.prototype`
+2. `Object.create`同样有创建指针的工作。因此可以通过`Bar.prototype=Object.create(Foo.prototype)`
+
+如果对象是以下这种形式的
+
+```javascript
+var Foo = {
+	init: function(who) {
+		this.me = who;
+	},
+	identify: function() {
+		return "I am " + this.me;
+	}
+};
+
+var Bar = Object.create( Foo );
+
+Bar.speak = function() {
+	alert( "Hello, " + this.identify() + "." );
+};
+```
+
 3. 同样是`Object.create`，通过`var Bar = Object.create( Foo );`
 
 第二点和第三点有什么区别？
