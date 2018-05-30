@@ -120,6 +120,12 @@ function Bar(name,label) {
 
 1. 因为`new`可以创建指针，所以`Bar.prototype = new Foo()`改变`prototype`这个指向。
 2. `Object.create`同样有创建指针的工作。因此可以通过`Bar.prototype=Object.create(Foo.prototype)`
-3. 同样是`Object.create`，通过`var Bar = Object.create( Foo );`
 
 现在我们来分析为什么？
+
+**第一种继承方式**
+
+`Bar.prototype = new Foo()`, `Bar.prototype`在没有经过这操作之前
+
+1. `Bar`指向原型，也就是`function`
+2. `Bar.prototype`含有`construtor && __proto__`现在经过了`Bar.prototype = new Foo()`相当于我们改变了`Bar.prototype`指向(或者说将)

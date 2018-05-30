@@ -40,13 +40,8 @@ b.isPrototype(a)
 
 ## 前置知识 - `__proto__ && prototype`
 
-* 所有通过`new`关键(调用了内置`construtor`函数)字创建的才会看到`__proto__`和`prototype`
-* `prototye`是指针
-
-我总结了[`youdontkonwjs`相关部分](https://github.com/JiangWeixian/JS-Books/blob/master/youdotkonwjs/this%26objprototypes/thisandobjprototypes.md)
-
-* `__proto__`总是一层层的向上指，直到尽头
-* 也就是说如果我让`prototype`这个指针指向父类就可以实现继承！
+* `__proto__`总是一层层的向上指，直到尽头，指向`原型.prototype`
+* 也就是说如果我让`prototype`的**存放的东西变化**，就能够实现继承
 
 ## 继承
 
