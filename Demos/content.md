@@ -4,7 +4,8 @@
 <!-- TOC -->
 
 - [Demos](#demos)
-        - [[Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/drag.html)](#draphtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosdraghtml)
+    - [[Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/drag.html)](#draphtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosdraghtml)
+    - [[Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/clearfloat.html)](#clearflothtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosclearfloathtml)
 
 <!-- /TOC -->
 
@@ -18,3 +19,10 @@
 * 对于一个未设置`position`定位元素，获取左上位置。
 * `offsetX`相对于父级而言
 * 回调函数如何传递参数（传递了参数之后，无法实现事件监听）
+
+### [Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/clearfloat.html)
+
+知识点：
+
+* `overflow`
+* 伪类元素和`clear`
