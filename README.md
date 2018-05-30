@@ -33,6 +33,7 @@
 * [JS-光标操作range](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9Crange.md)
 * [JS-事件代理](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86.md)
 * [JS-实现大整数相加](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)
+* [JS-继承(__proto__&&prototype)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)
 
 ## 0.3. Vue
 
@@ -83,3 +84,4 @@
 
 * [原生js实现的小程序,重点在于思路](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
     * **Demo-drag** - 原生的拖拽元素实现
+    * **Demo-clearfloat** - 清除浮动的两种方式
