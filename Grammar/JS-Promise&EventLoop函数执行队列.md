@@ -54,6 +54,30 @@ setTimeout
 
 且在任务队列里面`promise`有比`settimeout`级别高。
 
+如果任务队列内部运行堵塞(其中一个), 并不会等待完成.而是先执行其他的(如果这个其他是他的同级别的话).
+
+```javascript
+console.log('script start');
+
+  setTimeout(function() { 
+    console.log('setTimeout');
+  }, 0);
+
+  Promise.resolve().then(function() {   
+    setTimeout(function() { 
+      console.log('setTimeout prmise');
+  }, 10000);
+  })
+
+  Promise.resolve().then(function() {   
+    console.log('promise2');
+  })
+  
+console.log('script end');
+```
+
+第二个`promise`堵塞了, 所以先执行了后面那个.
+
 ## 启发
 
 **重点：**我们不能够使用`Promise`去等待一个循环的执行完毕。
