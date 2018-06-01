@@ -56,7 +56,7 @@
 ## 0.5. HTML
 
 * [HTML5&CSS3新特性](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/html%26css%E6%96%B0%E7%89%B9%E6%80%A7.md)
-* [HTML5-navigator.geolocation定位]()
+* [HTML5-navigator.geolocation定位](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E5%AE%9A%E4%BD%8D.md)
 
 ## 0.6. CSS
 
