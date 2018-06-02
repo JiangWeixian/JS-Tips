@@ -3,11 +3,11 @@
 <!-- TOC -->
 
 - [__proto__ && prototype && new](#__proto__--prototype--new)
-  - [前置知识](#前置知识)
-  - [__proto__ && prototype 进一步](#__proto__--prototype-进一步)
-  - [new 关键字](#new-关键字)
-  - [分析为什么能够继承？](#分析为什么能够继承)
-  - [链接](#链接)
+    - [前置知识](#前置知识)
+    - [__proto__ && prototype 进一步](#__proto__--prototype-进一步)
+    - [new 关键字](#new-关键字)
+    - [分析为什么能够继承？](#分析为什么能够继承)
+    - [链接](#链接)
 
 <!-- /TOC -->
 
@@ -33,11 +33,13 @@
 
 * `__proto__ && prototype && construtor`指向问题？
   * `__proto__`默认指向原型(见上一条)，第三第五点。更准确的说是`原型.prototype`
-  * `construtor`指向的是谁构造了它。如果直接`function foo () {}`那么`foo construtor`指向就是`object`
+  * `construtor`指明构造了它。如果直接`function foo () {}`那么`foo construtor`表明就是`object`
   
   > new关键词会创造原型，因此`var newfoo = new foo()`的`construtor`指向了`foo`。因为是`foo`构造了它。
 
-* `prototype`比较常用，**继承基本就是它**。在以上第二点我们知道`prototype`的存在位置。
+* `prototype`指向的是构造器(或者说是构造器返回结果)，例如可以是`= new Foo()`或者是`Foo.prototype`(因为`Foo.prototype`指向的是另外一个构造器)
+  * 比较常用，**继承基本就是它**。在以上第二点我们知道`prototype`的存在位置。
+  * **只有实例化的对象才有prototype**
 
 但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
 
@@ -114,6 +116,10 @@ console.log(
 
 [new-mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)
 
+而在**Javascript设计模式和开发实践**中提到
+
+> JavaScript 的函数既可以作为普通函数被调用,也可以作为构造器被调用。当使用 new 运算符来调用函数时,此时的函数就是一个构造器。
+
 new关键字到底做了什么?
 
 > 1.一个继承自 Foo.prototype 的新对象被创建；2. 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况；3. 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）
@@ -156,6 +162,19 @@ function Bar(name,label) {
 4. 然后我们`var newbar = new Bar()`。
   1. `newbar`是通过`new`创建的，就没有了`prototype`，我们无法直接操作`prototype`
   2. `newbar.__proto__`指向`Bar.prototype`，而`Bar.prototype`已经被我们改掉了。所以可以使用`Foo`的方法。
+
+**第二种继承方式**`Object.create`内部具体结构如下:
+
+```Javascript
+// Object create。传递参数是一个实例，所以之前总结prototype的结论应该没有问题..
+// 
+function create (obj) {
+  var F = function () {}
+  F.prototype = obj
+  return new F()
+}
+```
+如此我们实现了继承。
 
 
 
