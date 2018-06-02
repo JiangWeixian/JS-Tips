@@ -8,13 +8,49 @@
 * 有一句话一定要记住，`this`指向在运行的时候指定
 *  `IIFE`这个一定要了解, 因为创建了闭包!!
 
-```JavaScript
-(function () {
-   // some code 
-})()
+	```JavaScript
+	(function () {
+	// some code 
+	})()
+	```
+
+	在此内部的代码并不会污染外部作用域.
+	
+* 执行上下文和闭包并不会冲突
+
+如何准确的判断上下文环境，就像是下面的**第二段函数**(闭包一定要理解那里)
+
+* 如果我们在返回的函数里面打印this，它是`window`。因为它是在`window`环境运行的
+* 但是如果我们定义了一个对象
+
+	```js
+	var a {
+		name: 'a'
+		greeting: function () {
+			console.log(this.name)
+		}
+	}
+	a.greeting()
+	```
+	那么问题来了`this.name`会打印出来`a`吗？一定是会的。
+
+所以可以有一个原则`xx.func()`其中`func`中`this`指向就一定是`xx`。如果没有，就要看它在那个函数里面运行。如
+
+```javascript
+function a () {
+  this.name = 1
+  function greeting() {
+    console.log(this.name)
+  }
+  greeting()
+  return function () {
+    console.log(this)
+  }
+}
 ```
 
-在此内部的代码并不会污染外部作用域.
+* a() - `greeting`输出`1`
+* a()() - 输出的`windows`
 
 * 闭包一定要理解
 
@@ -37,6 +73,7 @@ baz(); // 2 -- 哇噢，看到闭包了，伙计。
 ```
 
 那么例子总结一下，什么叫作闭包。**外部`baz`仍然有`foo`内部的引用，这个概念就是闭包。**。扩展开来，外部`baz`（不仅仅是底层）可以访问到同一级别的`foo`内部的变量。因为`baz`和`foo`都处于同一个作用域内部。**baz可以使用bar，以及bar可以使用foo，这就是原因。**
+
 
 
 ## call&apply&bind

@@ -1,5 +1,16 @@
-# 柯里化
+# 柯里化&反柯里化
 > JS - 闭包
+
+<!-- TOC -->
+
+- [柯里化&反柯里化](#柯里化反柯里化)
+    - [柯里化](#柯里化)
+    - [我的理解](#我的理解)
+        - [提前返回](#提前返回)
+        - [参数复用](#参数复用)
+    - [反柯里化](#反柯里化)
+
+<!-- /TOC -->
 
 ## 柯里化
 
@@ -78,3 +89,23 @@ var addEvent = (function(){
 因为如果第一个函数`outter`内部返回了另外的函数`inner`，那么这个`inner`是能够得到`outter`里面定义的变量。
 
 就是模块一样。
+
+## 反柯里化
+
+讲一个函数构造为适应任何情况。就像是`Array`相关函数只能够作用在数组上，却不能作用在类数组上。
+
+如何改造`Array`相关函数适应所有情况。
+
+```javascript
+Function.prototype.uncurrying = function(){
+  var self = this;
+  return function(){
+    return Function.prototype.call.apply(self, arguments);
+  }
+}
+var push = Array.prototype.push.uncurrying();
+```
+
+* 执行`var push = Array.prototype.push.uncurrying();`的时候，`self=Array.prototype.push`。也就是`push`这个函数。
+* 然后push就是一个`uncurring`返回的函数
+* `push()`再执行之后，改变`Array.prototype.push`指向，并传入参数。
