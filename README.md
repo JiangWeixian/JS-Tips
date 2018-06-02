@@ -4,13 +4,14 @@
 
 - [0.1. NPM](#01-npm)
 - [0.2. Grammar](#02-grammar)
-- [0.3. Vue](#03-vue)
-- [0.4. webpack](#04-webpack)
-- [0.5. HTML](#05-html)
-- [0.6. CSS](#06-css)
-- [0.7. 网络基础](#07-网络基础)
-- [0.8. Database](#08-database)
-- [0.9. Demos](#09-demos)
+- [0.3. Reg](#03-reg)
+- [0.4. Vue](#04-vue)
+- [0.5. webpack](#05-webpack)
+- [0.6. HTML](#06-html)
+- [0.7. CSS](#07-css)
+- [0.8. 网络基础](#08-网络基础)
+- [0.9. Database](#09-database)
+- [0.10. Demos](#010-demos)
 
 <!-- /TOC -->
 
@@ -40,7 +41,11 @@
 * [JS-闭包-柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md)
 * [JS-浮点数陷阱](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%AE%E7%82%B9%E6%95%B0%E9%99%B7%E9%98%B1.md)
 
-## 0.3. Vue
+## 0.3. Reg
+
+* [Reg-实现多个字符串的连续匹配]()
+
+## 0.4. Vue
 
 * [Vue-watch](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-watch.md)
 * [Vue-dom](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-dom.md)
@@ -48,19 +53,19 @@
 * [Vue-SSR&CSR](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93SSR%26%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93CSR.md)
 * [Vue-骨架屏(和SSR相关)](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E9%AA%A8%E6%9E%B6%E5%B1%8F.md)
 
-## 0.4. webpack
+## 0.5. webpack
 
 * [postcss速写](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/postcss.md)
 * [Webpack-别名，在vue导入图片模块](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-import%E5%88%AB%E5%90%8D%E9%97%AE%E9%A2%98.md)
 * [Webpack-概述以及和其他工具对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E6%A6%82%E8%BF%B0%E4%BB%A5%E5%8F%8A%E5%92%8C%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.md)
 * [Webpack-前端性能优化方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
 
-## 0.5. HTML
+## 0.6. HTML
 
 * [HTML5&CSS3新特性](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/html%26css%E6%96%B0%E7%89%B9%E6%80%A7.md)
 * [HTML5-navigator.geolocation定位](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E5%AE%9A%E4%BD%8D.md)
 
-## 0.6. CSS
+## 0.7. CSS
 
 * [position和marigin二三事](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/position%E5%92%8Cmargin.md)
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
@@ -70,7 +75,7 @@
 * [stylus解惑](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/stylus%E8%A7%A3%E6%83%91.md)
 * [css-display](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-display.md)
 
-## 0.7. 网络基础
+## 0.8. 网络基础
 
 * [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/request%26responseHeader.md)
 * [计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
@@ -83,11 +88,11 @@
 * [AJAX-前世今生](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/AJAX-%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F%E8%A7%A3%E6%83%91.md)
 * [TCP-三次握手缺陷](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%BC%BA%E9%99%B7.md)
 
-## 0.8. Database
+## 0.9. Database
 
 * [数据库简介](https://github.com/JiangWeixian/JS-Tips/blob/master/DataBase/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B.md)
 
-## 0.9. Demos
+## 0.10. Demos
 
 * [原生js实现的小程序,重点在于思路](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
     * **Demo-drag** - 原生的拖拽元素实现
