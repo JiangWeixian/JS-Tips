@@ -14,18 +14,14 @@
 	})()
 	```
 
-	在此内部的代码并不会污染外部作用域.
-	
-* 执行上下文和闭包并不会冲突
+	在此内部的代码并不会污染外部作用域。执行上下文和闭包并不会冲突
 
 如何准确的判断上下文环境，就像是下面的**第二段函数**(闭包一定要理解那里)
-
-* 如果我们在返回的函数里面打印this，它是`window`。因为它是在`window`环境运行的
 * 但是如果我们定义了一个对象
 
 	```js
-	var a {
-		name: 'a'
+	var a = {
+		name: 'a',
 		greeting: function () {
 			console.log(this.name)
 		}
@@ -34,25 +30,43 @@
 	```
 	那么问题来了`this.name`会打印出来`a`吗？一定是会的。
 
-所以可以有一个原则`xx.func()`其中`func`中`this`指向就一定是`xx`。如果没有，就要看它在那个函数里面运行。如
+**所以可以总结一些原则：**
 
-```javascript
-function a () {
-  this.name = 1
-  function greeting() {
-    console.log(this.name)
-  }
-  greeting()
-  return function () {
-    console.log(this)
-  }
-}
-```
+* `xx.func()`其中`func`中`this`指向就一定是`xx`。
+* 如果没有，就要看它在那个函数里面运行。就像是下面那个函数`a()()`是在`windows`环境下运行的
+	```javascript
+	function a () {
+	this.name = 1
+	function greeting() {
+		console.log(this.name)
+	}
+	greeting()
+	return function () {
+		console.log(this)
+	}
+	}
+	```
 
-* a() - `greeting`输出`1`
-* a()() - 输出的`windows`
+	1. a() - `greeting`输出`1`
+	2. a()() - 输出的`windows`
 
-* 闭包一定要理解
+**特别的例子**是`document.get.onclick = function () { console.log(this) }`这里的`this`是`windows`。为什么？和上面的例子不一样啊。可以看到上面这个代码是链式的操作。所以可以模拟一下，如下：
+
+	```JavaScript
+	var a = {
+		name: 'a',
+		greeting: function () {
+			return this
+		},
+		onclick: function () {
+			console.log(this)
+		}
+	}
+	a.greeting().onclick()
+	```
+	可以发现这里的`this`是`a`这个对象。所以链式操作需要注意一下它的实现方式。
+
+### 闭包一定要理解
 
 最直接的理解例子：
 
