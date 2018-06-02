@@ -37,6 +37,7 @@
 * [JS-继承-(__proto__&&prototype&&new)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)
 * [JS-call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md)
 * [JS-发布订阅(观察者)模式-自定义事件](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.md)
+* [JS-闭包-柯里化]()
 
 ## 0.3. Vue
 
