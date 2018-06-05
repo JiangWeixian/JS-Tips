@@ -16,7 +16,7 @@
 
 ## 初探 - 浏览器渲染流程
 
-![渲染流程图]()
+![渲染流程图](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Broswer/img/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.png)
 
 上图表明了`html&css&js`都会改变`dom`。先不考虑`JavaScript`的影响，就样式的影响，`css`起的作用更为严重。
 
