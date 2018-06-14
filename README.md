@@ -44,6 +44,7 @@
 * [JS-移动端-点透问题(click delay 300ms)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.md)
 * [JS-Array-随机排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F.md)
 * [JS-Array-小坑(新建数组)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md)
+* [JS]
 
 
 ## 0.3. Reg

@@ -13,7 +13,7 @@ anres.map((item, index) => {
 })
 ```
 
-就会发现前面一个完全是`[undefined, undefined, undefined]`
+就会发现前面一个完全是`[undefined, undefined, undefined]`，而且这样的数组是**没有办法遍历的。**
 
 [StackOverflow的解释](https://stackoverflow.com/questions/5501581/javascript-new-arrayn-and-array-prototype-map-weirdness?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)是前一个创建的是**3个undefined指针，而后面的是3个undefined object**
 
