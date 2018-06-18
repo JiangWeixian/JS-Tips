@@ -74,6 +74,7 @@
 * [HTML-DOCTYPE](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOCTYPE.md)
 * [HTML5-离线缓存-manifest](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8-manifest.md)
 * [HTML-表单label作用](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3.md)
+* [HTML-语义化标签作用]()
 
 ## 0.7. CSS
 
