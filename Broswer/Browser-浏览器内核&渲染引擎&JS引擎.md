@@ -17,7 +17,7 @@
 在之前，浏览器内核包括渲染和JS两个引擎系统。而**现在情况有所不同: **
 
 * 一般来说，浏览器内核指的就是渲染引擎。实现具体解析`DOM CSS`过程
-* 而`JS`就是解析`JavaScript`，举例来说就是`Chrome V8`就是有名的`JavaScript引擎`。
+* 而`JS`就是解析`JavaScript`，举例来说就是`Chrome V8`就是有名的`JavaScript引擎`，也就是`nodejs`使用的。
 
 ## 链接
 
