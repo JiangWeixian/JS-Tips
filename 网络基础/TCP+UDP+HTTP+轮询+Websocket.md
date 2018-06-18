@@ -1,6 +1,5 @@
 # TCP、UDP、HTTP、轮询、Websocket
 
-
 ### tcp - 传输控制协议
 
 [维基百科定义](https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE)
@@ -103,6 +102,7 @@ var updater = {
             $("p").append(data + "<br>");
         }
         catch (e) {
+            // 这里就是服务器要求断开链接的情况
             updater.onError();
             return;
         }
