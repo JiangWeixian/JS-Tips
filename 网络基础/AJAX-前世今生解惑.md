@@ -1,6 +1,17 @@
 # AJAX - 如何预防CSRF
 > 前世今生解惑
 
+<!-- TOC -->
+
+- [AJAX - 如何预防CSRF](#ajax---如何预防csrf)
+  - [AJAX名词解释](#ajax名词解释)
+    - [AJAX部分属性](#ajax部分属性)
+  - [AJAX封装](#ajax封装)
+  - [AJAX预防CSRFG](#ajax预防csrfg)
+  - [Ftech](#ftech)
+
+<!-- /TOC -->
+
 ## AJAX名词解释
 
 AJAX = **A**synchronous**Ja**vascript+**X**ML
@@ -51,6 +62,7 @@ function loadXMLDoc()
     1. 创建对象
     2. `open`打开地址对象，`send`发送请求
     3. 在得到响应之后`state`改变触发`onreadystatechange`，然后在函数内部判断是否成功。
+* 可以在`send`中传递发送给后台的数据。
 
 ## AJAX封装
 
