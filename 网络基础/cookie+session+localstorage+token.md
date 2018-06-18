@@ -1,5 +1,18 @@
-# cookie、session、localstorage、token
+# cookie、session、localstorage、token、sessionstorage
 > 使用说明
+
+<!-- TOC -->
+
+- [cookie、session、localstorage、token、sessionstorage](#cookiesessionlocalstoragetokensessionstorage)
+  - [总览](#总览)
+    - [cookie](#cookie)
+    - [sessionstorage](#sessionstorage)
+    - [localstorage](#localstorage)
+    - [session](#session)
+    - [token](#token)
+  - [Q&A](#qa)
+
+<!-- /TOC -->
 
 ## 总览
 
@@ -52,11 +65,27 @@ document.cookie=....
 * 修改`cookie` - 就是在保证`domain`和`path`一致的情况下，将`cookie`设置。
 * 删除`cookie` - 设置过期时间为过去的一个时间点就可以了。
 
+### sessionstorage
+
+操作函数`localstorage`和`sessionstorage`两者类似，且都是**本地化**的存储手段。
+
+不过不同的是**`sessionstorage`并不是永久的存储方案**。
+
+**sessionstorage有限期：**
+
+* 关闭页面或者关闭浏览器都会清空
+* 刷新页面或者恢复页面都会保持(来自[MDN解析](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage)) - 刷新页面和**恢复关闭页面**的情况，至少在`firefox`以及`chrome`是这样的。
+* 只会存在于一个标签页内
+    * 不同浏览器，同一个网址不会使用同一个`sessionstorage`
+    * 同一个浏览器下也是相同的情况
+* 如果想要在不同页面之间共享`sessionstorage`，可以看[这篇文章](http://blog.kazaff.me/2016/09/09/%E8%AF%91-%E5%9C%A8%E5%A4%9A%E4%B8%AA%E6%A0%87%E7%AD%BE%E9%A1%B5%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%ABsessionStorage/)利用了`localstorage`实现共享。
+
+
 ### localstorage
 
 就数据存储方面来说，和`cookie`差不多。
 
-但是很重要的一点就是，并不会自动发送到`服务器`
+但是很重要的一点就是，并不会自动发送到`服务器`，且存储内容更多。
 
 和`cookie`的原则一致不要保存私密的代码。
 
@@ -72,6 +101,8 @@ document.cookie=....
 * 如果禁用了`cookie`
     * 可以加在`url`后面
     * 当发生请求时候，跟着数据一起发送    
+
+当页面关闭之后，`seesion`会清空，再一次发送请求会再**向服务器请求`session id`。**
 
 ### token
 
@@ -91,7 +122,7 @@ document.cookie=....
 
 `token`的好处，可以避免`csrf`攻击。需要加入到请求头特殊的部分，如此`Authorization: Bearer <token>`
 
-### Q&A
+## Q&A
 
 * 为什么会有`cookie`和`session`共同存在：
     > 首先session需要cookie发送信息（可能）；session是会话，是一种状态的维持。没办法通过客户端来cookie决定用户是否登陆，而是由服务器决定（因为通过登陆请求一定是经过了服务器），所以验证sessoin id来判断是否让客户端直接登陆;
@@ -100,3 +131,5 @@ document.cookie=....
     > 首先我们要知道客户端和服务器交互有两种方式，一种是自己主动发送数据，另一种就是被动的发送数据,另一种就是浏览器主动行为，比如自动发送cookie。这就会导致csrf攻击。token是存在客户端，且不主动发送的话，是不会主动的。1. 如果保存在locastorage内，就可以避免csrf，毕竟csrf并不会注入js代码。只是黑客的隐含请求。
 * `token`能够避免xss吗？
     > 不能，因为这并不是它的功能要求之一！而且xss和前端代码很有关系（是否过滤了一些可执行代码），和用户行为由很大关系。这个token无法避免。
+* 什么时候发送`session id`?
+    > 第一次请求的时候`cookie`并不会有`session`，而是在服务器返回的字段中设置了`seession id`。这样浏览器就会在下一次`cookie`发送的时候自带上。
