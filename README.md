@@ -46,6 +46,7 @@
 * [JS-Array-小坑(新建数组)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md)
 * [JS-export](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-export.md) / ES5&ES6模块导入导出
 * [JS-严格模式初探](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md)
+* [JS-JavaScript中同步异步]()
 
 ## 0.3. Reg
 
