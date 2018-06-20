@@ -36,14 +36,14 @@
 * 如果没有，就要看它在那个函数里面运行。就像是下面那个函数`a()()`是在`windows`环境下运行的
 	```javascript
 	function a () {
-	this.name = 1
-	function greeting() {
-		console.log(this.name)
-	}
-	greeting()
-	return function () {
-		console.log(this)
-	}
+		this.name = 1
+		function greeting() {
+			console.log(this.name)
+		}
+		greeting()
+		return function () {
+			console.log(this)
+		}
 	}
 	```
 
@@ -102,7 +102,7 @@ baz(); // 2 -- 哇噢，看到闭包了，伙计。
 
 * `call&apply`除了第一个之外后面参数都是备选的
 
-**来看看调用`call`的例子**, `call&apply`一般是下面例子的格式：
+**来看看调用`call`的例子**,`call&apply`一般是下面例子的格式：
 
 ```javascript
 Object.prototype.toString.call(a)
@@ -113,7 +113,7 @@ Object.prototype.toString.call(a)
 如果要给`call`传递额外的参数就是`Objection.prototype.toString.call(a, param1, param2)`.
 
 
-**来看看调用`apply`**的例子:
+**来看看调用`apply`** 的例子:
 
 ```javascript
 // arr = [12,3,4],通过这个函数找出最小数字
@@ -129,6 +129,6 @@ Math.min.apply(null, arr)
 
 这个单独领出来, 的确用的比较少. 具体可看[这篇博客](http://web.jobbole.com/83642/)
 
-* ｀bind｀只有一个参数代表上下文环境
+* `bind`只有一个参数代表上下文环境
 
 不过**注意：**　`bind`会返回一个函数，你需要再一次调用它，而`call&apply`则是立刻调用．
