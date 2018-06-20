@@ -106,6 +106,20 @@ Function.prototype.uncurrying = function(){
 var push = Array.prototype.push.uncurrying();
 ```
 
-* 执行`var push = Array.prototype.push.uncurrying();`的时候，`self=Array.prototype.push`。也就是`push`这个函数。
+或许下面这个更好理解：
+
+```JavaScript
+Function.prototype.unCurrying = function () {
+    var f = this;
+    return function () {
+        var a = arguments;
+        return f.apply(a[0], [].slice.call(a, 1));
+    };
+};
+```
+
+* 执行`var push = Array.prototype.push.uncurrying();`的时候，`self=Array.prototype.push`。也就是`push`这个函数。(self or f)
 * 然后push就是一个`uncurring`返回的函数
-* `push()`再执行之后，改变`Array.prototype.push`指向，并传入参数。
+* `push()`再执行之后，传入参数改变`Array.prototype.push`指向。
+
+可以通过`push(obj , '1', '2')`其中`obj`就是一个类`Array`数组。
