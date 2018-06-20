@@ -6,6 +6,8 @@
 - [cookie、session、localstorage、token、sessionstorage](#cookiesessionlocalstoragetokensessionstorage)
   - [总览](#总览)
     - [cookie](#cookie)
+      - [TIPS - 如何设置cookie](#tips---如何设置cookie)
+      - [TIPS - 设置多个Cookie](#tips---设置多个cookie)
     - [sessionstorage](#sessionstorage)
     - [localstorage](#localstorage)
     - [session](#session)
@@ -19,6 +21,7 @@
 * cookie - 存在浏览器
 * session - 存在服务器
 * localstorage - 本地
+* sessionstorage - 本地
 * token - 浏览器
 
 打开浏览器开发者工具，`resource`部分就可以看到部分。
@@ -42,11 +45,11 @@
 
 * `httponly` - 无法通过`js`获取，就能够避免`xss`攻击
 
-**tips**
+#### TIPS - 如何设置cookie
 
 第一次请求是没有`cookie`，只有第二次访问的时候才会有。
 
-服务器的`response`的含有`set-cookie`字段。代表了服务器可以让客户端设置多少个`cookie`。
+**服务器的`response`的含有`set-cookie`字段**。代表了服务器可以让客户端设置多少个`cookie`。
 
 设置一个`cookie`的方法为`document.cookie=....`。多个就是：
 
@@ -57,6 +60,8 @@ document.cookie=....
 ```
 
 没错就是多写几次。为什么能够如此做。
+
+#### TIPS - 设置多个Cookie
 
 就要考虑到之前浏览器如何查找该网页的`cookie`。通过浏览器的`domian&path`来寻找。
 

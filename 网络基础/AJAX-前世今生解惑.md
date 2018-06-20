@@ -24,7 +24,7 @@ AJAX = **A**synchronous**Ja**vascript+**X**ML
 
 就像是下面这样：
 
-```JavaScript
+```html
 <script>
 function loadXMLDoc()
 {
