@@ -1,6 +1,19 @@
 # 继承
 > 一切都是Object
 
+<!-- TOC -->
+
+- [继承](#继承)
+  - [前置知识 - 一切都是Object](#前置知识---一切都是object)
+  - [前置知识 - JS数值类型以及引用类型](#前置知识---js数值类型以及引用类型)
+  - [前置知识 - `__proto__ && prototype`](#前置知识---__proto__--prototype)
+  - [继承](#继承-1)
+    - [ES6-继承](#es6-继承)
+  - [实践Tips - 请一定要看](#实践tips---请一定要看)
+    - [两种方式的区别](#两种方式的区别)
+
+<!-- /TOC -->
+
 ## 前置知识 - 一切都是Object
 
 JS中类型有
@@ -97,3 +110,35 @@ Bar.speak = function() {
 添加了`class`关键字，[MDN教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)
 
 如果你会`python`，理解起来没差别。
+
+
+## 实践Tips - 请一定要看
+
+`JavaScript`实现类有几种方式.
+
+**第一种方式**
+
+包括像[stack.js]()方式,在`function`中使用`this`,通过`this`来实现方法.
+
+**第二种方式**
+
+就是以上在`prototype`的方式.
+
+**注意`Foo.call(this)是实现继承的关键.**
+
+### 两种方式的区别
+
+虽然两个都能够实现类的方式,区别在于:
+
+1. 第一种方式只能够通过`xx.prototype = new YY()` - 因为`this`只有在`new`创建的时候指定.
+2. 而**第二种方法创建的类都行**
+
+因为第一种方式的限制,因此第一种方式实现的继承
+
+1. 可以重写方法,但是无法调用父类的方法再重写 - **因为YY()上面的方法没有`new`就无法访问**
+
+以上`prototype`分为`function or object`
+
+1. `function`调用父类 - `yy.prototype.somefunc.call(this)`
+2. `object`调用父类 - `yy.somefunc.call(this)`
+
