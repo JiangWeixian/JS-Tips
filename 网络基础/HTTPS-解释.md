@@ -14,7 +14,7 @@
 
 ## 流程
 
-![https验证流程]()
+![https验证流程](https://github.com/JiangWeixian/JS-Tips)
 
 ## 链接
 
