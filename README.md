@@ -49,6 +49,7 @@
 * [JS-JavaScript中同步异步](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)
 * [JS-进制转换](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.md)
 * [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md)
+* [JS-debounce(防抖)&throttle(节流)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-debounce%26throttle.md)
 
 ## 0.3. Reg
 
