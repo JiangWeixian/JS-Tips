@@ -14,7 +14,7 @@
 
 ## 流程
 
-![https验证流程](https://github.com/JiangWeixian/JS-Tips)
+![https验证流程](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/%E9%AA%8C%E8%AF%81%E6%B5%81%E7%A8%8B.PNG)
 
 ## 链接
 
