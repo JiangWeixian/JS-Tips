@@ -4,7 +4,7 @@
 
 * [博客地址](https://www.cnblogs.com/ljuyi/p/6100071.html)
 
-JS类型`Number`, `Boolean`,`undefined`,`Object`, `Function`,`String`,`Null`。**未加入ES6**。其中`Object`, `Function`为复杂类型，剩余的就是基本类型。
+JS类型`Number`, `Boolean`,`undefined`,`Object`,`String`(**未加入ES6**)。其中`Object`, `Array`, `Function`(后面两个是根据第一个构建)为复杂类型，剩余的就是基本类型。
 
 这两个的区别（并不是唯一）在于作为参数传递时候的不同。
 
