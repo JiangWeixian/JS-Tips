@@ -4,12 +4,12 @@
 <!-- TOC -->
 
 - [xss+osrf+csrf](#xssosrfcsrf)
-        - [xss](#xss)
-            - [如何防范xss](#如何防范xss)
-        - [osrf](#osrf)
-        - [csrf](#csrf)
-            - [如何防范csrf](#如何防范csrf)
-        - [防范TIPS](#防范tips)
+    - [xss](#xss)
+      - [如何防范xss](#如何防范xss)
+    - [osrf](#osrf)
+    - [csrf](#csrf)
+      - [如何防范csrf](#如何防范csrf)
+    - [防范TIPS](#防范tips)
 
 <!-- /TOC -->
 
@@ -57,6 +57,7 @@ XSS 漏洞有多种形式，分为三类，反射型、保存型和基于 `DOM`�
 
 * 如果cookie被截获，cookie就应该保证不放入重要信息。必要时还要对`ip`和`cookie`进行绑定，一旦检测异常，立马让用户重新登录；
 * 过滤含有`html`便签或者`script`的数据
+* `innerHTML`不会过滤字符串(也就是说会通过字符串创建`script`标签)，`innerText`会过滤标签。
 
 ### osrf
 
