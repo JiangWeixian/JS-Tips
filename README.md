@@ -82,6 +82,7 @@
 * [HTML-表单label作用](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3.md)
 * [HTML-语义化标签作用](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE%E4%BD%9C%E7%94%A8.md)
 * [HTML-script加载过程](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-script%E6%A0%87%E7%AD%BE%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6.md)
+* [HTML-parentNode和parentElement](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM-parentNode%E5%92%8CparentElement.md)
 
 ## 0.7. CSS
 
