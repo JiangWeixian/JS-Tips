@@ -9,7 +9,7 @@
   - [前置知识 - `__proto__ && prototype`](#前置知识---__proto__--prototype)
   - [继承](#继承-1)
     - [ES6-继承](#es6-继承)
-  - [实践Tips - 请一定要看](#实践tips---请一定要看)
+  - [实践Tips - 调用父类仔细了解](#实践tips---调用父类仔细了解)
     - [两种方式的区别](#两种方式的区别)
 
 <!-- /TOC -->
@@ -20,30 +20,31 @@ JS中类型有
 
 * `Boolean`
 * `Number`
-* `null`
 * `undefined`
 * `String`
-* `Array`
-* `Symbol`
+* `Symbol`(ES6)
 
 以及
 
 * `object`
 
+`Array and function`可以归结为`object`
+
 这么多，不可能一切都是`Object`，的确使用`typeof`能够得到以上类型。
 
 而问题就在于，如果我们通过`new`来创建，例如`var a = new Number()`创建，使用`typeof`判断得到并不是`number`而是`object`。
 
-此时`instanceof`就优于`typeof`，因为它不受到影响。类似的还有`isPrototype`方法，都可以判断类型。
+此时`instanceof`就优于`typeof`，因为它不受到影响。
 
 ```javascript
-b.instanceof(a)
-b.isPrototype(a)
+b instanceof a
 ```
 
 **但是目前最常用的还是toString方法，应该来说是魔改过的toString**。和传统的`typeof a`不同，我们使用`Object.prototype.toString.call(a)`，我们可以得到`[object number]`
 
-因此，使用顺序为`Object.prototype.toString.call(a)>instanceof=isPrototype>typeof`
+因此，使用顺序为`Object.prototype.toString.call(a)>instanceof>typeof`，但是如果`new`创建的是自己的实现的类 **第二种方式**是更适合采用的结果。
+
+具体见[typeof&instanceof&prototype相关判断]()
 
 ## 前置知识 - JS数值类型以及引用类型
 
@@ -54,7 +55,7 @@ b.isPrototype(a)
 ## 前置知识 - `__proto__ && prototype`
 
 * `__proto__`总是一层层的向上指，直到尽头，指向`原型.prototype`
-* 也就是说如果我让`prototype`的**存放的东西变化**，就能够实现继承
+* 也就是说如果我让`prototype`的 **存放的东西变化**，就能够实现继承
 
 ## 继承
 
@@ -103,7 +104,9 @@ Bar.speak = function() {
 * 添加额外的函数`Bar.speak`而前面两个是`Bar.prototype.speak`
 * 如果直接打印`Bar`（第二点和第三点），可以发现第三点的`__proto__`更少，指向更清晰。
 
-**注意：** 如果直接使用`Bar.prototype = Foo.prototype`虽然起到了指向作用，但是`Foo.prototype`并不是新创建的，所以指向的是原始的`Foo`。任何一方的改动都会影响到两者。
+**注意1：** 上面我们通过了`init`而不是直接再`Foo`上添加`me`属性，原因在于 **直接在添加会让所有下面的继承和实例共享。**通过`init`替代了`constructor`可以在之后构建中将`this`指向`Bar`，具体可以见[JS高级程序设计-继承最佳实践](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
+
+**注意2：** 如果直接使用`Bar.prototype = Foo.prototype`虽然起到了指向作用，但是`Foo.prototype`并不是新创建的，所以指向的是原始的`Foo`。任何一方的改动都会影响到两者。
 
 ### ES6-继承
 
@@ -112,26 +115,26 @@ Bar.speak = function() {
 如果你会`python`，理解起来没差别。
 
 
-## 实践Tips - 请一定要看
+## 实践Tips - 调用父类仔细了解
 
-`JavaScript`实现类有几种方式.
+`JavaScript`实现类有几种方式。最佳实践见[JS高级程序设计-继承最佳实践](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
 **第一种方式**
 
-包括像[stack.js](https://github.com/JiangWeixian/JS-Books/blob/master/JS%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%A0%88/stack.js)方式,在`function`中使用`this`,通过`this`来实现方法.
+包括像[stack.js](https://github.com/JiangWeixian/JS-Books/blob/master/JS%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%A0%88/stack.js)方式,在`function`中使用`this`,通过`constructor`来实现方法。
 
 **第二种方式**
 
 就是以上在`prototype`的方式.
 
-**注意`Foo.call(this)是实现继承的关键.**
+**注意`Foo.call(this)`是实现继承的关键。因为要改变`this`指向**
 
 ### 两种方式的区别
 
 虽然两个都能够实现类的方式,区别在于:
 
-1. 第一种方式只能够通过`xx.prototype = new YY()` - 因为`this`只有在`new`创建的时候指定.
-2. 而**第二种方法创建的类都行**
+1. 第一种方式只能够通过`xx.prototype = new YY()` - 因为`this`只有在`new`创建的时候指定。这部分还有可能导致全局变量的污染(当直接使用`YY()`)
+2. 而 **第二种方法创建的类都行**
 
 因为第一种方式的限制,因此第一种方式实现的继承
 
