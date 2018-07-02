@@ -52,6 +52,7 @@
 * [JS-debounce(防抖)&throttle(节流)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-debounce%26throttle.md)
 * [JS-Array数组去重](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%8E%BB%E9%87%8D%E5%A4%8D.md)
 * [JS-内存机制和垃圾回收](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md)
+* [JS-this指向总结]()
 
 ## 0.3. Reg
 
