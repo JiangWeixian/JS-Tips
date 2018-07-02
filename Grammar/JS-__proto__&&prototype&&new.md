@@ -114,8 +114,12 @@ console.log(
 ![构造函数和原型](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB.PNG)
 
 
-* 两段代码可以得到**prototype只有原型有。而newfoo想要操作prototype可以根据以上结论通过newfoo.__proto__来找到**
+* 两段代码可以得到 **prototype只有原型有。而newfoo想要操作prototype可以根据以上结论通过newfoo.__proto__来找到**
 * 后面一段代码的指示是，如果想要找到`b`上面的方法，会从`b.__proto__`上面找，**也就相当于从它的原型(Foo.prototype)上面找**。
+
+**更为重要的是：**
+
+**想要找到`b`上面的方法，会从`b.__proto__`上面找**，这句话含义为通过`new`关键字(或者其他继承方式)，**属性和方法并不会复制到实例上**，实例的属性和方法是通过 **向父类查找的** [操作方法见JS语言精粹-CH3](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E8%AF%AD%E8%A8%80%E7%B2%BE%E7%B2%B9/CH3-%E5%AF%B9%E8%B1%A1)，[详细分析见JS高级程序设计](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
 ## new 关键字
 
@@ -191,6 +195,8 @@ function create (obj) {
 同时父类和子类别是可能含有不同的函数，`newbar.myName`在本身的`newbar.__proto__ or Bar.prototype上`找不到，就会向父类`Foo.prototype`查找。就是`__proto__`中嵌套的`__proto__`(嵌套就是父级上面找)
 
 同时`new`关键字(具体可见`new`关键字内部实现)也是利用上面`__proto__`指向了原型的`prototype`的特性来返回一个临时的对象。
+
+**以上`Foo.call()`**是较为关键的一点，我总结了[JS高级程序设计的-继承最佳实践](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
 ## 链接
 

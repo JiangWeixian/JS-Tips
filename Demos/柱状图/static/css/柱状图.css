@@ -1,0 +1,14 @@
+.table {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  border: 1px solid #f00;
+}
+.table__col {
+  width: 50px;
+  background-color: #000;
+}
+.table--flex {
+  display: flex;
+  justify-content: space-between;
+}
