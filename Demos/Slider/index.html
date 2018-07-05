@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="reset">
+  <head>
+    <title>写一个轮播器</title>
+    <link rel="stylesheet" href="./static/css/slider.css">
+  </head>
+  <body class="reset">
+    <div class="slider reset">
+      <ul class="slider__content reset clearout" id="SLIDER" style="tranlateX">
+        <li class="slider__item reset"></li>
+        <li class="slider__item reset"></li>
+        <li class="slider__item reset"></li>
+      </ul>
+    </div>
+    <script>
+      window.onload = function () {
+        function lineMove (speed) {
+          return function (start) {
+            return start + speed
+          }
+        }
+        function Slider (speed, delay) {
+          var slider = document.getElementById('SLIDER')
+          var sliderItem = slider.getElementsByTagName('li')
+          var len = sliderItem.length
+          var width = sliderItem[0].offsetWidth
+          var current = 0
+          var target = null
+          var timer = null
+          var moveLeft = slideToLeft(slider, 0, lineMove(width / (speed * 60)))
+
+          function slideToLeft (item, start, timeFunc) {
+            current = start
+            function animate () {
+              if (current >= target) {
+                return
+              }
+              current = timeFunc(current)
+              item.style.transform = 'translateX(' + -current + 'px' + ')'
+              requestAnimationFrame(animate)
+            }
+            return function (end) {
+              target = end
+              requestAnimationFrame(animate)
+            }
+          }
+
+          function autoplay () {
+            for (var i = 0; i < len - 1; i ++) {
+              (function (i) {
+                console.log(delay * 1000 + speed * 1000 * i)
+                timer = setTimeout (function () {
+                  moveLeft((i + 1) * width)
+                }, delay * (i + 1) * 1000 + speed * 1000 * i)
+              })(i)
+            }
+          }
+
+          return {
+            autoplay: autoplay
+          }
+        }
+        Slider(2, 1).autoplay()
+      }
+    </script>
+  </body>
+</html>
