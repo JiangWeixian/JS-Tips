@@ -1,12 +1,24 @@
-# JavaScript中的同步异步
+# 1. JavaScript中的同步异步
 
-## 前置知识 - JavaScript与同步异步定义
+<!-- TOC -->
+
+- [1. JavaScript中的同步异步](#1-javascript中的同步异步)
+  - [1.1. 前置知识 - JavaScript与同步异步定义](#11-前置知识---javascript与同步异步定义)
+  - [1.2. 前置知识 - 同步异步定义](#12-前置知识---同步异步定义)
+  - [1.3. 什么是异步?](#13-什么是异步)
+    - [1.3.1. 什么是回调的异步函数](#131-什么是回调的异步函数)
+  - [1.4. 实现异步](#14-实现异步)
+  - [1.5. 链接](#15-链接)
+
+<!-- /TOC -->
+
+## 1.1. 前置知识 - JavaScript与同步异步定义
 
 `JavaScript`是单线程的。
 
 但是根据[JavaScript-事件队列](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)理解，为了效率考虑，在主线程之外有一个额外线程来**挂起那些回调、`promise`和延迟(settimeout)执行。**
 
-## 前置知识 - 同步异步定义
+## 1.2. 前置知识 - 同步异步定义
 
 [同步异步概念解析](https://juejin.im/entry/58ae4636b123db0052b1caf8)提到。
 
@@ -18,11 +30,11 @@
 * 同步会按照代码书写顺序执行
 * 异步则不是，**回调函数就是明显的异步函数**.
 
-## 什么是异步?
+## 1.3. 什么是异步?
 
 以`JavaScript`举例，第一事件想到**回调函数以及类似的还有`promise`**。
 
-为什么**回调函数就是异步的？**
+为什么 **回调函数就是异步的？**
 
 因为同步函数如下：
 
@@ -49,7 +61,7 @@ console.log(i)
 * **i**要很久才会打印出来。
 * 假设`func`和`console.log(i)`是同一个逻辑中的函数，那么就没有必要因为`func`来延迟后面的函数(指的是`console.log(i)`之后的函数)。
 
-因此可以使用回调函数来规避：
+因此可以使用 **回调函数**来规避：
 
 ```JavaScript
 func(callback);
@@ -68,7 +80,86 @@ function func (fn) {
 
 可以发现`console.log('这是之后的代码')`先执行，然后才是`console.log(2)`。
 
-## 实现异步
+### 1.3.1. 什么是回调的异步函数
+
+回调函数和异步的回调函数是两个东西。**任何函数名作为参数传递都可以认为是回调函数。**
+
+```JavaScript
+function callback() {
+  console.log('callback')
+}
+function func (fn) {
+  console.log('func')
+  setTimeout(function () {
+    fn()
+  }, 0)
+}
+func(callback)
+console.log('另一个函数')
+```
+
+输出结果为：
+
+```bash
+func
+另一个函数
+callback
+```
+
+关键在于`func`内部的`settimeout`而且还设置为`0`。结合[JS-主线程和函数执行队列]()理解，即`settimeout`会挂载到等待队列中。这就是 **回调函数的异步形式。关键在于这个`settimeout`**而不能简单理解 **函数传参数就是异步。**如下：
+
+```JavaScript
+function callback() {
+  var now = Date.now()
+  while (Date.now() < now + 2000) {}
+  console.log('callback')
+}
+function func (fn) {
+  console.log('func')
+  // 去掉了settimeout
+  fn()
+}
+func(callback)
+console.log('另一个函数')
+```
+
+`func(callback)`阻塞了后面代码 **另一个函数**的执行。
+
+```bash
+func
+// 直到两秒之后
+callback
+另一个函数
+```
+
+**如果转换为回调异步**
+
+```JavaScript
+function callback() {
+  var now = Date.now()
+  while (Date.now() < now + 2000) {}
+  console.log('callback')
+}
+function func (fn) {
+  console.log('func')
+  setTimeout(function () {
+    fn()
+  }, 0)
+}
+func(callback)
+console.log('另一个函数')
+```
+
+`func(callback)`阻塞了后面代码的执行。
+
+```bash
+func
+另一个函数
+// 直到两秒之后
+callback
+```
+
+## 1.4. 实现异步
 
 * 回调 - 之前已经说明了。
 * 监听(发布订阅) - 我先添加`key=xx event`的回调函数，等到`key=xx event`事件发生之后，**手动触发**这个回调函数。
@@ -78,7 +169,7 @@ function func (fn) {
 * `Promise`
 
 
-## 链接
+## 1.5. 链接
 
 结合[JavaScript-事件队列理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
 
