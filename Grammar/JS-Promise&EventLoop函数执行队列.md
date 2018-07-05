@@ -1,7 +1,21 @@
-# JS-Promise&EventLoop函数执行队列
+# 1. JS-Promise&EventLoop函数执行队列
 > 函数执行队列，会让你豁然开朗的
 
-## 正文
+<!-- TOC -->
+
+- [1. JS-Promise&EventLoop函数执行队列](#1-js-promiseeventloop函数执行队列)
+  - [1.1. 前置知识 - 什么是回调，别以为你知道了](#11-前置知识---什么是回调别以为你知道了)
+  - [1.2. 正文](#12-正文)
+    - [1.2.1. 重要原则](#121-重要原则)
+  - [1.3. 启发](#13-启发)
+
+<!-- /TOC -->
+
+## 1.1. 前置知识 - 什么是回调，别以为你知道了
+
+[回调函数是什么](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)
+
+## 1.2. 正文
 
 看以下[博客](https://blog.csdn.net/wky_csdn/article/details/77477146)总结得到的。
 
@@ -52,7 +66,24 @@ setTimeout
 
 可以发现主线程就是两个`console.log`。任务队列有`settimeout`和`promise`。
 
-且在任务队列里面`promise`有比`settimeout`级别高。
+且在任务队列里面`promise`有比`settimeout`级别高。而[回调函数](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)优先级比`settimeout`高，如下：
+
+```JavaScript
+function callback() {
+  var now = Date.now()
+  while (Date.now() < now + 2000) {}
+  console.log('callback')
+}
+document.onclick = function () {
+  console.log('回调')
+}
+setTimeout(function () {
+  console.log('settimeout')
+})
+callback()
+```
+
+如果再`callback()`执行期间，点击页面，会发现**回调出现时间是早于`settimeout`**
 
 如果任务队列内部运行堵塞(其中一个), 并不会等待完成.而是先执行其他的(如果这个其他是他的同级别的话).
 
@@ -78,7 +109,11 @@ console.log('script end');
 
 第二个`promise`堵塞了, 所以先执行了后面那个.
 
-## 启发
+### 1.2.1. 重要原则
+
+任务队列内的代码只能够在主线程的代码执行完毕之后执行。这也就是为了`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
+
+## 1.3. 启发
 
 **重点：**我们不能够使用`Promise`去等待一个循环的执行完毕。
 
