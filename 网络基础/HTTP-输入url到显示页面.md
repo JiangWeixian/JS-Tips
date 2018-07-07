@@ -79,7 +79,7 @@
 
 一般来说JS在下载和运行过程中都会干扰到HTML解析。所以一般会放在最后。
 
-![script干扰]()
+![script干扰](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Broswer/img/script%E5%B9%B2%E6%89%B0.png)
 
 和`CSS`一样，页面中的`JS`从开始到渲染涉及到三个过程：
 
@@ -100,7 +100,7 @@
 
 **注意1 - 现代浏览器已经支持的是并行下载script资源(在没有设置以上情况下)，但是会干扰其他资源下载**。也就是说上面两个其实设置的执行顺序。
 
-**注意2 - chrome调试工具可以看到initator判断是谁发起了js请求。来自script标签说明是动态添加了脚本**。如果是来自`parser`就是直接写在html里面的。可以[async&defer]()的例子。在这个例子中，可以得到：
+**注意2 - chrome调试工具可以看到initator判断是谁发起了js请求。来自script标签说明是动态添加了脚本**。如果是来自`parser`就是直接写在html里面的。可以[async&defer](https://github.com/JiangWeixian/JS-Tips/tree/master/Demos/async%26defer)的例子。在这个例子中，可以得到：
 
 0. 动态添加的脚本，默认开`async`
 1. 如果html文件很小，defer async脚本开始加载的事件相同。但是`async`执行要滞后在`defer`之后。至少在`chrome`里面是这样的。
