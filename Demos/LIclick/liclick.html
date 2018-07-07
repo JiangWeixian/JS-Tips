@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>点击li并输出index</title>
+  </head>
+  <body>
+    点击li并输出index，用了两种方法。
+    <ul class="ul">
+      <li data-index="1">1</li>
+      <li data-index="2">2</li>
+      <li data-index="3">3</li>
+      <li data-index="4">4</li>
+      <li data-index="5">5</li>
+    </ul>
+    <script>
+      window.onload = function () {
+        let ul = document.querySelector('.ul')
+        ul.addEventListener('click', function (e) {
+          let taregt = e.target
+          if (taregt.nodeName === 'LI') {
+            console.log(taregt.dataset.index, Array.prototype.indexOf.call(this.children, taregt) + 1)
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
