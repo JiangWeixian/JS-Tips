@@ -107,13 +107,13 @@ function callback (value, resolve) {
 ```JavaScript
 promise1.then(function (data) {
   console.log(data)
-  return Promise.resolve(data)
+  return Promise.resolve(data) // 去掉也可以执行
 }).then(function (data) {
   console.log(data)
 })
 ```
 
-* 但是如果是`Promise.resolve`方法，就需要`return Promise.resolve()`。`return Promise.resolve()`就是为了让 **后面的`then`获取到数据，但是如果我们没有舒徐需要传递，那么还是可以通过`then`方法将链条执行下去。**
+* 但是如果是`Promise.resolve`方法，就需要`return Promise.resolve()`。`return Promise.resolve()`就是为了让 **后面的`then`获取到数据，但是如果我们没有数据需要传递，那么还是可以通过`then`方法将链条执行下去。**
 
 因此我们有了更为清晰的方法
 
@@ -162,7 +162,7 @@ iter(arr, function (pre, value) {
 
 可以得到`1 4 5 7`
 
-但是我们 **需要考虑如果`callback`是一个执行比较久的函数。**因为使用`setTimeout`模拟，为了获取`callback`结算结果，我们使用了`return new Promise`的方法。可以发现即使设置`settimeout`的时间为`3s 1s 2s`还是按照了时间顺序发生了。
+但是我们 **需要考虑如果`callback`是一个执行比较久的函数。** 因为使用`setTimeout`模拟，为了获取`callback`结算结果，我们使用了`return new Promise`的方法。可以发现即使设置`settimeout`的时间为`3s 1s 2s`还是按照了链条顺序发生了。
 
 ```JavaScript
 var arr = [3, 1, 2]
