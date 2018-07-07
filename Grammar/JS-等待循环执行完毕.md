@@ -192,3 +192,4 @@ function callback (pre, value) {
 ```
 
 * 关键在于`setTimeout`中回调结果被`promise`传递。
+* 如果`callback`实际中不是以`settiment`方式实现的执行时间过程。那么就直接可以使用`return Promise.resolve(callback(data, item))`
