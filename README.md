@@ -23,7 +23,9 @@
 
 ## 0.2. Grammar
 
-推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
+> 推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
+
+> 发现如果直接MDN看API例子你会学到很多
 
 * [JS基本类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
 * [JS块级作用域](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
@@ -53,7 +55,7 @@
 * [JS-Array数组去重](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%8E%BB%E9%87%8D%E5%A4%8D.md)
 * [JS-内存机制和垃圾回收](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md)
 * [JS-this指向总结](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md)
-* [JS-深度复制和浅度复制]()
+* [JS-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
 
 ## 0.3. Reg
 
