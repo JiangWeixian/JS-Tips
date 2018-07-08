@@ -4,7 +4,7 @@
 
 只要理解一个概念就可以了，一般来说 **N x 设备像素 = CSS像素**
 
-![像素概念]()
+![像素概念](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/CSS/img/%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.png)
 
 只是原本一个`css`等于一个设备像素，现在等于了4个。因此在`.css`文件中所设置的`px`之后，每个设备看起来都是一样的(例如高度)。
 
