@@ -1,5 +1,5 @@
 # 请求头和响应头
-> 其中一些字段的含义
+> 其中一些字段[wiki](https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5)的含义
 
 ## 正文
 
