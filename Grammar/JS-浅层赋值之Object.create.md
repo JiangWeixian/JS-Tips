@@ -1,11 +1,20 @@
-# Object.create
+# 1. Object.create
 > 在浅层赋值上和Object.assign一致；浅层就是只能够操作 **第一层属性**
 
-## 结论
+<!-- TOC -->
+
+- [1. Object.create](#1-objectcreate)
+  - [1.1. 结论](#11-结论)
+  - [1.2. 先看例子](#12-先看例子)
+  - [1.3. 和Object.assign](#13-和objectassign)
+
+<!-- /TOC -->
+
+## 1.1. 结论
 
 这个方法是浅层赋值。
 
-## 先看例子
+## 1.2. 先看例子
 
 ```JavaScript
 var target = { a: 0 , b: { c: 1}}
@@ -68,3 +77,22 @@ b: {c: 1, d: 2}
 
 但是如果你先`clone.b = {}`，然后再`clone.b.d=2`情况就又不同了。此时分为`clone.b`以及`.d`。**clone.b**已经在本省属性上找到了。
 
+## 1.3. 和Object.assign
+
+对比利用`Object.assign`实现[深度复制]()简要的实现。
+
+可以发现`create`将数据复制到`__proto__`，而`assign`将数据复制到`__proto__`之外。
+
+**结论就是：**
+
+* `create`复制`prototype`上面的方法
+* `assign`复制一般属性
+
+**如果想要一起复制，在[ES6-对象扩展中有一个方法]()**
+
+```JavaScript
+Object.assign(
+    Object.create(Object.getPrototypeOf(obj))， // 复制了prototype部分，但是除了这个之外没有其他
+    obj // 复制一般属性
+)
+```
