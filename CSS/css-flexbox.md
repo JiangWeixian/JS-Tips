@@ -16,8 +16,8 @@
 
 ## 1.1. 前置知识 - 传统定位方式
 
-* 非float，position定位方式依照[CSS-水平格式化或者垂直格式化的行为(**注意替换元素和非替换元素的区别**)]() - 可以实现比较普通的定位，注意[bfc规则]()能解释其中一些比较奇异的行为
-* 而float or position定位方式依照[CSS-float&position定位]()规则，能够解释其中一些默认处理方式。
+* 非float，position定位方式依照[CSS-水平格式化或者垂直格式化的行为(**注意替换元素和非替换元素的区别**)](https://github.com/JiangWeixian/JS-Books/tree/master/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/CSS%E5%9F%BA%E6%9C%AC%E8%A7%86%E8%A7%89%E6%A0%BC%E5%BC%8F%E5%8C%96) - 可以实现比较普通的定位，注意[bfc规则](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-bfc.md)能解释其中一些比较奇异的行为
+* 而float or position定位方式依照[CSS-float&position定位](https://github.com/JiangWeixian/JS-Books/tree/master/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/CSS%E6%B5%AE%E5%8A%A8)规则，能够解释其中一些默认处理方式。
 
 现在有了`flexbox`的方式，不过这只是简化了我们的布局行为而已。`reflow&repaint`的消耗还是存在的。
 
@@ -70,10 +70,10 @@
 * 如果每个只定义了`width or height` - 100% - 所有元素's width = 剩余空间
 * 如果每个只定义了`flex-basis` -  100% - 所有元素's flex-basis = 剩余空间
 
-    > flex-basis不设定，默认是auto。就是[非替换元素]()本来大小。
+    > flex-basis不设定，默认是auto。就是[非替换元素](https://github.com/JiangWeixian/JS-Books/tree/master/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/CSS%E5%9F%BA%E6%9C%AC%E8%A7%86%E8%A7%89%E6%A0%BC%E5%BC%8F%E5%8C%96)本来大小。
 
     * 元素`flex-basis: auto` - 如果非替换元素本身就比较大，那么会压榨其他元素空间，即使设置了`width or flex-basis`
-    * 元素`flex-basis: auto` - 如果非替换元素本身就没那么大，100% - 元素's flex-basis - 非替换元素大小 = 剩余空间。如[flex.html-非替换元素比较小]()
+    * 元素`flex-basis: auto` - 如果非替换元素本身就没那么大，100% - 元素's flex-basis - 非替换元素大小 = 剩余空间。如[flex.html-非替换元素比较小](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/flex.html)
 
 第二点情况也适用于`width: auto`
 
@@ -84,7 +84,7 @@
 > `flex-basis`定于元素默认大小，`width or height`定义固定大小！。在 **分配多余空间之前**，项目占据的主轴空间。
 
 * 设置了`flex-basis`不是等效就设定了元素`width or height`，后者优先级比较高。
-* 设置了`flex-basis`元素只能够保证(非严格)自身元素在一定范围之内，这个保证在剩余空间不足失效，如[flex.html-flex-basis失效]()所示。
+* 设置了`flex-basis`元素只能够保证(非严格)自身元素在一定范围之内，这个保证在剩余空间不足失效，如[flex.html-flex-basis失效](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/flex.html)所示。
 
 **Q&A - 4. flex-grow如何分配剩余空间**
 
@@ -99,7 +99,7 @@
 
 * 想要布局效果，最好设定`flex-basis`数值(**为了取消默认元素本身大小的展示行为**)。然后通过`flex-grow`来分配剩余空间。特别是设定`flex-basis: 0`。
 
-    > 假设父类100%，三个子元素。两个为flex-basis为200px，其中一个为0。然后设定`flex-basis`为0的`flex-grow`为`1`。布局就相当于100% - 200px * 2 = `flex-grow`为`1`那个元素的大小。如[flex.html-flex-basis-test]()
+    > 假设父类100%，三个子元素。两个为flex-basis为200px，其中一个为0。然后设定`flex-basis`为0的`flex-grow`为`1`。布局就相当于100% - 200px * 2 = `flex-grow`为`1`那个元素的大小。如[flex.html-flex-basis-test](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/flex.html)
 
 
 
