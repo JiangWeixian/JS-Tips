@@ -11,6 +11,7 @@
     - [1.4.1. Document](#141-document)
     - [1.4.2. Element](#142-element)
   - [1.5. HTMLElement](#15-htmlelement)
+  - [MathML](#mathml)
   - [1.6. 区分](#16-区分)
 - [2. WebAPI - Window速写](#2-webapi---window速写)
   - [2.1. NOT location&navigation](#21-not-locationnavigation)
@@ -66,6 +67,10 @@
 
 * HTML5 - 新属性: tab title style 富文本框 拖拽
 * 盒子模型 - 本身/位置(相对于父类)**这里的offsetHeight是内容加上padding加上border**
+
+## MathML
+
+写数学公式，使用的标签的方式
 
 ## 1.6. 区分
 
