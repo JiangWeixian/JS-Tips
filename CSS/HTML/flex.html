@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <title>flex测试</title>
+    <style>
+      .layout-battle {
+        width: 100%;
+        min-width: 400px;
+      }
+      .container {
+        width: 100%;
+        float: left;
+        background-color: blue;
+        overflow: hidden;
+      }
+      .col__left {
+        width: 200px;
+        height: 200px;
+        background-color: red
+      }
+      .col__inner {
+        margin: 0 200px 0 200px;
+        height: 200px;
+        background-color: white;
+      }
+      .col__right {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+      }
+      .layout-battle--flex {
+        display: flex;
+      }
+      .container--flex {
+        display: flex;
+        width: calc(100% - 200px);
+        overflow: hidden;
+      }
+      .col__inner--flex {
+        width: calc(100% - 200px);
+        height: 200px;
+      }
+      .layout-battle--flex--basic {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .col__left--basic, .col__right--basic {
+        flex-basis: 200px;
+        height: 200px;
+        background-color: black;
+      }
+      .col__inner--flex--basic {
+        background-color: red;
+        overflow: hidden;
+        flex-grow: 1;
+        width: 400px;
+      }
+      .col__inner--flex--basicnw {
+        background-color: red;
+        overflow: hidden;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    flex-basis失效
+    <div class="layout-battle layout-battle--flex--basic">
+      <div class="col__left--basic">left</div>
+      <div class="col__inner--flex--basicnw">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ullam iure nihil consequatur. Soluta voluptas quas error impedit enim laborum inventore, earum ipsa voluptatum qui quos, modi maxime porro eius quis temporibus! Cum voluptas iusto fugiat rem molestiae tempore soluta, placeat nemo voluptatibus similique, culpa recusandae, nobis illo sequi reiciendis quaerat ab! Fugit est voluptatibus minima maxime laborum beatae, necessitatibus nesciunt id error, animi odit, nam libero suscipit voluptas dolorem aut exercitationem. Voluptas voluptates dolorem minus deleniti? Minus id illo sed accusamus, iusto eius aspernatur eaque. Magnam laborum, voluptatem debitis necessitatibus officia quos architecto doloremque impedit neque? Sequi, mollitia quisquam.</div>
+      <div class="col__right--basic">right</div>
+    </div>
+    非替换元素比较小
+    <div class="layout-battle layout-battle--flex--basic">
+      <div class="col__left--basic">left</div>
+      <div class="col__inner--flex--basicnw">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, quisquam.</div>
+      <div class="col__right--basic">right</div>
+    </div>
+    双飞燕--flex
+    <div class="layout-battle layout-battle--flex">
+      <div class="container--flex">
+        <div class="col__left">left</div>
+        <div class="col__inner--flex">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias reiciendis quis voluptates minima totam architecto veniam, reprehenderit qui tempore distinctio corporis ad? Aliquam vitae quam dolore nam nulla molestias fugiat nostrum recusandae repellat, repudiandae voluptas pariatur soluta aperiam. Accusantium sed, itaque ipsum ratione, optio tempore similique officiis amet, repellat nisi obcaecati. Numquam tempora laudantium quod dignissimos, magnam labore facilis. Dolore nemo, repellat pariatur quaerat doloribus asperiores expedita itaque laboriosam obcaecati qui iusto porro, quas laborum consequuntur adipisci. Dicta nesciunt ducimus non impedit odio voluptatibus dolorum tempora, pariatur nisi, veniam natus rerum alias laudantium molestiae officiis neque praesentium, earum veritatis. Ipsum!</div>
+      </div>
+      <div class="col__right">right</div>
+    </div>
+    双飞燕--flex--test
+    <div class="layout-battle layout-battle--flex--basic">
+      <div class="col__left--basic">left</div>
+      <div class="col__inner--flex--basic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ullam iure nihil consequatur. Soluta voluptas quas error impedit enim laborum inventore, earum ipsa voluptatum qui quos, modi maxime porro eius quis temporibus! Cum voluptas iusto fugiat rem molestiae tempore soluta, placeat nemo voluptatibus similique, culpa recusandae, nobis illo sequi reiciendis quaerat ab! Fugit est voluptatibus minima maxime laborum beatae, necessitatibus nesciunt id error, animi odit, nam libero suscipit voluptas dolorem aut exercitationem. Voluptas voluptates dolorem minus deleniti? Minus id illo sed accusamus, iusto eius aspernatur eaque. Magnam laborum, voluptatem debitis necessitatibus officia quos architecto doloremque impedit neque? Sequi, mollitia quisquam.</div>
+      <div class="col__right--basic">right</div>
+    </div>
+  </body>
+</html>
