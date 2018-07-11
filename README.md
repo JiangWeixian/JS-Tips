@@ -107,7 +107,7 @@
 
 ## 0.8. 网络基础
 
-* [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/request%26responseHeader.md)
+* [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-request%26response-headers.md)
 * [计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
 * [跨域处理](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86.md)
 * [tcp+udp+http等](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP%2BUDP%2BHTTP%2B%E8%BD%AE%E8%AF%A2%2BWebsocket.md)
