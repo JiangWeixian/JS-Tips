@@ -77,7 +77,7 @@
 
 **长连接的意义在于，因为建立连接的实践消耗时远远大于建立连接之后传输数据的实践消耗。** 所以每次HTTP请求一次就断开的方式对现在网页来说时不够的。而在现代网页中如何体现，因为每个服务器都有地址(我指的是是IP地址而不是URL地址)存在，TCP以IP(网络层)地址为基础建立连接。那么 **对于同一个服务器下的HTTP资源请求，HTTP完全可以[复用同一个TCP连接](https://zh.wikipedia.org/wiki/HTTP%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5)。**
 
-> 题外话。上面TCP报头只有端口号，没有IP地址。对于端口号，HTTP默认是80(或者在HTTP HEADERS中指定)，所以这一点还好；而TCP是在传输层，IP地址是在网络，一个在上一个在下的关系。由[计算机网络基础]()中提到的，OSI模型顺序是从上到小的关系。所以到了TCP一层之后(分装好数据)，IP地址在网络层中指定，和TCP无关。来自[知乎](https://www.zhihu.com/question/54795054)。这部分详情见[输入URL全过程]()
+> 题外话。上面TCP报头只有端口号，没有IP地址。对于端口号，HTTP默认是80(或者在HTTP HEADERS中指定)，所以这一点还好；而TCP是在传输层，IP地址是在网络，一个在上一个在下的关系。由[计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)中提到的，OSI模型顺序是从上到小的关系。所以到了TCP一层之后(分装好数据)，IP地址在网络层中指定，和TCP无关。来自[知乎](https://www.zhihu.com/question/54795054)。这部分详情见[输入URL全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2.md)
 
 那么，TCP是如何做到长连接么？
 
