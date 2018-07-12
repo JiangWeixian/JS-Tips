@@ -11,13 +11,13 @@
     - [1.4.1. Document](#141-document)
     - [1.4.2. Element](#142-element)
   - [1.5. HTMLElement](#15-htmlelement)
-  - [MathML](#mathml)
-  - [1.6. 区分](#16-区分)
+  - [1.6. MathML](#16-mathml)
+  - [1.7. 区分](#17-区分)
 - [2. WebAPI - Window速写](#2-webapi---window速写)
   - [2.1. NOT location&navigation](#21-not-locationnavigation)
   - [2.2. Location](#22-location)
   - [2.3. navigation](#23-navigation)
-  - [一些硬件API](#一些硬件api)
+  - [2.4. 一些硬件API](#24-一些硬件api)
 
 <!-- /TOC -->
 
@@ -30,7 +30,12 @@
 
 ## 1.2. EventTarget
 
-最重要的是`event`部分。
+最重要的是`event`部分。`event`比如`mouseevent or keyboardevent`都是一系列事件的指代。就像是keyboard事件可以包括keypress等事件。而在`keyboardevent`事件上面的属性是可以共用到在大类事件上面的属性。
+
+* 捕获冒泡 - 状态以及取消(不同浏览器以及IE)
+* 事件发生状态
+* 事件发生目标
+* 事件类型
 
 ## 1.3. Node
 
@@ -68,11 +73,11 @@
 * HTML5 - 新属性: tab title style 富文本框 拖拽
 * 盒子模型 - 本身/位置(相对于父类)**这里的offsetHeight是内容加上padding加上border**
 
-## MathML
+## 1.6. MathML
 
 写数学公式，使用的标签的方式
 
-## 1.6. 区分
+## 1.7. 区分
 
 * NodeList以及HTMLCollection - 前面是`node list`，后面是`element list`。区别在于后面那个一定是动态，前面不一定。通过属性`.`获得的`node or element list`一定是动态的。
 
@@ -109,7 +114,7 @@ url地址栏。
 * 网络信息
 * 浏览器插件
 
-## 一些硬件API
+## 2.4. 一些硬件API
 
 * 定位
 * 感知器 - 光/方向
