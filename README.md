@@ -61,6 +61,7 @@
 ## 0.3. Reg
 
 * [Reg-实现多个字符串的连续匹配](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E8%BF%9E%E7%BB%AD%E5%AD%97%E7%AC%A6%E4%B8%B2.md)
+* [Reg-parseint简单自实现](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
 
 ## 0.4. Vue
 

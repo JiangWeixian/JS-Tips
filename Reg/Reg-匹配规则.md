@@ -25,4 +25,4 @@
 
 ## 简单应用
 
-* [reg-parseint.js]() - 实现仅仅实现字符串类型数字到10进制数字转换
+* [reg-parseint.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-parseInt.js) - 实现仅仅实现字符串类型数字到10进制数字转换
