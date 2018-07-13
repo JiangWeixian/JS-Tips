@@ -28,7 +28,7 @@
 
 **先给出Vue周期图：**
 
-![vue周期图]()
+![vue周期图](https://cn.vuejs.org/images/lifecycle.png)
 
 以上三个节点发生在`created and mounted`之间。最后变为我们看到的文件`.html js(根本没有vue)`。
 
@@ -51,7 +51,7 @@
 
 ### 1.2.3. 虚拟DOM
 
-在[DOM优化指南]()提到了，直接操作dom其实效率不高。js数据结构更快一些。
+在[DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)提到了，直接操作dom其实效率不高。js数据结构更快一些。
 
 所以将`html`代码变为`virtual dom`。实现`html->virtual dom->html`这样的格式。
 
@@ -75,7 +75,7 @@
     * 具体来说就是`setter` - 就将调用 **订阅者队列每个订阅者的更新函数**。
     * `getter` - 先订阅者队列添加订阅者
 
-以上以观察者部分。见[observer.js]()
+以上以观察者部分。见[observer.js](https://github.com/DMQ/mvvm)
 
 ### 1.3.1. 需要一个订阅者
 
@@ -139,7 +139,7 @@
 
 **Step3:** 现在子节点都存在于新旧dom结构中，需要比较新旧子节点每一个节点(也就是说如果节点值得比较，需要进一步比较子节点。那么递归下去，先改变最低层节点然后一层层向上)，**是否需要递归判断，对于子节点队列判断方式如下图，每个节点判断方式和第一个步骤一致**：
 
-![diff2]()
+![diff2](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Vue/img/diff2.png)
 
 **Step4:** 其实很好理解为啥这么比较，可以类比 **快速排序算法。**
 
@@ -154,5 +154,5 @@
 
 ## 1.5. 链接
 
-* [mvvm自实现 - 这篇文章的阅读理解]()
+* [mvvm自实现 - 这篇文章的阅读理解](https://github.com/DMQ/mvvm)
 * [diff](https://github.com/aooy/blog/issues/2)
