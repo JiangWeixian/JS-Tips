@@ -62,6 +62,7 @@
 
 * [Reg-实现多个字符串的连续匹配](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E8%BF%9E%E7%BB%AD%E5%AD%97%E7%AC%A6%E4%B8%B2.md)
 * [Reg-parseint简单自实现](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
+* [Reg-千字分隔符a2b和b2a](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-thoud.js)
 
 ## 0.4. Vue
 
@@ -70,6 +71,7 @@
 * [Vue-前端框架对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94.md)
 * [Vue-SSR&CSR](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93SSR%26%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93CSR.md)
 * [Vue-骨架屏(和SSR相关)](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E9%AA%A8%E6%9E%B6%E5%B1%8F.md)
+* [Vue-实现原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 
 ## 0.5. webpack
 
