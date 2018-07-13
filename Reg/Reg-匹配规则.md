@@ -5,6 +5,7 @@
 - [1. Reg - 匹配规则](#1-reg---匹配规则)
   - [1.1. 模式](#11-模式)
   - [1.2. 规则](#12-规则)
+  - [Tips](#tips)
   - [1.3. 例子](#13-例子)
     - [1.3.1. 一个简单的解释说明](#131-一个简单的解释说明)
     - [1.3.2. 简单应用](#132-简单应用)
@@ -36,6 +37,12 @@
 * 没办法做到匹配嵌套分组结果
 * replace替换的是`match[0]`
 
+## Tips
+
+* 用好replace替换的是`match[0]` - 这一点很重要。
+    * 因为结合`g`模式，进行多次匹配。实现多个替换。
+    * 除此之外，并不意味这个`/xx/g`只能写一个分组，可以利用 **后一个分组来限制前一个分组的位置**，就像是`/(\d+)(?=((\d{3})+(?!\d)))/g`。有用的只有第一个分组，但是 **我们需要的是满足后一个正则规则的前一个分组**
+
 
 ## 1.3. 例子
 
@@ -51,4 +58,4 @@
 ### 1.3.2. 简单应用
 
 * [reg-parseint.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-parseInt.js) - 实现仅仅实现字符串类型数字到10进制数字转换
-* [reg-setGetThoud.js]()
+* [reg-setGetThoud.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-thoud.js)
