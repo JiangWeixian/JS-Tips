@@ -14,53 +14,94 @@
     </div>
     <script>
       window.onload = function () {
-        function lineMove (speed) {
-          return function (start) {
-            return start + speed
+        let commad = {
+          line: function (speed) {
+            return function (start) {
+              return start + speed
+            }
           }
         }
-        function Slider (speed, delay) {
-          var slider = document.getElementById('SLIDER')
-          var sliderItem = slider.getElementsByTagName('li')
-          var len = sliderItem.length
-          var width = sliderItem[0].offsetWidth
-          var current = 0
-          var target = null
-          var timer = null
-          var moveLeft = slideToLeft(slider, 0, lineMove(width / (speed * 60)))
+        class Slider {
+          constructor (speed, delay) {
+            this.slider = document.getElementById('SLIDER')
+            let sliderItem = this.slider.getElementsByTagName('li')
+            this.len = sliderItem.length
+            this.width = sliderItem[0].offsetWidth
+            this.options = {
+              speed: speed,
+              delay: delay,
+              inf: true,
+              autoplay: true,
+              curvier: 'line'
+            }
+            this.current = 0
+            this.target = 0
+            this.dir = -1
+            this.animate = this.initAnimate(this.slider, 0, commad[this.options.curvier](this.width / (this.options.speed * 60)))
+            this.queue = []
+          }
 
-          function slideToLeft (item, start, timeFunc) {
-            current = start
+          init () {
+            console.log('init')
+          }
+  
+          initAnimate (item, start, timeFunc) {
+            let current = start * this.width
+            let self = this
             function animate () {
-              if (current >= target) {
+              if (current === self.target * self.width) {
+                if (self.options.autoplay) {
+                  self.stop().autoplay()
+                }
                 return
               }
-              current = timeFunc(current)
-              item.style.transform = 'translateX(' + -current + 'px' + ')'
+              current = timeFunc(current) 
+              current = current >= self.target * self.width? self.target * self.width : current
+              item.style.transform = 'translateX(' + self.dir * current + 'px' + ')'
               requestAnimationFrame(animate)
             }
-            return function (end) {
-              target = end
+            return function (dir) {
+              self.dir = dir
               requestAnimationFrame(animate)
             }
           }
-
-          function autoplay () {
-            for (var i = 0; i < len - 1; i ++) {
-              (function (i) {
-                console.log(delay * 1000 + speed * 1000 * i)
-                timer = setTimeout (function () {
-                  moveLeft((i + 1) * width)
-                }, delay * (i + 1) * 1000 + speed * 1000 * i)
-              })(i)
-            }
+  
+          autoplay () {
+            this.queue.push(setTimeout(()=> {
+              if (this.options.inf && this.current === this.len - 1) {
+                this.prev() 
+              }
+              if (this.options.inf && this.current === 0) {
+                this.next() 
+              }
+            }, this.options.delay * 1000))
           }
 
-          return {
-            autoplay: autoplay
+          prev () {
+            this.current = this.target
+            this.target = this.current - 1
+            this.target = this.target <= 0? 0 : this.target
+            this.animate(1)
+          }
+
+          next () {
+            this.current = this.target
+            this.target = this.current + 1
+            this.target = this.target >= this.len - 1? this.len - 1 : this.target
+            this.animate(-1)
+          }
+
+          stop () {
+            let timeout = null
+            while (timeout = this.queue.pop()) {
+              clearTimeout(timeout)
+              timeout = null
+            }
+            return this
           }
         }
-        Slider(2, 1).autoplay()
+        var slider = new Slider(2, 1)
+        slider.autoplay()
       }
     </script>
   </body>
