@@ -144,4 +144,4 @@ Function.prototype.unCurrying = function () {
 
 ## 链接
 
-* [JS-apply&call&bind-结合理解]()
+* [JS-apply&call&bind-结合理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md)
