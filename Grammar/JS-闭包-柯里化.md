@@ -1,5 +1,5 @@
 # 柯里化&反柯里化
-> JS - 闭包
+> JS - 闭包；柯里化反柯里化区别在于，前者就是参数先传(`return function`仍旧可以使用前传的参数)，后者参数后传递。
 
 <!-- TOC -->
 
@@ -9,6 +9,7 @@
     - [提前返回](#提前返回)
     - [参数复用](#参数复用)
   - [反柯里化](#反柯里化)
+  - [链接](#链接)
 
 <!-- /TOC -->
 
@@ -88,7 +89,24 @@ var addEvent = (function(){
 
 因为如果第一个函数`outter`内部返回了另外的函数`inner`，那么这个`inner`是能够得到`outter`里面定义的变量。
 
-就是模块一样。
+就是 **模块或者类**一样(在多次执行情况下，仍旧可以访问到内部变量。而且是同一个)，例如：
+
+```JavaScript
+function f () {
+  var c = 0
+  function inner () {
+    console.log(c++)
+  }
+  return inner
+}
+var outter = f()
+outter()
+outter()
+outter()
+0
+1
+2
+```
 
 ## 反柯里化
 
@@ -123,3 +141,7 @@ Function.prototype.unCurrying = function () {
 * `push()`再执行之后，传入参数改变`Array.prototype.push`指向。
 
 可以通过`push(obj , '1', '2')`其中`obj`就是一个类`Array`数组。
+
+## 链接
+
+* [JS-apply&call&bind-结合理解]()

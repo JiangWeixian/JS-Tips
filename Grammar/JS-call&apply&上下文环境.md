@@ -1,7 +1,17 @@
-# 改变上下文
+# 1. 改变上下文
 > call&apply&上下文环境
 
-## 什么是上下文环境
+<!-- TOC -->
+
+- [1. 改变上下文](#1-改变上下文)
+  - [1.1. 什么是上下文环境](#11-什么是上下文环境)
+    - [1.1.1. 闭包一定要理解](#111-闭包一定要理解)
+  - [1.2. call&apply&bind](#12-callapplybind)
+    - [1.2.1. bind](#121-bind)
+
+<!-- /TOC -->
+
+## 1.1. 什么是上下文环境
 
 我总结了[youdontkonwjs-相关部分](https://github.com/JiangWeixian/JS-Books/blob/master/youdotkonwjs/scope%26closures/scopeandclosures.md), 第三章之后都可以看.
 
@@ -16,7 +26,7 @@
 
 	在此内部的代码并不会污染外部作用域。执行上下文和闭包并不会冲突
 
-如何准确的判断上下文环境，就像是下面的**第二段函数**(闭包一定要理解那里)
+如何准确的判断上下文环境，就像是下面的 **第二段函数**(闭包一定要理解那里)
 * 但是如果我们定义了一个对象
 
 	```js
@@ -66,7 +76,9 @@
 	```
 	可以发现这里的`this`是`a`这个对象。所以链式操作需要注意一下它的实现方式。
 
-### 闭包一定要理解
+在[JS-this指向总结]()总结了多种可能。
+
+### 1.1.1. 闭包一定要理解
 
 最直接的理解例子：
 
@@ -88,9 +100,85 @@ baz(); // 2 -- 哇噢，看到闭包了，伙计。
 
 那么例子总结一下，什么叫作闭包。**外部`baz`仍然有`foo`内部的引用，这个概念就是闭包。**。扩展开来，外部`baz`（不仅仅是底层）可以访问到同一级别的`foo`内部的变量。因为`baz`和`foo`都处于同一个作用域内部。**baz可以使用bar，以及bar可以使用foo，这就是原因。**
 
+结合[JS-柯里化和反柯里化]()理解。还有一点闭包不仅仅局限于上面这种形式，抽象来看，可总结为外部拿到了另一个函数的作用域引用。
 
+> 在`JavaScript(ES5)`中只有函数作用域。所以就变成了上面的形式。
 
-## call&apply&bind
+**那么任何这种拿到另一函数作用域应用的行为都可以叫做是闭包！**
+
+[@JS-call.js]()
+```JavaScript
+function student () {
+  var name = Math.random()
+
+  this.showname = function () {
+    return name
+  }
+
+  this.then = function (callback) {
+    callback()
+  }
+
+  this.resolve = function (value) {
+    console.log(name)
+  }
+}
+
+var s1 = new student()
+var s2 = new student()
+debugger
+console.log('s1', s1.showname())
+console.log('s2', s2.showname())
+s1.then(s2.resolve)
+// 结果
+s1 0.23533474821832367
+s2 0.5535273424905633
+0.5535273424905633
+```
+
+可以发现，对于`s1.then`来说，`callback`拿到了`s2.resolve`的 **作用域引用。** 导致`callback`执行的时候`console.log(name)`寻找的是`s2`内部变量`name`**而不是s1内部的变量**。
+
+进一步！
+
+[@JS-call.js]()
+```JavaScript
+function chair () {
+
+  var name = Math.random()
+
+  this.showname = function () {
+    return name
+  }
+
+  this.then = function (callback) {
+    callback(name)
+  }
+
+  this.resolve = function (value) {
+    name = value
+  }
+}
+
+var s1 = new chair()
+var s2 = new chair()
+console.log('s1', s1.showname())
+console.log('s2', s2.showname())
+s1.then(s2.resolve)
+console.log('s2', s2.showname())
+// 结果
+s1 0.05018156202692281
+s2 0.8776007730365305
+s2 0.05018156202692281
+```
+
+很神奇的是，`s2`内部数据被`s1`改变了。研究一下到底发生了什么？
+
+1. `s1.then callback`通过(callback是参数)得到了`s2`内部引用，访问到了`s2`内部数据
+2. `in s1.then`传递了`s1`内部数据`name`。通过`name=value`的方式改变了`s2`内部数据
+
+发现即使是没有`this`绑定，还是通过作用域的方式改变内部数据。
+
+## 1.2. call&apply&bind
 
 这三个函数都能够改变上下文环境.
 
@@ -125,10 +213,13 @@ Math.min.apply(null, arr)
 
 **这里可以发现一个疑问?** `Object`是有`prototype`的, 而`Math`却没有. 因为`Math`不能够通过`new`创建一个对象. 因此没有`prototype`
 
-### bind
+### 1.2.1. bind
 
 这个单独领出来, 的确用的比较少. 具体可看[这篇博客](http://web.jobbole.com/83642/)
 
 * `bind`只有一个参数代表上下文环境
 
 不过**注意：**　`bind`会返回一个函数，你需要再一次调用它，而`call&apply`则是立刻调用．
+
+
+
