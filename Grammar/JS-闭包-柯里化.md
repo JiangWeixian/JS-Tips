@@ -136,7 +136,7 @@ Function.prototype.unCurrying = function () {
 };
 ```
 
-* 执行`var push = Array.prototype.push.uncurrying();`的时候，`self=Array.prototype.push`。也就是`push`这个函数。(self or f)
+* 执行`var push = Array.prototype.push.unCurrying();`的时候，`self=Array.prototype.push`。也就是`push`这个函数。(self or f)
 * 然后push就是一个`uncurring`返回的函数
 * `push()`再执行之后，传入参数改变`Array.prototype.push`指向。
 
