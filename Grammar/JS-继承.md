@@ -50,7 +50,7 @@ b instanceof a
 
 没错JS存在引用类型，除了`Object && Array`之外都是数值类型。
 
-引用类型有什么问题，请看[这篇文章]()
+引用类型有什么问题，请看[这篇文章](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
 
 ## 前置知识 - `__proto__ && prototype`
 
