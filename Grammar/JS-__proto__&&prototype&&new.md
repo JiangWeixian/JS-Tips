@@ -1,4 +1,5 @@
 # 1. proto && prototype && constructor && new
+> 正确继承情况下，子类设置方法或者属性(指的是赋值或者替换，引用类型内部数据修改还是会的)不会添加到父类。`__proto__`和`prototye`区别在于前者才有我们所说的指向功能。
 
 <!-- TOC -->
 
@@ -9,6 +10,7 @@
   - [1.4. 继承 - Object.create干了什么](#14-继承---objectcreate干了什么)
     - [1.4.1. 继承 - prototype操作指南](#141-继承---prototype操作指南)
   - [1.5. 分析为什么能够继承？](#15-分析为什么能够继承)
+    - [总结](#总结)
   - [1.6. 链接](#16-链接)
 
 <!-- /TOC -->
@@ -153,7 +155,9 @@ __proto__
 
 **Q&A -** `construtor `指向问题？
   
-`construtor`指明构造了它。由[前置知识 - 规则概述]()，可以发现`var a = {} and function foo () {}`有点不同。但是共同特点是，**construtor并不存在于a or foo直接属性上。** a中存在于`__proto__.construtor`，`foo`中，可以存在于`__proto__.construtor and prototype.construtor`
+`construtor`指明构造了它。
+
+由[前置知识 - 规则概述]()，可以发现`var a = {} and function foo () {}`有点不同。但是共同特点是，**construtor并不存在于a or foo直接属性上。** a中存在于`__proto__.construtor`，`foo`中，可以存在于`__proto__.construtor and prototype.construtor`
 
 **第1种情况**
 
@@ -207,10 +211,12 @@ var bar = new Bar()
 此时`bar`结构为
 
 ```JavaScript
+name
 label // 来自 Bar
 __proto__
   //来自Bar.prototype
   speak
+  //name // 如果使用Bar.prototype = new Foo()。来自FOO
   __proto__
     //来自F.prototype = Foo.prototype
     myName
@@ -220,7 +226,7 @@ __proto__
 
 因此`bar.constructor = bar.__proto__.__proto__.constructor = Foo.prototype.constructor`
     
-* `prototype`比较常用，**继承基本就是它**。在**前置知识中第二点**我们知道`prototype`的存在位置。
+* `prototype`比较常用，**继承基本就是它**，从以上应该可以知道它在干嘛。在**前置知识中第二点**我们知道`prototype`的存在位置。
 
 ## 1.3. 类 - new关键字
 
@@ -435,13 +441,31 @@ function create (obj) {
 ```
 如此我们实现了继承。
 
-因此继承的关键在于 **创建对象的** `__proto__`指向了原型的`prototype`。只要操作了原型的`prototype`就能够实现继承。
-
 同时父类和子类别是可能含有不同的函数，`newbar.myName`在本身的`newbar.__proto__ or Bar.prototype上`找不到，就会向父类`Foo.prototype`查找。就是`__proto__`中嵌套的`__proto__`(嵌套就是父级上面找)
 
 同时`new`关键字(具体可见`new`关键字内部实现)也是利用上面`__proto__`指向了原型的`prototype`的特性来返回一个临时的对象。
 
 **以上`Foo.call()`**是较为关键的一点，在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)分析了为什么。
+
+**Q&A -**那么为什么不`Bar.prototype = Foo.prototype`
+
+```JavaScript
+label
+name
+__proto__
+  speak
+  // 来自FOO
+  myName
+  construtor
+  __proto__
+```
+
+由于`Bar.prototype = Foo.prototype`那么`Bar.prototype.speak = function () {}`不同于以上有一个`__proto__`阻挡。所以同样也会添加到`Foo`。子类也能够修改父类了。
+
+### 总结
+
+1. 由于`__proto__`具有向上查找的特性。
+2. `new or object.ceate`具有替换`__proto__ value`某个`prototype`所以可以实现继承。
 
 ## 1.6. 链接
 
