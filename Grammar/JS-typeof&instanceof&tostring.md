@@ -38,43 +38,35 @@ var c = new Set()
 
 ## instanceof
 
-> 根据的是constructor
+> MDN所得是若b instanceof a，比较的是`a.prototye`是否在`b`原型链上。
 
 以上两种都很完美，但是如果我们是 **自建类。** 以上两个应该没有办法满足需求。
 
 ```javascript
 function Foo () {}
+Foo.prototype.name = function () {}
 var foo = new Foo()
 foo instanceof Foo
 ```
 
-结果为`true`
-
-**但是继承情况由意外**
-
-```javascript
-function Foo () {}
-function Bar () {}
-Bar.prototype = Object.create(Foo.prototype)
-var bar = new Bar()
-bar instanceof Foo
-bar instanceof Bar
-```
-
-因为此时`Bar.prototype.construtor`通过`Bar.prototype = Object.create(Foo.prototype)`操作之后，变为了`Foo.prototype.construtor`。所以都是`true`
-
-
-如果。
+根据[JS-proto&prototype&constructor]()理解。此时foo结构为：
 
 ```JavaScript
-function Foo () {}
-function Bar () {}
-Bar.prototype = Object.create(Foo.prototype)
-Bar.prototype.construtor = Bar
-var bar = new Bar()
-bar instanceof Foo
-bar instanceof Bar
+some data // 来自Foo内部
+__proto__
+  // 来自Foo.prototype
+  name
+  constructor
+  __proto__
 ```
+
+可以解释结果为`true`
+
+但是如果我们设置`Foo.prototype = {}`。(由于这是复制操作，所以不会修改`foo` **来自Foo.prototype**那部分方法。但是如果`Foo.prototype.ou = function() {}`那么会修改`foo` **来自Foo.prototype**那部分方法，就是后者会让`__proto__`多了一个`name`方法。可根据[JS-值类型和引用类型]())
+
+此时前者做法`foo instanceof Foo // false`。后者做法`foo instanceof Foo // true`。**后者让我很疑惑，不太理解到底是根据什么比较的？**
+
+### 总结
 
 **但是目前最常用的还是toString方法，应该来说是魔改过的toString**。和传统的`typeof a`不同，我们使用`Object.prototype.toString.call(a)`，我们可以得到`[object number]`
 
