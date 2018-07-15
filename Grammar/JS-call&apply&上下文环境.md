@@ -8,6 +8,7 @@
     - [1.1.1. 闭包一定要理解](#111-闭包一定要理解)
   - [1.2. call&apply&bind](#12-callapplybind)
     - [1.2.1. bind](#121-bind)
+    - [1.2.2. 与箭头函数](#122-与箭头函数)
 
 <!-- /TOC -->
 
@@ -76,7 +77,7 @@
 	```
 	可以发现这里的`this`是`a`这个对象。所以链式操作需要注意一下它的实现方式。
 
-在[JS-this指向总结]()总结了多种可能。
+在[JS-this指向总结](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md)总结了多种可能。
 
 ### 1.1.1. 闭包一定要理解
 
@@ -220,6 +221,10 @@ Math.min.apply(null, arr)
 * `bind`只有一个参数代表上下文环境
 
 不过**注意：**　`bind`会返回一个函数，你需要再一次调用它，而`call&apply`则是立刻调用．
+
+### 1.2.2. 与箭头函数
+
+由于箭头函数没有`this`，所以它不能够使用`call or bind or apply`
 
 
 
