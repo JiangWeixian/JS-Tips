@@ -138,9 +138,15 @@
 
 ## function
 
+> 并不是说完全由Object的全部方法，只有以下几个
+
+* 属性 - name/length(指定参数个数)/arguments
+* 方法 - call/apply/bind/
+* toString
+
 ### 全局函数
 
-[encodeURI...]()
+[encodeURI...](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0-encodeURI%26encodeURIcomponent.md)
 
 ### Promise
 
