@@ -8,6 +8,7 @@
 - [分类](#分类)
   - [继承与类](#继承与类)
   - [this](#this)
+  - [作用域与闭包](#作用域与闭包)
 
 <!-- /TOC -->
 
@@ -26,3 +27,10 @@
 
 * [this情况汇总说明](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md) / 非箭头函数以及箭头函数`this`情况说明
 * [call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md) / 改变this，但是要注意箭头函数的特殊
+
+## 作用域与闭包
+
+> 在没有`let&const`的影响下，其他方式声明的变量函数都是属于当前 **函数作用域的。**；闭包应为获得另一个作用域的引用，而不应该仅仅局限于一种形式。
+
+* [let&const](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH02-let%26const) / 并不是把当前`{}`中所有数据固定到块级作用域中；`let&const`没有声明提前。
+* [call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md) / 内含闭包一定要理解部分
