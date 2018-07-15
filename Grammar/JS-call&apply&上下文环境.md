@@ -16,7 +16,7 @@
 
 我总结了[youdontkonwjs-相关部分](https://github.com/JiangWeixian/JS-Books/blob/master/youdotkonwjs/scope%26closures/scopeandclosures.md), 第三章之后都可以看.
 
-* 有一句话一定要记住，`this`指向在运行的时候指定
+* 有一句话一定要记住，`this`指向在运行的时候指定，**你可以理解为函数运行的时候才会有`this`而不是声明的时候。**
 *  `IIFE`这个一定要了解, 因为创建了闭包!!
 
 	```JavaScript
