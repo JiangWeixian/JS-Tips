@@ -228,7 +228,7 @@ function create (obj) {
 
     所以我们采用`Object.create()`
   
-2. 情况2 - 这样`parent`在`construtor`上面的数据没办法获取，因为`Object.create(parent.prototype)`既没有`new parent`也没有`parent()`。既然没有办法执行，就没有进行 **执行上下文的`this`规则。**自然就没有数据。所以：
+2. 情况2 - 这样`parent`在`construtor`上面的数据没办法获取，因为`Object.create(parent.prototype)`既没有`new parent`也没有`parent()`。既然没有办法执行，就没有进行 **执行上下文的`this`规则。** 自然就没有数据。所以：
 
     ```JavaScript
     function parent () {
