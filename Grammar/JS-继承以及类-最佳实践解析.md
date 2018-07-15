@@ -1,5 +1,5 @@
 # 1. 继承与类 - 最佳实践解析
-> 知道所以然
+> 知道所以然；
 
 <!-- TOC -->
 
@@ -187,7 +187,7 @@ function create (obj) {
 }
 ```
 
-作用和`new`关键字差不多，依旧还是共享了原型上面的方法(或者属性)，**因为c1.hasOwnProperty('data')依旧是false**。`Object.create()`一般用来复制原型方法，见[object.ceate浅度复制实践](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)。
+作用和`new`关键字差不多，依旧还是共享了原型上面的方法(或者属性)，**因为c1.hasOwnProperty('data')依旧是false**。`Object.create()`一般用来复制原型方法，见[object.ceate浅度复制实践](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md) - **`object.create`的浅度复制意味着如果修改`child`不会改变`parent`(因为它会在自己的原型上添加方法)，而修改`parent`则会改变`child`**
 
 ### 1.4.1. 数据共享 - data in prototype
 
@@ -266,5 +266,6 @@ function create (obj) {
 
 1. 方法在`prototype`，数据在`construtor` - 且注意数据不要污染
 2. 继承使用`Object.create(parent.prototype)`以及`parent.call(this)` - 继承父类方法以及属性
+3. 继承之后修改父类依旧会同步影响到子类。
 
 然而这一点可能会因为`class`关键字而没有意义。因为修正以上基于原型的错误。
