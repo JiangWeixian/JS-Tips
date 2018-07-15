@@ -1,30 +1,54 @@
-# proto && prototype && constructor && new
+# 1. proto && prototype && constructor && new
 
 <!-- TOC -->
 
-- [proto && prototype && constructor && new](#proto--prototype--constructor--new)
-  - [前置知识](#前置知识)
-  - [proto && prototype 进一步](#proto--prototype-进一步)
-    - [prototype操作指南](#prototype操作指南)
-  - [new 关键字](#new-关键字)
-  - [分析为什么能够继承？](#分析为什么能够继承)
-  - [链接](#链接)
+- [1. proto && prototype && constructor && new](#1-proto--prototype--constructor--new)
+  - [1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)
+  - [1.2. proto && prototype 进一步](#12-proto--prototype-进一步)
+  - [1.3. 类 - new关键字](#13-类---new关键字)
+  - [1.4. 继承 - Object.create干了什么](#14-继承---objectcreate干了什么)
+    - [1.4.1. 继承 - prototype操作指南](#141-继承---prototype操作指南)
+  - [1.5. 分析为什么能够继承？](#15-分析为什么能够继承)
+  - [1.6. 链接](#16-链接)
 
 <!-- /TOC -->
 
-## 前置知识
+## 1.1. 前置知识 - 规则概述
 
 1. 这三个数值怎么查看？
 
     > 以`var a = {}`以及`function Foo() {}`两种方式举例。
 
-    * `var a = {}`可以理解为`a`就是一个`prototype`(内含有`__proto__ and construtor`)。而`function Foo () {}`
+    * `var a = {}`而`a`结构为(要记住)
+      
+       ```JavaScript
+       data
+       __proto__
+          constructor
+            prototype
+              constructor
+              __proto__
+            __proto__
+       ```
+      
     * `function Foo () {}`可以通过`Foo.__proto__ or prototype or constructor`看到
-    * `var foo = new Foo()`，只能够`foo.__proto__ and constructor`
 
-2. `prototype`存在哪里？`prototype`存在在`construtor`内，而`construtor`存在在`__proto__`内。**但是上一点foo无法直接foo.prototype，可以理解为`prototype`存在于原型，`new`关键字创建了实例(可以先看后面`new`关键字做了什么)** 可以发现在`new`关键字内部创建了一个零食对象`var a = {}`并返回了`a`。参考上诉`var a = {}`中`a`就是一个`prototype`。
+      ```JavaScript
+      data
+      __proto__
+        constructor
+          prototype
+        __proto__
+      prototype
+        constructor
+        __proto__
+      ```
+       
+    * `var foo = new Foo()`，只能够`foo.__proto__`和存在于`__proto__`的`constuctor`，和`var a ={}`结构是有点类似的。详细见 [1.3. 类 - new关键字]()
 
-    > **那么可以大胆得到一个结论：`foo`就是一个`prototype`** 可总结__proto__包含construtor，construtor包含prototype。而这仅仅是一层次关系，因为prototype **包含__proto__ && construtor**
+2. `prototype`存在哪里？`prototype`存在在`construtor`内，而`construtor`存在在`__proto__`内。**可以先看[1.3. 类 - new关键字]()做了什么** 可以发现在`new`关键字内部创建了一个临时对象`var a = {}`并返回了`a`。参考上诉`var a = {}`中`a`就是一个`prototype`。
+
+    > 可总结__proto__包含construtor，construtor包含prototype。而这仅仅是一层次关系，因为prototype **包含__proto__ && construtor**
 
     > 上一条意味着如果进行`xx.construtor`。是要在`__proto__`上面查找，因为`xx`本身是没有这个属性的。但是`xx.prototype.constructor`就明确了查找位置。
 
@@ -37,21 +61,244 @@
 
 5. `new`关键字会创造 **原型**
 
-## proto && prototype 进一步
+## 1.2. proto && prototype 进一步
 
-* `__proto__ && prototype && construtor`指向问题？
-  * `__proto__`默认指向原型(见上一条,第三第五点，或者可以理解为父类，可以查看后续`new`做了什么)，更准确的说是`原型.prototype`。
-  * `construtor`指明构造了它。如果直接`function foo () {}`那么`foo construtor`表明就是`object`
+> `__proto__ && prototype && construtor`指向问题？
+
+**Q&A -** `__proto__ `指向问题？
   
-    > new关键词会创造原型，因此`var newfoo = new foo()`的`construtor`指向了`foo`。因为是`foo`构造了它。而`__proto__`指向了`foo.prototype`
+`__proto__`永远指向的是`xx.prototype`至于这个`xx`，分为三种情况举例：
 
-    > 但是如果通过 **new 关键字**一节中实现继承。那么`bar`的`construtor`指向了`Foo`，**这一点比较容易令人疑惑？因为bar明明就是Bar创建的**。因为上诉三者存在位置提到的`construtor`保存到`prototype`中，现在我们通过`Bar.prototype = Object.create(Foo.prototype)`改变了`prototype`，同样将`Foo.prototype.constructor`一样复制到了`Bar.prototype`中，**覆盖了原本的`constructor`**。
+**第1种情况**
 
-    > 在 **new 关键字**一节代码基础上。`foo.constructor`为`Foo.prototype.construtor`这一点很好理解，**为`Foo`**，上一条已经说明了。但是如果我们查找`Foo.constructor`，而`construtor`并不是直接暴露在`Foo`，于是就去`__proto__`上寻找，**为`Funtion`。** 可以理解为一个指向本身一个指向父类。
+```JavaScript
+function Foo() {}
+Foo.__proto__ === Function.prototype // true
+```
+
+**第2种情况：类以及`new`**
+
+```JavaScript
+function Foo() {}
+var foo = new Foo()
+```
+结合[1.3. 类 - new关键字]()中结构分析，可以得到`foo`结构如下：
+
+```JavaScript
+// 来自Foo函数内部属性
+__proto__
+  // 来自Foo的prototype
+  constructor
+  __proto__
+```
+
+则`foo.__proto__ === Foo.prototype // true`
+
+**第3种情况：继承**
+
+```javascript
+function Foo(name) {
+	this.name = name;
+}
+
+Foo.prototype.myName = function() {
+	return this.name;
+};
+
+function Bar(name,label) {
+	Foo.call( this, name );
+	this.label = label;
+}
+Bar.prototype = Object.create(Foo.prototype) // or Bar.prototype = new Foo()
+Bar.prototype.speak = function () {}
+var bar = new Bar()
+```
+
+结合[继承 - Object.create干了什么]()。我们可以得到`Object.create(Foo.prototype)`结构为(也是`Bar.prototype`):
+
+```JavaScript
+__proto__
+  // 来自F.prototype，然后F.prototype又等于Foo.prototype。所以以下来自Foo.prototype
+  myName
+  construtor
+  __proto__
+```
+
+添加了`speak`(不会再父类上添加)，之后变为:
+
+```JavaScript
+speak
+__proto__
+  // 来自F.prototype，然后F.prototype又等于Foo.prototype。所以以下来自Foo.prototype
+  myName
+  construtor
+  __proto__
+```
+
+经过了`new Bar()`返回结果为：
+
+```JavaScript
+__proto__
+  speak
+  __proto__
+    // 来自F.prototype，然后F.prototype又等于Foo.prototype。所以以下来自Foo.prototype
+    myName
+    construtor
+    __proto__
+```
+
+所以`bar.__proto__ = Bar.prototype and bar.__proto__ != Bar.prototype`
+
+因此指向原型(见上一条,第三第五点)，更准确的说是`原型.prototype`。
+
+**Q&A -** `construtor `指向问题？
+  
+`construtor`指明构造了它。由[前置知识 - 规则概述]()，可以发现`var a = {} and function foo () {}`有点不同。但是共同特点是，**construtor并不存在于a or foo直接属性上。** a中存在于`__proto__.construtor`，`foo`中，可以存在于`__proto__.construtor and prototype.construtor`
+
+**第1种情况**
+
+```JavaScript
+var a = {}
+function Foo () {}
+a.construtor // object
+Foo.construtor // 依据在__proto__上寻找规则。应当为foo.__proto__.construtor。此时为 Function
+Foo.prototype.construtor // Foo
+```
+
+**第2种情况 - new**
+
+```JavaScript
+function Foo() {}
+var foo = new Foo()
+```
+
+其中`foo`结构为：
+
+```JavaScript
+data
+__proto__
+  // 来自Foo.prototype
+  constructor
+  __proto__
+```
+
+所以`foo.constructor = foo.__proto__.constructor = Foo.prototype.construtor // Foo`
+
+**第2种情况 - Object.create**
+
+```javascript
+function Foo(name) {
+	this.name = name;
+}
+
+Foo.prototype.myName = function() {
+	return this.name;
+};
+
+function Bar(name,label) {
+	Foo.call( this, name );
+	this.label = label;
+}
+Bar.prototype = Object.create(Foo.prototype) // or Bar.prototype = new Foo()
+Bar.prototype.speak = function () {}
+var bar = new Bar()
+```
+
+此时`bar`结构为
+
+```JavaScript
+label // 来自 Bar
+__proto__
+  //来自Bar.prototype
+  speak
+  __proto__
+    //来自F.prototype = Foo.prototype
+    myName
+    constructor
+    __proto__
+```
+
+因此`bar.constructor = bar.__proto__.__proto__.constructor = Foo.prototype.constructor`
     
 * `prototype`比较常用，**继承基本就是它**。在**前置知识中第二点**我们知道`prototype`的存在位置。
 
-### prototype操作指南
+## 1.3. 类 - new关键字
+
+> 首先要知道对象中(proto&prototype&constructor)位置信息。`__proto__>constructor>prototype>(__proto__+constructor)`
+
+**Q&A -** [new关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)到底做了什么?
+
+1. 而在 **Javascript设计模式和开发实践** 中提到
+
+    > JavaScript 的函数既可以作为普通函数被调用,也可以作为构造器被调用。**当使用new运算符来调用函数时,此时的函数就是一个构造器。**
+
+2. 更为具体例子可以看[这里](https://juejin.im/post/584e1ac50ce463005c618ca2)，我截了个图关键部分：
+
+    ![new干了什么](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/newdowhat.PNG)
+
+因此，设临时对象为`A`，以及士兵为`B`。
+
+`A`结构原本是:
+
+```JavaScript
+data
+__proto__
+  constructor
+    prototype
+      construtor
+      __proto__
+```
+
+`B.prototype`结构原本是:
+
+```JavaScript
+prototype
+  一些定义在上面的方法
+  construtor
+  __proto__
+```
+
+经过了`new`操作。现在
+
+`A`结构是:
+
+```JavaScript
+data
+__proto__
+  一些定义在上面的方法
+  construtor
+  __proto__
+```
+    
+这就是为什么`var A = new B(20);`之后，控制台中只有`A.__proto__`。`new`关键字将一个`__proto__`替换为了原型的`prototype`内部的存储的内容。
+
+现在在`A`上找方法就会去`__proto__`上面寻找，也就是`B.prototype`
+
+## 1.4. 继承 - Object.create干了什么
+
+`Object.create`内部具体结构如下:
+
+```Javascript
+// Object create。传递参数是一个原型或者原型.prototype，所以之前总结prototype的结论应该没有问题..
+function create (obj) {
+  var F = function () {}
+  F.prototype = obj
+  return new F()
+}
+```
+
+继承形式一般`Bar.prototype = Object.create(Foo.prototype)`
+
+结合[1.3. 类 - new关键字]()可以得到`new F()`得到对象结构为：
+
+```JavaScript
+__proto__
+  // 来自F.prototype，然后F.prototype又等于Foo.prototype。所以以下来自Foo.prototype
+  construtor
+  __proto__
+```
+
+### 1.4.1. 继承 - prototype操作指南
 
 但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
 
@@ -132,26 +379,11 @@ console.log(
 
 **想要找到`b`上面的方法，先从自己本身寻找属性方法，然后会从`b.__proto__`上面找**，这句话含义为通过`new`关键字(或者其他继承方式)，**父类的属性和方法并不会复制到实例上**，实例的属性和方法是通过 **向父类查找的** [操作方法见JS语言精粹-CH3](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E8%AF%AD%E8%A8%80%E7%B2%BE%E7%B2%B9/CH3-%E5%AF%B9%E8%B1%A1)，[详细分析见JS高级程序设计](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
-## new 关键字
 
-[new-mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)
 
-而在 **Javascript设计模式和开发实践** 中提到
 
-> JavaScript 的函数既可以作为普通函数被调用,也可以作为构造器被调用。**当使用new运算符来调用函数时,此时的函数就是一个构造器。**
 
-new关键字到底做了什么?
-
-> 1.一个继承自 Foo.prototype 的新对象被创建；2. 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况；3. **由构造函数返回的对象就是new表达式的结果**。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）
-
-更为具体例子可以看[这里](https://juejin.im/post/584e1ac50ce463005c618ca2)，我截了个图关键部分：
-
-![new干了什么](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/newdowhat.PNG)
-
-因此，这就是为什么`var b = new Foo(20);`之后，控制台中只有`b.__proto__`。
-
-`new`关键字将一个`__proto__`替换为了原型的`prototype`内部的存储的内容，也就是使用了一个临时对象继承父类，来实现实例化对象的目的。
-## 分析为什么能够继承？
+## 1.5. 分析为什么能够继承？
 
 在[JS继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中，我总结了可以通过以下方式继承！
 
@@ -211,6 +443,6 @@ function create (obj) {
 
 **以上`Foo.call()`**是较为关键的一点，在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)分析了为什么。
 
-## 链接
+## 1.6. 链接
 
 * [外文解析-我觉得写的不错](http://dmitrysoshnikov.com/ecmascript/javascript-the-core/)  
