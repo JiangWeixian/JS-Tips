@@ -26,6 +26,8 @@
 
     > **那么可以大胆得到一个结论：`foo`就是一个`prototype`** 可总结__proto__包含construtor，construtor包含prototype。而这仅仅是一层次关系，因为prototype **包含__proto__ && construtor**
 
+    > 上一条意味着如果进行`xx.construtor`。是要在`__proto__`上面查找，因为`xx`本身是没有这个属性的。但是`xx.prototype.constructor`就明确了查找位置。
+
 3. 什么是原型？
 
     * JS中有[几大数据类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)，这些就是原型(至于这些数据类型又指向`Object`)就是另外一回事。
@@ -38,13 +40,15 @@
 ## proto && prototype 进一步
 
 * `__proto__ && prototype && construtor`指向问题？
-  * `__proto__`默认指向原型(见上一条,第三第五点)，更准确的说是`原型.prototype`。
+  * `__proto__`默认指向原型(见上一条,第三第五点，或者可以理解为父类，可以查看后续`new`做了什么)，更准确的说是`原型.prototype`。
   * `construtor`指明构造了它。如果直接`function foo () {}`那么`foo construtor`表明就是`object`
   
     > new关键词会创造原型，因此`var newfoo = new foo()`的`construtor`指向了`foo`。因为是`foo`构造了它。而`__proto__`指向了`foo.prototype`
 
     > 但是如果通过 **new 关键字**一节中实现继承。那么`bar`的`construtor`指向了`Foo`，**这一点比较容易令人疑惑？因为bar明明就是Bar创建的**。因为上诉三者存在位置提到的`construtor`保存到`prototype`中，现在我们通过`Bar.prototype = Object.create(Foo.prototype)`改变了`prototype`，同样将`Foo.prototype.constructor`一样复制到了`Bar.prototype`中，**覆盖了原本的`constructor`**。
 
+    > 在 **new 关键字**一节代码基础上。`foo.constructor`为`Foo.prototype.construtor`这一点很好理解，**为`Foo`**，上一条已经说明了。但是如果我们查找`Foo.constructor`，而`construtor`并不是直接暴露在`Foo`，于是就去`__proto__`上寻找，**为`Funtion`。** 可以理解为一个指向本身一个指向父类。
+    
 * `prototype`比较常用，**继承基本就是它**。在**前置知识中第二点**我们知道`prototype`的存在位置。
 
 ### prototype操作指南
