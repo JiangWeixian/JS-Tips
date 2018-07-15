@@ -14,38 +14,6 @@
 
 <!-- /TOC -->
 
-## 前置知识 - 一切都是Object
-
-JS中类型有
-
-* `Boolean`
-* `Number`
-* `undefined`
-* `String`
-* `Symbol`(ES6)
-
-以及
-
-* `object`
-
-`Array and function`可以归结为`object`
-
-这么多，不可能一切都是`Object`，的确使用`typeof`能够得到以上类型。
-
-而问题就在于，如果我们通过`new`来创建，例如`var a = new Number()`创建，使用`typeof`判断得到并不是`number`而是`object`。
-
-此时`instanceof`就优于`typeof`，因为它不受到影响。
-
-```javascript
-b instanceof a
-```
-
-**但是目前最常用的还是toString方法，应该来说是魔改过的toString**。和传统的`typeof a`不同，我们使用`Object.prototype.toString.call(a)`，我们可以得到`[object number]`
-
-因此，使用顺序为`Object.prototype.toString.call(a)>instanceof>typeof`，但是如果`new`创建的是自己的实现的类 **第二种方式**是更适合采用的结果。
-
-具体见[typeof&instanceof&prototype相关判断]()
-
 ## 前置知识 - JS数值类型以及引用类型
 
 没错JS存在引用类型，除了`Object && Array`之外都是数值类型。
