@@ -1,7 +1,19 @@
-# Iterator 等待循环执行结束
-> 在Promise&Eventloop中，没办法解决循环完毕之后在进行某些操作
+# 1. 等待循环执行结束
+> 让一个循环队列，下一次开始执行在上一个执行完成之后；
 
-## 正文
+<!-- TOC -->
+
+- [1. 等待循环执行结束](#1-等待循环执行结束)
+  - [1.1. iterator - 前置](#11-iterator---前置)
+    - [1.1.1. iterator实现方法](#111-iterator实现方法)
+  - [1.2. 前置 - Promise定义](#12-前置---promise定义)
+  - [1.3. Promise.all实现方法](#13-promiseall实现方法)
+  - [1.4. Q&A](#14-qa)
+  - [1.5. Promise.resolve - 更为清晰](#15-promiseresolve---更为清晰)
+
+<!-- /TOC -->
+
+## 1.1. iterator - 前置
 
 * [ES6-iterator](http://es6.ruanyifeng.com/#docs/iterator)详细讲解版本。
 * [参考代码](https://blog.csdn.net/u010176097/article/details/70267279)
@@ -13,7 +25,7 @@
     * 通过`.next()`方法进行下一次迭代，同时返回当前迭代数值以及状态！
 * 可以通过函数包裹`.next()`来进一步操作每次迭代的进一步步骤。
 
-### iterator实现方法
+### 1.1.1. iterator实现方法
 
 ```Javascript
   function promiseCallBack(arr, data) {
@@ -56,8 +68,11 @@
 * 直到`done`，返回最后的结果。
 * 因为是递归，所以必须每次都`return x(it.next())`才能够保证数组执行解释之后，可以`return Promise.resolve(allEvents)`
 
+## 1.2. 前置 - Promise定义
 
-### Promise.all实现方法
+`Promise`是一个控制 **异步代码执行顺序的实现方式。**
+
+## 1.3. Promise.all实现方法
 
 ```Javascript
 if (!Promise.map) {
@@ -83,7 +98,9 @@ if (!Promise.map) {
 * 将循环放在了`Promise`内部，且是`promise.all`函数，可以在所有执行完毕之后在传递最终的结果。**结果是其中每个`Promise.resolve`得到结果构成的数组**
 * 每次迭代都要使用`cb`回调函数。
 
-这里存有疑惑
+## 1.4. Q&A
+
+这里存有疑惑，我会在[Promise-自实现-强烈要求阅读]()解析为什么？
 
 ```JavaScript
 var promise1 = function (cb) {
@@ -98,9 +115,7 @@ function callback (value, resolve) {
 }
 ```
 
-此时不需要在`callback`中`return resovle`就有使用`then`方法。所以
-
-* `return new Promise`之后就不需要在其中的`function (resolve, reject)`再一次`return resolve`。已经得到一个一级的`promise`链接。
+此时不需要在`callback`中`return resovle`。因此`resolve in callback`来自外部`new promise(假设为p-new)`。所以`return new Promise`之后就不需要在其中的`function (resolve, reject)`再一次`return resolve`。**resolve(data)只是为了将数据传递到p-new内部**
 
 阅读这段代码：
 
@@ -113,11 +128,20 @@ promise1.then(function (data) {
 })
 ```
 
-* 但是如果是`Promise.resolve`方法，就需要`return Promise.resolve()`。`return Promise.resolve()`就是为了让 **后面的`then`获取到数据，但是如果我们没有数据需要传递，那么还是可以通过`then`方法将链条执行下去。**
+* 但是如果是`Promise.resolve`方法，就需要`return Promise.resolve()`。`return Promise.resolve()`就是为了让 **后面的`then`获取到数据**
+* 仅仅是`return data`也能够传递数据，让 **后面的`then`获取到数据**
 
-因此我们有了更为清晰的方法
+即使没有以上的`return`操作，那么还是可以通过`then`方法将链条执行下去。**这是因为`then`自带返回一个`promise`**。
 
-### 更为清晰的方法
+可以将理解为`Promise.resolve(data)`等价为`return new Promise`并执行了`resolve(data)`。(这个`data`可以是`promise`或者普通数据，这里留个坑，在[Promise-实现-TODO]())
+
+## 1.5. Promise.resolve - 更为清晰
+
+> Q&A中提到的`return Promise.resolve(data) - data is promise` or `return new promise - 包裹一个异步代码`是实现链条执行的关键。
+
+> 因为平时写手动写一个`.then().then()`就属于链条控制
+
+1. **实现一个链条**
 
 ```JavaScript
 var arr = [3, 1, 2]
@@ -125,14 +149,20 @@ let iter = function (arr, callback) {
   let start = Promise.resolve()
   arr.forEach(function (item) {
     start = start.then(function () {
-      // 按照前面的理论，如果不需要将数据传递下去，不用`return Promise.resolve()`
+      // 按照前面的理论，如果不需要将数据传递下去，不用return
       console.log(item)
     })
   })
 }
 ```
 
-**如果我们需要之前的数据**
+由于`then`自带`return new promise`所以只要我们同步`start`就可以做到链条执行。
+
+2. 以上仅仅只是建立一个`then`链条，**且没有上一条执行的数据，如果我们需要之前的数据**，有以下两种方式：
+
+**简单的第1种 - return data - 仅仅只是传递数据**
+
+> 这是由于`then`函数内部会吧`return`结果绑定到，`then`返回的`promise`上。
 
 ```JavaScript
 var arr = [3, 1, 2]
@@ -141,28 +171,31 @@ let iter = function (arr, callback) {
   let start = Promise.resolve(1)
   arr.forEach(function (item) {
     start = start.then(function (data) {
-      // 按照前面的理论，如果不需要将数据传递下去，不用`return Promise.resolve()`
-      console.log(data)
-      return Promise.resolve(callback(data, item))
+      // 简单return data；callback必然也有个返回值
+      // return Promise.resolve(callback(data, item))
+      return callback(data, item)
     })
   })
   return start
 }
+function callbakcsync(data, item) {
+  return data + item
+}
+function callbakcasync(data, item) {
+  setTimeout(function () {
+    console.log(item)
+  }, item * 1000)
+}
 ```
 
-我们执行
+`callback(data, item) or Promise.resolve(callback(data, item))`下面都成立：
 
-```JavaScript
-iter(arr, function (pre, value) {
-  return pre + value
-}).then(function (data) {
-  console.log(data)
-})
-```
+* 假设`callback`内部没有异步代码 - 由于同步代码的阻塞性质，还是依照`then`的顺序执行
+* 而假设`callback`内部含有异步代码 - 那么并不能保证异步代码依照`then`的顺序执行。**因为要明确一点`promise`可以是异步的也可以是同步的，`resolve`在异步函数中执行，这个`promise`才是异步的。如果不是，就是同步的。** 就像是`callbakcasync`作为回调函数，那么如果依照执行链条，就应该是`3,1,2`。但是`1,2,3`对应定时器`1s 2s 3s`
 
-可以得到`1 4 5 7`
+**第2种 - return Promise.resolve(data) or return new Promise - 异步的执行链条**
 
-但是我们 **需要考虑如果`callback`是一个执行比较久的函数。** 因为使用`setTimeout`模拟，为了获取`callback`结算结果，我们使用了`return new Promise`的方法。可以发现即使设置`settimeout`的时间为`3s 1s 2s`还是按照了链条顺序发生了。
+> resolve异步执行，就能够控制异步代码执行顺序关键
 
 ```JavaScript
 var arr = [3, 1, 2]
@@ -178,9 +211,7 @@ let iter = function (arr, callback) {
   })
   return start
 }
-```
 
-```JavaScript
 function callback (pre, value) {
   return new Promise(function (resolve, reject) {
     setTimeout(function () {
@@ -189,7 +220,41 @@ function callback (pre, value) {
     }, value * 1000) 
   })
 }
+iter(arr, callback)
 ```
 
-* 关键在于`setTimeout`中回调结果被`promise`传递。
-* 如果`callback`实际中不是以`settiment`方式实现的执行时间过程。那么就直接可以使用`return Promise.resolve(callback(data, item))`
+结果是`1 4 5 7`。可以发现即使设置`settimeout`的时间为`3s 1s 2s`还是按照了链条顺序发生了。
+
+这是由于首先`callback`中`resolve`被异步执行了，其次`callback`结果是返回一个`promise`。**所以得到是一个异步`promise`**。首先我们可以确定的是`callback().then(fn)`后面`then`一定是等待前面那个`callback`执行了`resolve`之后才会执行后面`fn`。
+
+`then`函数内部，当回调函数得到一个 **异步`promise`**。`then`内部本身返回的`promise`也是被阻塞了，解析见[Promise-实现-TODO]()。
+
+还有一种情况比较复杂，如下：
+
+```JavaScript
+var arr = [3, 1, 2]
+let iter = function (arr, callback) {
+  // 设置默认数据
+  let start = Promise.resolve(1)
+  arr.forEach(function (item) {
+    start = start.then(function (data) {
+      // 按照前面的理论，如果不需要将数据传递下去，不用`return Promise.resolve()`
+      console.log(data)
+      return Promise.resolve(callback(data, item))
+    })
+  })
+  return start
+}
+
+function callback (pre, value) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      let result = pre + value
+      resolve(result)
+    }, value * 1000) 
+  })
+}
+iter(arr, callback)
+```
+
+令人疑惑的是`Promise.resolve`得到了一个了异步`promise`。那么`then`函数内部的对于`Promise.resolve`怎么处理？还没仔细研究过[留坑]()
