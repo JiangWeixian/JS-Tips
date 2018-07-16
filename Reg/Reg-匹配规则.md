@@ -72,3 +72,4 @@
 
 * [reg-parseint.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-parseInt.js) - 实现仅仅实现字符串类型数字到10进制数字转换
 * [reg-setGetThoud.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-thoud.js)
+* [reg-regurl.js]() / 解析地址字符串
