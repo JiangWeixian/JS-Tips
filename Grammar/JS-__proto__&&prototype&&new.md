@@ -10,8 +10,8 @@
   - [1.4. 继承 - Object.create干了什么](#14-继承---objectcreate干了什么)
     - [1.4.1. 继承 - prototype操作指南](#141-继承---prototype操作指南)
   - [1.5. 分析为什么能够继承？](#15-分析为什么能够继承)
-    - [1.5.1. 总结](#151-总结)
     - [1.5.2. 番外 - 私有属性](#152-番外---私有属性)
+    - [1.5.1. 总结](#151-总结)
   - [1.6. 链接](#16-链接)
 
 <!-- /TOC -->
@@ -49,7 +49,7 @@
        
     * `var foo = new Foo()`，只能够`foo.__proto__`和存在于`__proto__`的`constuctor`，和`var a ={}`结构是有点类似的。详细见 [1.3. 类 - new关键字]()
 
-2. `prototype`存在哪里？`prototype`存在在`construtor`内，而`construtor`存在在`__proto__`内。**可以先看[1.3. 类 - new关键字]()做了什么** 可以发现在`new`关键字内部创建了一个临时对象`var a = {}`并返回了`a`。参考上诉`var a = {}`中`a`就是一个`prototype`。
+2. `prototype`存在哪里？`prototype`存在在`construtor`内，而`construtor`存在在`__proto__`内。**可以先看[1.3. 类 - new关键字]()做了什么** 可以发现在`new`关键字内部创建了一个临时对象`var a = {}`并返回了`a`。参考上诉`a`的结构。
 
     > 可总结__proto__包含construtor，construtor包含prototype。而这仅仅是一层次关系，因为prototype **包含__proto__ && construtor**
 
@@ -142,6 +142,7 @@ __proto__
 
 ```JavaScript
 __proto__
+  // 来自Bar.prototype
   speak
   __proto__
     // 来自F.prototype，然后F.prototype又等于Foo.prototype。所以以下来自Foo.prototype
@@ -150,7 +151,7 @@ __proto__
     __proto__
 ```
 
-所以`bar.__proto__ = Bar.prototype and bar.__proto__ != Bar.prototype`
+所以`bar.__proto__ = Bar.prototype and bar.__proto__ != Foo.prototype`
 
 因此指向原型(见上一条,第三第五点)，更准确的说是`原型.prototype`。
 
@@ -226,6 +227,16 @@ __proto__
 ```
 
 因此`bar.constructor = bar.__proto__.__proto__.constructor = Foo.prototype.constructor`
+
+**Q&A -** `construtor `作用？
+
+一个函数可以作为普通函数或者是`construtor`函数。如果内部没有`this`，我们不需要考虑它对于子类或者实例的影响。
+
+但是如果内部含有`this`，就要明白`JavaScript`的`this`是动态指定的，在运行的使用(例如`Foo() or new Foo()`)才能够明白它指向了哪里。所以在[1.5. 分析为什么能够继承]()中，子类通过`Foo.call(this, name)`，这里的`this`是子类`Bar`来继承来自 **写在函数内部属性**，因为这部分属性是无法通过`Object.create(Foo.prototype)`继承。
+
+**Q&A -** `construtor `继承的这部分属性有什么不同？
+
+首先我们要知道`prototype`方法属性是共享的。类如上述第二种情况，如果我们创建`var bar1 = new Bar`。则`bar.speak = bar1.speak`(因为来自`prototype`)，但是`bar1.name != bar.name`，因为来自`construtor`。这也是由于`Foo.call(this, name)`重新分配了`this`，使得属性并不共享。
     
 * `prototype`比较常用，**继承基本就是它**，从以上应该可以知道它在干嘛。在**前置知识中第二点**我们知道`prototype`的存在位置。
 
@@ -387,9 +398,6 @@ console.log(
 **想要找到`b`上面的方法，先从自己本身寻找属性方法，然后会从`b.__proto__`上面找**，这句话含义为通过`new`关键字(或者其他继承方式)，**父类的属性和方法并不会复制到实例上**，实例的属性和方法是通过 **向父类查找的** [操作方法见JS语言精粹-CH3](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E8%AF%AD%E8%A8%80%E7%B2%BE%E7%B2%B9/CH3-%E5%AF%B9%E8%B1%A1)，[详细分析见JS高级程序设计](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
 
-
-
-
 ## 1.5. 分析为什么能够继承？
 
 在[JS继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中，我总结了可以通过以下方式继承！
@@ -482,11 +490,6 @@ __proto__
 
 由于`Bar.prototype = Foo.prototype`那么`Bar.prototype.speak = function () {}`不同于以上有一个`__proto__`阻挡。所以同样也会添加到`Foo`。子类也能够修改父类了。
 
-### 1.5.1. 总结
-
-1. 由于`__proto__`具有向上查找的特性。
-2. `new or object.ceate`具有替换`__proto__ value`某个`prototype`所以可以实现继承。
-
 ### 1.5.2. 番外 - 私有属性
 
 除了在函数内部以及`prototype`上定义属性之外。还有一种比较奇怪的方式。
@@ -572,6 +575,16 @@ var bar = new Bar()
 虽然现在一般不使用这种方式建立继承。
 
 但是明显此时`bar`是可以访问到`newname`的。
+
+### 1.5.1. 总结
+
+1. 由于`__proto__`具有向上查找的特性。
+2. `new or object.ceate`具有替换`__proto__ value`某个`prototype`所以可以实现继承`prototype`上的属性方法。
+3. 在子类中`parent.call(this)`是为了继承父类`constructor`内的属性方法。
+4. 写在`prototype`上的方法对于每个实例都是相等的，而`constructor`内的属性方法都是不等因为`Foo.call(this)`。
+5. 写在`Foo.xx`的方法是私有的。
+
+见[JS-继承与类-类与类的原型]()
 
 ## 1.6. 链接
 
