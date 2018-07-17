@@ -61,6 +61,10 @@
 * [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md)
 * [JS-Object-几种获取属性的方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md)
 
+**TODO**
+
+* [JS-Promise-理解]()
+
 **次级目录**
 
 * [以内容进行分类](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%9B%AE%E5%BD%95/JS-%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.md)
