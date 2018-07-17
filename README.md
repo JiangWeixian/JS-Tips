@@ -63,7 +63,7 @@
 
 **TODO**
 
-* [JS-Promise-理解]()
+* [JS-Promise-理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-promise-%E7%90%86%E8%A7%A3.md)
 
 **次级目录**
 
