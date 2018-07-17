@@ -59,6 +59,7 @@
 * [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
 * [JS-总结-继承与类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)
 * [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md)
+* [JS-Object-几种获取属性的方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md)
 
 **次级目录**
 
