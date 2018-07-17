@@ -10,7 +10,8 @@
   - [1.4. 继承 - Object.create干了什么](#14-继承---objectcreate干了什么)
     - [1.4.1. 继承 - prototype操作指南](#141-继承---prototype操作指南)
   - [1.5. 分析为什么能够继承？](#15-分析为什么能够继承)
-    - [总结](#总结)
+    - [1.5.1. 总结](#151-总结)
+    - [番外 - 私有属性](#番外---私有属性)
   - [1.6. 链接](#16-链接)
 
 <!-- /TOC -->
@@ -411,6 +412,25 @@ Bar.prototype.speak = function () {}
 var bar = new Bar()
 ```
 
+此时`bar`结构为
+
+```JavaScript
+name
+label // 来自 Bar
+name // 来自name
+__proto__
+  //来自Bar.prototype
+  speak
+  //name // 如果使用Bar.prototype = new Foo()。来自FOO
+  __proto__
+    //来自F.prototype = Foo.prototype
+    myName
+    constructor
+    __proto__
+```
+
+**题外话：** 可以发现 **子类**定义在`prototype`上定义方法是写在父类`__proto__`之外的。所以子类定义定义方法一般并不会影响父类(除非子类直接操作`__proto__`)
+
 1. 因为`new`可以创建实例，所以`Bar.prototype = new Foo()`改变`prototype`这个内容。
 2. `Object.create`同样有创建指针的工作。因此可以通过`Bar.prototype=Object.create(Foo.prototype)`
 
@@ -462,10 +482,96 @@ __proto__
 
 由于`Bar.prototype = Foo.prototype`那么`Bar.prototype.speak = function () {}`不同于以上有一个`__proto__`阻挡。所以同样也会添加到`Foo`。子类也能够修改父类了。
 
-### 总结
+### 1.5.1. 总结
 
 1. 由于`__proto__`具有向上查找的特性。
 2. `new or object.ceate`具有替换`__proto__ value`某个`prototype`所以可以实现继承。
+
+### 番外 - 私有属性
+
+除了在函数内部以及`prototype`上定义属性之外。还有一种比较奇怪的方式。
+
+```JavaScript
+function f () {}
+var newf = new f()
+```
+
+**第1种情况：**
+
+```JavaScript
+function f () {}
+f.name = 'f'
+f.prototype.showname = function () {
+  console.log(f.name)
+}
+var newf = new f()
+```
+
+可以得到`newf`结构为：
+
+```JavaScript
+somedata // from f
+__proto__
+  showname //  from f
+  constructor
+    name // f.name = 'f'
+  __proto__
+```
+
+可以是 **写在`constructor`内部，不会暴露出来。因此`newf.name`是无法访问的。** 但是不同于以下方式(可以被`newf`访问)：
+
+```JavaScript
+function f () {
+  this.name = 'f'
+}
+```
+
+但是`f.name`却可以通过`showname`方式访问，可以看出来，这像是什么？没错就是私有属性。而且是非闭包的私有属性！
+
+**第2种方式：**
+
+```JavaScript
+function f () {}
+var newf = new f()
+newf.name = 'newf'
+```
+
+可以得到`newf`结构为：
+
+```JavaScript
+somedata // from f
+name // from newf.name
+__proto__
+  showname //  from f
+  constructor
+  __proto__
+```
+
+举例到继承，如果我们通过：
+
+```JavaScript
+function Foo(name) {
+	this.name = name;
+}
+
+Foo.prototype.myName = function() {
+	return this.name;
+};
+
+function Bar(name,label) {
+	Foo.call( this, name );
+	this.label = label;
+}
+var newf = new Foo()
+newf.newname = 'newname'
+Bar.prototype = newf
+Bar.prototype.speak = function () {}
+var bar = new Bar()
+```
+
+虽然现在一般不使用这种方式建立继承。
+
+但是明显此时`bar`是可以访问到`newname`的。
 
 ## 1.6. 链接
 
