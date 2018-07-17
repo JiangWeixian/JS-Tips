@@ -2,35 +2,26 @@
 
 <!-- TOC -->
 
-- [0.1. TODO](#01-todo)
-- [0.2. NPM](#02-npm)
-- [0.3. Grammar](#03-grammar)
-- [0.4. Reg](#04-reg)
-- [0.5. Vue](#05-vue)
-- [0.6. webpack](#06-webpack)
-- [0.7. HTML](#07-html)
-- [0.8. CSS](#08-css)
-- [0.9. 网络基础](#09-网络基础)
-- [0.10. 浏览器](#010-浏览器)
-- [0.11. Database](#011-database)
-- [0.12. Demos](#012-demos)
+- [0.1. NPM](#01-npm)
+- [0.2. Grammar](#02-grammar)
+- [0.3. Reg](#03-reg)
+- [0.4. Vue](#04-vue)
+- [0.5. webpack](#05-webpack)
+- [0.6. HTML](#06-html)
+- [0.7. CSS](#07-css)
+- [0.8. 网络基础](#08-网络基础)
+- [0.9. 浏览器](#09-浏览器)
+- [0.10. Database](#010-database)
+- [0.11. Demos](#011-demos)
 
 <!-- /TOC -->
 
-## 0.1. TODO
-
-- [ ] [JS-Promise-理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-promise-%E7%90%86%E8%A7%A3.md)
-- [ ] [Motion-动画设计规则]()
-- [ ] [JS-类与继承-ES6Class]()
-- [ ] [JS-类与继承-类和类的原型概念解析]()
-- [ ] [网络基础-中间人攻击原理与预防]()
-
-## 0.2. NPM
+## 0.1. NPM
 
 * [axios如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
 * [medium-selection选词插件](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/selection.md)
 
-## 0.3. Grammar
+## 0.2. Grammar
 
 > 推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
 
@@ -74,13 +65,13 @@
 
 * [以内容进行分类](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%9B%AE%E5%BD%95/JS-%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.md)
 
-## 0.4. Reg
+## 0.3. Reg
 
 * [Reg-实现多个字符串的连续匹配](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E8%BF%9E%E7%BB%AD%E5%AD%97%E7%AC%A6%E4%B8%B2.md)
 * [Reg-parseint简单自实现](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
 * [Reg-千字分隔符a2b和b2a](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-thoud.js)
 
-## 0.5. Vue
+## 0.4. Vue
 
 * [Vue-watch](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-watch.md)
 * [Vue-dom](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-dom.md)
@@ -89,14 +80,14 @@
 * [Vue-骨架屏(和SSR相关)](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E9%AA%A8%E6%9E%B6%E5%B1%8F.md)
 * [Vue-实现原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 
-## 0.6. webpack
+## 0.5. webpack
 
 * [postcss速写](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/postcss.md)
 * [Webpack-别名，在vue导入图片模块](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-import%E5%88%AB%E5%90%8D%E9%97%AE%E9%A2%98.md)
 * [Webpack-概述以及和其他工具对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E6%A6%82%E8%BF%B0%E4%BB%A5%E5%8F%8A%E5%92%8C%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.md)
 * [Webpack-前端性能优化方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
 
-## 0.7. HTML
+## 0.6. HTML
 
 * [HTML5&CSS3新特性](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/html%26css%E6%96%B0%E7%89%B9%E6%80%A7.md)
 * [HTML5-navigator.geolocation定位](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E5%AE%9A%E4%BD%8D.md)
@@ -110,7 +101,7 @@
 * [HTML-WebAPI(BOM&DOM)部分](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-WebAPI(DOM%26BOM)%E9%80%9F%E5%86%99.md)
 * [HTML-DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)
 
-## 0.8. CSS
+## 0.7. CSS
 
 * [position和marigin二三事](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/position%E5%92%8Cmargin.md)
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
@@ -126,7 +117,7 @@
 * [css-BFC](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-bfc.md)
 * [css-像素概念和移动端适配](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
 
-## 0.9. 网络基础
+## 0.8. 网络基础
 
 * [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-request%26response-headers.md)
 * [计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
@@ -141,18 +132,18 @@
 * [HTTP-2.0](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-2.0.md)
 * [HTTP-输入url到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2.md)
 
-## 0.10. 浏览器
+## 0.9. 浏览器
 
 * [Browser - DOM&BOM&JS](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Broswer-DOM%26BOM%26JS.md)
 * [Browser - 浏览器渲染原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
 * [Browser - reflow&repaint](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-reflow%26repaint.md)
 * [Browser-浏览器内核&渲染&JS](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%26%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%26JS%E5%BC%95%E6%93%8E.md)
 
-## 0.11. Database
+## 0.10. Database
 
 * [数据库简介](https://github.com/JiangWeixian/JS-Tips/blob/master/DataBase/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B.md)
 
-## 0.12. Demos
+## 0.11. Demos
 
 * [原生js实现的小程序,重点在于思路](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
     * **Demo-drag** - 原生的拖拽元素实现
