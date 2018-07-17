@@ -58,6 +58,7 @@
 * [JS-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
 * [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
 * [JS-总结-继承与类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)
+* [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md)
 
 **次级目录**
 
