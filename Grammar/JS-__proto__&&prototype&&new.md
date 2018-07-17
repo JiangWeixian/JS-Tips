@@ -34,7 +34,7 @@
             __proto__
        ```
       
-    * `function Foo () {}`可以通过`Foo.__proto__ or prototype or constructor`看到
+    * `function Foo () {}`可以通过`Foo.__proto__ or prototype or constructor`推断
 
       ```JavaScript
       data
@@ -47,7 +47,7 @@
         __proto__
       ```
        
-    * `var foo = new Foo()`，只能够`foo.__proto__`和存在于`__proto__`的`constuctor`，和`var a ={}`结构是有点类似的。详细见 [1.3. 类 - new关键字]()
+    * `var foo = new Foo()`，详细见 [1.3. 类 - new关键字]()
 
 2. `prototype`存在哪里？`prototype`存在在`construtor`内，而`construtor`存在在`__proto__`内。**可以先看[1.3. 类 - new关键字]()做了什么** 可以发现在`new`关键字内部创建了一个临时对象`var a = {}`并返回了`a`。参考上诉`a`的结构。
 
