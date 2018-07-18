@@ -104,7 +104,7 @@
 
 ## 0.7. CSS
 
-* [position和marigin二三事](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/position%E5%92%8Cmargin.md)
+* [css-position&margin&float](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-position%26margin%26float.md)
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
 * [各种情况下的div元素居中](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E5%90%84%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD.md)
 * [css-清除浮动](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8.md)
