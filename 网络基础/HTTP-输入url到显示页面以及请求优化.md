@@ -1,5 +1,5 @@
 # 1. HTTP - 输入地址到显示页面
-> 包含了现代浏览器如何优化
+> 包含了现代浏览器如何优化(优化JS/CSS加载)
 
 <!-- TOC -->
 
@@ -16,7 +16,7 @@
 
 ## 1.1. 概述
 
-当我们请求地址，获得了`html`中**标签**包括`dom&link`，`link`中`css`文件并没有下载，而 **`dom`元素已经跟随`.html`文件下载回来了。**等待样式文件下载完毕参与构建。
+当我们请求地址，获得了`html`中 **标签**包括`dom&link`，`link`中`css`文件并没有下载，而 **`dom`元素已经跟随`.html`文件下载回来了。** 等待样式文件下载完毕参与构建。
 
 页面加载是否快速，涉及到以下几个方面。这篇文章总结的也只是 **第五点-CSS&HTML&JS对页面渲染的影响！** 以上从上到下也就是输入`url`到页面出现所发生的一切。
 
@@ -26,27 +26,25 @@
 4. 服务器响应 - 对于响应结果进一步处理方式有，保存`cookie`以及缓存资源。如果资源已经缓存了(且没有过期)，那么就本地读取。
 5. 客户端渲染
 
-`HTML`的标签(指的是`div p etc...`)我们无法优化，**当然如果能够使用最少元素构建是最好的**。我们只能够从`CSS&JS`两个角度触发。
-
 ### 1.1.1. 建立连接概述
 
 1. 输入URL地址，尝试发起HTTP请求，此时没有建立TCP连接，无法发送数据
 2. 尝试建立TCP连接，发现没有目标IP地址
 3. 对url进行DNS解析，得到目标IP地址。
 
-那么HTTP数据封装到TCP数据中，TCP数据分装到IP数据中。如下图：
+得到IP之后，就是数据发送的过程。那么HTTP数据封装到TCP数据中，TCP数据分装到IP数据中。如下图：
 
-![建立连接概述](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/%E8%BE%93%E5%85%A5URL%E5%85%A8%E8%BF%87%E7%A8%8B.png)
+![数据封装概述](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/%E8%BE%93%E5%85%A5URL%E5%85%A8%E8%BF%87%E7%A8%8B.png)
 
 **全部具体过程见参考链接！**
 
 ## 1.2. 优化
 
+`HTML`的标签(指的是`div p etc...`)我们无法优化，**当然如果能够使用最少元素构建是最好的，避免较多的标签嵌套**。我们只能够从`DNS&CSS&JS`角度触发。
+
 ### 1.2.1. DNS优化
 
-见[文章1](http://bubkoo.com/2015/11/19/prefetching-preloading-prebrowsing/)or[文章2](https://github.com/GeoffZhu/geoffzhu.github.io/issues/2) - 里面还有图片等资源的预加载。
-
-
+见[文章1](http://bubkoo.com/2015/11/19/prefetching-preloading-prebrowsing/)or[文章2](https://github.com/GeoffZhu/geoffzhu.github.io/issues/2) - 里面对图片等资源的预加载。
 
 ### 1.2.2. CSS优化
 
@@ -74,7 +72,7 @@
 
 **构建优化**
 
-1. 给需要标签添加`class`是优化重要步骤 - 此时要涉及到`CSS-DOM-TREE`的构建规则，如果看过`JQ`实现其选择器的源码的话，就会发现它**并不是从左到右边的选择**，即当`.class a`，并不是找到`.class`元素，然后再再其中找到`a`元素。
+1. 给需要标签添加`class`是优化重要步骤 - 此时要涉及到`CSS-DOM-TREE`的构建规则，如果看过`JQ`实现其选择器的源码的话，就会发现它 **并不是从左到右边的选择**，即当`.class a`，并不是找到`.class`元素，然后再再其中找到`a`元素。
 
     而是遵循从右到左原则，先找到`a`元素然后再由上找到`.class`元素。浏览器也是这样的规则。
 
@@ -123,6 +121,10 @@
 这就是为什么[知乎-某答案network中js加载时间async延后defer那么多](https://www.zhihu.com/question/20531965)
 
 
+**JS与DOM**
+
+更多细节可看[HTML-DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)
+
 指的是对`DOM`修改这一部分
 
 不要逐条修改`css`样式，将改变的样式写到一起，一起修改；也可以改变`classname`实现样式的变化。
@@ -130,3 +132,4 @@
 ## 1.3. 参考链接
 
 * [HTTP-OSI建立链接全过程](https://juejin.im/entry/58ce00c5ac502e00589b4bde)
+* [HTTP-建立链接过程更为详细](https://juejin.im/post/5872309261ff4b005c4580d4)
