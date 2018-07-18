@@ -10,8 +10,10 @@
   - [1.4. 简单例子](#14-简单例子)
     - [1.4.1. 加入DOM事件](#141-加入dom事件)
   - [1.5. 理论分析](#15-理论分析)
-    - [复杂的简单例子](#复杂的简单例子)
-    - [含有阻塞的例子](#含有阻塞的例子)
+    - [1.5.1. 复杂的简单例子](#151-复杂的简单例子)
+    - [1.5.2. 含有阻塞的例子](#152-含有阻塞的例子)
+  - [纯粹的Promise](#纯粹的promise)
+    - [超级复杂的例子](#超级复杂的例子)
   - [1.6. 启发](#16-启发)
   - [1.7. 链接](#17-链接)
 
@@ -23,6 +25,9 @@
   * 即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
   * DOM触发事件即使触发了也要等到主线程事件执行完毕之后，才能执行
 2. (**很重要**)新建一个`Promise`，比如`new Promise()`其实是主线程代码！而后面的`then`才是任务队列的代码。至于为什么？可以看[(TODO)JS-Promise自实现]()。
+3. 先第一层任务加入任务队列，然后当某个具体任务执行的时候，在加入其中创建的任务队列。
+  * 例如 **复杂的简单例子**中先加入`S1 S2`。在`S1`执行的时候才会加入里面任务
+  * 而`S2`里面的任务只有在`S2`执行的时候才会加入
 
 ## 1.2. 前置知识 - 什么是回调，别以为你知道了
 
@@ -197,7 +202,7 @@ console.log('script end')
 
 是不是觉得还神气的...
 
-### 复杂的简单例子
+### 1.5.1. 复杂的简单例子
 
 > 因为前后两个timeout以及内部并没有设置时间间隔。
 
@@ -326,7 +331,7 @@ setTimeout(() => { // S2
       ]
     ```   
 
-### 含有阻塞的例子
+### 1.5.2. 含有阻塞的例子
 
 > 上面任务都是同一个时间。并没有延迟，如果在异步任务有延迟。**延迟知识代表加入队列的时间不同**
 
@@ -377,7 +382,7 @@ console.log('script end');
       promise1,
       ]
     2. A.tasks = [P2.then]
-    3. B.tasks = [S2, (...1S)加入S1, (...1S与上一个起始点一致)加入P1S]
+    3. B.tasks = [(...1S)加入S1, S2, (...1S与上一个S1起始点一致)加入P1S]
     ```
 3. Step3 - `P2.then`执行，然后是`S2`。
 
@@ -409,6 +414,9 @@ console.log('script end');
     2. A.tasks = []
     3. B.tasks = []
 
+
+也是因为`P1.then`加入的是`A`而`S1`加入的是`B`,才会导致B队列中，相等时间下`P1S`要落后`S1`
+
 **进一步，假设P1改为500**，不影响`P2then`回到第3步骤：
 
 3. Step3 - `P2.then`执行，然后是`S2`。
@@ -438,8 +446,134 @@ console.log('script end');
     2. A.tasks = []
     3. B.tasks = []
     ```
+
+## 纯粹的Promise
+
+> 上面是各种情况混合，先来简单的介绍一下只有Promise
+
+```JavaScript
+Promise.resolve()
+.then(function() {
+  console.log(1)
+})
+.then(function () {
+  console.log(2)
+})
+```
+
+`A`队列为`[p1-then1, p1-then2]`
+
+很显然，分别是`1 2`。如果复杂一些：
+
+```JavaScript
+Promise.resolve()
+.then(function() {
+  return new Promise(function (resolve) { // p1-then1
+    setTimeout(function () { // t(p1-then-in)
+      console.log('promise1-then1') // p1-then-in
+      resolve()
+    },0)
+  })
+})
+.then(function () { // p1-then2
+  console.log('promise1-then2')
+})
+
+Promise.resolve()
+.then(function() { // p2-then
+  console.log('promise2-then2')
+})
+```
+
+答案是`promise2-then2 promise1-then1 promise-then2`。这一段代码和上一个不同的是`p1-then`内部返回的`promise's resolve`被异步执行。这就导致了后面的`then`被阻塞(表现上和同步代码一直)
+
+在[JS-promise-自实现(TODO)]()可以知道：
+
+1. then - 返回一个`promise`不是上面写在函数内部的(p1-then1-in)，而是定义默认就返回的
+2. 后面的`then`属于前面`then`返回的`promise`，也就是`p2-then2`其实是属于`p1-then1`自己定义默认返回的。
+
+如果`p1-then1`中`resolve`被异步了，那么就会导致后面 **p1-then2**被包裹在一个`settimeout`中(这是`promise`的默认行为)，而且在`p1-then1-in`执行之后才会被创建。不同于前一段代码中，在写出这样的链条之后，`A`队列就已经执行了。
+
+理论分析是：
+
+1. Step1 - 由上面理论，先是外侧`then - p1-then1 p2-then`
+
+    ```JavaScript
+    1. Main = [
+      ]
+    2. A.tasks = [p1-then1, p2-then]
+    3. B.tasks = []
+    ```
+
+2. Step2 - 执行`p1-then1`先是执行内部函数，然后创建包裹在`timeout`内部的`p1-then2`，记为`t(p1-then2)`
+
+    ```JavaScript
+    1. Main = [
+      ]
+    2. A.tasks = [p2-then]
+    3. B.tasks = [t(p1-then-in)]
+    ```
     
+3. Step3 - 执行`p2-then`
+    ```JavaScript
+    1. Main = [
+        promise2-then2
+      ]
+    2. A.tasks = []
+    3. B.tasks = [t(p1-then-in), t(p1-then2)]
+    ```
     
+4. Step4 - 执行`B-task`执行`t(p1-then-in)`创建`t(p1-then2)`
+    ```JavaScript
+    1. Main = [
+        promise2-then2,
+        promise1-then1
+      ]
+    2. A.tasks = []
+    3. B.tasks = [t(p1-then2)]
+    ```
+
+最后一步不写了。
+    
+### 超级复杂的例子
+
+> 按照上一节步骤，也一定可以分析出来
+
+```JavaScript
+setTimeout(function() { // S1
+  console.log('setTimeout1');
+}, 1000);
+
+setTimeout(function() { // S2
+  console.log('setTimeout2');
+}, 0);
+
+Promise.resolve()
+.then(function() {
+  return new Promise(function (resolve) { // p1-then1
+    setTimeout(function () { // t(p1-then1-in)
+      console.log('promise1-then1') // p1-then1-in
+      resolve()
+    },500)
+  })
+})
+.then(function() {
+  return new Promise(function (resolve) { // p1-then2
+    setTimeout(function () { // t(p1-then2-in)
+      console.log('promise1-then2') // p1-then2-in
+      resolve()
+    },500)
+  })
+})
+.then(function () { // p1-then3
+  console.log('promise1-then3')
+})
+
+Promise.resolve()
+.then(function() { // p2-then
+  console.log('promise2-then2')
+})
+```
 
 ## 1.6. 启发
 
