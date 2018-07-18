@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Position&marigin&float测试</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .container {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      background-color: red;
+      margin-bottom: 20px;
+    }
+    .ele {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+    }
+    .abs {
+      position: absolute;
+      top: 20px;
+      left: 0px;
+    }
+    .abs--pos {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 200px;
+      margin: auto auto;
+    }
+    .float--right {
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <p>测试position float相互作用</p>
+  <div class="container">
+    <div class="ele float--right abs"></div>
+  </div>
+  <p>测试position视图限制所在位置</p>
+  <div class="container">
+      <div class="ele abs--pos"></div>
+    </div>
+</body>
+</html>
