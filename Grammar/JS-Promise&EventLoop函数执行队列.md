@@ -348,7 +348,7 @@ setTimeout(() => { // S2
 
 > 增加规则：**对于不同延迟时间的事件，以注册时间和延迟时间之和作为排序条件**。
 
-以[JS-eventloop-innode-simple-delay1.js]()为例。设定 **(x, y)** 就是 **在x时候注册，然后预计y秒后发生。**
+以[JS-eventloop-innode-simple-delay1.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-eventloop-innode-simple-delay1.js)为例。设定 **(x, y)** 就是 **在x时候注册，然后预计y秒后发生。**
 
 1. Step1
 
@@ -382,7 +382,7 @@ setTimeout(() => { // S2
     3. B.tasks = [(0s, 0.5s)S2, (0s, 0s)S11]
     ``` 
 
-    为了验证 **增加规则的正确性！** [JS-eventloop-innode-simple-delay2.js]() 给`S1`也加入了`500ms`延迟，那么`(0s, 0s)S11`就变为`(0.5s, 0s)S11`，则优先执行`S2`然后才是`S11`(因为来到队列的先后顺序不同)
+    为了验证 **增加规则的正确性！** [JS-eventloop-innode-simple-delay2.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-eventloop-innode-simple-delay2.js) 给`S1`也加入了`500ms`延迟，那么`(0s, 0s)S11`就变为`(0.5s, 0s)S11`，则优先执行`S2`然后才是`S11`(因为来到队列的先后顺序不同)
 
     同样如果给`S11`加入`500ms or 大于500ms`延迟的话，那么`(0s, 0s)S11`就变为`(0s, 0.5s)S11`。还是先执行`S2`
 
@@ -458,7 +458,7 @@ setTimeout(() => { // S2
     3. B.tasks = [(1s, 0s)S21]
     ``` 
 
-    **那么如果我们设置`S11`加入大于(不等于)`1s`延迟的。可以预见`S21`是优先于`S11`**。见[JS-eventloop-simple-delay3.js]()
+    **那么如果我们设置`S11`加入大于(不等于)`1s`延迟的。可以预见`S21`是优先于`S11`**。见[JS-eventloop-simple-delay3.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-eventloop-innode-simple-delay3.js)
 
 ## 1.7. 纯粹的Promise
 
