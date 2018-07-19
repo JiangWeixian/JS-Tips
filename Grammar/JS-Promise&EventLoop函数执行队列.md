@@ -520,7 +520,7 @@ Promise.resolve()
     3. B.tasks = []
     ```
 
-2. Step2 - 执行`p1-then1`先是执行内部函数，然后创建包裹在`timeout`内部的`p1-then2`，记为`t(p1-then2)`
+2. Step2 - 执行`p1-then1`先是执行内部函数，然后创建包裹在`timeout`内部的`p1-then-in`，记为`t(p1-then-in)`
 
     ```JavaScript
     1. Main = [
@@ -618,7 +618,7 @@ console.log('script end');
     ```
 
     ```
-4. Step4 - `P2.then`执行，然后是`(0, 1)S1, (0, 1)P1S`。
+4. Step4 - 然后是`(0, 1)S1, (0, 1)P1S`。
 
     ```JavaScript
     1. Main = [
@@ -798,6 +798,8 @@ Promise.resolve()
 2. A.tasks = []
 3. B.tasks = []
 ```
+
+**可以试着修改`t(p1-then2-in)`为延迟200ms执行，会发现其是先于S1执行的**
 
 ## 1.8. 链接
 

@@ -9,6 +9,7 @@
   - [继承与类](#继承与类)
   - [this](#this)
   - [作用域与闭包](#作用域与闭包)
+  - [事件循环](#事件循环)
 
 <!-- /TOC -->
 
@@ -34,3 +35,10 @@
 
 * [let&const](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH02-let%26const) / 并不是把当前`{}`中所有数据固定到块级作用域中；`let&const`没有声明提前。
 * [call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md) / 内含闭包一定要理解部分
+
+## 事件循环
+
+> 浏览器端和Nodejs都有规则，浏览器端的规则更为清晰
+
+* [浏览器-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
+* [Nodejs-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
