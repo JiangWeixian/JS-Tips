@@ -12,9 +12,8 @@
   - [1.5. 理论分析](#15-理论分析)
     - [1.5.1. 复杂的简单例子](#151-复杂的简单例子)
     - [1.5.2. 含有阻塞的例子](#152-含有阻塞的例子)
-  - [纯粹的Promise](#纯粹的promise)
-    - [超级复杂的例子](#超级复杂的例子)
-  - [1.6. 启发](#16-启发)
+  - [1.6. 纯粹的Promise](#16-纯粹的promise)
+    - [1.6.1. 超级复杂的例子](#161-超级复杂的例子)
   - [1.7. 链接](#17-链接)
 
 <!-- /TOC -->
@@ -24,8 +23,9 @@
 1. **任务队列内的代码只能够在主线程的代码执行完毕之后执行**。
   * 即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
   * DOM触发事件即使触发了也要等到主线程事件执行完毕之后，才能执行
-2. (**很重要**)新建一个`Promise`，比如`new Promise()`其实是主线程代码！而后面的`then`才是任务队列的代码。至于为什么？可以看[(TODO)JS-Promise自实现]()。
-3. 先第一层任务加入任务队列，然后当某个具体任务执行的时候，在加入其中创建的任务队列。
+2. 对于`Main>A.tasks>B.tasks`有优先级。意味着前一个优先级任务队列如果不执行完毕，是不会接着执行后一个任务队列。
+3. (**很重要**)新建一个`Promise`，比如`new Promise()`其实是主线程代码！而后面的`then`才是任务队列的代码。至于为什么？可以看[(TODO)JS-Promise自实现]()。
+4. 先第一层任务加入任务队列，然后当某个具体任务执行的时候，在加入其中创建的任务队列。
   * 例如 **复杂的简单例子**中先加入`S1 S2`。在`S1`执行的时候才会加入里面任务
   * 而`S2`里面的任务只有在`S2`执行的时候才会加入
 
@@ -447,7 +447,7 @@ console.log('script end');
     3. B.tasks = []
     ```
 
-## 纯粹的Promise
+## 1.6. 纯粹的Promise
 
 > 上面是各种情况混合，先来简单的介绍一下只有Promise
 
@@ -535,9 +535,9 @@ Promise.resolve()
 
 最后一步不写了。
     
-### 超级复杂的例子
+### 1.6.1. 超级复杂的例子
 
-> 按照上一节步骤，也一定可以分析出来
+> 按照上一节步骤，也一定可以分析出来。理解阻塞的`Promise`执行之后才会加入后面的包裹在`settimeout`的`promise`。和不阻塞是不一样的。
 
 ```JavaScript
 setTimeout(function() { // S1
@@ -575,14 +575,95 @@ Promise.resolve()
 })
 ```
 
-## 1.6. 启发
+试着解析：
 
-**重点：** 我们不能够使用`Promise`去等待一个循环的执行完毕。
+```JavaScript
+// Step1
+1. Main = [
+  ]
+2. A.tasks = [p1-then1, p2-then]
+3. B.tasks = [(1s加入)S1, S2]
 
-* 更准确的说没办法使用单个`Promise`实现。
-* 也没有办法通过`foreach`和每个`promise`组合实现
+// Step2 - t(p1-then1-in)
+1. Main = [
+  ]
+2. A.tasks = [p2-then]
+3. B.tasks = [(1s加入)S1, S2, (0.5s后加入p1-then1-in)t(p1-then1-in)]
 
-想要在某个循环执行完毕之后，再来进行一些操作。只能够通过`ES6`给我们的`iterator`方法，或者魔改`Promise.all`方法。详见[等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
+// Step3 - p2-then
+1. Main = [
+    promise2-then2,
+  ]
+2. A.tasks = []
+3. B.tasks = [(1s加入)S1, S2, (0.5s后加入p1-then1-in)t(p1-then1-in)]
+
+// Step4 - S2
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+  ]
+2. A.tasks = []
+3. B.tasks = [(1s加入)S1, (0.5s后加入p1-then1-in)t(p1-then1-in)]
+
+// Step5 - 过了0.5S之后，加入p1-then1-in
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+  ]
+2. A.tasks = [p1-then1-in]
+3. B.tasks = [(0.5s加入)S1]
+
+// Step6 - 过了0.5S之后，p1-then1-in立刻执行
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+    promise1-then1，
+  ]
+2. A.tasks = []
+3. B.tasks = [(0.5s加入)S1, t(p1-then2)]
+
+// Step7 - t(p1-then2)立刻执行，加入t(p1-then2-in)
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+    promise1-then1,
+  ]
+2. A.tasks = []
+3. B.tasks = [(0.5s加入)S1, (0.5s后加入p1-then1-in)t(p1-then2-in)]
+
+// Step8 - 经过0.5s之后S1执行(因为队列优先级高于t(p1-then2-in))
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+    promise1-then1,
+    setTimeout1
+  ]
+2. A.tasks = []
+3. B.tasks = [t(p1-then2-in)]
+
+// Step9 - t(p1-then2-in)，加入t(p1-then3)
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+    promise1-then1,
+    setTimeout1,
+    promise1-then2,
+  ]
+2. A.tasks = []
+3. B.tasks = [t(p1-then3)]
+
+// Step10 - t(p1-then3)
+1. Main = [
+    promise2-then2,
+    setTimeout2,
+    promise1-then1,
+    setTimeout1,
+    promise1-then2,
+    promise1-then3
+  ]
+2. A.tasks = []
+3. B.tasks = [t(p1-then3)]
+```
 
 ## 1.7. 链接
 
