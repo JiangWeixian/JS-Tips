@@ -15,7 +15,7 @@
 
 ## 1.1. 前置知识 - 通用规则
 
-[JS-浏览器端eventloop]()中总结的部分规则同样适用于`NODE`：
+[JS-浏览器端eventloop](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)中总结的部分规则同样适用于`NODE`：
 
 1. **任务队列内的代码只能够在主线程的代码执行完毕之后执行**。即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
 2. 对于`Main>A.tasks>B.tasks`有优先级。
@@ -238,7 +238,7 @@ say()
   nexttick4,
   nexttick2,
   promise1-then,
-  timeout1,
+  timeout1, 
   ]
 2. PN.tasks = []
 3. A.tasks = []
@@ -261,5 +261,98 @@ say()
 
 ## 阻塞
 
-和浏览器事件循环一样。当阻塞发生的时候，规则会变化吗？
+和浏览器事件循环一样。当阻塞发生的时候，规则会变化吗？测试发现，如果第1阶段存在延迟：那么第2阶段，`nexttick and pthen`优先级高于这个 **第一阶段**。
+
+而在`B.tasks`内部的任务，就是第一阶段任务的(注册，耗时)相加是大于第2阶段的，还是先执行第一阶段。
+
+见[JS-eventloop-innode-promisedelay](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-eventloop-innode-promisedelay.js)
+
+```JavaScript
+// 第1阶段 - 执行
+// Step1 - 第1阶段，先执行主线程。并加入第1阶段任务
+1. Main = []
+2. PN.tasks = []
+3. A.tasks = []
+4. B.tasks = [S1, (0, 0.5s, out)S2]
+
+// Step2 - S1
+1. Main = [
+  timeout1,
+  timeout1_promise1,
+  timeout1_promise2,
+  <--Next Loop-->
+]
+2. PN.tasks = [S1.PN]
+3. A.tasks = [S1.P.then, S2.P.then]
+4. B.tasks = [(0, 0.5s, out)S2]
+
+// Step3 - PN.tasks和A.tasks。S1.P.then创建S12，此时主线程已经执行了1S
+1. Main = [
+  timeout1,
+  timeout1_promise1,
+  timeout1_promise2,
+  <--Next Loop-->,
+  nexttick1,
+  timeout1_then1,
+]
+2. PN.tasks = []
+3. A.tasks = []
+4. B.tasks = [(0, 0.5s, out)S2, (0, 0s, inner)S11, (1, 0.5s, inner)S12]
+
+// Step4 - (0, 0.5s, out)S2。因为是第1阶段的，现在以下都是第2阶段的了
+1. Main = [
+  timeout1,
+  timeout1_promise1,
+  timeout1_promise2,
+  <--Next Loop-->,
+  nexttick1,
+  timeout1_then1,
+  timeout2,
+  timeout2_promise,
+  <--Next Loop-->,
+]
+2. PN.tasks = []
+3. A.tasks = [S21.P.then]
+4. B.tasks = [(0, 0.5s, out)S2, (0, 0s, inner)S11, (1, 0.5s, inner)S12]
+
+// Step5 - S21.P.then。
+1. Main = [
+  timeout1,
+  timeout1_promise1,
+  timeout1_promise2,
+  <--Next Loop-->,
+  nexttick1,
+  timeout1_then1,
+  timeout2,
+  timeout2_promise,
+  <--Next Loop-->,
+  timeout2_then
+]
+2. PN.tasks = []
+3. A.tasks = []
+4. B.tasks = [(0, 0s, inner)S11, (1, 0.5s, inner)S12, (1, 0s, inner)S21]
+
+// Step5 - (0, 0s, inner)S11注册时间和耗时相加大于S21大于S12
+1. Main = [
+  timeout1,
+  timeout1_promise1,
+  timeout1_promise2,
+  <--Next Loop-->,
+  nexttick1,
+  timeout1_then1,
+  timeout2,
+  timeout2_promise,
+  <--Next Loop-->,
+  timeout2_then,
+  timeout3,
+  <--Next Loop-->,
+  timeout4,
+  <--Next Loop-->,
+  timeout1_then2
+]
+2. PN.tasks = []
+3. A.tasks = []
+4. B.tasks = [(1, 0.5s, inner)S12, (1, 0s, inner)S21]
+```
+
 
