@@ -110,7 +110,7 @@ setTimeout
 
 ### 1.4.1. 加入DOM事件
 
-而[回调函数](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)优先级比`settimeout`高，如下：
+而[回调函数](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)优先级比`settimeout`高(感觉应该是触发便插入到`B.tasks`之前)如下：
 
 ```JavaScript
 function callback() {
@@ -121,13 +121,17 @@ function callback() {
 document.onclick = function () {
   console.log('回调')
 }
+Promise.resolve()
+.then(function() {   
+  console.log('promise1');
+})
 setTimeout(function () {
   console.log('settimeout')
 })
 callback()
 ```
 
-如果再`callback()`执行期间，点击页面，会发现 **回调出现时间是早于`settimeout`**。会发生 **10s之后 callback->回调*5->settimeout**
+如果再`callback()`执行期间，点击页面，会发现 **回调出现时间是早于`settimeout`**。会发生 **10s之后 callback->promise->回调*5->settimeout**
 
 ## 1.5. 理论分析
 
