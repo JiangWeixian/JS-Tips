@@ -10,6 +10,7 @@
   - [1.4. 简单例子](#14-简单例子)
     - [加入Process.nextTick](#加入processnexttick)
   - [阻塞](#阻塞)
+  - [链接](#链接)
 
 <!-- /TOC -->
 
@@ -351,5 +352,9 @@ say()
   timeout1_then2
 ]
 ```
+
+## 链接
+
+* [简单分析](https://juejin.im/post/5a63470bf265da3e2c383068)
 
 
