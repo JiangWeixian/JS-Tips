@@ -4,7 +4,7 @@ function sleep(time) {
   console.log('<--Next Loop-->');
 }
 
-setTimeout(() => {
+setTimeout(() => { // S1
   console.log('timeout1');
   setTimeout(() => {
       console.log('timeout3');
@@ -19,7 +19,7 @@ setTimeout(() => {
   sleep(1000);
 });
    
-setTimeout(() => {
+setTimeout(() => { // S2
   console.log('timeout2');
   setTimeout(() => {
       console.log('timeout4');
