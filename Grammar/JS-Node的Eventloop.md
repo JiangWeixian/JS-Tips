@@ -313,7 +313,7 @@ say()
 ]
 2. PN.tasks = []
 3. A.tasks = [S21.P.then]
-4. B.tasks = [(0, 0.5s, out)S2, (0, 0s, inner)S11, (1, 0.5s, inner)S12]
+4. B.tasks = [(0, 0s, inner)S11, (1, 0.5s, inner)S12]
 
 // Step5 - S21.P.then。
 1. Main = [
@@ -350,9 +350,6 @@ say()
   <--Next Loop-->,
   timeout1_then2
 ]
-2. PN.tasks = []
-3. A.tasks = []
-4. B.tasks = [(1, 0.5s, inner)S12, (1, 0s, inner)S21]
 ```
 
 
