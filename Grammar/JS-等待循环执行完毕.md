@@ -128,12 +128,29 @@ promise1.then(function (data) {
 })
 ```
 
-* 但是如果是`Promise.resolve`方法，就需要`return Promise.resolve()`。`return Promise.resolve()`就是为了让 **后面的`then`获取到数据**
+* `return Promise.resolve()`就是为了让 **后面的`then`获取到数据** - 可以将理解为`Promise.resolve(data)`等价为`return new Promise`并执行了`resolve(data)`。(这个`data`可以是`promise`或者普通数据，这里留个坑，在[Promise-实现-TODO]())
 * 仅仅是`return data`也能够传递数据，让 **后面的`then`获取到数据**
 
 即使没有以上的`return`操作，那么还是可以通过`then`方法将链条执行下去。**这是因为`then`自带返回一个`promise`**。
 
-可以将理解为`Promise.resolve(data)`等价为`return new Promise`并执行了`resolve(data)`。(这个`data`可以是`promise`或者普通数据，这里留个坑，在[Promise-实现-TODO]())
+但是以下情况：
+
+```JavaScript
+new Promise((resolve) => {
+      console.log('timeout1_promise');
+      // resolve()
+  }).then(() => {
+      setTimeout(function () {
+        console.log('timeout1_then');
+      }, 500)
+  }).then(function () {
+   console.log(1)
+  })
+```
+
+必须在开头进行`resolve()`。因为在`resolve`执行相当于改变当前`promise`状态为`resolved`同时执行传递给`then`的函数。所以必须在最初的`promise`这么做。
+
+但是为什么在上上一段代码是可以的，因为`then`内部自己会执行`resolve`只是我们没有看见。
 
 ## 1.5. Promise.resolve - 更为清晰
 

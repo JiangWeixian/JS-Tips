@@ -6,8 +6,6 @@ function sleep(time) {
 
 setTimeout(() => {
   console.log('timeout1');
-  var now = Date.now()
-  console.log(now)
   setTimeout(() => {
       console.log('timeout3', Date.now() - now);
       sleep(1000);
@@ -23,8 +21,6 @@ setTimeout(() => {
 
 // setTimeout(() => {
 //   console.log('timeout1');
-//   var now = Date.now()
-//   console.log(now)
 //   setTimeout(() => {
 //       console.log('timeout3', Date.now() - now);
 //       sleep(1000);
@@ -40,8 +36,6 @@ setTimeout(() => {
    
 setTimeout(() => {
   console.log('timeout2');
-  var now = Date.now()
-  console.log(now)
   setTimeout(() => {
       console.log('timeout4');
       sleep(1000);

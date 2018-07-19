@@ -9,12 +9,14 @@ setTimeout(() => {
   setTimeout(() => {
       console.log('timeout3');
       sleep(1000);
-  }, 1050);
+  });
   new Promise((resolve) => {
       console.log('timeout1_promise');
-      resolve();
+      resolve()
   }).then(() => {
-      console.log('timeout1_then');
+      setTimeout(function () {
+        console.log('timeout1_then');
+      }, 500)
   });
   sleep(1000);
 });

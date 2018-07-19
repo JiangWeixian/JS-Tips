@@ -9,6 +9,7 @@
   - [1.3. 前置知识 - 什么是阶段任务](#13-前置知识---什么是阶段任务)
   - [1.4. 简单例子](#14-简单例子)
     - [加入Process.nextTick](#加入processnexttick)
+  - [阻塞](#阻塞)
 
 <!-- /TOC -->
 
@@ -89,6 +90,8 @@ setTimeout(() => { // S2
 
 > **前置知识 - 什么是阶段任务**中代码为例子。由于没有`process.next..`所以这里就先使用三个队列(一定要在NODE端测试结果)
 
+见[JS-Eventloop-innode-simple.js]()
+
 ```JavaScript
 // 第1阶段 - 执行
 // Step1 - 第1阶段S1 S2
@@ -142,9 +145,9 @@ setTimeout(() => { // S2
 3. B.tasks = []
 ```
 
-见[JS-Eventloop-innode-simple.js]()
-
 ### 加入Process.nextTick
+
+见[JS-eventloop-innode-process.js]()
 
 ```JavaScript
 setTimeout(() => { // S1
@@ -256,4 +259,7 @@ say()
 4. B.tasks = []
 ```
 
-见[JS-eventloop-innode-process.js]()
+## 阻塞
+
+和浏览器事件循环一样。当阻塞发生的时候，规则会变化吗？
+
