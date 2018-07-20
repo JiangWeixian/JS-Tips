@@ -97,7 +97,7 @@ Bar.prototype.speak = function () {}
 var bar = new Bar()
 ```
 
-由[JS-proto&prototype&constructor&new]()，可以得到`bar`内部结构为：
+由[JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)，可以得到`bar`内部结构为：
 
 ```JavaScript
 name
