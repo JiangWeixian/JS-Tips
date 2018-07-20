@@ -47,7 +47,7 @@ document.body.addEventListener('click', function (e) {
 
 可以通过`e.eventPhase`来查看当前`click`达到了那个阶段。就像是下图说明的那样。分别是`click`这个 **动作**到达目标之前的 捕获阶段、发生阶段以及到达之后开始冒泡阶段。
 
-![eventflow]()
+![eventflow](https://www.w3.org/TR/DOM-Level-3-Events/images/eventflow.svg)
 
 **第1阶段 - 捕获含义：**
 
