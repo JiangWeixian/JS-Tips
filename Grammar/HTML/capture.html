@@ -35,11 +35,23 @@
       })*/
 
       // 测试捕获和冒泡
-      document.body.addEventListener('click', function (e) {
+      /**document.body.addEventListener('click', function (e) {
         alert('捕获')
       }, true)
       document.body.addEventListener('click', function (e) {
         alert('冒泡')
+      })
+      document.getElementById('p1').addEventListener('click', function (e) {
+        alert('active')
+      })*/
+
+      // div1终止冒泡
+      document.body.addEventListener('click', function (e) {
+        alert('捕获')
+      })
+      document.getElementById('div1').addEventListener('click', function (e) {
+        alert('div1 冒泡')
+        e.stopPropagation()
       })
       document.getElementById('p1').addEventListener('click', function (e) {
         alert('active')
