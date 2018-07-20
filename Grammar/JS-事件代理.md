@@ -1,26 +1,27 @@
 # 事件代理
-> 注意区分IE浏览器上面特别点
+> 注意区分IE浏览器
 
-### 前置知识：事件捕获和冒泡
+## 前置知识 - 名词解释
 
-[参考](http://blog.xieliqun.com/2016/08/12/event-delegate/)
+* 事件捕获和冒泡 - 代表两个事件发生阶段，见下面[事件捕获和冒泡]()
+* 事件监听 - 见[添加事件]()
+* 事件代理和事件委托 - 两个就是同一个东西，见[事件代理or事件委托]()
 
-捕获从上到下，冒泡则是从下到上。
+## 前置知识：事件捕获和冒泡
 
-规定是先捕获在冒泡
+[参考链接](http://blog.xieliqun.com/2016/08/12/event-delegate/)
 
-* 捕获，从上到下，直到设置了事件元素节点
+1. 在MDN中规定通过`addEventListener`添加的事件是默认冒泡的。
+2. 捕获冒泡简单区分 - 代表 **元素A** 添加的监听函数应该在那个阶段发生(**针对click并不是以元素A为目标的时候才有这么一说**)，见下面小结解析。
+	* 捕获阶段，从上到下，达到点击目标节点过程
+	* 冒泡阶段，就是从目标事件节点开始向上触发
+	* 监听函数的捕获和触发性质，就代表了哪个阶段发生
 
-这里特别说明的是`addEventListener || attachEvent`的方式。而不是经常使用的`onclick`此类写事件的方式。
+## 添加事件监听 - 解释捕获和冒泡
 
-前者是事件监听的方法，优势在于：
+> 注意上面提到的捕获冒泡阶段，以及元素的捕获性质事件以及冒泡事件
 
-* 可以在同一个元素上绑定多个`click`（以`click`举例），而`onclick`方法只会让后者覆盖前者
-* 有解除事件代理的函数，提高网页性能。`removeEventLister || detachEvent`
-
-### 特别的小伙：IE
-
-`W3C`规范的方式是：
+`W3C`规范的方式[@MDN-addEventListener](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)是：
 
 ```javascript
 element.addEventLister(event, function, useCapture)
@@ -32,32 +33,82 @@ element.addEventLister(event, function, useCapture)
 * function - 传递默认参数`window.event`，如果想要传递其他参数，可以参考[demos-drag](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
 * useCapture - `true`代表的捕获，`false`代表冒泡
 
+除了这三个之前还可以设置其他泪如 **once=事件只发生一次就移除的属性**。见[@MDN-addEventListener](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)
+
+**事件发生的三个阶段**
+
+当你通过添加事件监听函数如：
+
+```JavaScript
+document.body.addEventListener('click', function (e) {
+    alert('cancel')
+})
+```
+
+可以通过`e.eventPhase`来查看当前`click`达到了那个阶段。就像是下图说明的那样。分别是`click`这个 **动作**到达目标之前的 捕获阶段、发生阶段以及到达之后开始冒泡阶段。
+
+![eventflow]()
+
+**第1阶段 - 捕获含义：**
+
+以[例子-capture.html-测试捕获]()说明。
+
+如果在`p1`添加了事件监听函数，此时如果我们点击了`p1`。**结合提到的`click`动作的三个阶段。**
+
+1. 因为这个`click`动作在达到 **目标`p1`**(因为我们点击的是这个)**元素之前**，`p1`之前的会经历`click`这个动作 **eventphase=1**的捕获阶段。
+2. (如果在 **`p1`节点之前有`body`的事件监听函数**，并设置了`true`代表的捕获)**那么代表`body`的事件监听会在`click`eventphase=1阶段发生**，`click`在到达目标元素之前可能会经过这个元素，那么这个 **非点击目标元素就会被触发`click`事件**
+
+因此我们可以得到一个结论，对于一个事件(假设是`click`)应该剥离出三个概念，分别是：
+
+1. `click`这个动作
+2. 元素的`click`监听事件
+3. `click`达到目标元素的三个阶段
+
+**第2阶段 - 发生含义：**
+
+**click**达到了目标`p1`之后，由于`p1`就是我们点击的目标，**无所谓其`useCapture`是`true or false`都会发生**
+
+**第3阶段 - 冒泡含义：**
+
+由于事件默认有冒泡行为。所以达到了目标`p1`之后，事件都会触发冒泡行为(除非你手动阻止了它)
+
+结合第1阶段例子，如果我们设置`body-useCapture=false`意味着它是`click`这个动作在达到目标之后，然后开始冒泡，冒泡阶段(eventphase=2阶段)遇到了`body`那么`body`上面的事件就会触发。
+
+以[例子-capture.html-测试冒泡]()说明。
+
+### 总结
+
+如果`click`(以点击行为为例子)不是以A元素为目标。
+
+一个捕获事件(添加在B元素上`capture=true`的监听事件)，会在`click`(以点击行为为例子)达到A元素之前发生(如果B元素处于点击达到A元素的路径上的话)
+
+一个冒泡事件(添加在B元素上`capture=false`的监听事件)，会在`click`(以点击行为为例子)达到A元素之后，开始冒泡。(如果B元素处于冒泡路径上的话)
+
+## Q&A
+
+**Q&A - 与xx.onclick方式相比的优势：**
+
+这里特别说明的是`addEventListener || attachEvent`的方式。而不是经常使用的`onclick`此类写事件的方式。
+
+前者`addEventListener || attachEvent`是事件监听的方法，优势在于：
+
+* 可以在同一个元素上绑定多个`click`（以`click`举例），而`onclick`方法只会让后者覆盖前者
+* 有解除事件代理的函数，提高网页性能。`removeEventLister || dispatchEvent`
+
+**Q&A - 捕获和冒泡可以同时存在吗**
+
+由以上例子可以看到，其实对于同一个事件监听函数来说的话。是没有办法同是存在的。
+
+**但是由于addEventlistener可以在同一个元素添加多个监听事件**，所以可以通过这种方式使得一个元素的监听事件可以在捕获冒泡两个阶段触发。
+
+见[例子-capture.html-测试捕获冒泡]()说明。
+
+### IE - 没事别理它
+
 而`IE`这个特别的小伙就是要和别人不一样
 
 * event - 必须加上`on`变为`onclick`
+* 以及使用的是`attachEvent`
 
-**注意**，回调函数最好加上名字`function name() {}`不然是不太好`remove || detach`
+**注意**，回调函数最好加上名字`function name() {}`不然是不太好`remove || dispatch`
 
-### 简单实例
-
-* 实现页面加载时候调用函数：
-    ```javascript
-    // 重点就是windoow.onload函数
-    
-    readyEvent : function(fn) {
- 			if (fn==null) {
- 				fn=document;
- 			}
- 			var oldonload = window.onload;
- 			if (typeof window.onload != 'function') {
- 				window.onload = fn;
- 			} else {
- 				window.onload = function() {
- 					oldonload();
- 					fn();
- 				};
- 			}
- 	},
-    ```
-
-    关键就是判断`window.onload`是否已经绑定了事件，如果没有就用`fn`替换。如果已经绑定了，就是执行之前的`onload`函数并执行`fn`
