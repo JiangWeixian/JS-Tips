@@ -63,6 +63,7 @@
 * [JS-Array-旋转升序数组最小值](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Array-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F.js)
 * [JS-Nodejs事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
 * [JS-Prototype操作指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-prototype%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.md)
+* [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
 
 **次级目录**
 
