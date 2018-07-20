@@ -62,6 +62,7 @@
 * [JS-类应用-父类控制子类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%B1%BB%E5%BA%94%E7%94%A8-%E7%88%B6%E7%B1%BB%E6%8E%A7%E5%88%B6%E5%AD%90%E7%B1%BB.md)
 * [JS-Array-旋转升序数组最小值](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Array-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F.js)
 * [JS-Nodejs事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
+* [JS-Prototype操作指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-prototype%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.md)
 
 **次级目录**
 
