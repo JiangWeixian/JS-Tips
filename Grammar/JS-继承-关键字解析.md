@@ -44,7 +44,7 @@ parent.prototype.showname = function () {
 function child () {
   this.lastname = 'child'
 }
-child.prototype = new parent() // 部分原型链继承
+child.prototype = new parent() // 原型链继承
 child.prototype.say = function () {
   return this.lastname
 }
@@ -64,7 +64,7 @@ function parent () {
 }
 
 function child () {
-  parent.call(this)
+  parent.call(this) // 构造器继承
 }
 ```
 
