@@ -696,7 +696,7 @@ Promise.resolve()
     setTimeout(function () { // t(p1-then2-in)
       console.log('promise1-then2') // p1-then2-in
       resolve()
-    },500)
+    },400)
   })
 })
 .then(function () { // p1-then3

@@ -70,6 +70,26 @@ function child () {
 
 如果父类方法写在`prototype`内部就没有办法构造器继承。所以全部方法只能够写在`constructor`内部，并通过`call`改变执行。
 
+## 委托继承
+
+> 在《youdontkonwjs》中是比较推崇继承方式
+
+```JavaScript
+var parent = {
+  init: function () {
+    this.name = 'parent'
+  },
+  showname: function () {
+    return this.name
+  }
+}
+
+var child = Object.create(parent)
+child.say = function () {}
+```
+
+
+
 
 
 
