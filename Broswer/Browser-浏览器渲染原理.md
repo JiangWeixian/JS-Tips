@@ -9,19 +9,18 @@
   - [1.3. 初探 - 浏览器渲染流程](#13-初探---浏览器渲染流程)
     - [1.3.1. 假设没有SCRIPT](#131-假设没有script)
     - [1.3.2. 加入SCRIPT(不含有`defer or async`)](#132-加入script不含有defer-or-async)
-    - [加入SCRIPT(含有`defer or async`)](#加入script含有defer-or-async)
-      - [题外话](#题外话)
-  - [1.5. 渲染初始 - `CSS-DOM-TREE&HTML-DOM-TREE`](#15-渲染初始---css-dom-treehtml-dom-tree)
-  - [1.6. 渲染再次 - 重新开始](#16-渲染再次---重新开始)
-  - [总结](#总结)
-  - [1.7. 链接](#17-链接)
+    - [1.3.3. 加入SCRIPT(含有`defer or async`)](#133-加入script含有defer-or-async)
+      - [1.3.3.1. 题外话](#1331-题外话)
+  - [1.4. 渲染再次 - 重新开始](#14-渲染再次---重新开始)
+  - [1.5. 总结](#15-总结)
+  - [1.6. 链接](#16-链接)
 
 <!-- /TOC -->
 
 ## 1.1. 前置知识 - 构建&渲染
 
 * 构建 - 由文件得到数据结构
-* 渲染 - 就是可以看到呈现的画面
+* 渲染 - 就是可以看到呈现的画面 - 是`cssdom and htmldom`组合构成的行为
 
     如果是`link html script`这样的顺序。
     
@@ -43,8 +42,8 @@
 
 顺序为`DOMContentload->图片->load`
 
-* DOMContentload - `HTMLDOM`解析完毕就会触发(不需要等待样式表图片，**但是需要等待所有的JS文件执行完成**)，**要区分默认的DOMContentload行为还是自定义的**。
-* load - 在DOMContentload触发之后，加载完成所有资源(需要等待样式表图片)之后触发
+* DOMContentload - `HTMLDOM`解析完毕就会触发(不需要等待样式表图片，**但是需要等待所有的JS文件执行完成，见注意1**)
+* load - 在DOMContentload触发之后，加载完成所有资源(需要等待样式表图片，脚本文件)之后触发
 
 **注意1：需要等待所有的(normal defer not async)JS文件执行完成**
 
@@ -58,7 +57,7 @@
 
 对于`async`，在[(调整网络为slow-3g)async-script.html]()和[(调整网络为slow-3g)async-script位置测试.html]()测试发现有所 **不同**(无法打印出`windows.$`)。说明:
 
-* `async`不会严格等待`DOMCONTENTLOAD`之前执行。在上面两个例子由于`JS`文件比较大，所以在`DOMCONTENTLOAD`之前并没有下载完全。
+* `async`不会严格等待`DOMCONTENTLOAD`之前执行，`DOMCONTENTLOAD`也不会因为`JS`文件没有下载完就不触发。在上面两个例子由于`JS`文件比较大，所以在`DOMCONTENTLOAD`之前并没有下载完全。
 
 > 如果比较小的文件，可能会在`DOMCONTENTLOAD`之前完成
 
@@ -111,15 +110,17 @@
 
 如同之前总计的`cssdom htmldom`都完成了，初始页面就已经可以看到了。
 
-就像是[longtimescript.html]()测试的那样，js执行的时候还是会干扰页面呈现。不执行完成还是会干扰页面。
+就像是[longtimescript.html]()测试的那样，js执行的时候还是会干扰页面呈现。
 
-这里有一个小细节，如果`script`在`cssdom or htmldom`解析完成之后也完成了下载，且执行时间比较久的话。可能会出现白屏的情况。好办法是是将这个
+> (我觉得可能是因为)这里有一个小细节，如果`script`在`cssdom or htmldom`解析完成之后也完成了下载，且执行时间比较久的话。可能会出现白屏的情况，就像是[longtimescript.html]()那样。**干扰页面呈现**
+
+好办法是是将这个长时间的过程异步执行，这个行为就好比模拟`script`长时间下载。此时不会白屏。**不干扰页面呈现**
 
 **Q&A2 - JS和CSS书写顺序，同步异步关系**
 
 如果`JS`前面存在`CSS`文件才会等待前面的`CSS`文件下载构建，而不会等待后面`CSS`文件。
 
-### 加入SCRIPT(含有`defer or async`)
+### 1.3.3. 加入SCRIPT(含有`defer or async`)
 
 1. 将`script`标签写到页面最后是优化手段之一 
 2. `defer & async`属性
@@ -134,7 +135,7 @@
 
 **defer async domcontentload**
 
-`defer`一定发生在`DOMContentLoaded`之前，见[defer.html]()。而`async`取决于其下载什么时候完成，并没有绝对的先后关系。
+见[domcontentload]()小结分析。
 
 > 也就是说`async`可能在`defer`之前或者之后都有可能。`async`在`DOMContentLoaded`发生之前之后都有可能。
 
@@ -148,10 +149,9 @@
 
 在[参考链接](https://juejin.im/post/59c60691518825396f4f71a1) 存在一个`script`在`cssdom htmldom`都完成了之后，还是处于下载过程中。等到该`script`下载完成，并执行，可能会让页面有闪硕。
 
+这一点和`defer normal async`的属性无关。
 
-在[deferorasync-script.html]()中测试了代码，发现即使`script`拥有(`defer or async`)代码下载完成，执行时间比较久还是会阻止页面出现。
-
-#### 题外话
+#### 1.3.3.1. 题外话
 
 **注意0: - 一般将defer脚本放在最后是为了兼容ie**
 
@@ -165,12 +165,7 @@
 
 这就是为什么[知乎-某答案network中js加载时间async延后defer那么多](https://www.zhihu.com/question/20531965)
 
-
-## 1.5. 渲染初始 - `CSS-DOM-TREE&HTML-DOM-TREE`
-
-当我们加载好`CSS`(可能存在是`style or link`中文件，这两个从加载顺序角度来说并没有什么区别)，以及由`HTML`构建好`DOM-TREE`的时候，两者组合同时渲染页面。
-
-## 1.6. 渲染再次 - 重新开始
+## 1.4. 渲染再次 - 重新开始
 
 当`CSS-DOM-TREE&HTML-DOM-TREE`组合完成开始渲染。
 
@@ -178,17 +173,18 @@
 
 渲染的程度取决于`JS`对`DOM`改变程度，有可能是部分，有可能是全部。
 
-## 总结
+## 1.5. 总结
 
-> 总结前面两小结
+1. 现代浏览器一般都支持并行下载，所以改变性能只剩下，下载过程和运行过程是否影响DOM
+2. `DOMContentload`意味着`htmldom`解析完成
+3. 初始页面渲染和`cssdom htmldom`有关
+4. `normal defer`一定保证在`DOMContentload`之前执行，而`async`无法保证，取决于下载速度和大小。所以`DOM`操作应该放在`defer or normal`，`async`应该是独立以及不涉及`dom`
+5. 如果是`link html js`这样的结构，有没有`normal defer or async`对初始页面渲染没影响。因为此时`cssdom htmldom`都已经解析完成了。之后运行代码可能会有闪烁。
+    * 之所以此时将`defer or async`的代码放在最后是为了兼容性考虑
+6. 如果是`js link html`和`link js html`两种结构，注意`link`的影响。只有这两种情况下`defer or async`才能够表现出优势。
+7. 在`DOMContentload`和`load`之间还有加载其他资源(包括图片&JS)的过程。
 
-1. `DOMContentload`意味着`htmldom`解析完成
-2. 初始页面渲染和`cssdom htmldom`有关
-3. 如果是`link html js`这样的结构，有没有`normal defer or async`对初始页面渲染没影响。因为此时`cssdom htmldom`都已经解析完成了。
-2. 如果是`js link html`这样的结构，
-3. 在`DOMContentload`和`load`之间还有加载其他资源(包括图片&JS)的过程。
-
-## 1.7. 链接
+## 1.6. 链接
 
 * [简单理解](http://www.cnblogs.com/Peng2014/p/4687218.html)
 * [十分细致的解析](https://www.jianshu.com/p/a32b890c29b1)
