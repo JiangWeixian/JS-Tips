@@ -99,17 +99,18 @@
 2. 运行
 3. 渲染
 
-**运行优化**
+**运行优化 - `defer or async`**
 
-1. 将`script`标签写到页面最后是优化手段之一 
-2. `defer & async`属性
+完整部分见[Browser-浏览器渲染过程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
+
+1. 无论是否有`defer or async`属性，将`script`标签写到页面最后是相对稳妥的做法。
+    * 没有兼容性问题
+    * 优化不阻塞DOM(相对于`normal script`写在头部) 
+2. `defer & async`属性优势只会 **将`script`标签写在头部的时候才会看出来**
     * 共同特点 - 加载`JS`的时候 **不干扰HTML解析，但是运行的时候还是会**
-    * `defer` - 延迟。**并在`HTML-DOM-TREE`解析完毕(一个叫`DOMContentLoaded`事件)之后，且`JS`加载完毕之后执行。** 而且，所以两个defer脚本的执行顺序是可以保证的。按书写顺序。
+    * `defer` - 延迟。**并在`HTML-DOM-TREE`解析完毕(一个叫`DOMContentLoaded`事件)之前，且`JS`加载完毕之后执行。** 而且，所以两个defer脚本的执行顺序是可以保证的。按书写顺序。
     * `async` - 同步。但是是在 **JS加载完毕之后** 执行(执行的时候还是干扰了dom)。并不会等待`HTML-DOM-TREE`解析完毕。**不依赖其他脚本**。两个`async`脚本的执行顺序无法保证。
 3. 也就是说`async`可能在`defer`之前或者之后都有可能。
-  * 无论谁先运行都会干扰到另外一个的下载。
-
-如同[Browser-浏览器渲染过程]()中说明的那样，页面呈现出来必须`JS` **下载完成以及执行完成。** 所以如果是`defer or async`都会在运行的时候干扰，且如果页面上所有的`script`标签不执行完成，页面时无法呈现。
 
 **注意0: - 一般将defer脚本放在最后是为了兼容ie**
 
