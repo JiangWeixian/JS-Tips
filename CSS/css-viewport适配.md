@@ -15,7 +15,7 @@
 
 ## 1.1. 前置知识 - 像素概念&flexible.js
 
-这部分概念见[CSS-像素概念]()
+这部分概念见[CSS-像素概念](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
 
 可以简单理解为`flexible.js`自动化版本。
 
