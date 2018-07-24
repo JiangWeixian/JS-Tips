@@ -64,7 +64,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 ## 1.4. DataURI - css
 
-> 和 **DataURI - script**一样，适用于`link-href`
+> 和 [DataURI - script]()一样，适用于`link-href`
 
 ## 1.5. embed - DataURI
 
