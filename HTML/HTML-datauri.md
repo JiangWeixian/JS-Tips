@@ -38,7 +38,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 支持类型如下：
 
-![datatype]()
+![datatype](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/HTML/img/datatype.PNG)
 
 任何一段`datauri`数据复制到浏览器地址中，都可以通过浏览器解析。具体解析为什么数据，取决于`mime type`
 
@@ -46,13 +46,13 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 这个算是接触比较多而且比较好理解的。在`vue`中，通过插件可以将`image`变为`base64`格式然后作为`src`，或者是`css`文件中的`background: url`。显示结果和传统的没有什么区别。
 
-**优势：** 以打包为目的，将图片变为`WebAPP`一部分。那么下载完`HTML`文件就相当于下载好了`IMAGE`。在[浏览器渲染流程]()中提到，如果是`css html js`的顺序，执行好`JS`文件，下一步才是`images`等资源下载。因此`datauri image`优势在于减少了`HTTP`请求次数。
+**优势：** 以打包为目的，将图片变为`WebAPP`一部分。那么下载完`HTML`文件就相当于下载好了`IMAGE`。在[浏览器渲染流程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)中提到，如果是`css html js`的顺序，执行好`JS`文件，下一步才是`images`等资源下载。因此`datauri image`优势在于减少了`HTTP`请求次数。
 
 **缺陷：** 
 
 浏览器是不会缓存`HTML`的，所以也就不会缓存`datauri image`。
 
-另外也是优势的缺陷，由于`css`中，图片大小限制了`css`下载与解析，在[浏览器渲染流程]()中提到，网页 **初始**呈现页面与`cssdom and htmldom`两个都有关系，如果这`cssdom`现在太慢，`cssdom and htmldom`出现时间比较慢，那么白屏时间也会比较长。
+另外也是优势的缺陷，由于`css`中，图片大小限制了`css`下载与解析，在[浏览器渲染流程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)中提到，网页 **初始**呈现页面与`cssdom and htmldom`两个都有关系，如果这`cssdom`现在太慢，`cssdom and htmldom`出现时间比较慢，那么白屏时间也会比较长。
 
 **写在`image`中随着`html`一起下载，自然也会相对耗时。增加白屏**(如果`image-src`是传统的路径的话，遵循图片下载发生在`domcontentload`和`load`之间，此时可能或许页面已经出现了)
 
@@ -70,7 +70,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 > 在[text/plain-datauri实例](https://stackoverflow.com/questions/34845250/loading-script-content-from-data-url)提到可以适用`embed`标签。
 
-在[embed.html]()测试中发现，可以插入以上任意类型数据。
+在[embed.html](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML/embed.html)测试中发现，可以插入以上任意类型数据。
 
 ## 1.6. 链接
 
