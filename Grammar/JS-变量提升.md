@@ -29,6 +29,40 @@ console.log(x)
 x = 1
 ```
 
+**注意，变量提升在`if`语句和全局变量共同存在的时候，特别的坑**
+
+```JavaScript
+var name = 'world'
+function say () {
+  if (typeof name === "undefined") {
+    var name = 'jack'
+    console.log(`Goodby ${name}`)
+  }
+}
+say()
+```
+
+会输出结果`console.log(Goodby jack)`
+
+为什么`name`会被认为是`undefined`
+
+1. `var`变量提升，所以`var name`会提升到`if`之外
+2. 而`JavaScript`查找是冒泡形式的，因此 **只会找到函数内部的`name`，而不是全局变量`name`**。
+
+因此上面这段代码就变为了：
+
+```JavaScript
+var name = 'world'
+function say () {
+  var name
+  if (typeof name === undefined) {
+    name = 'jack'
+    console.log(`Goodby ${name}`)
+  }
+}
+say()
+```
+
 ### function
 
 同样的情况也出现在`function`表达式中：
