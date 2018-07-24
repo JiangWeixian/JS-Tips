@@ -54,7 +54,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 另外也是优势的缺陷，由于`css`中，图片大小限制了`css`下载与解析，在[浏览器渲染流程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)中提到，网页 **初始**呈现页面与`cssdom and htmldom`两个都有关系，如果这`cssdom`现在太慢，`cssdom and htmldom`出现时间比较慢，那么白屏时间也会比较长。
 
-**写在`image`中随着`html`一起下载，自然也会相对耗时。增加白屏**(如果`image-src`是传统的路径的话，遵循图片下载发生在`domcontentload`和`load`之间，此时可能或许页面已经出现了)
+**写在`image`的`datauri`中随着`html`一起下载(因为此时就是一段字符串)，自然也会相对耗时。增加白屏**(如果`image-src`是传统的路径的话，遵循图片下载发生在`domcontentload`和`load`之间，此时可能或许页面已经出现了)
 
 ## 1.3. DataURI - script
 
