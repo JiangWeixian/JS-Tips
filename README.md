@@ -1,13 +1,13 @@
 [![lovefrontend](https://img.shields.io/badge/LOVE-FRONTEND-red.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![webtips](https://img.shields.io/badge/TIPS-WEB-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![mit](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips)
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95.png" height="43px" alt="全部目录"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/vuejs.png" height="43px" alt="vue"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/database.png" height="43px" alt="database"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/browser.png" height="43px" alt="browser"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/webpack.png" height="43px" alt="webpack"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/http.png" height="43px" alt="network"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/designpatterns.png" height="43px" alt="design-patterns"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/demos.png" height="43px" alt="demos"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img> 
+<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95.png" height="43px" alt="全部目录"></img> <a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>  <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/vuejs.png" height="43px" alt="vue"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/database.png" height="43px" alt="database"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/browser.png" height="43px" alt="browser"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/webpack.png" height="43px" alt="webpack"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/http.png" height="43px" alt="network"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/designpatterns.png" height="43px" alt="design-patterns"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/demos.png" height="43px" alt="demos"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img> 
 
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img>
 
 * [axios如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
 * [medium-selection选词插件](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/selection.md)
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js">
+<a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>
 
 > 推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
 
@@ -51,10 +51,6 @@
 * [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
 * [JS-继承-继承概念关键字解释](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90.md)
 * [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
-
-**次级目录**
-
-* [以内容进行分类](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%9B%AE%E5%BD%95/JS-%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.md)
 
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img>
 
