@@ -1,5 +1,7 @@
 [![lovefrontend](https://img.shields.io/badge/LOVE-FRONTEND-red.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![webtips](https://img.shields.io/badge/TIPS-WEB-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![mit](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips)
 
+[![javascript](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/JavaScript.png)]()
+
 <!-- TOC -->
 
 - [0.1. NPM](#01-npm)
