@@ -40,7 +40,6 @@
 * [JS-继承-实现方法](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)
 * [JS-继承-(__proto__&&prototype&&new)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)
 * [JS-call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md)
-* [JS-发布订阅(观察者)模式-自定义事件](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.md)
 * [JS-闭包-柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md)
 * [JS-浮点数陷阱](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%AE%E7%82%B9%E6%95%B0%E9%99%B7%E9%98%B1.md)
 * [JS-Array-随机排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F.md)
