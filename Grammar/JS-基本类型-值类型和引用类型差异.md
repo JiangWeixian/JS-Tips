@@ -13,7 +13,7 @@
 
 ## 值类型
 
-见[JS-基本类型-值类型]()
+见[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)
 
 ## 引用类型 - 规则
 
