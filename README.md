@@ -13,7 +13,7 @@
 
 > 发现如果直接MDN看API例子你会学到很多
 
-* [JS基本类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
+* [JS-基本类型-值类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
 * [JS块级作用域](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
 * [JS交集并集](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E4%BA%A4%E9%9B%86%E5%B9%B6%E9%9B%86%E7%AD%89.md)
 * [JS-falsy&turthy](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)
@@ -51,6 +51,7 @@
 * [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
 * [JS-继承-继承概念关键字解释](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90.md)
 * [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
+* [JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)
 
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img>
 
