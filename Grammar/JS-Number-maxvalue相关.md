@@ -7,6 +7,7 @@
   - [前置知识 - 二进制转化](#前置知识---二进制转化)
   - [前置知识 - JS数据存储](#前置知识---js数据存储)
   - [MAX_SAFE_INTEGER](#max_safe_integer)
+    - [相关操作](#相关操作)
   - [MAX_VALUE](#max_value)
   - [MIN_VALUE](#min_value)
   - [总结](#总结)
@@ -104,6 +105,18 @@ num.toString(2) // 0.1
 可以计算得到`2^52+....2^0`等于`2^53-1`，就是`Number.MAX_SAFE_INTEGER`
 
 **MIN_SAFE_INTEGER就是负数的MAX_SAFE_INTEGER**
+
+### 相关操作
+
+> 记录和`MAX_SAFE_INTEGER`相关问题
+
+1. BUG1
+
+MAX_SAFE_INTEGER = 2^53-1
+
+如果一个数字等于`2^53`，那么`2^53+1`还是等于`2^53`。**如果用在循环上，可能导致死循环。**。而且如果不加上`1`，而是一下子加了一个比较大的数字，数值变化了，但是结果不对。因所以`MAX_SAFE_INTEGER`范围之内，结果才会比较准确。
+
+可是如果是乘法却又不会，例如`2^53*num(>1) != 2^53`。
 
 ## MAX_VALUE
 
