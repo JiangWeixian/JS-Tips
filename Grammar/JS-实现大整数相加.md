@@ -3,9 +3,9 @@
 
 ## 前置知识
 
-JS中数据以**8字节存储**，1个字节代表8bit。也就是一共64个0。字节、bits之间关系可以看[这里](https://blog.csdn.net/cx_wzp/article/details/8104224)。也就是说JS中最大数应该只能是`2^63-1`。**但其实不是**，正如同[这篇文章](https://segmentfault.com/a/1190000002608050)所说的，JS对`double`浮点数的处理有所不同，我能够用到只有`53`。所以应该是`2^53-1`。可以再浏览器`console`通过`Number.MAX_SAFE_INTEGER`查看。
+JS中数据以 **8字节存储**，1个字节代表8bit。也就是一共64个0。字节、bits之间关系可以看[这里](https://blog.csdn.net/cx_wzp/article/details/8104224)。也就是说JS中最大数应该只能是`2^63-1`。**但其实不是**，正如同[这篇文章](https://segmentfault.com/a/1190000002608050)所说的，JS对`double`浮点数的处理有所不同，我能够用到只有`53`。所以应该是`2^53-1`。可以再浏览器`console`通过`Number.MAX_SAFE_INTEGER`查看。
 
-实现大整数相加有两种方法，讲其转换为二进制进行操作是比较优雅的。另一种折中的方法是，先将大数据转化为字符串数组，同时变成相同的长度（也就是再数组某些位置需要补零）。然后对应位置相加**注意超过10就要进一位的问题**
+实现大整数相加有两种方法，讲其转换为二进制进行操作是比较优雅的。另一种折中的方法是，先将大数据转化为字符串数组，同时变成相同的长度（也就是再数组某些位置需要补零）。然后对应位置相加 **注意超过10就要进一位的问题**
 
 再JS中进行BITS操作并不常见，但是的确提供这样的结果，[MDN上关于位操作符的定义](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#Bitwise_operators)
 
