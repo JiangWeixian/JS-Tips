@@ -140,9 +140,12 @@
     },
     b: function () {
       this.a(function () {console.log(this)})
+    },
+    c: function () {
+      console.log(this)
     }
   }
-  obj.b()
+  obj.a(obj.c)
   ```
 
   `this`为`window`，两种i情况都是
