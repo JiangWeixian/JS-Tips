@@ -1,9 +1,9 @@
-# 1. Prototype - 操作指南
+# 1. proto - 操作指南
 > 由哪些需要注意的细节
 
 <!-- TOC -->
 
-- [1. Prototype - 操作指南](#1-prototype---操作指南)
+- [1. proto - 操作指南](#1-proto---操作指南)
   - [1.1. 前置知识 - 引用类型和值类型](#11-前置知识---引用类型和值类型)
   - [1.2. 内建函数差异](#12-内建函数差异)
     - [1.2.1. Object.getPrototypeof](#121-objectgetprototypeof)
@@ -18,7 +18,7 @@
 
 ## 1.2. 内建函数差异
 
-有几个内建API可以操作`prototype`
+> 虽然名字带有prototype，但是其实操作的还是`__proto__`
 
 * Object.getPrototypeof
 * Object.setPrototypeOf()
