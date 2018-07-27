@@ -143,4 +143,6 @@ var numa = Number(1)
 
     `3.toString()`同样也是错误的，这是因为`3.`可以作为一个合法数字，这里显然`JS`解释器分离为`3. and toString`。如果是`3..toSting()`就没有问题了，因为`3. and .toString()`正好分离为两个合法的代码。
 
-    
+3. **Q&A3 -** `null and undefine`
+
+    > 这两个没有`valueof or tostring`。所以要单独记住她转化的结果，`valueof: 0`和`toString: 'null' and 'undefine'`
