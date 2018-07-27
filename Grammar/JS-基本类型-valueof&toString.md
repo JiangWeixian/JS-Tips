@@ -117,3 +117,30 @@ var numa = Number(1)
 **题外话**
 
 由于`new`关键字的特点，对于`var a = new Boolean(xx)`之后对于`a`如果涉及到[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)。结果都是`true`。
+
+## valueof&tostring全记录 - Q&A
+
+1. **Q&A1 -** `array`数据类型可以是多维数组，比如`[[[2]]] or [[[2,2], [1,1]], [[2,2], [1,1]]]`
+
+    > 控制台给出的答案是:`"2" and "2,2,1,1,2,2,1,1"`。所以`toString`会把里面的数据全部取出来拼接在一起。
+
+2. **Q&A2 -** 以上`valueof and tostring`都是在变量名上面调用。那么`valueof and tostring`可以对等式右边调用吗？例如`[].toString`
+    
+    ```JavaScript
+    // 只测试tostring一种情况，valueof应该一样
+    [].toString()
+    true.toString()
+    '3'.toString()
+
+    // 以下要额外说明
+    {}.toString()
+    3.toString()
+    ```
+
+    对于前三个都是 **OK**的。没啥大问题。
+
+    后面两个为什么要特别说明！因为`{}`可以是函数作用域或者是块作用域。所以对于`{}.toString()`显然是被认为了作用域。(`{index: 1}.toString()`同样错误，看来对于`{}`是无法直接调用`toString`，除非赋值给一个变量)
+
+    `3.toString()`同样也是错误的，这是因为`3.`可以作为一个合法数字，这里显然`JS`解释器分离为`3. and toString`。如果是`3..toSting()`就没有问题了，因为`3. and .toString()`正好分离为两个合法的代码。
+
+    
