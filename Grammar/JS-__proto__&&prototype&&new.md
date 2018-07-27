@@ -13,6 +13,8 @@
     - [1.5.1. 番外 - 私有属性](#151-番外---私有属性)
     - [1.5.2. 总结](#152-总结)
   - [1.6. 链接](#16-链接)
+- [内建数据类型](#内建数据类型)
+  - [内建数据类型 - prototype](#内建数据类型---prototype)
 
 <!-- /TOC -->
 
@@ -589,3 +591,26 @@ var bar = new Bar()
 ## 1.6. 链接
 
 * [外文解析-我觉得写的不错](http://dmitrysoshnikov.com/ecmascript/javascript-the-core/)  
+
+# 内建数据类型
+
+> 内建类型和`function`一样都有`prototype`
+
+## 内建数据类型 - prototype
+
+在[1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)中指出`var a = {}`没有`prototype`，而`function f`是有的。
+
+但是像`Array or Object or Number`都是能够操作`prototype`。
+
+```JavaScript
+// 但是以下prototype就消失了
+var num = 1
+var obj = {}
+var arr = []
+```
+
+可以这么理解，获取是经过了`new Array or new Object or new Number`操作才有了我们看到的`1 [] {}`。
+
+对比上面的`new`关键字操作，所以我们看不到`prototype`只有`__proto__`。
+
+因此对应`num obj arr`指向的是`new Array or new Object or new Number .prototype`
