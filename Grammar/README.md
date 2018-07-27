@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img>
+<a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>
 
 <!-- TOC -->
 
