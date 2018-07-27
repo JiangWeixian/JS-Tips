@@ -3,7 +3,7 @@
 
 ## 前置知识 - JSBITS
 
-JS中数据以 **8字节存储**，1个字节代表8bit。也就是一共64个0。字节、bits之间关系可以看[这里](https://blog.csdn.net/cx_wzp/article/details/8104224)。也就是说JS中最大数应该只能是`2^63-1`。**但其实不是**，正如同[这篇文章](https://segmentfault.com/a/1190000002608050)所说的，JS对`double`浮点数的处理有所不同，我能够用到只有`53`。所以应该是`2^53-1`。可以再浏览器`console`通过`Number.MAX_SAFE_INTEGER`查看。具体分析见[JS-数据存储]()
+JS中数据以 **8字节存储**，1个字节代表8bit。也就是一共64个0。字节、bits之间关系可以看[这里](https://blog.csdn.net/cx_wzp/article/details/8104224)。也就是说JS中最大数应该只能是`2^63-1`。**但其实不是**，正如同[这篇文章](https://segmentfault.com/a/1190000002608050)所说的，JS对`double`浮点数的处理有所不同，我能够用到只有`53`。所以应该是`2^53-1`。可以再浏览器`console`通过`Number.MAX_SAFE_INTEGER`查看。具体分析见[JS-数据存储](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Number-maxvalue%E7%9B%B8%E5%85%B3.md)
 
 **因此，对于大于`Number.MAX_SAFE_INTEGER`的操作符运算基本可以可以算作是大数了，对于以上的数据，运算可能正确也可能错误。** 所以即使某些操作上是运算正确的，都要避免这么做。
 
