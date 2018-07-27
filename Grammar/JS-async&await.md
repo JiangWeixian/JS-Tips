@@ -44,8 +44,12 @@
 
 1. **`await`等待什么？**
 
-  > 如果是不同函数就是函数的`return`结果；如果是`promise`，就是`resovle`结果;如果是`async`就是`return`结果(因为`return`会返回一个`promise.resolve`)
+    > 如果是不同函数就是函数的`return`结果；如果是`promise`，就是`resovle`结果;如果是`async`就是`return`结果(因为`return`会返回一个`promise.resolve`)
 
 2. 多个`await`如何处理？
 
-  > 后一个等待前一个执行。也就是说，后面那个`func`可以拿到前面`await`结果作为参数。
+    > 后一个等待前一个执行。也就是说，后面那个`func`可以拿到前面`await`结果作为参数。
+
+3. 与主线程关系
+
+    > 在[JS-浏览器Eventloop]()我们知道，`Promise.then`其实是出于微任务队列中。也就说会先执行主线程代码然后才是`Promise.then`。而`async`不同的是，对于多个`await`它会阻塞后面的主线程代码。
