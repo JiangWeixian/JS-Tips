@@ -27,15 +27,15 @@
 
     第一个函数处理`resolve(data)`，第二个函数处理`reject(reason)`传递的结果。
 
-    至于如何将数据传递下去，见[JS-Promise-等待循环执行完毕]()
+    至于如何将数据传递下去，见[JS-Promise-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
 
-2. 对于`catch`(传递`function (reject-reason) {}`，相当于一个处理错误的函数)默认返回一个`new Promise`。**所以即使是`catch`之后还是可以通过`then`调用。**，同时在[@JS-Promise-test-catch.js]()测试发现，`catch`之后的`then`调用的是`then-resolve`而不是`then-reject`
+2. 对于`catch`(传递`function (reject-reason) {}`，相当于一个处理错误的函数)默认返回一个`new Promise`。**所以即使是`catch`之后还是可以通过`then`调用。**，同时在[@JS-Promise-test-catch.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Promise-test-catch.js)测试发现，`catch`之后的`then`调用的是`then-resolve`而不是`then-reject`
 3. `all race`传递`Promise array`，返回一个`new promise`
 4. `resolve reject`传递的数据或者`Promise`，返回一个`new promise`。**但是`resolve`跳转到`then-resolve`执行，而`reject`跳转到`then-reject`或者是`catch`执行**(这里指的`then-resolve or then-reject`是下一个`then`)
 
-    > 也就是说上一个`then`错误会被下一个`then-reject`捕获[@JS-Promise-test-rejectcatch(不会被catch).js]()。那么如果下一个`then`没有`then-reject`方法，会被`catch`捕获[@JS-Promise-test-rejectcatch(no-then-reject被catch).js]()。如果既没有`then-reject`或者是`catch`的话，见[@JS-Promise-test-rejectcatch(no-then-reject-nocatch).js]()，这个`promise`就被中断了。
+    > 也就是说上一个`then`错误会被下一个`then-reject`捕获[@JS-Promise-test-rejectcatch(不会被catch).js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Promise-test-rejectcatch.js)。那么如果下一个`then`没有`then-reject`方法，会被`catch`捕获[@JS-Promise-test-rejectcatch(no-then-reject被catch).js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Promise-test-rejectcatch.js)。如果既没有`then-reject`或者是`catch`的话，见[@JS-Promise-test-rejectcatch(no-then-reject-nocatch).js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Promise-test-rejectcatch.js)，这个`promise`就被中断了。
 
-    > (`Promise.reject`如何处理`Promise`)见[@JS-Promise-test-reject(如何处理传递的Promise)).js]()
+    > (`Promise.reject`如何处理`Promise`)见[@JS-Promise-test-reject(如何处理传递的Promise)).js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Promise-test.reject.js)
 
 5. `finally`无论如何，在`Promise`链条中都会执行。返回一个`new promise`
 
