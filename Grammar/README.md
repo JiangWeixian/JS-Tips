@@ -55,6 +55,7 @@
 * [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
 * [JS-继承-继承概念关键字解释](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90.md)
 * [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
+* [JS-switch](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-switch.md)
 
 **[🔝回到顶部](#全部目录)**
 
