@@ -29,6 +29,7 @@
 ### 参考
 
 * [来源](http://coolnull.com/53.html)
+* [比上面那个更为详细一些](https://blog.csdn.net/silentpebble/article/details/44196083)
 
 ## 域名解析 - 一步步来
 
