@@ -57,6 +57,7 @@
 * [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
 * [JS-switch](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-switch.md)
 * [JS-基本类型-valueof&tostirng](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-valueof%26toString.md)
+* [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md)
 
 **[🔝回到顶部](#全部目录)**
 
@@ -70,6 +71,7 @@
 * [JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md) / 这三者有什么关系，在继承和类中起到了上面作用
 * [JS-继承几种方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md) / 简要说明了一下
 * [JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md) / 为什么会出现那些坑
+* [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md) / 拥抱未来的类与继承实现方式
 
 ## **this**
 
