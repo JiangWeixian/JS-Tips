@@ -72,7 +72,7 @@
 
     > flex-basis不设定，默认是auto。就是[非替换元素](https://github.com/JiangWeixian/JS-Books/tree/master/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/CSS%E5%9F%BA%E6%9C%AC%E8%A7%86%E8%A7%89%E6%A0%BC%E5%BC%8F%E5%8C%96)本来大小。
 
-    * 元素`flex-basis: auto` - 如果非替换元素本身就比较大，那么会压榨其他元素空间，即使设置了`width or flex-basis`
+    * 元素`flex-basis: auto` - 如果非替换元素本身就比较大，那么会压榨其他元素空间，除非设置了`width or flex-basis`覆盖默认行为。
     * 元素`flex-basis: auto` - 如果非替换元素本身就没那么大，100% - 元素's flex-basis - 非替换元素大小 = 剩余空间。如[flex.html-非替换元素比较小](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/flex.html)
 
 第二点情况也适用于`width: auto`
@@ -88,7 +88,7 @@
 
 **Q&A - 4. flex-grow如何分配剩余空间**
 
-> 只有存在剩余空间的时候才会有效
+> 只有存在剩余空间的时候才会有效；而且注意是剩余空间而不是所有空间。所以可以先根据上面的公式计算父类元素的剩余空间。
 
 这部分可以先参考[阮一峰-flexbox](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)。默认是`0`，其他数值将会分配剩余空间：
 
