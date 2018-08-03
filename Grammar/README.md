@@ -45,13 +45,14 @@
 
 * [JS-let&const](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH02-let%26const) / 并不是把当前`{}`中所有数据固定到块级作用域中；`let&const`没有声明提前。
 * [JS-call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md) / 内含闭包一定要理解部分
-* [闭包与柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md) / 闭包的使用场景
+* [JS-闭包与柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md) / 闭包的使用场景
 
 ## **事件循环**
 
 > 浏览器端和Nodejs都有规则，浏览器端的规则更为清晰
 
-* [JS-浏览器-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
+* [JS-同步异步](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md) / 同步异步代码，下面提到循环基本解释的都是异步代码
+* [JS-浏览器-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md) / 解释了不同级别代码的执行顺序
 * [JS-Nodejs-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
 
 ## **性能与安全**
@@ -62,7 +63,8 @@
 
 > 处理事件；操作DOM
 
-* [JS-捕获与冒泡]()
+* [JS-(事件捕获与冒泡)代理&委托](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86.md) / 解释了事件捕获与冒泡的不同，代理是较好的事件处理方式
+
 
 ## **大数据**
 
