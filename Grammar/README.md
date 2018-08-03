@@ -46,7 +46,7 @@
 
 > 在没有`let&const`的影响下，其他方式声明的变量函数都是属于当前 **函数作用域的。**；闭包应为获得另一个作用域的引用，而不应该仅仅局限于一种形式。
 
-* [JS-变量提升]()
+* [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
 * [JS-let&const](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH02-let%26const) / 并不是把当前`{}`中所有数据固定到块级作用域中；`let&const`没有声明提前。
 * [JS-call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md) / 内含闭包一定要理解部分
 * [JS-闭包与柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md) / 闭包的使用场景
@@ -91,8 +91,8 @@
 
 > 在JS进行比较可是一个大学问
 
-* [JS-基本类型-valueof&tostring]() / 所有数据比较的时候逃不过`valueof&tostring`操作。所以你需要了解他
-* [JS-Object-对象比较]() / 对象是类，比较的是内存地址。进行了`sameobj or equalobj`的区分
+* [JS-基本类型-valueof&tostring](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-valueof%26toString.md) / 所有数据比较的时候逃不过`valueof&tostring`操作。所以你需要了解他
+* [JS-Object-对象比较](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Object-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1.md) / 对象是类，比较的是内存地址。进行了`sameobj or equalobj`的区分
 
 ## **各种坑**
 
@@ -136,6 +136,7 @@
 * [JS-switch](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-switch.md)
 * [JS-基本类型-valueof&tostirng](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-valueof%26toString.md)
 * [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md)
+* [JS-Object-对象比较](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Object-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1.md)
 
 **[🔝回到顶部](#全部目录)**
 
