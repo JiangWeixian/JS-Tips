@@ -48,4 +48,5 @@ a == b // true
     var b = {name: 2}
     JSON.stringify(a) == JSON.stringify(b) // true
     ```
+    局限在于如果属性顺序不同的话。就会出错。
 

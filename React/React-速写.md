@@ -5,6 +5,8 @@
 
 - [React](#react)
   - [**规则**](#规则)
+  - [React库](#react库)
+  - [Tips](#tips)
   - [**浏览器环境下**](#浏览器环境下)
     - [**技巧**](#技巧)
   - [**本地环境下**](#本地环境下)
@@ -51,6 +53,22 @@
                 {...this.props} />
     // 假设PeopleList是一个函数组件，以上这样的写法是给PeopleList这个函数传递了两个参数
     ```
+
+## React库
+
+> 并不像Vue把所有东西都绑定到Vue
+
+有几个第分支库，需要分开下载
+
+* React - 创建组件(`vdom`)
+* ReactDOM - render(`vdom->dom`)
+* redux - 这是第三方库，用来控制数据来的
+
+## Tips
+
+* `render`
+    * 只能够调用一次，之后调用的会覆盖之前的元素
+* 浏览器要支持`babel`转译，需要`browser.js`那个版本，以及`script`设置`text/babel`。以及不能够是`src`。因为这样`browser.js`无法读取到然后实现转译。
 
 ## **浏览器环境下**
 
