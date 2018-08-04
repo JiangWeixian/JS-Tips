@@ -129,6 +129,7 @@ function poll() {
 其实实现方法和传统方法类似：
 
 ```javascript
+// $.ajax来自JQ
 var updater = {
     poll: function () {
         $.ajax({
@@ -148,7 +149,7 @@ var updater = {
             updater.onError();
             return;
         }
-//                收到回复后再次发出请求
+        // 收到回复后再次发出请求
         interval = window.setTimeout(updater.poll, 0);
     },
     onError: function () {
