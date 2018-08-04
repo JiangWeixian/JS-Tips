@@ -8,7 +8,6 @@
   - [React库](#react库)
   - [Tips](#tips)
   - [**浏览器环境下**](#浏览器环境下)
-    - [**技巧**](#技巧)
   - [**本地环境下**](#本地环境下)
   - [第三方库](#第三方库)
 
@@ -66,9 +65,21 @@
 
 ## Tips
 
+* 浏览器没办法使用`import export`(至少目前如此)。如果依旧是使用`script`的导入。可以通过`const {xx} = React`。如果`React`上有一个叫`xx`的属性。
 * `render`
     * 只能够调用一次，之后调用的会覆盖之前的元素
 * 浏览器要支持`babel`转译，需要`browser.js`那个版本，以及`script`设置`text/babel`。以及不能够是`src`。因为这样`browser.js`无法读取到然后实现转译。
+* `flux` - 三部分分别是`actions, dispatcher, store`。**可以理解为带有发布定订阅的全局状态机**
+    > `dispatcher`连接`actions`与`store`；`actions`类似`this.setState`作用，改变全局`state`的具体函数；`store`包含全局`state`，以及一个发布订阅模块；运行过程类似于`actions->dispatcher->store->chagestate, emit(触发事件)`。同时`store.on监听事件`然后再回调函数中进行操作。
+
+    > 与`react`联系，`actions`需要作为`componets`函数进行调用
+
+    > `dispatcher`需要分别为传递给`actions&store`；传递给`actions`是为了能够通过`dispatcher`来触发`store`；传递给`store`是为了能够获得`actions`之后的数值。
+
+    具体可见[阮一峰-react&flux.js](http://www.ruanyifeng.com/blog/2016/01/flux.html)
+
+    关于发布订阅这部分或许是通过`EventEmiter`基础这个函数实现的。
+* `class-type`的组件和`funciton-type`组件，其中`function-type`其实是`class-type`的render函数。`render`函数可以重复调用，但是`constructor in class`只能够调用一次(就是组件创建的时候)
 
 ## **浏览器环境下**
 
@@ -90,7 +101,7 @@
 
     > 组件是 **vdom，可以像标签一样使用**。
 
-    > (不通过`createElement`传递参数)直接用标签方式使用`vdom`。然后通过泪如标签设置参数一样使用。如[01-incorrect-props-no-error.html](https://github.com/MoonHighway/learning-react/blob/master/chapter-06/01-property-validation-and-default-props/01-incorrect-props-no-error.html)。**传递过来的参数在`this.props`**
+    > (不通过`createElement`传递参数)直接用标签方式使用`vdom`。然后通过泪如标签设置参数一样使用。如[01-incorrect-props-no-error.html](https://github.com/MoonHighway/learning-react/blob/master/chapter-06/01-property-validation-and-default-props/01-incorrect-props-no-error.html)。**传递过来的参数在`this.props`**；如果是函数包括`JSX`创建的组件，传递的参数就是函数默认参数。可以看[08-stateless-default-prop](https://github.com/MoonHighway/learning-react/blob/master/chapter-06/02-refs/08-stateless-default-prop.html)和[09-stateless-default-arg](https://github.com/MoonHighway/learning-react/blob/master/chapter-06/02-refs/09-stateless-default-arg.html)
 
     > class-render返回一个vdom，vdom可能接受一些数据动态创建。因此该组件和`vue`一样也是响应式的，**因此这里定义了一个state**。不过如果传递的`props`改变，应该也是动态变化。区别可能是，子组件应该没有办法改变`props`。**可选的方案是将props某个数据传递给state**
 
@@ -109,21 +120,13 @@
 
 2. `ReactDOM.render` - 将`dom`结构绘制(为 **`vdom->dom`的函数**)到给定的元素中。如[05-elements.html](https://github.com/MoonHighway/learning-react/blob/master/chapter-04/02-react-elements/05-elements.html)
 
-
-### **技巧**
-
-浏览器没办法使用`import export`(至少目前如此)。如果依旧是使用`script`的导入。
-
-可以通过`const {xx} = React`。如果`React`上有一个叫`xx`的属性。
-
 ## **本地环境下**
 
 > 借助Nodejs+Webpack开发。本来通过`script`标签导入的文件，现在通过`npm+import`导入。`JS`部分和浏览器没什么区别。**不过从之前单个文件构建组件+绘制dom，现在要分开构建组件。就像是`vue`一样。**
 
 ## 第三方库
 
-* flux - 设计模式的发布订阅。适用于任何框架，因为和react相关的都是通过设置回调函数传入的。见[02-flux.html](https://github.com/MoonHighway/learning-react/blob/master/chapter-07/06-managing-state-outside-react/02-flux.html)
-* redux - 设计模式是状态机
+* redux - 设计模式是状态机。和`flux`很像，但是有区别见[redux&flux]()
     * `createStore` - 传入的参数是一个函数，函数有两个参数分别是`state action`
 
         ```JavaScript
