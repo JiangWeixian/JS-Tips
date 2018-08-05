@@ -11,8 +11,9 @@
   - [**优雅的操作DOM**](#优雅的操作dom)
   - [**大数据**](#大数据)
   - [**简单算法部分**](#简单算法部分)
-  - [比较操作](#比较操作)
+  - [**比较操作**](#比较操作)
   - [**基础坑**](#基础坑)
+  - [**ES.next**](#esnext)
 - [**待分类目录**](#待分类目录)
 
 <!-- /TOC -->
@@ -88,7 +89,7 @@
 
 更多算法题目见[algo](https://github.com/JiangWeixian/Algo)
 
-## 比较操作
+## **比较操作**
 
 > 在JS进行比较可是一个大学问
 
@@ -105,6 +106,13 @@
 * [JS-Date-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Date-%E5%9D%91%E6%B1%87%E6%80%BB.md) / 初始化
 * [JS-String-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-string-%E5%9D%91%E6%80%BB%E7%BB%93.md) / 正则
 * [JS-Object-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md) / 获取属性注意枚举自身父类等区别
+
+## **ES.next**
+
+> 关于`ES6`你一定需要掌握的
+
+* [JS-解构析构](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH03-%E8%A7%A3%E6%9E%84%E6%9E%90%E6%9E%84) / 与函数一起使用，优势明显
+* [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md) / 拥抱未来的类与继承实现方式
 
 **[🔝回到顶部](#以文章内容分类)**
 

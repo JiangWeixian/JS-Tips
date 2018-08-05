@@ -1,142 +1,205 @@
-[![lovefrontend](https://img.shields.io/badge/LOVE-FRONTEND-red.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![webtips](https://img.shields.io/badge/TIPS-WEB-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips) [![mit](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=for-the-badge)](https://github.com/JiangWeixian/JS-Tips)
+# 技术栈
+> 技术栈超级大总结
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95.png" height="44px" alt="全部目录"></img> <a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>  <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/vuejs.png" height="43px" alt="vue"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/database.png" height="43px" alt="database"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/browser.png" height="43px" alt="browser"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/webpack.png" height="43px" alt="webpack"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/http.png" height="43px" alt="network"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/designpatterns.png" height="43px" alt="design-patterns"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/demos.png" height="43px" alt="demos"></img> <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img> 
+> 还在完善中
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img>
+<!-- TOC -->
 
-* [axios如何在请求失败之后多次重连](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/axioRetry.js)
-* [medium-selection选词插件](https://github.com/JiangWeixian/JS-Tips/blob/master/NPM/selection.md)
+- [技术栈](#技术栈)
+  - [📋 - Table of Stacks](#📋---table-of-stacks)
+  - [⚙ - 规则](#⚙---规则)
+  - [👶 - 基础篇](#👶---基础篇)
+    - [🛠 - 工具篇](#🛠---工具篇)
+    - [💻 - 计算机基础](#💻---计算机基础)
+    - [⚔ - 三剑客JS/HTML/CSS](#⚔---三剑客jshtmlcss)
+    - [🖥 - 服务器](#🖥---服务器)
+  - [👦 - 进阶篇](#👦---进阶篇)
+    - [⛸ - 编程CSS](#⛸---编程css)
+    - [🗡 - 模块化](#🗡---模块化)
+    - [⛸ - 优化工作流](#⛸---优化工作流)
+    - [🗡&⛸ - 前端框架学习](#🗡⛸---前端框架学习)
+    - [🛡 - 测试框架](#🛡---测试框架)
+    - [⛸ - 第三方JS库](#⛸---第三方js库)
+  - [👼 - 大师篇](#👼---大师篇)
+  - [💯 - Web面试篇](#💯---web面试篇)
+  - [📕 - 保持学习](#📕---保持学习)
 
-<a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>
+<!-- /TOC -->
 
-> 推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
+## 📋 - Table of Stacks
 
-> 发现如果直接MDN看API例子你会学到很多
+> 工具&轮子汇总
 
-* [JS-基本类型-值类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
-* [JS块级作用域](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F.md)
-* [JS交集并集](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E4%BA%A4%E9%9B%86%E5%B9%B6%E9%9B%86%E7%AD%89.md)
-* [JS-falsy&turthy](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)
-* [JS-Promise&EventLoop，函数执行队列](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
-* [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
-* [JS-模块话](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%20-%20%E6%A8%A1%E5%9D%97%E8%AF%9D.md)
-* [JS-光标操作range](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9Crange.md)
-* [JS-事件代理](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86.md)
-* [JS-实现大整数相加](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)
-* [JS-继承-实现方法](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)
-* [JS-继承-(__proto__&&prototype&&new)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)
-* [JS-call&apply&bind](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-call%26apply%26%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83.md)
-* [JS-闭包-柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md)
-* [JS-浮点数陷阱](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%AE%E7%82%B9%E6%95%B0%E9%99%B7%E9%98%B1.md)
-* [JS-Array-随机排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F.md)
-* [JS-Array-小坑(新建数组)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md)
-* [JS-export](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-export.md) / ES5&ES6模块导入导出
-* [JS-严格模式初探](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md)
-* [JS-JavaScript中同步异步](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)
-* [JS-进制转换](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.md)
-* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md)
-* [JS-debounce(防抖)&throttle(节流)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-debounce%26throttle.md)
-* [JS-Array数组去重](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%8E%BB%E9%87%8D%E5%A4%8D.md)
-* [JS-内存机制和垃圾回收](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md)
-* [JS-this指向总结](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md)
-* [JS-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
-* [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
-* [JS-总结-继承与类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)
-* [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md)
-* [JS-Object-几种获取属性的方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md)
-* [JS-类应用-父类控制子类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%B1%BB%E5%BA%94%E7%94%A8-%E7%88%B6%E7%B1%BB%E6%8E%A7%E5%88%B6%E5%AD%90%E7%B1%BB.md)
-* [JS-Array-旋转升序数组最小值](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Array-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F.js)
-* [JS-Nodejs事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
-* [JS-Prototype操作指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-prototype%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97.md)
-* [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
-* [JS-继承-继承概念关键字解释](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90.md)
-* [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
-* [JS-switch](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-switch.md)
-* [JS-基本类型-valueof&tostirng](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-valueof%26toString.md)
+* 工具
+    * 👶 编写工具 - `VSCode`
+    * 👶 浏览器工具 - `Chrome`
+* JavaScript
+    * 👶 格式化 - `ESlint-standard & Airbnb JavaScript 编码规范`
+    * 👶 `ES-next` - 永远拥抱新特性
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/regex.png" height="43px" alt="reg"></img>
+## ⚙ - 规则
 
-* [Reg-实现多个字符串的连续匹配](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E8%BF%9E%E7%BB%AD%E5%AD%97%E7%AC%A6%E4%B8%B2.md)
-* [Reg-parseint简单自实现](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
-* [Reg-千字分隔符a2b和b2a](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/JS/reg-thoud.js)
+* 📕 - 书籍
+* 👶 - 基础
+* ⛸ - 敏捷加点
+* 🗡 - 攻击加点
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/vuejs.png" height="43px" alt="vue"></img>
+## 👶 - 基础篇
 
-* [Vue-watch](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-watch.md)
-* [Vue-dom](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-dom.md)
-* [Vue-前端框架对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94.md)
-* [Vue-SSR&CSR](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93SSR%26%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93CSR.md)
-* [Vue-骨架屏(和SSR相关)](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E9%AA%A8%E6%9E%B6%E5%B1%8F.md)
-* [Vue-实现原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
-* [Vue-diff算法](https://github.com/JiangWeixian/JS-Tips/blob/master/Vue/Vue-diff%E7%AE%97%E6%B3%95.md)
+学习就像是练功，此时入门阶段你处于在门派求学阶段。
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/webpack.png" height="43px" alt="webpack"></img>
+修炼内功，就像是 **筑基阶段。**
 
-* [postcss速写](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/postcss.md)
-* [Webpack-别名，在vue导入图片模块](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-import%E5%88%AB%E5%90%8D%E9%97%AE%E9%A2%98.md)
-* [Webpack-概述以及和其他工具对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E6%A6%82%E8%BF%B0%E4%BB%A5%E5%8F%8A%E5%92%8C%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.md)
-* [Webpack-前端性能优化方式](https://github.com/JiangWeixian/JS-Tips/blob/master/Webpack/webpack-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
+### 🛠 - 工具篇
+
+> 工欲善其事必先利其器。这就是洞天福地啊！
+
+* [VScode]() / 配置好了就是无敌的
+* Chrome-dev / F12开始调试，运行JS最快的方式
+
+### 💻 - 计算机基础
+
+> 虽然要求没有其他工程师那么高，但是理解数据结构和算法会加快的你的效率。
+
+* [x] [📕 JavaScript数据结构与算法](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95) / 这本书引申开来，你需要知道以下几点
+    * [x] - 简单几种求解算法的思路
+    * [x] - 递归 / 不仅仅是调用自身那么容易，其实是含有一些数学知识的
+    * [ ] - 了解算法复杂度之类的 - 网易的算法公开课会帮到你(既然是公开课，也没有那么难)
+* [ ] 前端开发更像是软件开发，所以一些设计模式你是需要了解的。
+* [ ] 浏览器相关知识
+* [ ] 网络相关知识
+
+### ⚔ - 三剑客JS/HTML/CSS
+
+> 不建议一开始就学习前端框架，原生是基础，很重要。**道友，能否筑基成功？**
+
+<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js">
+
+> MDN真的不错
+
+> 浏览器`JavaScript`环境和`NodeJS`环境是不同的。所以最好复制到浏览器`debug`工具里面。
+
+> `JavaScript`是技术栈最为重要的部分。学习是枯燥的，实践是有趣的。安利自己的[Repo-JSTips]() - 希望可以帮到你们。记录都是学习过程中坑。
+
+* [x] [MDN - Web开发入门]()
+* [x] `JavaScript`语言特性 - `JavaScript`十分看重是 **语言特性的语言**。以下几本书籍都是值得看的
+    * [x] [📕 JS高级程序设计]() / 的确不适合初入门，但是两本真的都很经典。语言特性体现的很多(如果看到不会，留空，以后时常翻阅)，至少和语言相关那部分是一定要知道的。
+    * [x] [📕 Youdontkonwjs]()
+    * [x] 这是我的阅读笔记 - [JS-Books]()
+    * [ ] [JS-踩坑实录]()
+* [ ] [ES6]() - 拥抱新特性
+* [ ] [Babel]() - 转译你的`ES6`代码，现在浏览器支持大部分的`ES6`代码。如果你需要更多支持(或者多平台适配)，可能需要`Babel`进行适配。
+
+💯**检验：** 找一些公司面经或者笔试题目，能够正确解答就差不多。
+
+**在真正开始写代码之前，你需要养成一个良好的习惯。**
+
+* [ ] 好的编程习惯 - **千万不要听信"那句又不是不能用"！(以下上手其实很快的)**
+    * [x] [ESLint-standard]() - VScode上配置`ESLint`
+    * [x] [Airbnb JavaScript 编码规范]() - 上面那个是格式化要求，这个是真正的编程习惯。
+* [ ] 练习`JavaScript`(脱离浏览器，纯`JavaScript`) - 建议`ES5/ES6`两个版本都要实践一遍
+    * [x] [MDN-JS-API]() / **即使无聊，也要背下它**，内置函数API，输入输出以及Polyfill(有助于你学习`JavaScript`语言特性)
+    * [x] [牛客网-JavaScript能力测试]() / 基础版本
+    * [x] [📕 JavaScript数据结构与算法]() / 升级版本
+    * [ ] [📕 剑指Offer]() / 升级版本，`JavaScript`实现一遍
+    * [ ] [leetcode]() / 学有余力，网站上面JS相关题目学习算法基础巩固JS基础
+
+💯**检验：** 前端对算法或许会少一些。但是如果你想找一份工作的话，这是少不了的一部分知识储备。**因为这是检验你本科学习是否认真努力**
 
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img>
 
-* [HTML5&CSS3新特性](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/html%26css%E6%96%B0%E7%89%B9%E6%80%A7.md)
-* [HTML5-navigator.geolocation定位](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E5%AE%9A%E4%BD%8D.md)
-* [HTML-移动端-点透问题(click delay 300ms)](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.md)
-* [HTML-DOCTYPE](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOCTYPE.md)
-* [HTML5-离线缓存-manifest](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML5-%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8-manifest.md)
-* [HTML-表单label作用](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3.md)
-* [HTML-语义化标签作用](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE%E4%BD%9C%E7%94%A8.md)
-* [HTML-script加载过程](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-script%E6%A0%87%E7%AD%BE%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6.md)
-* [HTML-parentNode和parentElement](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM-parentNode%E5%92%8CparentElement.md)
-* [HTML-WebAPI(BOM&DOM)部分](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-WebAPI(DOM%26BOM)%E9%80%9F%E5%86%99.md)
-* [HTML-DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)
-* [HTML-datauri&embed使用分析](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-datauri.md)
+> 建议和CSS入门之后，找慕课网的一些实践项目，一边实践一边巩固。这部分你真的需要实践。
 
+* [x] - [MDN-HTML入门]()
+* [ ] - [MDN-HTMLAPI]() / 没错你还是要背下它，也至少知道它有哪些`API`。不至于用到的时候束手无策。
+* [ ] - 好的编程习惯
+    * [ ] 不要全部`DIV`，语义化你的`HTML`。**或许很难，但这是尝试的第一步。**
+    * [ ] 除了手写`HTML`页面结构，还要知道如何通过`JS`操作`DOM`
+    
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img>
 
-* [css-position&margin&float](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-position%26margin%26float.md)
-* [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)
-* [各种情况下的div元素居中](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/%E5%90%84%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD.md)
-* [css-清除浮动](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8.md)
-* [css选择器优先级](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7.md)
-* [stylus解惑](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/stylus%E8%A7%A3%E6%83%91.md)
-* [css-display](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-display.md)
-* [css-伪类和伪元素之间区别](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0%E5%8C%BA%E5%88%AB.md)
-* [css-盒子模型(box-sizing)](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-boxsizing%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B.md)
-* [css-link&@import](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-link%26%40import.md)
-* [css-画出多边形](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E5%A4%9A%E8%BE%B9%E5%BD%A2.md)
-* [css-BFC](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-bfc.md)
-* [css-像素概念和移动端适配](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
-* [css-viewport适配方案详解](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-viewport%E9%80%82%E9%85%8D.md)
+> `JavaScript`就像是功法，`CSS`会让你拥有属性。从外观上展示你的能力。**一些建议，CSS/HTML不一定需要全部看完再去实践，可以选择实践之后，再回过头来看看一看。优化你之前的实践内容**
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/http.png" height="43px" alt="network"></img>
+> CSS多且杂。不亚于一门语言，所以你需要系统了解它。**或许你不要知道复杂的CSS动画如何实现，但是一定要明白布局！**
 
-* [请求头和响应头](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-request%26response-headers.md)
-* [计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
-* [跨域处理](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86.md)
-* [tcp+udp+http等](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP%2BUDP%2BHTTP%2B%E8%BD%AE%E8%AF%A2%2BWebsocket.md)
-* [攻击方式xss+csrf](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md)
-* [cookie、session、localstorage、token](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/cookie%2Bsession%2Blocalstorage%2Btoken.md)
-* [HTTP-响应码速写](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E7%8A%B6%E6%80%81%E7%A0%81.md)
-* [HTTP-缓存性能优化](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E7%BC%93%E5%AD%98%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
-* [AJAX-前世今生](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/AJAX-%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F%E8%A7%A3%E6%83%91.md)
-* [TCP-三次握手缺陷](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%BC%BA%E9%99%B7.md)
-* [HTTP-2.0](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-2.0.md)
-* [HTTP-输入url到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / 包含网络优化思路
+* [x] [MDN-CSS入门]()
+* [x] [📕 CSS权威指南]() / 我相信这回解决你的困惑
+* [ ] [CSS-踩坑实录]()
+* [ ] [CSS-BFM]() - 好的命名习惯
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/browser.png" height="43px" alt="browser"></img>
+💯**检验：** 找一份设计稿，然后实现它。**要求能够响应式布局**
 
-* [Browser - DOM&BOM&JS](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Broswer-DOM%26BOM%26JS.md)
-* [Browser - 浏览器渲染原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
-* [Browser - reflow&repaint](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-reflow%26repaint.md)
-* [Browser-浏览器内核&渲染&JS](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%26%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%26JS%E5%BC%95%E6%93%8E.md)
+### 🖥 - 服务器
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/database.png" height="43px" alt="database"></img>
+> 个人认为，对于新手来说。服务器入门和`JS/HTML/CSS`不同，应该以框架入门
 
-* [数据库简介](https://github.com/JiangWeixian/JS-Tips/blob/master/DataBase/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B.md)
+* [ ] [Koa]()
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/demos.png" height="43px" alt="demos"></img>
+## 👦 - 进阶篇
 
-* [原生js实现的小程序,重点在于思路](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
-    * **Demo-drag** - 原生的拖拽元素实现
-    * **Demo-clearfloat** - 清除浮动的两种方式
+> (还在摸索)筑基成功之后，你需要加点技能点：加点速度⛸(优化你的工作流)；加点攻击🗡(适配，最佳实践)；加点防御(安全，优化，测试)
+
+> 同时前端轮子造起来比较容易，选一把 **趁手的武器，然后活用它**很重要，因为要避免成为配置工程师。
+
+### ⛸ - 编程CSS
+
+* [x] [Stylus]() - 编程你的`CSS`。
+
+### 🗡 - 模块化
+
+> 在NodeJS环境下，模块化是主流的开发选择。但是你可能需要学习在浏览器环境下如何使用模块化的开发。
+
+* [require.js]()
+
+### ⛸ - 优化工作流
+
+> 对应任务有对应插件可选(或许是一对多的关系，选好了就不要换了，学习成本大)
+
+> 避免成为配置工程师
+
+* [ ] [Gulp]() - 在`JS`文件中处理`JS`, 在`CSS`文件中处理`CSS`..。你需要做到
+    * [ ] 页面自动刷新
+    * [ ] 处理`JS/CSS` - 压缩优化，预处理等
+    * [ ] 处理多页面/单个页面情况
+* [ ] 结合`nodejs`实现一个类似`vue-cli`工具
+* [ ] [Webpack]() - 与`gulp`相比各有所长，适合`vue/react`此类需要打包的，且在`JS`中处理各种文件类型的形式(基于它任何都是包文件的设计思想)
+
+### 🗡&⛸ - 前端框架学习
+
+> 框架之下有许多插件，还是那个规则选个合适的，并保持
+
+> 框架学习不应该停留在会用，还要知道其中原理。例如涉及到了怎样的设计模式，如何实现等。
+
+> 虽然很想和你说只要学`vue`。但是，如果你只会`vue`，要学`react`。如果你会`react`，或许你学习`vue`就只是个备选项。
+
+
+* [ ] [Vue]()
+* [ ] [React]()
+
+框架需要知道然以及所以然，从框架引申开来，你需要知道其中蕴含的设计思想：
+
+* 发布订阅
+* 状态机
+
+### 🛡 - 测试框架
+
+> 测试框架使用可能个人不会在意，就像是我一样，不太注意这方面；但是会发现很多大工程都是包含测试部分，建议你还是了解他。
+
+* [JTest.js]()
+
+### ⛸ - 第三方JS库
+
+> 前端轮子多。可能设置动画就有好多种动画库，轮播器也有好多种。因此 **还是选择最合适，并保持**
+
+* [ ] - 🖼动画
+* [ ] - 一些设计模式库
+
+## 👼 - 大师篇
+
+## 💯 - Web面试篇
+
+## 📕 - 保持学习
+
+> 关注博客；订阅邮件；关注大牛；**无论在哪个阶段都是需要你保持饥渴的学习态度的！**
+
+* [x] - 这个[网站](https://uptodate.frontendrescue.org/zh/)会帮到你！
