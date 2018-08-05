@@ -87,6 +87,18 @@
 
 ## **简单算法部分**
 
+> leetcode这个网站在学习算法部分帮到你
+
+> 有的时候一些小技巧会帮你很多
+
+* [JS-Array-随机排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F.md)
+* [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md) / 优先级排序在很多场景下适用(**一定要注意活用**)
+* [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md) / 适用已经排序了的数组
+* [JS-Array-旋转升序数组最小值](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Array-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F.js) / 运用了二分查找方法
+* [JS-Array数组去重](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%8E%BB%E9%87%8D%E5%A4%8D.md) / 空间换时间，以及原址去重(这个用到了优先级排序的思想)
+* [JS-set特性-交集并集](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E4%BA%A4%E9%9B%86%E5%B9%B6%E9%9B%86%E7%AD%89.md)
+* [JS-stack-进制转换](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.md) / 栈先进先出特性
+
 更多算法题目见[algo](https://github.com/JiangWeixian/Algo)
 
 ## **比较操作**
@@ -95,12 +107,13 @@
 
 * [JS-基本类型-valueof&tostring](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-valueof%26toString.md) / 所有数据比较的时候逃不过`valueof&tostring`操作。所以你需要了解他
 * [JS-Object-对象比较](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Object-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1.md) / 对象是类，比较的是内存地址。进行了`sameobj or equalobj`的区分
-* [JS-falsy&truthy]() / `if() Boolean()`等遵循的转换规则
+* [JS-falsy&truthy](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md) / `if() Boolean()`等遵循的转换规则
 
 ## **基础坑**
 
 * [JS-基础类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md) 
 * [JS-基本类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)
+* [JS-全局函数-encodeURI&encodeURIcomponent](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0-encodeURI%26encodeURIcomponent.md) / 这两个函数使用频率很高，一定要知道
 * [JS-Array-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md) / `index`未初始化
 * [JS-Switch-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-switch.md) / `===`比较
 * [JS-Date-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Date-%E5%9D%91%E6%B1%87%E6%80%BB.md) / 初始化
@@ -113,32 +126,23 @@
 
 * [JS-解构析构](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH03-%E8%A7%A3%E6%9E%84%E6%9E%90%E6%9E%84) / 与函数一起使用，优势明显
 * [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md) / 拥抱未来的类与继承实现方式
+* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md) / 优化的是`Promise.then`，**用的比较少，待巩固加深适用**
 
 **[🔝回到顶部](#以文章内容分类)**
 
 # **待分类目录**
 
-> 推荐一个学习[JS-编程挑战的好网站-codewars](https://www.codewars.com)
-
 > 发现如果直接MDN看API例子你会学到很多
 
-* [JS交集并集](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E4%BA%A4%E9%9B%86%E5%B9%B6%E9%9B%86%E7%AD%89.md)
+
 * [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
 * [JS-模块话](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%20-%20%E6%A8%A1%E5%9D%97%E8%AF%9D.md)
 * [JS-光标操作range](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9Crange.md)
-* [JS-Array-随机排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E9%9A%8F%E6%9C%BA%E6%8E%92%E5%BA%8F.md)
 * [JS-export](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-export.md) / ES5&ES6模块导入导出
 * [JS-严格模式初探](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md)
-* [JS-进制转换](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.md)
-* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md)
 * [JS-debounce(防抖)&throttle(节流)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-debounce%26throttle.md)
-* [JS-Array数组去重](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%8E%BB%E9%87%8D%E5%A4%8D.md)
 * [JS-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
 * [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
-* [JS-Array-优先级排序](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F.md)
-* [JS-Array-旋转升序数组最小值](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-Array-%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F.js)
-* [JS-变量提升](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87.md)
-* [JS-Array-二分查找](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.md)
 
 **[🔝回到顶部](#全部目录)**
 

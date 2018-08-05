@@ -7,9 +7,10 @@
   - [1.1. 浅度复制和深度复制含义](#11-浅度复制和深度复制含义)
   - [1.2. 前置知识 - 引用传值的影响！](#12-前置知识---引用传值的影响)
   - [1.3. 实现不互相影响的复制函数 - 浅层](#13-实现不互相影响的复制函数---浅层)
-    - [1.3.1. ES6 - 实现方法](#131-es6---实现方法)
-  - [1.4. 实现不互相影响的复制函数 - 深层次](#14-实现不互相影响的复制函数---深层次)
-    - [1.4.1. ES6](#141-es6)
+    - [1.3.1. ES6 - 浅层复制实现方法](#131-es6---浅层复制实现方法)
+    - [1.3.2. ES6 - 利用解构析构实现浅层复制](#132-es6---利用解构析构实现浅层复制)
+  - [1.4. 实现不互相影响的复制函数 - 深层次自实现](#14-实现不互相影响的复制函数---深层次自实现)
+    - [1.4.1. ES6 - 深层次复制实现方法](#141-es6---深层次复制实现方法)
 
 <!-- /TOC -->
 
@@ -83,7 +84,7 @@ console.log(clone, target)
 
 **可以发现只有比较浅层的不受到影响！更深的就没有办法了！**
 
-### 1.3.1. ES6 - 实现方法
+### 1.3.1. ES6 - 浅层复制实现方法
 
 `Object.assign`关键。**实现的是合并，因为第一个是{}所以看起来像是复制**
 
@@ -99,9 +100,28 @@ console.log(clone, target)
 
 **可以发现只有比较浅层的不受到影响！更深的就没有办法了！**
 
+### 1.3.2. ES6 - 利用解构析构实现浅层复制
+
+> 大概是我见过最为优雅的了。但是目前浏览器不支持。
+
+[JS-ES6-解构析构使用指南](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH03-%E8%A7%A3%E6%9E%84%E6%9E%90%E6%9E%84)
+
+```JavaScript
+let obj = { a: 'b' , b: { c: 1}}
+let cloneObj = {...obj}
+console.log(obj, cloneObj)
+obj.a = 2
+obj.b.c = 2
+console.log(obj, cloneObj)
+```
+
+> **第1次`console.log`的结果居然和第2次一样**，这是极为不合理的情况。只能归结为`console.log`真的不能算是严格意义上的同步函数。
+
+测试页面为[deepcopy.html]()，可以发现嵌套的`obj.b`改变了。
+
 所以我们需要 **深度复制**
 
-## 1.4. 实现不互相影响的复制函数 - 深层次
+## 1.4. 实现不互相影响的复制函数 - 深层次自实现
 
 ```JavaScript
 var target = { a: 0 , b: { c: 0}};
@@ -109,7 +129,7 @@ var copy = function (target) {
   var clone = {}
   for (var key in target) {
     if (typeof target[key] === 'object') {
-      clone[key] = copy(target[clone])
+      clone[key] = copy(target[key])
     }
   }
   return clone
@@ -122,7 +142,7 @@ console.log(clone, target)
 
 结果为`{ a: 'b' , b: { c: 1}} { a: 0 , b: { c: 0}}`
 
-### 1.4.1. ES6
+### 1.4.1. ES6 - 深层次复制实现方法
 
 官网给的[例子](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)我只能说NB.
 
@@ -137,3 +157,4 @@ console.log(clone, target)
 结果为`{ a: 'b' , b: { c: 1}} { a: 0 , b: { c: 0}}`
 
 除了佩服没有别的了！
+
