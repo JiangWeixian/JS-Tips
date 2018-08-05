@@ -6,10 +6,9 @@
 - [React](#react)
   - [**规则**](#规则)
   - [React库](#react库)
-  - [Tips](#tips)
-  - [**浏览器环境下**](#浏览器环境下)
+  - [内建函数使用注意点](#内建函数使用注意点)
+  - [**浏览器环境&内建函数简单介绍**](#浏览器环境内建函数简单介绍)
   - [**本地环境下**](#本地环境下)
-  - [第三方库](#第三方库)
 
 <!-- /TOC -->
 
@@ -61,13 +60,17 @@
 
 * React - 创建组件(`vdom`)
 * ReactDOM - render(`vdom->dom`)
+* Proptypes - 居然也是分支
 * redux - 这是第三方库，用来控制数据来的
+* react-redux - redux分装到react中
+* React-router
 
-## Tips
+## 内建函数使用注意点
 
 * 浏览器没办法使用`import export`(至少目前如此)。如果依旧是使用`script`的导入。可以通过`const {xx} = React`。如果`React`上有一个叫`xx`的属性。
 * `render`
     * 只能够调用一次，之后调用的会覆盖之前的元素
+    * **每次调用相当于刷新，其实在组件状态更新的时候会自动刷新(由于Diff算法，可能只会刷新一部分)**
 * 浏览器要支持`babel`转译，需要`browser.js`那个版本，以及`script`设置`text/babel`。以及不能够是`src`。因为这样`browser.js`无法读取到然后实现转译。
 * `flux` - 三部分分别是`actions, dispatcher, store`。**可以理解为带有发布定订阅的全局状态机**
     > `dispatcher`连接`actions`与`store`；`actions`类似`this.setState`作用，改变全局`state`的具体函数；`store`包含全局`state`，以及一个发布订阅模块；运行过程类似于`actions->dispatcher->store->chagestate, emit(触发事件)`。同时`store.on监听事件`然后再回调函数中进行操作。
@@ -79,9 +82,70 @@
     具体可见[阮一峰-react&flux.js](http://www.ruanyifeng.com/blog/2016/01/flux.html)
 
     关于发布订阅这部分或许是通过`EventEmiter`基础这个函数实现的。
+* `redux`
+
+    > `createStore`组合`state`，第二个参数是默认state
+
+    > 分支state是函数，函数名是`state-key`，第一个参数是`state-value`；第二个函数就是`store.dispatch(xx)`传递就来你的`actions`。**要注意state分支函数必须每次返回完整的state结果**
+
+    **如何再React组件中使用？** 关键函数分别是`getChildContext&subscribe&forceUpdate`
+    
+    * getChildContext - 是为了让改组件所有的组件都默认传递一个`store`。如果不这么做的话，那么可能需要手动传递`store`
+    * subscribe - 类似`watch`监听`state`变化
+    * forceUpdate - 更新组件以及所有子组件，**因为之前组件自动更新来自`state&props`的自动变化**
+
+    见[color-organizer-context](https://github.com/MoonHighway/learning-react/tree/master/chapter-09/color-organizer-context)
+    
+* `react-redux`，使用方法见[阮一峰react-redux](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html) - `redux in react`。
+
+    * `ui`组件没有`state`属性，由外部传递。控制`state`函数也是由外部传递。也就是`ui`组件内部完全没有`this.setState`操作？这一切都是通过`connect`函数实现(需要结合下面一点使用)，connect函数第1个参数传递`state`
+
+    * 根元素需要`provider`包裹，传递`store`
+
+* `redux-router` - 多个路由写在一起并不是要一起出现，而是根据`path`选择性出现，通过`component`控制。**这部分就是类似`vue-router`** (同样也有`redirect`等)
+
+    > 如果provider包裹了`router`那么`connect`会接受`state, match`作为参数。`match`为当前路由被激活时候的路径
+
+    > `component`也可以接受函数，只要函数内返回组件就行。函数接受`match`以及`location`作为参数。
+
+    > 类似`VUE`，同样也有`link`以及函数动态路由跳转。
+
+    路由嵌套的情况还需要进一步研究。见[react-router](http://www.ruanyifeng.com/blog/2016/05/react_router.html)主要是疑惑父类路由如何保持嵌套路由的视图情况？或许一个路由一个视图是比较好的选择？或者这篇[博客](https://blog.csdn.net/hsany330/article/details/78114805)可以帮到你
+
+    以下是另一种路由配置方案。
+
+    ```JavaScript
+    const routes = {
+    path: '/',
+    component: App,
+    indexRoute: { component: Dashboard },
+    childRoutes: [
+        { path: 'about', component: About },
+        {
+        path: 'inbox',
+        component: Inbox,
+        childRoutes: [{
+            path: 'messages/:id',
+            onEnter: ({ params }, replace) => replace(`/messages/${params.id}`)
+        }]
+        },
+        {
+        component: Inbox,
+        childRoutes: [{
+            path: 'messages/:id', component: Message
+        }]
+        }
+    ]
+    }
+
+    render(<Router routes={routes} />, document.body)
+    ```
+
+    > 如果不使用react-redux。应该由`location`传递给默认的组件`props`
+    
 * `class-type`的组件和`funciton-type`组件，其中`function-type`其实是`class-type`的render函数。`render`函数可以重复调用，但是`constructor in class`只能够调用一次(就是组件创建的时候)
 
-## **浏览器环境下**
+## **浏览器环境&内建函数简单介绍**
 
 > 浏览器开发环境下，指的是通过`script`标签导入`react`
 
@@ -124,44 +188,3 @@
 
 > 借助Nodejs+Webpack开发。本来通过`script`标签导入的文件，现在通过`npm+import`导入。`JS`部分和浏览器没什么区别。**不过从之前单个文件构建组件+绘制dom，现在要分开构建组件。就像是`vue`一样。**
 
-## 第三方库
-
-* redux - 设计模式是状态机。和`flux`很像，但是有区别见[redux&flux]()
-    * `createStore` - 传入的参数是一个函数，函数有两个参数分别是`state action`
-
-        ```JavaScript
-        const { createStore } = Redux
-
-        const color = (state = {}, action) => {
-            switch (action.type) {
-                case "ADD_COLOR":
-                    return {
-                        id: action.id,
-                        title: action.title,
-                        color: action.color,
-                        timestamp: action.timestamp,
-                        rating: 0
-                    }
-                case "RATE_COLOR":
-                    return (state.id !== action.id) ?
-                        state :
-                        {
-                            ...state,
-                            rating: action.rating
-                        }
-                default :
-                    return state
-            }
-        }
-
-        const store = createStore(color)
-
-        console.log(store.getState())
-        ```
-        
-        那么`store.getState()`得到 **默认结果**就是`color-function`第一个参数的初始化数值`[]`
-
-        在[02-strore](https://github.com/MoonHighway/learning-react/blob/master/chapter-08/02-the-store/02-store.html)中组合多个函数，其实是组合多个函数的第一个参数构成了`state`。
-
-        而第二个参数`action`其实是对`store`的动作(期望如何改变)，通过`dispatch`触发，**当多个函数组合构成的的state，需要通过action之间区分。传入哪个函数就是改变state哪个属性**
-    * `subscribe` - 其中发布订阅方式，有一个取消发布订阅的方案可以一看，见[06-store](https://github.com/MoonHighway/learning-react/blob/master/chapter-08/02-the-store/06-store.html)。
