@@ -121,7 +121,8 @@
 * [JS-String-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-string-%E5%9D%91%E6%80%BB%E7%BB%93.md) / 正则
 * [JS-Object-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md) / 获取属性注意枚举自身父类等区别
 * [JS-Object-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
-* [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
+* [JS-Object.create浅复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md) / 与`Object.assign`进行了比较
+* [JS-Object-对象比较](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Object-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1.md) / 对象不等于对象
 
 ## **ES.next**
 

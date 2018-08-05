@@ -13,8 +13,8 @@
     - [1.5.1. 番外 - 私有属性](#151-番外---私有属性)
     - [1.5.2. 总结](#152-总结)
   - [1.6. 链接](#16-链接)
-- [内建数据类型](#内建数据类型)
-  - [内建数据类型 - prototype](#内建数据类型---prototype)
+- [2. 内建数据类型](#2-内建数据类型)
+  - [2.1. 内建数据类型 - prototype](#21-内建数据类型---prototype)
 
 <!-- /TOC -->
 
@@ -592,11 +592,11 @@ var bar = new Bar()
 
 * [外文解析-我觉得写的不错](http://dmitrysoshnikov.com/ecmascript/javascript-the-core/)  
 
-# 内建数据类型
+# 2. 内建数据类型
 
 > 内建类型和`function`一样都有`prototype`
 
-## 内建数据类型 - prototype
+## 2.1. 内建数据类型 - prototype
 
 在[1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)中指出`var a = {}`没有`prototype`，而`function f`是有的。
 
