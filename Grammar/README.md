@@ -67,6 +67,7 @@
 
 * [JS-基础类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md) 
 * [JS-基本类型和引用类型差异](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md) / 基本类型(简单提到了内存关系)，引用类型赋值不分配内存，值类型需要分配新的内存
+* [JS-Object-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md) / 深度复制浅度复制有助于理解内存如何影响作用
 * [JS-内存以及垃圾回收](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.md) / 简单解释
 * [JS-内存泄漏]()
 
@@ -119,6 +120,8 @@
 * [JS-Date-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Date-%E5%9D%91%E6%B1%87%E6%80%BB.md) / 初始化
 * [JS-String-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-string-%E5%9D%91%E6%80%BB%E7%BB%93.md) / 正则
 * [JS-Object-小坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%87%A0%E7%A7%8D%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.md) / 获取属性注意枚举自身父类等区别
+* [JS-Object-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
+* [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
 
 ## **ES.next**
 
@@ -141,8 +144,6 @@
 * [JS-export](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-export.md) / ES5&ES6模块导入导出
 * [JS-严格模式初探](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md)
 * [JS-debounce(防抖)&throttle(节流)](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-debounce%26throttle.md)
-* [JS-深度复制和浅度复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%A4%8D%E5%88%B6.md)
-* [JS-Object.create浅复制并于assign对比](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md)
 
 **[🔝回到顶部](#全部目录)**
 

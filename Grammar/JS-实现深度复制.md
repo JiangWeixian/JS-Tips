@@ -117,7 +117,7 @@ console.log(obj, cloneObj)
 
 > **第1次`console.log`的结果居然和第2次一样**，这是极为不合理的情况。只能归结为`console.log`真的不能算是严格意义上的同步函数。
 
-测试页面为[deepcopy.html]()，可以发现嵌套的`obj.b`改变了。
+测试页面为[deepcopy.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/HTML/deepcopy.html)，可以发现嵌套的`obj.b`改变了。
 
 所以我们需要 **深度复制**
 
