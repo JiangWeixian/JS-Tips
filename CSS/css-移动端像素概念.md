@@ -19,7 +19,7 @@
 
 ## **规则**
 
-* **设计稿**以 **设备像素为单位进行设计的。
+* **设计稿**以 **设备像素** 为单位进行设计的。
 * **样式表文件** 的单位是`CSS-PX`，含义为`window.screen`的结果就是`CSS-PX`能够设置的范围。
 * **视口宽度为** 为`docEl.getBoundingClientRect().width`返回的结果
 * `devicePixelRatio` 就是[CSS像素和设备像素](#css像素和设备像素)中的`N`
@@ -57,7 +57,7 @@
 
 **题外话**
 
-**样式表文件** 的单位是`CSS-PX`，含义为`window.screen`的的搭配的数字就是`CSS-PX`能够设置的范围。就像是以上代码在手机上得到`375px`。
+**样式表文件** 的单位是`CSS-PX`，含义为`window.screen`得到的数字就是`CSS-PX`能够设置的范围。就像是以上代码在手机上得到`375px`。
 
 ## **`flexible.js`适配原理**
 
@@ -71,7 +71,7 @@
 
     > 就像是假设`750px`设计稿，`iphone6`上(`devicePixelRatio=2; 视口宽度是750px`)。那么`meta-scale：0.5`，根节点`font-size=75px`
 
-**关键的地方在于：** 设计稿单位是要除以`75px`变为`rem`变换到`CSS`文件上。以下说明不能够体现，在[**`flexible.js` - Q&A2**](#flexiblejs---qa)进行了补充。
+    **关键的地方在于：** 设计稿单位是要除以`75px`变为`rem`变换到`CSS`文件上。以下说明不能够体现，在[**`flexible.js` - Q&A2**](#flexiblejs---qa)进行了补充。
 
 * (写在`CSS`文件中的单位都是`CSS-PX`)在`CSS`文件中直接使用`750px`**设计稿**上面的属性(即，设计稿上的`1PX`就是样式表文件的`1PX`)。**此时展示出来的结果是`750px`的效果，根据[那么移动端屏幕适配又是怎么来的-题外话提到的](#那么移动端屏幕适配又是怎么来的)在设备宽度只有`375px`上，样式表数值超过了范围**。由于`scale`缘故，显示结果被缩放了`0.5`。所以可以达到 **实现css像素的0.5px。**
 
@@ -91,13 +91,13 @@
 
     **先再一次说明`IPHONE6/7`上的情况：** `750px`设计稿里面的单位(假设是`75px`)就要换算成`750px/75px = 10rem`；
 
-    > 假设`devicePixelRatio=1; 视口宽度是750px`。那么`meta-scale: 0.5; font-size: 75px`
+    > 假设`devicePixelRatio=2; 视口宽度是750px(375px/0.5)`(原因见[**规则-题外话**](#规则))。那么`meta-scale: 0.5; font-size: 75px`
 
     > 当我们打开这个页面的时候，`10rem`根据根节点`font-size：75px`得到了`750px`，此时`meta-scale: 0.5`缩放0.5。**变为375(css-px)，手机正好展示**
 
     **如果是其他尺寸的手机呢？**
 
-    > 假设`devicePixelRatio=1; 屏幕宽度是380px`。那么`meta-scale: 1; font-size: 38px`(视口就是380*1=380px)
+    > 假设`devicePixelRatio=1; 屏幕宽度是380px`。那么`meta-scale: 1; font-size: 38px`(视口就是380/1=380px)
 
     (`750px`设计稿`750px/75px = 10rem`，`px2rem`的比例是不变的)
 
@@ -119,6 +119,8 @@
 * (来自面试我的面试官解答)其实无论是是`flexible.js or viewport`两种适配方案，其实和图片缩放差不多。不同屏幕尺寸就是 **放大还是缩小** 的差别罢了。**但是有的时候，屏幕尺寸变化的时候，如果用`@media`的话，可能更好的选择而不是只有缩小放大两种选择。**
 
 ## **`viewport`适配**
+
+> 完整解析见[CSS-viewport适配方案](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
 
 * [viewport适配方案-可行性](https://www.w3cplus.com/css/vw-for-layout.html) - 需要移动端对于`vw`等单位的支持。
 
