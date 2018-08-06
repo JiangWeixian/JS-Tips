@@ -4,20 +4,20 @@
 <!-- TOC -->
 
 - [CSS - 移动端像素概念](#css---移动端像素概念)
-  - [规则](#规则)
-  - [CSS像素和设备像素](#css像素和设备像素)
-    - [那么移动端屏幕适配又是怎么来的？](#那么移动端屏幕适配又是怎么来的)
+  - [**规则**](#规则)
+  - [**CSS像素和设备像素**](#css像素和设备像素)
+    - [**那么移动端屏幕适配又是怎么来的？**](#那么移动端屏幕适配又是怎么来的)
   - [**`flexible.js`适配原理**](#flexiblejs适配原理)
     - [**`flexible.js` - Q&A**](#flexiblejs---qa)
     - [**总结**](#总结)
     - [**`flexible.js`问题**](#flexiblejs问题)
   - [**`viewport`适配**](#viewport适配)
-    - [`viewport -`Q&A](#viewport--qa)
-  - [链接](#链接)
+    - [**`viewport -`Q&A**](#viewport--qa)
+  - [**链接**](#链接)
 
 <!-- /TOC -->
 
-## 规则
+## **规则**
 
 * **设计稿**以 **设备像素为单位进行设计的。
 * **样式表文件** 的单位是`CSS-PX`，含义为`window.screen`的结果就是`CSS-PX`能够设置的范围。
@@ -35,7 +35,7 @@
 
 **所以`docEl.getBoundingClientRect().width or window.innerWidth`得到的结果应该是`= window.screen / meta-scale`**
 
-## CSS像素和设备像素
+## **CSS像素和设备像素**
 
 只要理解一个概念就可以了，一般来说 **N 个 设备像素 = CSS像素**
 
@@ -43,7 +43,7 @@
 
 只是原本一个`css`等于一个设备像素，现在等于了4个。因此在`.css`文件中所设置的`px`之后，每个设备看起来都是一样的(例如高度)。
 
-### 那么移动端屏幕适配又是怎么来的？
+### **那么移动端屏幕适配又是怎么来的？**
 
 这和设计师有关，因为对于安卓和ios来说。不可能对于安卓每一个屏幕进行设计，或者ios。只会对ios和安卓的主流设备进行设计。
 
@@ -129,7 +129,7 @@
 
     > 同时也由于不再设置`meta-scale < 1`的话，所以`docEl.getBoundingClientRect().width or window.innerWidth`返回的结果也就是正常的`window.screen`
 
-### `viewport -`Q&A
+### **`viewport -`Q&A**
 
 * **Q&A1 -** `flexible`为什么没办法自动?
 
@@ -137,7 +137,7 @@
 
     **所以可以理解为`flexible.js`是手动版本`viewport`适配方案`**
 
-## 链接
+## **链接**
 
 * [各种概念解释](https://github.com/jawil/blog/issues/21)
 * [移动布局实践](https://www.cnblogs.com/ssh-007/p/7213792.html?utm_source=itdadao&utm_medium=referral)
