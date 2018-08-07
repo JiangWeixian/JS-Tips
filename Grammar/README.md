@@ -4,16 +4,17 @@
 
 - [**文章内容分类**](#文章内容分类)
   - [**继承与类**](#继承与类)
-  - [**this**](#this)
+  - [**`this`**](#this)
   - [**作用域与闭包**](#作用域与闭包)
   - [**事件循环**](#事件循环)
+    - [**异步操作**](#异步操作)
   - [**性能与安全**](#性能与安全)
   - [**优雅的操作DOM**](#优雅的操作dom)
   - [**大数据**](#大数据)
   - [**简单算法部分**](#简单算法部分)
   - [**比较操作**](#比较操作)
   - [**基础坑**](#基础坑)
-  - [**ES.next**](#esnext)
+  - [**`ES.next`**](#esnext)
 - [**待分类目录**](#待分类目录)
 
 <!-- /TOC -->
@@ -35,7 +36,7 @@
 * [JS-继承-继承概念关键字解释](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90.md) / 几种继承分类，名词解释
 * [JS-父类控制子类](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%B1%BB%E5%BA%94%E7%94%A8-%E7%88%B6%E7%B1%BB%E6%8E%A7%E5%88%B6%E5%AD%90%E7%B1%BB.md) / `new`如何操作`this`
 
-## **this**
+## **`this`**
 
 > 箭头函数与父类有关。非箭头函数要记住不同情况；**以及new关键字对`this`的影响**
 
@@ -60,6 +61,14 @@
 * [JS-同步异步](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md) / 同步异步代码，下面提到循环基本解释的都是异步代码
 * [JS-浏览器-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md) / 解释了不同级别代码的执行顺序
 * [JS-Nodejs-事件循环](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Node%E7%9A%84Eventloop.md)
+
+### **异步操作**
+
+> 首先，事件循环是你需要知道的
+
+* [JS-Promise理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-promise-%E7%90%86%E8%A7%A3.md) / 介绍`Promise`使用规则
+* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md) / 优化的是`Promise.then`
+* [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md) / 异步执行的链条方式
 
 ## **性能与安全**
 
@@ -124,13 +133,13 @@
 * [JS-Object.create浅复制](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md) / 与`Object.assign`进行了比较
 * [JS-Object-对象比较](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Object-%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1.md) / 对象不等于对象
 
-## **ES.next**
+## **`ES.next`**
 
 > 关于`ES6`你一定需要掌握的
 
 * [JS-解构析构](https://github.com/JiangWeixian/JS-Books/tree/master/ES6%E5%85%A5%E9%97%A8/CH03-%E8%A7%A3%E6%9E%84%E6%9E%90%E6%9E%84) / 与函数一起使用，优势明显
 * [JS-ES6-class使用指南](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%B8%8E%E7%B1%BB-classes6.md) / 拥抱未来的类与继承实现方式
-* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md) / 优化的是`Promise.then`，**用的比较少，待巩固加深适用**
+* [JS-async&await](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-async%26await.md) / 优化的是`Promise.then`
 
 **[🔝回到顶部](#以文章内容分类)**
 
@@ -138,8 +147,6 @@
 
 > 发现如果直接MDN看API例子你会学到很多
 
-
-* [JS-等待循环执行完毕](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%AD%89%E5%BE%85%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95.md)
 * [JS-模块话](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%20-%20%E6%A8%A1%E5%9D%97%E8%AF%9D.md)
 * [JS-光标操作range](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%89%E6%A0%87%E6%93%8D%E4%BD%9Crange.md)
 * [JS-export](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-export.md) / ES5&ES6模块导入导出
