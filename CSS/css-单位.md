@@ -25,15 +25,15 @@
 
 **百分比无法做到什么？**
 
-在[CSS-flexible.js移动端适配]()中提到，如果想要设置一个`w = h`的元素是没有办法做到的。因为父类元素高度变化，子类元素的百分比高度一样也在变化。**可以通过`rem`进行实现。**
+在[CSS-flexible.js移动端适配](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)中提到，如果想要设置一个`w = h`的元素是没有办法做到的。因为父类元素高度变化，子类元素的百分比高度一样也在变化。**可以通过`rem`进行实现。**
 
-## `rem`
+## **`rem`**
 
 > 加上`meta-scale`共同使用是实现`flexible`布局关键
 
 相对于根节点`html-fontsize`设置的。假设`html-fontsize = 75px`，那么任意位置元素设置的`10rem = 75px`。
 
-## `em`
+## **`em`**
 
 > 不同于`rem`根据`html-fontsize`，此单位是根据父类元素`font-size`。
 
@@ -45,6 +45,6 @@
 2. 如果子类元素在自身非`font-size`上使用`yy em`，其会乘以`xx px = yy em * child-fontsize`
     > 如果`child-fontsize`是`em`单位，其实没关系，因为`child-fontsize`可以 **根据第1条规则** 进而转换为`px`。
 
-## 参考链接
+## **参考链接**
 
 * [参考链接](https://www.w3ctech.com/topic/128)
