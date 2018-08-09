@@ -98,13 +98,13 @@
     }
     ```
 
-    根据`border-image top`部分我们获取了`border.png`上部`2px`部分，此时`boder-width`我们定义`1px`。那么对于 **dpr = 2**的设备来说，此时`boder-width`由两个设备像素点组成。由于 **`border.png`上部`2px`部分有`1px`是透明的。那么不透明那部分就被1个物理像素点展示**
+    根据`border-image top`部分我们获取了`border.png`上部`2px`部分，此时`boder-width`我们定义`1px`。那么对于 **dpr = 2**的设备来说，此时`boder-width`由两个设备像素点组成。将`boder.png`压缩至`1-csspx`显示。由于 **`border.png`上部`2px`部分有`1px`是透明的。那么不透明那部分就被1个物理像素点展示**。
 
     > 相当于我们绕过了`1 css-px`必须由`2 device-px`显示的限制。原因在于，我们定义`2px border-image`图片为`1 css-px`。而这里的`2px border-image`并 **没有** 在样式表中定义`2px`(也就不是通过`4 device-px`展示)，只是我们口头说明。**由1 css-px or 2 device-px**展示。
 
     > 推广开来如果`dpr=3`，那么我们就需要`3px`的图片(其中2个px为透明的)，`1px border-width`。
 
-    对于`dpr=1`的设备来说，`1csspx = 1devicepx`也就意味着。我们不需要进行上诉适配，直接写`border`样式即可。
+    对于`dpr=1`的设备来说，`1csspx = 1devicepx`也就意味着。我们不需要进行上诉`border-image`适配，直接写`border`样式即可。
 
     > 因为`2px border-image`压缩为`1 devicepx`显示是做不到的。
 
