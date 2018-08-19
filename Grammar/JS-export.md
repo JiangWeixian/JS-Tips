@@ -43,6 +43,12 @@ let b = require('./module').b
 
 ## ES6
 
+> 这篇[文章](https://segmentfault.com/a/1190000010426778)可以帮到你
+
+**导出的是`defalut`而不是非`defalut`属性，所以其他访问不到**
+
+**而且可理解为`default`后面跟着是这个模块名字**
+
 ```JavaScript
 // in module.js
 export defalut a
@@ -50,19 +56,28 @@ export defalut a
 import a from './module'
 ```
 
+**如果是以下，也不能够带有`default`因为也不是能够作为模块名**
+
 ```JavaScript
 // in module.js
-export default {
+export {
   a,
   b
 }
 // in another.js
 import {a, b} from './module'
-// or
-import * as abc from './module'
-abc.a
-abc.b
 ```
+
+**如果想要将`defalut`或者非`defalut`元素共同导出，可以使用`import * as xx from`**
+
+```JavaScript
+exprort {a, b}
+export defalut abc
+
+import * as m from './module'
+```
+
+那么可以使用`m.a or m.b`，如果想要使用`defalut`，那么需要通过`m.default`
 
 ## 参考链接
 
