@@ -8,7 +8,7 @@
 1. **首先安装`vue-cli`** - `npm install -g @vue/cli`
 2. `vue create <project-name>`
 
-
+**如果想要使用`vue-cli2`来选择不同的`project-name`**，需要安装额外插件，参考[vue-cli2使用接口](https://cli.vuejs.org/zh/guide/creating-a-project.html#%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2)
 
 
 ## 好用插件
