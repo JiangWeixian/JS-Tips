@@ -10,8 +10,12 @@
 **安装**
 
 1. `TS`是以全局包进行安装的`npm install typescript -g`
-2. 以及进行类型检查的通过`npm install @types/packagename --save-dev`来下载某些包的类型声明文件（从`ts2.0`开始如此）
+2. 以及进行类型检查的通过`npm install @types/packagename --save-dev`来下载某些包的类型声明文件（从`ts2.0`开始如此） / 最好下载这个文件
 
 **配置**
 
 1. `tsconfig.json` - `ts`最终都会转化为`js`文件，因此`tsc`会从该文件中读取配置项
+
+    > 关于这个文件，有几个是需要注意的，可以参考[react-starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json)
+
+    * `jsx` - 是为了支持`jsx`格式
