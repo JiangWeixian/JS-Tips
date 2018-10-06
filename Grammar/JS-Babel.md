@@ -5,6 +5,8 @@
 
 - [JS - Babel](#js---babel)
   - [**Babel转译 - 部分插件作用**](#babel转译---部分插件作用)
+  - [**`.babelrc`配置项说明**](#babelrc配置项说明)
+  - [引用](#引用)
 
 <!-- /TOC -->
 
@@ -16,7 +18,7 @@
 
 那么如果`Array.prototype.includes`写在了页面中，那么会发生语法的转移吗？**为什么会有这个疑问是因为调用`includes`方法`es5`是支持的，只不过是因为`es5`没有这个方法而已。**
 
-**在开发环境下**
+**按需加载**
 
 其实没有办法很确定的给出答案。但看了[你真的会使用babel](https://github.com/sunyongjian/blog/issues/30)中关于`babel-runtime`这个插件的解析之后，会发现：
 
@@ -24,9 +26,17 @@
 
 而`babel-runtime`(一般通过`babel-plugin-transform-runtime`配合使用)得功能就是支持以上这些方法得转译。**可以理解为`polyfill`**。
 
-**生产环境下**
+**限制**
 
-就像是`caniuse`一样，不同环境不同设备`ES6`支持情况不同。因此`.babelrc`往往有一个`presets`配置项目来设置`babel`转译之后需要支持多少的浏览器。**这个项生产环境以及开发环境都是成立的。**
+> 虽然`babel-runtime`插件能够做到按需的能力，但是就如同[官网](https://babeljs.io/docs/en/babel-plugin-transform-runtime)说的
 
-同时我们还会考虑一个问题是，`polyfill`补丁情况
+其实它并没有
 
+## **`.babelrc`配置项说明**
+
+* `targets.browers` - 指定转移后支持多少浏览器，语法是参考[browerlist](https://github.com/browserslist/browserslist)
+
+## 引用
+
+* [babel-配置说明](https://juejin.im/post/5a79adeef265da4e93116430)
+* [babel-polyfill vs babel-runtime](https://juejin.im/post/5a96859a6fb9a063523e2591)

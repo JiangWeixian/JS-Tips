@@ -26,3 +26,21 @@
 **容易忽视的能力**
 
 * 支持`ico`文件
+
+## 热更新
+
+配置的时候发现，其实`webpack-dev-server`简单配置之后其实是能够进行 **更改页面之后页面得到更新的（在没有使用其余热更新插件情况下）**
+
+个人理解这应该是页面自动刷新而不是热更新！
+
+更推荐的是通过`webpack-dev-server --hot`开启
+
+## 错误提示
+
+[friendlyerrors](https://github.com/geowarin/friendly-errors-webpack-plugin#readme)
+
+使用方式很简单，如`README`所说。**关键在于取消默认的错误提示，设置`quiet: true`**
+
+同时建议通过命令行开启`--progress`。
+
+

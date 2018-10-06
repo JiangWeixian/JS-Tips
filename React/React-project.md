@@ -17,6 +17,14 @@
 ## **`index.js or main.js`**
 > 入口文件
 
+1. 如果没有使用`react-router`
+
+`react`挂在的方式就是通过`react-dom`里面的`render`函数。
+
+2. 如果使用了`react-router`
+
+就要将`routes`配置文件传给`app.vue`
+
 ## **`App.vue`**
 > 对应`route-viewer`以及写死`DOM`的组合
 
@@ -32,6 +40,20 @@
 由于`route-viewer`也是一个容器，其他页面在使用不同路径的时候被加载进来。那么自然也就可以 **在定义`route-viewer`的时候就写好默认就要展示的`DOM`元素
 
 两者组合构成`app.vue or app.tsx`
+
+### 如果没有`route-viewer`
+
+不在需要`this.props.children`
+
+其他部分要吗是写死了`DOM`，要吗是引入其他组件文件。这一点没有什么问题...
+
+## 热更新
+
+> 在[react-ts]()中知道其实使用了`ts`之后，是不需要`babel`。
+
+但是`react-hot-loader v4`需要`babel`，因此请参考[react-hot-loader-example](https://github.com/gaearon/react-hot-loader/tree/master/examples/typescript)
+
+如果只是含有`JS`的话，也只是一点点小小的差别。
 
 ## **引用**
 
