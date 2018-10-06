@@ -55,6 +55,17 @@
 
 如果只是含有`JS`的话，也只是一点点小小的差别。
 
+## 开发模式（DEV） VS 生产模式（PROD）
+
+> 两种模式在`webpack`上有什么区别
+
+首先要做到：
+
+1. 压缩`css and js`
+2. `css`适配浏览器 - 使用`postcss`
+
+`webpack.mode`配置项目要改为`production`
+
 ## **引用**
 
 * [react-热更新指导性配置文章](https://blog.csdn.net/huangpb123/article/details/78556652)
