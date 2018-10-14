@@ -102,6 +102,28 @@
 * 且含有`common`部分作为公用
 * 以路径名作为文件夹名，可以理解为状态的`model name`
 
+### 进一步理解`components & container`
+
+[这篇区分文章获取能够帮助你](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+以上关于`container`其实不太准确
+
+* `container`和`components`区分在于`state`，其实`redux-state`是关键区分点，`this.state`并不是关键区分点。`components`可以维护自己的`state`，但是`container`一般作为数据源。
+
+  **component 不含有`state`是大多数情况，container 大多含有state**
+
+  > 这意味着，`components`在自身不含有`state`情况下，数据源都是有外部`props`传进来。在没有`state`情况下，用`function`构建最好。
+
+  > `redux-state`是最重要的区分点，因为`component`一定不会使用`connect`函数。`container`是作为`components`数据源。
+
+意味着`compoents`不会关心传进来的数据是什么，例如不关心传进来的图片是用户头像还是icon 头像
+
+如果在以上进行区分，那么可能就要进一步变为`container`进行区分。
+
+`components`的 UI 部分是需要关心的，因为当`user icon`都是用同一个组件进行渲染的时候。期望两者有不同的 ui，其实`components`的区分实现方式应该不依赖`user or icon`。意味着不通过传递进来的`user or icon type`进行区分，因为传递其他属性。例如`type: small | middle`这种可以表示`UI`的状态。而不是`user icon`。
+
+终极手段是，如果`type ui`不满足需求，应该通过传递`classname`重写。
+
 ## 引用
 
 * [如何组织你的项目接口](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76) / 说的挺在理的
