@@ -124,6 +124,34 @@
 
 终极手段是，如果`type ui`不满足需求，应该通过传递`classname`重写。
 
+### **container with pages**
+
+> 当提到`container`可能会含有`redux`的时候，和`pages`的区分就变得复杂起来
+
+对这个其实不应该有疑惑，因为`pages`指的是一个路由指向所展示的页面。`container`可以是页面中一部分。
+
+> 在公司的项目中只不过把`container`单独作为一个`pages`进行了展示。
+
+那么对于`pages with container`之前关系可以总结为：
+
+1. connect(pages) = containers / 多个 container 的组合，此时`container`数据就有点像是`components`
+2. connect(cotanniers)s = pages / 单独的链接`redux and container`然后组合构成`pages`
+
+重点在于需求期望是怎样组合方式
+
+### components
+
+> 更关心 UI 部分
+
+### containers
+
+> 应该有自身的数据行为
+
+例如一个 list，自身含有的行为应该是**对列表的增加删除修改**
+
+// TODO: 如果除了 list 自身的行为之外，含有服务器行为，这两个如何组合或者互相作用是应该好好是思考的
+
+
 ## 引用
 
 * [如何组织你的项目接口](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76) / 说的挺在理的
