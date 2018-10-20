@@ -11,6 +11,8 @@
     - [1.4.1. 剩余空间](#141-剩余空间)
     - [1.4.2. Q&A](#142-qa)
     - [1.4.3. 最佳实践](#143-最佳实践)
+- [flex 小坑](#flex-小坑)
+  - [flex 遇到伪元素](#flex-遇到伪元素)
 
 <!-- /TOC -->
 
@@ -101,5 +103,15 @@
 
     > 假设父类100%，三个子元素。两个为flex-basis为200px，其中一个为0。然后设定`flex-basis`为0的`flex-grow`为`1`。布局就相当于100% - 200px * 2 = `flex-grow`为`1`那个元素的大小。如[flex.html-flex-basis-test](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/flex.html)
 
+# flex 小坑
+> 记录使用flexbox遇到的问题
 
+## flex 遇到伪元素
 
+虽然一直能够区分伪类以及伪元素，前者如`:hover`后者如`:before`。
+
+**后者明显的特点就是能够在页面中构建元素。真实存在的一个元素。**
+
+意味着那可能就会影响`flex`布局。
+
+所以需要特别注意。
