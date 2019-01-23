@@ -31,3 +31,5 @@ alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
 ```
 
 **为什么不设置`x: number | any | object`这样的形式的？**
+
+看[lib-function-reload]()编译出来的`reload.js`结果，并没有特别惊艳的效果....

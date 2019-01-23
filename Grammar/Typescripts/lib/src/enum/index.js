@@ -17,6 +17,7 @@ var s = {
     kind: TestStr.square
 };
 console.log(s);
+// Below is str enum
 var TestStrMember;
 (function (TestStrMember) {
     TestStrMember["tri"] = "tri";

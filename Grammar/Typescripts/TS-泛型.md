@@ -21,3 +21,9 @@ function a <T>(arg: T): T {}
 
 
 ### 操作interface
+
+```JavaScript
+interface x<T> {
+  data: T
+}
+```
