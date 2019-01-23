@@ -10,5 +10,8 @@
     "ts"
   ],
   "author": "JiangWeixian",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.4"
+  }
 }
