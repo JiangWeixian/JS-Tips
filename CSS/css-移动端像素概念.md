@@ -155,7 +155,7 @@
 
 * [viewport适配方案-可行性](https://www.w3cplus.com/css/vw-for-layout.html) - 需要移动端对于`vw`等单位的支持。
 
-`flexible.js`本来就是根据`viewport`实现的，所以现在换过来，也没有问题。**关键在于我们不需要缩放了`scale`。**原因在于：
+`flexible.js`本来就是根据`viewport`实现的，所以现在换过来，也没有问题。**关键在于我们不需要缩放了`scale`。** 原因在于：
 
 1. 设计稿以`750px`为单位，这里就假设了以viewport等于了`750px=100vw`为设计。当写在css文件中是以`vw`为单位的。当一个设计稿`7.5px(物理像素)=1vw`，对应了`7.5/2(css像素）`。
 2. 关键在于如果当了真正的移动端，`viewprot`变为了`375px`，那么`3.75px=1vw`就能够实现适配。就不需要通过`scale`缩放。
