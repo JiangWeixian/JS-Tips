@@ -43,9 +43,9 @@
 
 **对于小于0.5的处理**
 
-例子见[CSS-MINVALUE]()可以发现，对于`ele-minst`设置了高度为`0.4px`。其实页面上无法看到这个元素的。
+例子见[CSS-MINVALUE](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-minvalue.html)可以发现，对于`ele-minst`设置了高度为`0.4px`。其实页面上无法看到这个元素的。
 
-但是我们在后面存在一个`50px*50px`的`ele`元素，通过`ele.getBoundingClientRect()`可以发现在`y`轴上存在`0.4px`。
+但是我们在后面存在一个`50px*50px`的`ele`元素，通过`ele.getBoundingClientRect()`可以发现在`y`轴上存在`0.4px`。**这一点和对于大于0.5上移动处理方式应该是类似的。**
 
 **对于大于0.5的处理**
 
@@ -71,7 +71,7 @@
 
 ### 解释`1PX`问题
 
-同时也可以解释 **1PX问题**。结合[CSS-物理像素和CSS像素概念]()，设计稿上的`1PX`指的是物理像素点。**所以写在样式表之后会写出`0.5px`**，引发出来的问题为：
+同时也可以解释 **1PX问题**。结合[CSS-物理像素和CSS像素概念](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)，设计稿上的`1PX`指的是物理像素点。**所以写在样式表之后会写出`0.5px`**，引发出来的问题为：
 
 > 如果是支持`0.5px`的设备还好。但是如果不支持呢？
 
