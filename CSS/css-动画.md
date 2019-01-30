@@ -89,7 +89,7 @@
 * `somename`也就是用于设置`animation: name`，写在`name`部分。**只能用于animation但是不能用于transition**
 * 在`百分比: {}`中可以设置多个属性(包括`transform`)，不像`transition`只能够监听一个属性
 
-例子见[css-animation.html(ele-animation-normal)]()
+例子见[css-animation.html(ele-animation-normal)](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-animation.html)
 
 **Q&A5 -** `iteration-count/animation-direction`属性特点。
 
