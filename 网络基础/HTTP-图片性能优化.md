@@ -8,7 +8,7 @@
 
 以上两点见[Browser-页面渲染原理]()
 
-如果`image`标签`src`是`datauri`，就要跟随`html`共同下载，同样如果来自`css`文件的`image`是`datauri`的话，跟随`css`共同下载，延长了两个下载时间，导致渲染变慢。见[HTML-datauri]()
+如果`image`标签`src`是`datauri`（指的是那些 **经过编码** 的图像），就要跟随`html`共同下载，同样如果来自`css`文件的`image`是`datauri`的话，跟随`css`共同下载，延长了两个下载时间，导致渲染变慢。见[HTML-datauri]()
 
 ## 性能优化思路
 
@@ -35,6 +35,8 @@
 
 > 来自[@张鑫旭](https://www.zhangxinxu.com/wordpress/2014/10/responsive-images-srcset-size-w-descriptor/) / 做做笔记免得忘记了
 
+**`srcset`单独使用时...**
+
 `srcset`以`1x or 2x or 3x`的时候，只根据`deviceradio`选择。
 
 **主要是sizes&srcset组合使用的时候比较令我疑惑...**
@@ -42,8 +44,9 @@
 `sizes`定义的是`img`这个标签大小，例如文中`(max-width: 360px) 340px, 128px`为屏幕宽度大于`360px`时候，`img`标签宽度为`128px`，小于就为`340px`
 
 (主要是要理解这个`w`)
-`srcset`此时无法独立使用，**要结合deviceradio来看**，即当`size`选择之后，`img`标签为`128px`的时候，此时假设`deviceradio=2`。那么就选择`256w`，等于1就是`128w`
+`srcset`此时无法独立使用，**要结合deviceradio来看**，即当`size`选择之后，`img`标签为`128px`的时候，此时假设`deviceradio=2`。那么就选择`256w`，等于1就是`128w`。
 
+> 若256w就在加载`srcset: a.jpg 256w;`中此时`a.jpg`图片。
 
 ## Q&A
 
