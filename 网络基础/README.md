@@ -40,3 +40,4 @@
 > 这部分待实践以及完善
 
 * [网络基础-输入URL到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / 从网络请求部分优化`CSS/JS`
+* [缓存优化]() / 需要前后端配合
