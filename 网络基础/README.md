@@ -23,6 +23,11 @@
 * [网络基础-输入URL到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / DNS解析是其中一部分。介绍了`HTML-DOM/CSS-DOM`绘制页面过程
 * [网络基础-计算机网络](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
 * [DNS-原理]() / 输入链接解析`IP`过程
+* [TCP-三次握手缺陷]()
+
+## **安全策略**
+
+* [跨域-代理跨域原理]() / 跨域只发生在浏览器和服务器之间
 
 ## **AJAX**
 > 异步请求
@@ -41,5 +46,6 @@
 
 > 这部分待实践以及完善
 
-* [网络基础-输入URL到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / 从网络请求部分优化`CSS/JS`
+* [HTTP-输入URL到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / 从网络请求部分优化`CSS/JS`
 * [缓存优化]() / 需要前后端配合
+* [HTTP-图片性能优化]() / 容易遗忘的一点：图片路径最好不要为空
