@@ -1,5 +1,5 @@
 # HTML - DOM优化指南
-> 仅仅是DOM
+> 仅仅是DOM；**但是也基本上是原生DOM操作的只是。如果是`Vue or React`这部分优化使用频率可能会少一些。**
 
 ## 前置知识 - 关于DOM
 
@@ -15,7 +15,7 @@
 
 **动态更新的含义？**
 
-> 假设我们使用`divs = querySelector and getElement...`获取`div`。如果`divs`在后期变多了，前者获取的`divs.length`是在改变的。
+> 假设我们使用`divs = querySelector and getElement...`获取`div`。如果`divs`在后期变多了，后者获取的`divs.length`是在改变的。
 
 **脱离文档流？**
 
@@ -51,6 +51,7 @@
 * 于其使用`style`一个个修改，还不如使用`csstext`
 
 **节点操作 - 优化规则1以及规则5及规则2**
+> cloneNode or DocumentFragment脱离文档流
 
 如果需要添加多个节点，有两种方式优化：
 
@@ -72,13 +73,17 @@
 
 **节点操作 - 结合优化规则3**
 
-由于JS的操作速度由于直接操作`HTMLCollection以及NodeList`。可以选择将其转换为`array`
+由于JS的操作速度由于直接操作`HTMLCollection以及NodeList`。**可以选择将其转换为`array`**。
+
+转换方法见[stackoverflow-nodelist2array](https://stackoverflow.com/questions/3199588/fastest-way-to-convert-javascript-nodelist-to-array)
 
 ### 内置方法优化
 
 **优化节点获取 - 优化规则4**
 
 我们要知道一些`node or element`元素的API方法。特别是获取节点list的，例如childNodes, children, 还有特别的`document.images document.links etc...`。
+
+以及存在直接获取页面图片和表单的接口。
 
 获取这些元素，直接API接口，好过自己写的方法。
 

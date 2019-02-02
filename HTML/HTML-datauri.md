@@ -50,7 +50,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 **缺陷：** 
 
-浏览器是不会缓存`HTML`的，所以也就不会缓存`datauri image`。
+浏览器是不会缓存`HTML`的，所以也就不会缓存`datauri image`。这个说法有问题，因为浏览器是否缓存`html`，和缓存设置有关。
 
 另外也是优势的缺陷，由于`css`中，图片大小限制了`css`下载与解析，在[浏览器渲染流程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)中提到，网页 **初始**呈现页面与`cssdom and htmldom`两个都有关系，如果这`cssdom`现在太慢，`cssdom and htmldom`出现时间比较慢，那么白屏时间也会比较长。
 
@@ -60,7 +60,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 > 用于`script-src`，估计其他`datauri`可以用于对应的标签。
 
-具体见[text/plain-datauri实例](https://stackoverflow.com/questions/34845250/loading-script-content-from-data-url) / 很容易引起`xss`攻击
+具体见[text/plain-datauri实例](https://stackoverflow.com/questions/34845250/loading-script-content-from-data-url) / 很容易引起`xss`攻击。和`eval`行为没有什么不同。
 
 ## 1.4. DataURI - css
 
