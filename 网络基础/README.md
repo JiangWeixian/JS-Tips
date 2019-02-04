@@ -27,6 +27,8 @@
 
 ## **安全策略**
 
+* [cookie&session&localStorage&sessionStorage](https://github.com/JiangWeixian/JS-Tips/blob/backend/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/cookie%2Bsession%2Blocalstorage%2Btoken.md) / 安全问题主要也指的是`cookie`被解惑。
+
 **同源策略**
 
 * [跨域-代理跨域原理](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F-%E4%BB%A3%E7%90%86%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86.md) / 跨域只发生在浏览器和服务器之间
@@ -34,7 +36,7 @@
 
 **攻击防范**
 
-* [XSS+CSRF](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md)
+* [XSS+CSRF](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/xss%2Bcsrf.md) / 可先阅读[cookie&session&localStorage&sessionStorage](https://github.com/JiangWeixian/JS-Tips/blob/backend/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/cookie%2Bsession%2Blocalstorage%2Btoken.md)
 
 ## **AJAX**
 > 异步请求
