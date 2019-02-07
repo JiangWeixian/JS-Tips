@@ -6,7 +6,11 @@
 
 > 文件夹结构；组件/页面命名；文件夹作用说明；
 
-### 文件夹结构
+**Rules（自我设定）**
+
+* 如果一个变量 or 一个文件被引用多次，那么就应该放在公用地方管理
+
+## 文件夹结构
 
 > 先说结论
 
@@ -15,6 +19,8 @@
     * [x] - UI / 基础`DOM`元素的重新设计`UI`
   * [x] - container
   * [x] - page
+  * [x] - configs
+  * [x] - constants
 
 比较疑惑的是`component`中`UI`文件夹，以及`container & page`文件夹。
 
@@ -46,6 +52,18 @@
 * ui 部分组成 components.module
 * components.module组成container
 * container 部分组成 page
+
+## configs and constants
+
+任何一个文件夹（也可以说是组件），都可以有自己的`constants or confis`文件。以及 **根目录也有一个。**
+
+> 此种情况下最好只被自身引用。
+
+如果存在`configs constants`被外部模块使用了，**个人认为还是应该放在根目录的`configs or constants folder`中**
+
+**如何区分`configs or constants`**
+
+很简单：`configs`应该在 **模块初始化的时候** 只被引用一次，`constants`可以被多次。在函数以及模块编写过程中。
 
 ### 命名规则
 
