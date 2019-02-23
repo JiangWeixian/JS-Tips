@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>async</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <p id="content">这是p标签</p>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        alert("DOM fully loaded and parsed");
+    });
+    window.addEventListener("load", function(event) {
+      alert("All resources finished loading!");
+    });
+  </script>
+  <script>
+    var now = Date.now()
+    var p = document.getElementById('content')
+    while (Date.now() < now + 5000) {}
+    p.textContent = 'longtime'
+  </script>
+</body>
+</html>

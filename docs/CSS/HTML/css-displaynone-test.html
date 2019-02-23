@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>display none测试</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .parent {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    .child {
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+    .parent--display {
+      display: none;
+    }
+    .child--display {
+      display: block;
+    }
+    .parent--vis {
+      visibility: hidden;
+    }
+    .child--vis {
+      visibility: visible;
+    }
+    .float {
+      float: left;
+    }
+    .abs {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent parent--display">
+    <div class="child child--display abs">i am display none</div>
+  </div>
+  <div class="parent parent--vis">
+    i am vis parent parent
+    <div class="child child--vis">i am vis</div>
+  </div>
+</body>
+</html>
