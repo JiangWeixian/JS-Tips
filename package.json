@@ -1,0 +1,30 @@
+{
+  "name": "js-tips",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "vuepress": "^0.14.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiangWeixian/JS-Tips.git"
+  },
+  "keywords": [
+    "blog",
+    "fe"
+  ],
+  "author": "JW",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JiangWeixian/JS-Tips/issues"
+  },
+  "homepage": "https://github.com/JiangWeixian/JS-Tips#readme"
+}
