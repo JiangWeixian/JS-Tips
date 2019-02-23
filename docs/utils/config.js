@@ -7,3 +7,4 @@ exports.ignoreFolders = [
 ];
 exports.rootPath = path.resolve(__dirname, '../');
 exports.base = '/';
+exports.routeIndex = '';
