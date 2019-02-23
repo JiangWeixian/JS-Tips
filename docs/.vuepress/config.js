@@ -1,6 +1,9 @@
 module.exports = {
   title: 'JS-Tips',
   description: '前端基础',
+  head: [
+    [ 'link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' } ],
+  ],
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
