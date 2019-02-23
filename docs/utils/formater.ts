@@ -5,7 +5,7 @@ import * as fs from 'fs'
  * @params str<string>: filename
  */
 export const replaceInvalidCharter = (str: string) => {
-  const regex = /&/g
+  const regex = /&|\+|@/g
   return str.replace(regex, '-')
 }
 

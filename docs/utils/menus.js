@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var config_1 = require("./config");
+var formater_1 = require("./formater");
 var path = require("path");
 var fs = require("fs");
 var isEmpty = require('lodash/isEmpty');
@@ -30,12 +31,14 @@ var isMdFiles = function (value) {
 exports.getMenus = function () {
     var valildFolders = !isEmpty(folders) && folders || getVaildFolders();
     var menus = {};
-    valildFolders.forEach(function (v) {
+    valildFolders.forEach(function (dirpath) {
         var _files = fs
-            .readdirSync(v)
-            .filter(function (v) { return isMdFiles(v) && v !== 'README.md'; })
+            .readdirSync(dirpath)
+            .filter(function (v) { return isMdFiles(v) && v !== 'README.md'; });
+        _files = formater_1.amendPathName(_files, dirpath)
             .map(function (v) { return v.slice(0, v.length - 3).trim(); });
-        var _folderName = path.basename(v);
+        console.log(_files);
+        var _folderName = path.basename(dirpath);
         if (!isEmpty(_files)) {
             menus["" + config_1.base + _folderName + config_1.base] = [''].concat(_files);
         }
