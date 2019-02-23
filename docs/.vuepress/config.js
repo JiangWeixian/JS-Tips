@@ -28,7 +28,6 @@ module.exports = {
         'Nodejs-path',
         'Nodejs-readline',
         'Nodejs-util',
-        'Nodejs-同步异步-事件-流',
       ],
       // '/Webpack/': [
       //   '',     /* /foo/ */

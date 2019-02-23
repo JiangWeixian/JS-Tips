@@ -15,7 +15,8 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "prebuild": "tsc docs/utils/*.ts && tsc docs/.vuepress/*.ts && node docs/.vuepress/config.js"
+    "prebuild": "tsc docs/utils/*.ts && tsc docs/.vuepress/*.ts && node docs/.vuepress/config.js",
+    "dev": "npx vuepress dev docs"
   },
   "repository": {
     "type": "git",

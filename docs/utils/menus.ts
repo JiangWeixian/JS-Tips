@@ -4,7 +4,7 @@ import * as fs from 'fs'
 
 const isEmpty = require('lodash/isEmpty')
 
-var folders = []
+var folders: string[] = []
 
 const isDirectory = (value: string) => {
   return fs.statSync(value).isDirectory()
@@ -41,8 +41,8 @@ export const getMenus = (): Menus => {
   valildFolders.forEach(v => {
     const _files = fs
       .readdirSync(v)
-      .filter(v => isMdFiles(v) && v !== 'README.md')
-      .map(v => v.slice(0, v.length - 3).trim())
+      .filter((v: string) => isMdFiles(v) && v !== 'README.md')
+      .map((v: string) => v.slice(0, v.length - 3).trim())
     const _folderName = path.basename(v)
     if (!isEmpty(_files)) {
       menus[`${base}${_folderName}${base}`] = [''].concat(_files)

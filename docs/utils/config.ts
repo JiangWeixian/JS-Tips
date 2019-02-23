@@ -8,3 +8,5 @@ export const ignoreFolders = [
 export const rootPath = path.resolve(__dirname, '../')
 
 export const base = '/'
+
+export const routeIndex = ''
