@@ -4,6 +4,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
+      { text: '目录', link: '/menus/' },
       { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
     ],
     sidebar: {
@@ -19,6 +20,9 @@ module.exports = {
         '',     /* /foo/ */
         'JS-Number-maxvalue相关',  /* /foo/one.html */
       ],
+      '/Menus': [
+        '',
+      ]
     }
   }
 }
