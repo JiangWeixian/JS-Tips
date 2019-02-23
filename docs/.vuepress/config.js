@@ -1,3 +1,7 @@
+const menus = require('../utils/menus')
+
+console.log(menus.getMenus())
+
 module.exports = {
   title: 'JS-Tips',
   description: '前端基础',
@@ -11,21 +15,33 @@ module.exports = {
       { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
     ],
     sidebar: {
+      // ...menus.getMenus(),
+      // '/Nodejs/': [
+      //   '',     /* /foo/ */
+      //   'Nodejs-fs',  /* /foo/one.html */
+      // ],
       '/Nodejs/': [
-        '',     /* /foo/ */
-        'Nodejs-fs',  /* /foo/one.html */
-      ],
-      '/Webpack/': [
-        '',     /* /foo/ */
-        'sourcemap',  /* /foo/one.html */
-      ],
-      '/Grammar/': [
-        '',     /* /foo/ */
-        'JS-Number-maxvalue相关',  /* /foo/one.html */
-      ],
-      '/Menus': [
         '',
-      ]
+        // 'Node.js-url&queryString',
+        'Nodejs-fs',
+        'Nodejs-http',
+        'Nodejs-path',
+        'Nodejs-readline',
+        'Nodejs-util',
+        'Nodejs-同步异步-事件-流',
+      ],
+      // '/Webpack/': [
+      //   '',     /* /foo/ */
+      //   'sourcemap',  /* /foo/one.html */
+      // ],
+      // '/Grammar/': [
+      //   '',     /* /foo/ */
+      //   'JS-Number-maxvalue相关',  /* /foo/one.html */
+      // ],
+      // '/Menus': [
+      //   '',
+      // ]
     }
+    // sidebar: menus.getMenus(),
   }
 }

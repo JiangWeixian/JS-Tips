@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
+var gulp = require('../../../../.cache/typescript/2.9/node_modules/@types/gulp');
+var browserSync = require('../../../../.cache/typescript/2.9/node_modules/@types/browser-sync').create();
 var stylus = require('gulp-stylus');
 var path = require('path')
 

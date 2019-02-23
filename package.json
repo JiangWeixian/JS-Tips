@@ -9,9 +9,13 @@
   "dependencies": {
     "vuepress": "^0.14.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^11.9.5",
+    "lodash": "^4.17.11",
+    "typescript": "^3.3.3333"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "tsc docs/utils/*.ts && tsc docs/.vuepress/*.ts && node docs/.vuepress/config.js"
   },
   "repository": {
     "type": "git",
