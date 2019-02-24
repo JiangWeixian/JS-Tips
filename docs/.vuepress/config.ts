@@ -23,7 +23,7 @@ module.exports = {
       '/Menus/': [
         '',
       ],
-    }
+    },
   },
   markdown: {
     config: (md: any) => {

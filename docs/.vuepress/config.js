@@ -31,7 +31,7 @@ module.exports = {
                 '',
             ], '/Menus/': [
                 '',
-            ] })
+            ] }),
     },
     markdown: {
         config: function (md) {
