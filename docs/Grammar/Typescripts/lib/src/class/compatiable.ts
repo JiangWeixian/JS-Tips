@@ -27,7 +27,7 @@ class d extends c {}
 
 let C: c = new c()
 
-A = C
+// A = C
 
 let D: d = new d()
 

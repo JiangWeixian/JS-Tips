@@ -41,6 +41,6 @@ var d = /** @class */ (function (_super) {
     return d;
 }(c));
 var C = new c();
-A = C;
+// A = C
 var D = new d();
 C = D;

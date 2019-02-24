@@ -1,17 +1,7 @@
-# 1. HTML - Data URI
+# HTML - Data URI
 > data-uri belong to uri
 
-<!-- TOC -->
-
-- [1. HTML - Data URI](#1-html---data-uri)
-  - [1.1. 前置知识 - Data URI格式](#11-前置知识---data-uri格式)
-  - [1.2. DataURI - image](#12-datauri---image)
-  - [1.3. DataURI - script](#13-datauri---script)
-  - [1.4. DataURI - css](#14-datauri---css)
-  - [1.5. embed - DataURI](#15-embed---datauri)
-  - [1.6. 链接](#16-链接)
-
-<!-- /TOC -->
+[[toc]]
 
 ## 1.1. 前置知识 - Data URI格式
 

@@ -1,6 +1,14 @@
 "use strict";
-exports.__esModule = true;
-var fs = require("fs");
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var fs = __importStar(require("fs"));
+var config_1 = require("./config");
 /**
  * replace `&` to `-`
  * @params str<string>: filename
@@ -24,4 +32,7 @@ exports.amendPathName = function (fileNames, folderName, callback) {
         newFileNames.push(newFileName);
     });
     return newFileNames;
+};
+exports.createRouterUrl = function (url) {
+    return "" + config_1.base + url + "/";
 };

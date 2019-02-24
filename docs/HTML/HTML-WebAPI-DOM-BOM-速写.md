@@ -1,9 +1,9 @@
-# 1. WebAPI - DOM速写
+# WebAPI - DOM速写
 > 来自[@MDN-WEBAPI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)。背下来吧，可以的！
 
 <!-- TOC -->
 
-- [1. WebAPI - DOM速写](#1-webapi---dom速写)
+- [WebAPI - DOM速写](#webapi---dom速写)
   - [1.1. 结构](#11-结构)
   - [1.2. EventTarget](#12-eventtarget)
   - [1.3. Node](#13-node)

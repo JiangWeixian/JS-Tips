@@ -1,9 +1,16 @@
 "use strict";
-exports.__esModule = true;
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var config_1 = require("./config");
 var formater_1 = require("./formater");
-var path = require("path");
-var fs = require("fs");
+var path = __importStar(require("path"));
+var fs = __importStar(require("fs"));
 var isEmpty = require('lodash/isEmpty');
 var folders = [];
 var isDirectory = function (value) {

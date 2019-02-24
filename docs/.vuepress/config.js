@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var menus_1 = require("../utils/menus");
 module.exports = {
     title: 'JS-Tips',
@@ -21,11 +21,19 @@ module.exports = {
     themeConfig: {
         nav: [
             { text: '主页', link: '/' },
-            { text: '目录', link: '/menus/' },
+            { text: '技术栈', link: '/Guide/' },
+            { text: '目录', link: '/Menus/' },
             { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
         ],
         sidebar: __assign({}, menus_1.getMenus(), { '/Guide/': [
                 '',
+            ], '/Menus/': [
+                '',
             ] })
+    },
+    markdown: {
+        config: function (md) {
+            md.use(require('markdown-it-task-checkbox'));
+        }
     }
 };

@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import { base } from './config'
 
 /**
  * replace `&` to `-`
@@ -27,4 +28,8 @@ export const amendPathName = (
     newFileNames.push(newFileName)
   })
   return newFileNames
+}
+
+export const createRouterUrl = (url: string) => {
+  return `${base}${url}/`
 }
