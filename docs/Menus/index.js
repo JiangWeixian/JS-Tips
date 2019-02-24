@@ -60,4 +60,4 @@ exports.createGuideReadme = function (fileName) {
     var data = template + '\n' + menus;
     fs.writeFileSync(__dirname + "/" + fileName, data);
 };
-console.log(exports.createGuideReadme());
+exports.createGuideReadme();

@@ -67,4 +67,4 @@ export const createGuideReadme = (fileName = 'README.md') => {
   fs.writeFileSync(`${__dirname}/${fileName}`, data)
 }
 
-console.log(createGuideReadme())
+createGuideReadme()
