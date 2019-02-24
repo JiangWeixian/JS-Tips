@@ -11,7 +11,10 @@ const isDirectory = (value: string) => {
   return fs.statSync(value).isDirectory()
 }
 
-const getVaildFolders = () => {
+export const getVaildFolders = () => {
+  if (!isEmpty(folders)) {
+    return folders
+  }
   const allFolders: string[] = fs.readdirSync(rootPath)
   const valildFolders = allFolders
     .filter(v => {
@@ -45,10 +48,9 @@ export const getMenus = (): Menus => {
       .filter((v: string) => isMdFiles(v) && v !== 'README.md')
     _files = amendPathName(_files, dirpath)
       .map((v: string) => v.slice(0, v.length - 3).trim())
-    console.log(_files)      
     const _folderName = path.basename(dirpath)
     if (!isEmpty(_files)) {
-      menus[`${base}${_folderName}${base}`] = [''].concat(_files)
+      menus[`${base}${_folderName}/`] = [''].concat(_files)
     }
   })
   return menus

@@ -11,9 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 exports.__esModule = true;
-// const menus = require('../utils/menus')
 var menus_1 = require("../utils/menus");
-console.log(menus_1.getMenus());
 module.exports = {
     title: 'JS-Tips',
     description: '前端基础',
@@ -26,7 +24,8 @@ module.exports = {
             { text: '目录', link: '/menus/' },
             { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
         ],
-        sidebar: __assign({}, menus_1.getMenus())
-        // sidebar: menus.getMenus(),
+        sidebar: __assign({}, menus_1.getMenus(), { '/Guide/': [
+                '',
+            ] })
     }
 };

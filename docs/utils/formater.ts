@@ -20,7 +20,7 @@ export const amendPathName = (
   folderName: string,
   callback = replaceInvalidCharter
 ) => {
-  const newFileNames = []
+  const newFileNames: string[] = []
   fileNames.forEach(fileName => {
     const newFileName = callback(fileName)
     fs.renameSync(`${folderName}/${fileName}`, `${folderName}/${newFileName}`)

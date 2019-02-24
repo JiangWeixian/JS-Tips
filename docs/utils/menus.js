@@ -9,7 +9,10 @@ var folders = [];
 var isDirectory = function (value) {
     return fs.statSync(value).isDirectory();
 };
-var getVaildFolders = function () {
+exports.getVaildFolders = function () {
+    if (!isEmpty(folders)) {
+        return folders;
+    }
     var allFolders = fs.readdirSync(config_1.rootPath);
     var valildFolders = allFolders
         .filter(function (v) {
@@ -29,7 +32,7 @@ var isMdFiles = function (value) {
     return path.extname(value).toLowerCase() === '.md';
 };
 exports.getMenus = function () {
-    var valildFolders = !isEmpty(folders) && folders || getVaildFolders();
+    var valildFolders = !isEmpty(folders) && folders || exports.getVaildFolders();
     var menus = {};
     valildFolders.forEach(function (dirpath) {
         var _files = fs
@@ -37,10 +40,9 @@ exports.getMenus = function () {
             .filter(function (v) { return isMdFiles(v) && v !== 'README.md'; });
         _files = formater_1.amendPathName(_files, dirpath)
             .map(function (v) { return v.slice(0, v.length - 3).trim(); });
-        console.log(_files);
         var _folderName = path.basename(dirpath);
         if (!isEmpty(_files)) {
-            menus["" + config_1.base + _folderName + config_1.base] = [''].concat(_files);
+            menus["" + config_1.base + _folderName + "/"] = [''].concat(_files);
         }
     });
     return menus;

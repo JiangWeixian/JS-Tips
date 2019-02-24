@@ -14,6 +14,9 @@ module.exports = {
     ],
     sidebar: {
       ...getMenus(),
+      '/Guide/': [
+        '',
+      ],
     }
   }
 }
