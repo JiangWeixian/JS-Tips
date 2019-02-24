@@ -49,7 +49,7 @@ exports.getMenus = function () {
             .map(function (v) { return v.slice(0, v.length - 3).trim(); });
         var _folderName = path.basename(dirpath);
         if (!isEmpty(_files)) {
-            menus["" + config_1.base + _folderName + "/"] = [''].concat(_files);
+            menus[formater_1.createRouterUrl(_folderName)] = [''].concat(_files);
         }
     });
     return menus;

@@ -1,9 +1,9 @@
 import { getMenus } from '../utils/menus'
-import { base } from '../config'
+import { repo } from '../config'
 
 module.exports = {
   title: 'JS-Tips',
-  base: base,
+  base: `/${repo}/`,
   description: '前端基础',
   head: [
     [ 'link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' } ],

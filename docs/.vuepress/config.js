@@ -15,7 +15,7 @@ var menus_1 = require("../utils/menus");
 var config_1 = require("../config");
 module.exports = {
     title: 'JS-Tips',
-    base: config_1.base,
+    base: "/" + config_1.repo + "/",
     description: '前端基础',
     head: [
         ['link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' }],
