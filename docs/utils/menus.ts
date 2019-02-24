@@ -1,16 +1,20 @@
 import { ignoreFolders, rootPath, base } from './config'
+import { amendPathName } from './formater'
 import * as path from 'path'
 import * as fs from 'fs'
 
 const isEmpty = require('lodash/isEmpty')
 
-var folders = []
+var folders: string[] = []
 
 const isDirectory = (value: string) => {
   return fs.statSync(value).isDirectory()
 }
 
-const getVaildFolders = () => {
+export const getVaildFolders = () => {
+  if (!isEmpty(folders)) {
+    return folders
+  }
   const allFolders: string[] = fs.readdirSync(rootPath)
   const valildFolders = allFolders
     .filter(v => {
@@ -38,14 +42,15 @@ interface Menus {
 export const getMenus = (): Menus => {
   const valildFolders = !isEmpty(folders) && folders || getVaildFolders()
   const menus: Menus = {}
-  valildFolders.forEach(v => {
-    const _files = fs
-      .readdirSync(v)
-      .filter(v => isMdFiles(v) && v !== 'README.md')
-      .map(v => v.slice(0, v.length - 3).trim())
-    const _folderName = path.basename(v)
+  valildFolders.forEach(dirpath => {
+    let _files = fs
+      .readdirSync(dirpath)
+      .filter((v: string) => isMdFiles(v) && v !== 'README.md')
+    _files = amendPathName(_files, dirpath)
+      .map((v: string) => v.slice(0, v.length - 3).trim())
+    const _folderName = path.basename(dirpath)
     if (!isEmpty(_files)) {
-      menus[`${base}${_folderName}${base}`] = [''].concat(_files)
+      menus[`${base}${_folderName}/`] = [''].concat(_files)
     }
   })
   return menus
