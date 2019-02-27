@@ -1,4 +1,4 @@
-# React - 组件性能
+# React - 组件性能 <Badge text="未分类"/>
 > React.component & functional-component & React.purecomonent
 
 [[toc]]
