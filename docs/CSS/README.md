@@ -1,18 +1,8 @@
 <img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img>
 
-<!-- TOC -->
+# **目录**
 
-- [**内容分类**](#内容分类)
-  - [Tips](#tips)
-  - [**移动端**](#移动端)
-  - [**`CSS`绘画**](#css绘画)
-  - [**选择器**](#选择器)
-  - [坑](#坑)
-- [**待分类目录**](#待分类目录)
-
-<!-- /TOC -->
-
-# **内容分类**
+[[toc]]
 
 ## Tips
 
@@ -35,7 +25,7 @@
 * [CSS-flexible.js适配方案](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-viewport%E9%80%82%E9%85%8D.md) / 设备像素以及CSS像素；`flexible.js`方案疑惑点解析；
 * [CSS-viewport适配方案](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md) / `viewport`适配方案解析
 
-## **`CSS`绘画**
+## **CSS绘画**
 
 > no js only css如何实现一些绘画功能
 

@@ -1,4 +1,4 @@
-# HOC
+# React - HOC
 
 ## Refs
 

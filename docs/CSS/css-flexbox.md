@@ -1,20 +1,7 @@
-# 1. CSS - flexbox
+# CSS - flexbox
 > [阮一峰-flexbox](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-<!-- TOC -->
-
-- [1. CSS - flexbox](#1-css---flexbox)
-  - [1.1. 前置知识 - 传统定位方式](#11-前置知识---传统定位方式)
-  - [1.2. 前置知识 - flex的默认规则](#12-前置知识---flex的默认规则)
-  - [1.3. flex-direction](#13-flex-direction)
-  - [1.4. flex-basis&flex-grow与剩余空间](#14-flex-basisflex-grow与剩余空间)
-    - [1.4.1. 剩余空间](#141-剩余空间)
-    - [1.4.2. Q&A](#142-qa)
-    - [1.4.3. 最佳实践](#143-最佳实践)
-- [flex 小坑](#flex-小坑)
-  - [flex 遇到伪元素](#flex-遇到伪元素)
-
-<!-- /TOC -->
+[[toc]]
 
 ## 1.1. 前置知识 - 传统定位方式
 
