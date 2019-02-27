@@ -1,8 +1,8 @@
-# 1. JavaScript中的同步异步
+# JavaScript中的同步异步
 
 <!-- TOC -->
 
-- [1. JavaScript中的同步异步](#1-javascript中的同步异步)
+- [JavaScript中的同步异步](#javascript中的同步异步)
   - [1.1. 前置知识 - JavaScript与同步异步定义](#11-前置知识---javascript与同步异步定义)
   - [1.2. 前置知识 - 同步异步定义](#12-前置知识---同步异步定义)
   - [前置知识 - `console.log`是异步吗？](#前置知识---consolelog是异步吗)

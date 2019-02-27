@@ -1,9 +1,9 @@
-# 1. JS-浏览器-Promise&EventLoop函数执行队列
+# JS-浏览器-Promise&EventLoop函数执行队列
 > `EventLoop`实现有所不同，本文先讨论浏览器版本的。
 
 <!-- TOC -->
 
-- [1. JS-浏览器-Promise&EventLoop函数执行队列](#1-js-浏览器-promiseeventloop函数执行队列)
+- [JS-浏览器-Promise&EventLoop函数执行队列](#js-浏览器-promiseeventloop函数执行队列)
   - [1.1. 前置知识 - 规则设定](#11-前置知识---规则设定)
   - [1.2. 前置知识 - 什么是回调，别以为你知道了](#12-前置知识---什么是回调别以为你知道了)
   - [1.3. 前置知识 - 任务队列分类](#13-前置知识---任务队列分类)

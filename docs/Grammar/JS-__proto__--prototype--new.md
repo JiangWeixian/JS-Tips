@@ -1,9 +1,9 @@
-# 1. proto && prototype && constructor && new
+# proto && prototype && constructor && new
 > 正确继承情况下，子类设置方法或者属性(指的是赋值或者替换，引用类型内部数据修改还是会的)不会添加到父类。`__proto__`和`prototye`区别在于前者才有我们所说的指向功能。
 
 <!-- TOC -->
 
-- [1. proto && prototype && constructor && new](#1-proto--prototype--constructor--new)
+- [proto && prototype && constructor && new](#proto--prototype--constructor--new)
   - [1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)
   - [1.2. proto && prototype 进一步](#12-proto--prototype-进一步)
   - [1.3. 类 - new关键字](#13-类---new关键字)

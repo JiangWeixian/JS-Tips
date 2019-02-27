@@ -1,9 +1,9 @@
-# 1. WebAPI - 语法部分速写
+# WebAPI - 语法部分速写
 > 如何记忆
 
 <!-- TOC -->
 
-- [1. WebAPI - 语法部分速写](#1-webapi---语法部分速写)
+- [WebAPI - 语法部分速写](#webapi---语法部分速写)
   - [1.1. 数据类型](#11-数据类型)
     - [1.1.1. array - (typef array > object)](#111-array---typef-array--object)
     - [1.1.2. string - (typef string > string)](#112-string---typef-string--string)

@@ -1,9 +1,9 @@
-# 1. Object.create
+# Object.create
 > 并不完全是 **浅层复制**。
 
 <!-- TOC -->
 
-- [1. Object.create](#1-objectcreate)
+- [Object.create](#objectcreate)
   - [1.1. 结论](#11-结论)
   - [1.2. 先看例子](#12-先看例子)
   - [1.3. 和Object.assign](#13-和objectassign)

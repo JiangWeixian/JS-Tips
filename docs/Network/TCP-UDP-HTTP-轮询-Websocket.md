@@ -1,8 +1,8 @@
-# 1. TCP、UDP、HTTP、轮询、Websocket
+# TCP、UDP、HTTP、轮询、Websocket
 
 <!-- TOC -->
 
-- [1. TCP、UDP、HTTP、轮询、Websocket](#1-tcpudphttp轮询websocket)
+- [TCP、UDP、HTTP、轮询、Websocket](#tcpudphttp轮询websocket)
   - [1.1. tcp - 传输控制协议](#11-tcp---传输控制协议)
   - [1.2. udp - 用户数据报协议](#12-udp---用户数据报协议)
     - [1.2.1. 和http的关系 - 超文本控制协议](#121-和http的关系---超文本控制协议)
