@@ -1,9 +1,9 @@
-# 1. position && margin && float
+# position && margin && float
 > 互相作用情况
 
 <!-- TOC -->
 
-- [1. position && margin && float](#1-position--margin--float)
+- [position && margin && float](#position--margin--float)
   - [1.1. position && margin](#11-position--margin)
     - [1.1.1. position](#111-position)
   - [1.2. position && float](#12-position--float)

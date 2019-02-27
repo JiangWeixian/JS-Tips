@@ -35,7 +35,7 @@ module.exports = {
         lastUpdated: true,
         serviceWorker: {
             updatePopup: {
-                message: '发现更新shuaxin',
+                message: '发现更新🎉',
                 button: '刷新',
             },
         },
