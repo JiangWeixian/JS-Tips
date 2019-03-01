@@ -10,7 +10,7 @@
 
 ## 基本类型 - valueof&tostring全记录
 
-数据类型初始化方式见[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)，其中提到三种方式分别为：
+数据类型初始化方式见[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)，其中提到三种方式分别为：
 
 ```JavaScript
 var a = 1
@@ -40,7 +40,7 @@ var numa = Number(1)
     a.toString() // 结果"true"
     ```
 
-    其中`new Boolean(xx)`对于`xx`可能涉及到类型转换。转换规则是[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)。转换得到的结果为 **Boolean(xx根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)得到结果)**，所以`a`是个`object`，然后括号内部结果是`true or false`(来自xx根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)得到结果)
+    其中`new Boolean(xx)`对于`xx`可能涉及到类型转换。转换规则是[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-falsy%26turthy.md)。转换得到的结果为 **Boolean(xx根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-falsy%26turthy.md)得到结果)**，所以`a`是个`object`，然后括号内部结果是`true or false`(来自xx根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-falsy%26turthy.md)得到结果)
 
     **数据类型**
 
@@ -51,7 +51,7 @@ var numa = Number(1)
     a.toString() // 结果"true"
     ```
 
-    和上面`new`不同点在于，`a`不再是一个`object`，其为根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)得到结果。因此`new Boolean(xx) = new Boolean(Boolean(xx))`
+    和上面`new`不同点在于，`a`不再是一个`object`，其为根据[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-falsy%26turthy.md)得到结果。因此`new Boolean(xx) = new Boolean(Boolean(xx))`
 
 这里可以小小总结下：
 
@@ -86,7 +86,7 @@ var numa = Number(1)
     a.toString() // 结果为"7,7" 基本也就是内部数据内容,拼接了。
     ```
 
-    在[JS-Array坑](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md)中提到如果`array index`上的数据是未申明的状态。那么`toString`的到结果是`,,`。这和`index`上申明一个`undefined`结果是不一样的。
+    在[JS-Array坑](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Array-%E5%B0%8F%E5%9D%91.md)中提到如果`array index`上的数据是未申明的状态。那么`toString`的到结果是`,,`。这和`index`上申明一个`undefined`结果是不一样的。
 
     `Array(3)`声明的结果也是一样的。
 
@@ -116,7 +116,7 @@ var numa = Number(1)
 
 **题外话**
 
-由于`new`关键字的特点，对于`var a = new Boolean(xx)`之后对于`a`如果涉及到[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-falsy%26turthy.md)。结果都是`true`。
+由于`new`关键字的特点，对于`var a = new Boolean(xx)`之后对于`a`如果涉及到[JS-falsy&truthy规则](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-falsy%26turthy.md)。结果都是`true`。
 
 ## valueof&tostring全记录 - Q&A
 

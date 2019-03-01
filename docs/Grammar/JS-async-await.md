@@ -148,7 +148,7 @@ async function f () {
 f()
 ```
 
-在[JS-Promise理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-promise-%E7%90%86%E8%A7%A3.md)中知道，如果错误没有被`catch or then()中第2个函数捕获`那么其实`Promise.then`链条就会中断。
+在[JS-Promise理解](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-promise-%E7%90%86%E8%A7%A3.md)中知道，如果错误没有被`catch or then()中第2个函数捕获`那么其实`Promise.then`链条就会中断。
 
 * **就像是上面第2条`await`并不会执行。**，导致中断。
 * 同时第1个`res`并没有得到结果，也就是说 **`await`并没有返回结果，或者说抛出了`error`却并没有人处理**。
@@ -243,7 +243,7 @@ f()
          })
   ```
 
-  这段代码执行解析见[JS-Promise&EventLoop](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)。既然是这样，其实`res`其实是可以在`then`(指的是这一段代码的`then`)中进行传递的的。
+  这段代码执行解析见[JS-Promise&EventLoop](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)。既然是这样，其实`res`其实是可以在`then`(指的是这一段代码的`then`)中进行传递的的。
     
 
 ## **Q&A简单汇总**
@@ -258,4 +258,4 @@ f()
 
 3. 与主线程关系
 
-    > 在[JS-浏览器Eventloop](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)我们知道，`Promise.then`其实是出于微任务队列中。也就说会先执行主线程代码然后才是`Promise.then`。而`async`不同的是，对于多个`await`它会阻塞后面的主线程代码。
+    > 在[JS-浏览器Eventloop](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)我们知道，`Promise.then`其实是出于微任务队列中。也就说会先执行主线程代码然后才是`Promise.then`。而`async`不同的是，对于多个`await`它会阻塞后面的主线程代码。

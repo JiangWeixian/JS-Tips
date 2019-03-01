@@ -16,7 +16,7 @@
 
 ## 1.1. 前置知识 - 通用规则
 
-[JS-浏览器端eventloop](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)中总结的部分规则同样适用于`NODE`：
+[JS-浏览器端eventloop](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)中总结的部分规则同样适用于`NODE`：
 
 1. **任务队列内的代码只能够在主线程的代码执行完毕之后执行**。即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
 2. 对于`Main>A.tasks>B.tasks`有优先级。
@@ -266,7 +266,7 @@ say()
 
 而在`B.tasks`内部的任务，就是第一阶段任务的(注册，耗时)相加是大于第2阶段的，还是先执行第一阶段。
 
-见[JS-eventloop-innode-promisedelay](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-eventloop-innode-promisedelay.js)
+见[JS-eventloop-innode-promisedelay](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-eventloop-innode-promisedelay.js)
 
 ```JavaScript
 // 第1阶段 - 执行

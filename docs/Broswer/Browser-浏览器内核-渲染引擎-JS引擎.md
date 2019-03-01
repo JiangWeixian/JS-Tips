@@ -12,7 +12,7 @@
 
 ## 渲染引擎和JS引擎区分
 
-具体渲染原理可见[Browser-渲染器渲染原理](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
+具体渲染原理可见[Browser-渲染器渲染原理](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
 
 在之前，浏览器内核包括渲染和JS两个引擎系统。而**现在情况有所不同:**
 

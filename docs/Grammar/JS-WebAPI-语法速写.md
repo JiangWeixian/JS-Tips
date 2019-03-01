@@ -146,7 +146,7 @@
 
 ### 全局函数
 
-[encodeURI...](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0-encodeURI%26encodeURIcomponent.md)
+[encodeURI...](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0-encodeURI%26encodeURIcomponent.md)
 
 ### Promise
 

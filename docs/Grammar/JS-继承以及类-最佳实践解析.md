@@ -93,7 +93,7 @@ var p2 = new parent()
     p1.changename()
     p2.changename()
     ```
-    `p1.name`以及`p2.name`都是不同的，互相不影响。这是因为[值类型和引用类型的不同](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)，所以`p1.name and p2.name`指向的是不同的内存的地址，所以修改不影响。而`data`由于是引用类型，所以内存地址是一个，修改其中数据(因为不会重新分配数组内存)会同步修改所有引用这内存地址的对象，**而赋值会重新分配。**
+    `p1.name`以及`p2.name`都是不同的，互相不影响。这是因为[值类型和引用类型的不同](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)，所以`p1.name and p2.name`指向的是不同的内存的地址，所以修改不影响。而`data`由于是引用类型，所以内存地址是一个，修改其中数据(因为不会重新分配数组内存)会同步修改所有引用这内存地址的对象，**而赋值会重新分配。**
 
 
 ### 1.3.2. 数据共享 - data in prototype - 总结
@@ -187,7 +187,7 @@ function create (obj) {
 }
 ```
 
-作用和`new`关键字差不多，依旧还是共享了原型上面的方法(或者属性)，**因为c1.hasOwnProperty('data')依旧是false**。`Object.create()`一般用来复制原型方法，见[object.ceate浅度复制实践](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md) - **`object.create`的浅度复制意味着如果修改`child`不会改变`parent`(因为它会在自己的原型上添加方法)，而修改`parent`则会改变`child`**
+作用和`new`关键字差不多，依旧还是共享了原型上面的方法(或者属性)，**因为c1.hasOwnProperty('data')依旧是false**。`Object.create()`一般用来复制原型方法，见[object.ceate浅度复制实践](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E6%B5%85%E5%B1%82%E8%B5%8B%E5%80%BC%E4%B9%8BObject.create.md) - **`object.create`的浅度复制意味着如果修改`child`不会改变`parent`(因为它会在自己的原型上添加方法)，而修改`parent`则会改变`child`**
 
 ### 1.4.1. 数据共享 - data in prototype
 

@@ -25,7 +25,7 @@
 
 **百分比无法做到什么？**
 
-在[CSS-flexible.js移动端适配](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)中提到，如果想要设置一个`w = h`的元素是没有办法做到的。因为父类元素高度变化，子类元素的百分比高度一样也在变化。**可以通过`rem`进行实现。**
+在[CSS-flexible.js移动端适配](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)中提到，如果想要设置一个`w = h`的元素是没有办法做到的。因为父类元素高度变化，子类元素的百分比高度一样也在变化。**可以通过`rem`进行实现。**
 
 ## **`rem`**
 

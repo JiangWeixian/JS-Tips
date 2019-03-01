@@ -43,7 +43,7 @@ element.addEventLister(event, function, useCapture)
 前两个参数很好理解:
 
 * event - `click`
-* function - 传递默认参数`window.event`，如果想要传递其他参数，可以参考[demos-drag](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/content.md)
+* function - 传递默认参数`window.event`，如果想要传递其他参数，可以参考[demos-drag](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/content.md)
 * useCapture - `true`代表的捕获，`false`代表冒泡
 
 除了这三个之前还可以设置其他泪如 **once=事件只发生一次就移除的属性**。见[@MDN-addEventListener](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)

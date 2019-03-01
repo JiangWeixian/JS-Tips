@@ -17,7 +17,7 @@
 
 `JavaScript`是单线程的。
 
-但是根据[JavaScript-事件队列](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)理解，为了效率考虑，在主线程之外有一个额外线程来**挂起那些回调、`promise`和延迟(settimeout)执行。**
+但是根据[JavaScript-事件队列](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)理解，为了效率考虑，在主线程之外有一个额外线程来**挂起那些回调、`promise`和延迟(settimeout)执行。**
 
 ## 1.2. 前置知识 - 同步异步定义
 
@@ -179,13 +179,13 @@ callback
 * 监听(发布订阅) - 我先添加`key=xx event`的回调函数，等到`key=xx event`事件发生之后，**手动触发**这个回调函数。
   * 其中添加`key=xx event`就是订阅的过程。
   * 等到`key=xx event`事件发生之后，**手动**这个回调函数。这个就是发布的过程。
-  * 具体可见[自定义的发布订阅](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.md)以及[JavaScript设计模式-发布订阅](https://github.com/JiangWeixian/JS-Books/blob/master/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(Desgin-Patterns)/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F.md)
+  * 具体可见[自定义的发布订阅](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.md)以及[JavaScript设计模式-发布订阅](https://github.com/JiangWeixian/JS-Books/blob/master/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(Desgin-Patterns)/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F.md)
 * `Promise`
 
 
 ## 1.5. 链接
 
-结合[JavaScript-事件队列理解](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
+结合[JavaScript-事件队列理解](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
 
 * [阮一峰异步编程](http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html)
 * [同步异步概念解析](https://juejin.im/entry/58ae4636b123db0052b1caf8)

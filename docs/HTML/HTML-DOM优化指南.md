@@ -11,7 +11,7 @@
 
 两种都是类`array`的数据结构，但是不完全就全具有`array`所有方法。
 
-> 在[WEBAPI-DOM&BOM](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-WebAPI-%E8%AF%AD%E6%B3%95%E9%80%9F%E5%86%99.md)有简要说明。**前置一定是动态更新的数组，后者不一定。** Node.childNodes以及Node.childElement对应上面两种(但是这两个返回的都是动态更新的)。同时`querySelector and getElement...`分别是`NodeList and HTMLCollection`，通过前面方法获取的`Nodelist`时静态的，后者是动态的。
+> 在[WEBAPI-DOM&BOM](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-WebAPI-%E8%AF%AD%E6%B3%95%E9%80%9F%E5%86%99.md)有简要说明。**前置一定是动态更新的数组，后者不一定。** Node.childNodes以及Node.childElement对应上面两种(但是这两个返回的都是动态更新的)。同时`querySelector and getElement...`分别是`NodeList and HTMLCollection`，通过前面方法获取的`Nodelist`时静态的，后者是动态的。
 
 **动态更新的含义？**
 
@@ -89,9 +89,9 @@
 
 ### 动画优化
 
-这部分涉及到[重排以及重绘部分姿势](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-reflow%26repaint.md)。
+这部分涉及到[重排以及重绘部分姿势](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/Browser-reflow%26repaint.md)。
 
-避免[重排以及重绘](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-reflow%26repaint.md)可以进行优化，例如将动画的那个图层脱离文档流进行优化
+避免[重排以及重绘](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/Browser-reflow%26repaint.md)可以进行优化，例如将动画的那个图层脱离文档流进行优化
 
 ## 链接
 

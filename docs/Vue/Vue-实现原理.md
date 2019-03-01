@@ -51,7 +51,7 @@
 
 ### 1.2.3. 虚拟DOM
 
-在[DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)提到了，直接操作dom其实效率不高。js数据结构更快一些。
+在[DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)提到了，直接操作dom其实效率不高。js数据结构更快一些。
 
 所以将`html`代码变为`virtual dom`。实现`html->virtual dom->html`这样的格式。
 

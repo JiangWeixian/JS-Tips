@@ -70,7 +70,7 @@
 
 所以加快操作有两个方法：
 
-> [批量操作](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)，一次性过桥比一次接着一次过桥来的快
+> [批量操作](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)，一次性过桥比一次接着一次过桥来的快
 
 > 不使用DOM-API，而是像VNODE一样直接在JS上操作。
 

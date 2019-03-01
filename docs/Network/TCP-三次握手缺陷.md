@@ -3,7 +3,7 @@
 
 ## 前置知识 - 什么是三次握手？
 
-可看之前总结的关于[三次握手](https://github.com/JiangWeixian/JS-Tips/blob/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)的方式或者维基百科。
+可看之前总结的关于[三次握手](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)的方式或者维基百科。
 
 大致如下：
 

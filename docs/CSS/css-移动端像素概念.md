@@ -151,7 +151,7 @@
 
 ## **`viewport`适配**
 
-> 完整解析见[CSS-viewport适配方案](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
+> 完整解析见[CSS-viewport适配方案](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/css-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%83%8F%E7%B4%A0%E6%A6%82%E5%BF%B5.md)
 
 * [viewport适配方案-可行性](https://www.w3cplus.com/css/vw-for-layout.html) - 需要移动端对于`vw`等单位的支持。
 

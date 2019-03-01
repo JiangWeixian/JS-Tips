@@ -59,7 +59,7 @@
 
 3. 什么是原型？
 
-    * JS中有[几大数据类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)，这些就是原型(至于这些数据类型又指向`Object`)就是另外一回事。
+    * JS中有[几大数据类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF.md)，这些就是原型(至于这些数据类型又指向`Object`)就是另外一回事。
     * 原型 = `Number or String etc...`
 
 4. 引用类型。特别涉及到`__proto__ && prototype && construtor`的时候，可以理解为指针。那么其中任意一个赋值都不是简单的赋值，而是引用类型。
@@ -320,7 +320,7 @@ __proto__
 
 ### 1.4.1. 继承 - prototype操作指南
 
-但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
+但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
 
 ```javascript
 var newfoo = new foo() // 只能够通过上述第二点查看到prototype
@@ -402,7 +402,7 @@ console.log(
 
 ## 1.5. 分析为什么能够继承？
 
-在[JS继承](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中，我总结了可以通过以下方式继承！
+在[JS继承](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中，我总结了可以通过以下方式继承！
 
 ```javascript
 function Foo(name) {
@@ -457,7 +457,7 @@ __proto__
   1. `newbar`是通过`new`创建的(没有了`prototype`，我们无法直接操作`prototype`)
   2. `newbar.__proto__`指向`Bar.prototype`，而`Bar.prototype`已经被我们改掉了，里面的 **内容变为了**变为指向`Foo.prototype+之后添加的新函数属性`。在后期使用过程中，所以可以使用`Foo`的方法。
 
-这种继承方式最大的问题在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)中分析了。
+这种继承方式最大的问题在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)中分析了。
 
 **第二种继承方式**`Object.create`内部具体结构如下:
 
@@ -475,7 +475,7 @@ function create (obj) {
 
 同时`new`关键字(具体可见`new`关键字内部实现)也是利用上面`__proto__`指向了原型的`prototype`的特性来返回一个临时的对象。
 
-**以上`Foo.call()`**是较为关键的一点，在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)分析了为什么。
+**以上`Foo.call()`**是较为关键的一点，在[JS-继承最佳实践解析](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF%E4%BB%A5%E5%8F%8A%E7%B1%BB-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E8%A7%A3%E6%9E%90.md)分析了为什么。
 
 **Q&A -**那么为什么不`Bar.prototype = Foo.prototype`
 

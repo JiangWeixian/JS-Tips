@@ -101,7 +101,7 @@
 
 **运行优化 - `defer or async`**
 
-完整部分见[Browser-浏览器渲染过程](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
+完整部分见[Browser-浏览器渲染过程](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/Browser-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86.md)
 
 1. 无论是否有`defer or async`属性，将`script`标签写到页面最后是相对稳妥的做法。
     * 没有兼容性问题
@@ -126,7 +126,7 @@
 
 **JS与DOM**
 
-更多细节可看[HTML-DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)
+更多细节可看[HTML-DOM优化指南](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/HTML/HTML-DOM%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md)
 
 指的是对`DOM`修改这一部分
 

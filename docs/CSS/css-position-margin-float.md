@@ -45,11 +45,11 @@
 
 通过设置4个定位来限制元素视图，那么该元素计算规则应该为`left+margin-left+width+margin-right+right`来计算是否等于父类(这里没有考虑`border padding`)
 
-**假设`right: 200px`** 并不会特意去考虑`margin`是相对什么定位。而是通过上诉计算规则来进行设置。例子见[css-position&margin&float.html-限制视图](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-position%26margin%26float.html)
+**假设`right: 200px`** 并不会特意去考虑`margin`是相对什么定位。而是通过上诉计算规则来进行设置。例子见[css-position&margin&float.html-限制视图](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-position%26margin%26float.html)
 
 ## 1.2. position && float
 
-`float`并不会生效。见[css-position&margin&float.html-测试position&float相互作用](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-position%26margin%26float.html)
+`float`并不会生效。见[css-position&margin&float.html-测试position&float相互作用](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-position%26margin%26float.html)
 
 ## 1.3. margin & float
 

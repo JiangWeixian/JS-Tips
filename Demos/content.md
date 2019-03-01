@@ -4,12 +4,12 @@
 <!-- TOC -->
 
 - [Demos](#demos)
-    - [[Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/drag.html)](#draphtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosdraghtml)
-    - [[Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/clearfloat.html)](#clearflothtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosclearfloathtml)
+    - [[Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/drag.html)](#draphtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosdraghtml)
+    - [[Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/clearfloat.html)](#clearflothtmlhttpsgithubcomjiangweixianjs-tipsblobmasterdemosclearfloathtml)
 
 <!-- /TOC -->
 
-### [Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/drag.html)
+### [Drap.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/drag.html)
 
 实现拖拽元素。原生
 
@@ -20,7 +20,7 @@
 * `offsetX`相对于父级而言
 * 回调函数如何传递参数（传递了参数之后，无法实现事件监听）
 
-### [Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/clearfloat.html)
+### [Clearflot.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/clearfloat.html)
 
 知识点：
 

@@ -27,4 +27,4 @@
 * `display:none`意味着元素从页面中不见，不占有空间。`visiblity: hidden`从页面不见，但是还是占有空间
 * 对于设置了`display:none`的父类元素，子类是无论怎么设置都会出现的(即使是`float or absoulte`)。而`visiblity: hidden`的父类元素，子类可以通过`visiblity: visiable`出现。
 
-见[css-displaynone-test.html](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-displaynone-test.html)
+见[css-displaynone-test.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-displaynone-test.html)

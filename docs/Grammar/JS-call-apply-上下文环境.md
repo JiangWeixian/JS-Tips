@@ -77,7 +77,7 @@
 	```
 	可以发现这里的`this`是`a`这个对象。所以链式操作需要注意一下它的实现方式。
 
-在[JS-this指向总结](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md)总结了多种可能。
+在[JS-this指向总结](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93.md)总结了多种可能。
 
 ### 1.1.1. 闭包一定要理解
 
@@ -103,13 +103,13 @@ baz(); // 2 -- 哇噢，看到闭包了，伙计。
 
 那么例子总结一下，什么叫作闭包。**外部`baz`仍然有`foo`内部的引用，这个概念就是闭包。**。扩展开来，外部`baz`（不仅仅是底层）可以访问到同一级别的`foo`内部的变量。因为`baz`和`foo`都处于同一个作用域内部。**baz可以使用bar，以及bar可以使用foo，这就是原因。**
 
-结合[JS-柯里化和反柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md)理解。还有一点闭包不仅仅局限于上面这种形式，抽象来看，可总结为外部拿到了另一个函数的作用域引用。
+结合[JS-柯里化和反柯里化](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E9%97%AD%E5%8C%85-%E6%9F%AF%E9%87%8C%E5%8C%96.md)理解。还有一点闭包不仅仅局限于上面这种形式，抽象来看，可总结为外部拿到了另一个函数的作用域引用。
 
 > 在`JavaScript(ES5)`中只有函数作用域。所以就变成了上面的形式。
 
 **那么任何这种拿到另一函数作用域应用的行为都可以叫做是闭包！**
 
-[@JS-call.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-call.js)
+[@JS-call.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-call.js)
 ```JavaScript
 function student () {
   var name = Math.random()
@@ -143,7 +143,7 @@ s2 0.5535273424905633
 
 进一步！
 
-[@JS-call.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS/JS-call.js)
+[@JS-call.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-call.js)
 ```JavaScript
 function chair () {
 

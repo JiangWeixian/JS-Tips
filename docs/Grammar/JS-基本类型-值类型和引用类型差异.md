@@ -14,7 +14,7 @@
 
 ## 值类型
 
-见[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)
+见[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)
 
 ## 引用类型 - 规则
 
@@ -35,7 +35,7 @@
 
 ### 引用类型与内存
 
-对于申明一个引用类型，同样也有[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)那三种数据类型申明方式。
+对于申明一个引用类型，同样也有[JS-基本类型-值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%80%BC%E7%B1%BB%E5%9E%8B.md)那三种数据类型申明方式。
 
 同样和值类型一样，以上三种方式也是分配了新的内存。**特别注意的是以下这种的变量创建方式**
 
@@ -115,7 +115,7 @@ Bar.prototype.speak = function () {}
 var bar = new Bar()
 ```
 
-由[JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)，可以得到`bar`内部结构为：
+由[JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)，可以得到`bar`内部结构为：
 
 ```JavaScript
 name

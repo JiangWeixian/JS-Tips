@@ -89,7 +89,7 @@
 * `somename`也就是用于设置`animation: name`，写在`name`部分。**只能用于animation但是不能用于transition**
 * 在`百分比: {}`中可以设置多个属性(包括`transform`)，不像`transition`只能够监听一个属性
 
-例子见[css-animation.html(ele-animation-normal)](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-animation.html)
+例子见[css-animation.html(ele-animation-normal)](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-animation.html)
 
 **Q&A5 -** `iteration-count/animation-direction`属性特点。
 
@@ -98,14 +98,14 @@
 
     > 很明显是动画执行的方向。在`iteration-count`知道，新的动画执行时会闪回到最初阶段。**现在可以控制回退时候的动画执行特性，也就是`alternate`**
 
-    > 可配合上一个`iteration-count`使用。因为无论是动画执行或者回退都是要消耗`iteration-count`执行次数，执行一次减1。**所以如果设置了`alternate`，动画次数却没有大于2，是没有办法执行下去的**。见[css-animation.html(ele-animation-alternate)](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-animation.html)
+    > 可配合上一个`iteration-count`使用。因为无论是动画执行或者回退都是要消耗`iteration-count`执行次数，执行一次减1。**所以如果设置了`alternate`，动画次数却没有大于2，是没有办法执行下去的**。见[css-animation.html(ele-animation-alternate)](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-animation.html)
 
 * `animation-fill-mode`
 
     > 除了forward其余都不是很重要
 
     * `none`默认值
-    * `backward` **回到动画第一帧情况，一般情况下就是初始状态** 见[css-animation.html(ele-animation-mode--backward)](https://github.com/JiangWeixian/JS-Tips/blob/master/CSS/HTML/css-animation.html)
+    * `backward` **回到动画第一帧情况，一般情况下就是初始状态** 见[css-animation.html(ele-animation-mode--backward)](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/css-animation.html)
     * `forward`动画执行之后保持。**大概是这个属性最为重要的一个**
     * `both`
 

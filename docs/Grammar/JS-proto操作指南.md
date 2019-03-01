@@ -14,7 +14,7 @@
 
 ## 1.1. 前置知识 - 引用类型和值类型
 
-见[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md) - 同时里面提到了手动修改`prototype`的情况。
+见[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md) - 同时里面提到了手动修改`prototype`的情况。
 
 ## 1.2. 内建函数差异
 
@@ -43,7 +43,7 @@ Bar.prototype.speak = function () {}
 var bar = new Bar()
 ```
 
-由[JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)，可以得到`bar`内部结构为：
+由[JS-proto&prototype&constructor&new](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)，可以得到`bar`内部结构为：
 
 ```JavaScript
 name
@@ -62,7 +62,7 @@ __proto__ // proto1
 
 > `Object.getPrototypeof()` - **获取的是最外层的`__proto__`**。并不是获取`prototype`。
 
-我的意思是获取`a.__proto__`而不是`a.prototype`。在[JS-proto&prototype](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)中我们知道，其实对象不一定就`prototype`属性。
+我的意思是获取`a.__proto__`而不是`a.prototype`。在[JS-proto&prototype](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)中我们知道，其实对象不一定就`prototype`属性。
 
 就像是在[1.2. 内建函数差异]()`bar`内部结构中，我们获取的是`proto1`而不是`proto2`。
 
@@ -75,7 +75,7 @@ __proto__ // proto1
 * `Bar.prototype.isPrototypeOf(bar) // true`
 * `Foo.prototype.isPrototypeOf(bar) // true`
 
-同样也有和`instanceof`一样的问题，如果`Bar.prototype = {}`，[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)提到的并不会同步修改`proto1`。此时导致`Bar.prototype.isPrototypeOf(bar) // false`
+同样也有和`instanceof`一样的问题，如果`Bar.prototype = {}`，[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)提到的并不会同步修改`proto1`。此时导致`Bar.prototype.isPrototypeOf(bar) // false`
 
 ### 1.2.3. Object.setPrototypeOf() && Object.create()
 
@@ -119,7 +119,7 @@ __proto__
   __proto__
 ```
 
-正如[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)提到的那样，如果：
+正如[JS-引用类型和值类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md)提到的那样，如果：
 
 ```JavaScript
 Bar.prototype = Object.create(c.prototype) // 并不会同步修改proto1

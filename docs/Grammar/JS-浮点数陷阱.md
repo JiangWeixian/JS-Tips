@@ -2,7 +2,7 @@
 
 ## 前置知识 - JS中的数据存储
 
-可以先看看我关于[大整数](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)的总结。
+可以先看看我关于[大整数](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)的总结。
 
 ## 前置知识 - 什么是浮点数陷阱？
 

@@ -3,7 +3,7 @@
 
 <!-- TOC -->
 
-- [1. 浏览器渲染原理](#1-浏览器渲染原理)
+- [浏览器渲染原理](#浏览器渲染原理)
   - [1.1. 前置知识 - 构建&渲染](#11-前置知识---构建渲染)
   - [1.2. 前置知识 - DOMContentload&load](#12-前置知识---domcontentloadload)
   - [1.3. 初探 - 浏览器渲染流程](#13-初探---浏览器渲染流程)
@@ -24,17 +24,17 @@
 
     如果是`link html script`这样的顺序。
     
-    > 如果页面中为`link html (no defer async)script`的构成。只会等待前面两个完成就会出现页面。见[(no defer async)script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/script.html)测试，但是如果`script`中存在修改样式代码，可能会出现页面重新绘制。**这里需要注意的是，如果script足够小，且运行速度够快，这个过程可以忽略不计。如果需要一定时间下载运行，可能会出现闪烁**
+    > 如果页面中为`link html (no defer async)script`的构成。只会等待前面两个完成就会出现页面。见[(no defer async)script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/docs/Broswer/HTML/script.html)测试，但是如果`script`中存在修改样式代码，可能会出现页面重新绘制。**这里需要注意的是，如果script足够小，且运行速度够快，这个过程可以忽略不计。如果需要一定时间下载运行，可能会出现闪烁**
 
-    > 如果`link html (async defer)script`只会等待前面两个完成就会出现页面，[(调整网络为slow-3g)defer-script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/defer-script.html)和[(调整网络为slow-3g)async-script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/async-script.html)都是一样的情况。
+    > 如果`link html (async defer)script`只会等待前面两个完成就会出现页面，[(调整网络为slow-3g)defer-script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/defer-script.html)和[(调整网络为slow-3g)async-script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/async-script.html)都是一样的情况。
 
     说明了如果是`link html script`这样的顺序。`defer async`对 **初始化**渲染结果的影响不大。
 
     如果是`link script html`这样的顺序。
 
-    > 如果页面中为`link html (no defer async)script`的构成。那么页面渲染需要等待这三个全部完成。见[(no defer async)normal-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/normal-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)
+    > 如果页面中为`link html (no defer async)script`的构成。那么页面渲染需要等待这三个全部完成。见[(no defer async)normal-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/normal-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)
 
-    > 如果`link html (defer)script`只会等待前面两个完成就会出现页面([(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html))。如果是`async`由于加载完成时间不一致，可能还是会出现阻塞的情况([(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)都是比较大的文件，所以并没有出现阻塞情况)
+    > 如果`link html (defer)script`只会等待前面两个完成就会出现页面([(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html))。如果是`async`由于加载完成时间不一致，可能还是会出现阻塞的情况([(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)都是比较大的文件，所以并没有出现阻塞情况)
 
     说明如果`script`位置提前，就会体现出`defer and script`特性。
 
@@ -49,9 +49,9 @@
 
 **注意1：需要等待所有的(normal defer not async)JS文件执行完成**
 
-在[(no defer async)script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/script.html)中 - 将`script`放在结尾测试，此时脚本下载不干扰`dom`解析。将`script`放在头部[(no defer async)normal-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/normal-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)，会干扰dom解析。虽然两个都是在JS脚本完成之后再触发`DOMContentload`(`DOMContentload`触发时可以打印出`windows.$`)。但是实际情况有所不同，前者白屏时间比较短。
+在[(no defer async)script.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/script.html)中 - 将`script`放在结尾测试，此时脚本下载不干扰`dom`解析。将`script`放在头部[(no defer async)normal-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/normal-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)，会干扰dom解析。虽然两个都是在JS脚本完成之后再触发`DOMContentload`(`DOMContentload`触发时可以打印出`windows.$`)。但是实际情况有所不同，前者白屏时间比较短。
 
-由于`defer`的特性在于且 **在`DOMCONTENTLOAD`之前执行，且下载的时候不干扰dom解析，因此放在那里位置都是可以的。** 见[(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)和[(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)测试，无论`defer`在开头还是结尾(`DOMContentload`触发时可以打印出`windows.$`)
+由于`defer`的特性在于且 **在`DOMCONTENTLOAD`之前执行，且下载的时候不干扰dom解析，因此放在那里位置都是可以的。** 见[(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)和[(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)测试，无论`defer`在开头还是结尾(`DOMContentload`触发时可以打印出`windows.$`)
 
 综合`normal and defer`测试可以得到结论：
 
@@ -59,7 +59,7 @@
 
 > 可以发现写在最后可以发现有无`defer`结果表现一致，这和现代浏览器并行下载`script`有关。
 
-对于`async`，在[(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)和[(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)测试发现有所 **不同**(`DOMContentload`触发时无法打印出`windows.$`)。说明:
+对于`async`，在[(调整网络为slow-3g)defer-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/defer-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)和[(调整网络为slow-3g)async-script位置测试.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/async-script%E9%A1%B5%E9%9D%A2%E4%BD%8D%E7%BD%AE%E6%B5%8B%E8%AF%95.html)测试发现有所 **不同**(`DOMContentload`触发时无法打印出`windows.$`)。说明:
 
 > `async`不会严格等待`DOMCONTENTLOAD`之前执行，`DOMCONTENTLOAD`也不会因为`async JS`文件没有下载完就不触发。**取决于async 是否能够`DOMCONTENTLOAD`触发时候下载完成** 在上面两个例子由于`JS`文件比较大，所以在`DOMCONTENTLOAD`之前并没有下载完全。
 
@@ -118,7 +118,7 @@
 
 如同之前总计的`cssdom htmldom`都完成了，初始页面就已经可以看到了。
 
-> (我觉得可能是因为)这里有一个小细节，如果`script`在`cssdom or htmldom`解析完成之后也完成了下载，且执行时间比较久的话。可能会出现白屏的情况，就像是[longtimescript.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Broswer/HTML/longtimescript.html)那样。**干扰页面呈现**
+> (我觉得可能是因为)这里有一个小细节，如果`script`在`cssdom or htmldom`解析完成之后也完成了下载，且执行时间比较久的话。可能会出现白屏的情况，就像是[longtimescript.html](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Broswer/HTML/longtimescript.html)那样。**干扰页面呈现**
 
 好办法是是将这个长时间的过程异步执行，这个行为就好比模拟`script`长时间下载。此时不会白屏。**不干扰页面呈现**
 

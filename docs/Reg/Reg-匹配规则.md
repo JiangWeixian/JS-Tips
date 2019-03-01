@@ -52,7 +52,7 @@
 
 ### 1.2.2. `?:` - 解释说明
 
-> `?:` - 含义为不匹配分组。但是仅限于紧跟着`?:`之后的。例如[reg-url.js](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
+> `?:` - 含义为不匹配分组。但是仅限于紧跟着`?:`之后的。例如[reg-url.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Reg/Reg-%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.md)
 
 `(?::(\d+)) - 9090`，如果写成了`(?::\d+)`那么`9090`会 **进行匹配但是不会出现在match-list中**
 
@@ -82,4 +82,4 @@
 
 ### 1.4.1. 简单应用
 
-* [例子链接](https://github.com/JiangWeixian/JS-Tips/blob/master/Reg/Reg-%E5%85%A8%E9%83%A8%E5%8C%B9%E9%85%8D%E5%AE%9E%E4%BE%8B.md)
+* [例子链接](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Reg/Reg-%E5%85%A8%E9%83%A8%E5%8C%B9%E9%85%8D%E5%AE%9E%E4%BE%8B.md)

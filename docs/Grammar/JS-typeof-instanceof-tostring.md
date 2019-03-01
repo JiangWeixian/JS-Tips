@@ -49,7 +49,7 @@ var foo = new Foo()
 foo instanceof Foo
 ```
 
-根据[JS-proto&prototype&constructor](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)理解。此时foo结构为：
+根据[JS-proto&prototype&constructor](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)理解。此时foo结构为：
 
 ```JavaScript
 some data // 来自Foo内部
@@ -62,7 +62,7 @@ __proto__
 
 可以解释结果为`true`
 
-但是如果我们设置`Foo.prototype = {}`。(由于这是复制操作，所以不会修改`foo` **来自Foo.prototype**那部分方法。但是如果`Foo.prototype.ou = function() {}`那么会修改`foo` **来自Foo.prototype**那部分方法，就是后者会让`__proto__`多了一个`name`方法。可根据[JS-值类型和引用类型](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md))
+但是如果我们设置`Foo.prototype = {}`。(由于这是复制操作，所以不会修改`foo` **来自Foo.prototype**那部分方法。但是如果`Foo.prototype.ou = function() {}`那么会修改`foo` **来自Foo.prototype**那部分方法，就是后者会让`__proto__`多了一个`name`方法。可根据[JS-值类型和引用类型](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%B7%AE%E5%BC%82.md))
 
 此时前者做法`foo instanceof Foo // false`。
 
@@ -80,7 +80,7 @@ __proto__
   __proto__
 ```
 
-关于这部分分析，详细见[JS-proto&prototype&constructor](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)
+关于这部分分析，详细见[JS-proto&prototype&constructor](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)
 
 (且很容易得到结论，如果想要操作父类的方法，可以通过`foo.__proto__.name = yyy`)
 

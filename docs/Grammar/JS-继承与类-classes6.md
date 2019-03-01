@@ -18,7 +18,7 @@
 
 `Class`只是关键字，相比较与之前使用`function`来进行类与继承，体积更小。
 
-不过继承方式还是脱离不了`JavaScript`语法特性，例如使用`prototype&__proto__`，所以[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)这个还是需要明白。所以之后我进行对比说明。
+不过继承方式还是脱离不了`JavaScript`语法特性，例如使用`prototype&__proto__`，所以[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)这个还是需要明白。所以之后我进行对比说明。
 
 `Class`实现继承的关键在于本身就是一个声明`prototype`，这恰好是实现继承关键字。类如下面的代码
 
@@ -36,7 +36,7 @@ const Point.prototype =  {
 }
 ```
 
-由[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)我们知道如果我们定义`function Point`，`Point`的确有一个`prototype`属性，可以知道`class`关键字的确把这个`prototype`抽离出来了。
+由[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)我们知道如果我们定义`function Point`，`Point`的确有一个`prototype`属性，可以知道`class`关键字的确把这个`prototype`抽离出来了。
 
 **Q&A1 - 为什么能够实现类？**
 
@@ -188,7 +188,7 @@ const Point.prototype =  {
 
     **题外话**
 
-    结合[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-__proto__%26%26prototype%26%26new.md)可以得到`Line.prototype.__proto__ = Point.prototype`
+    结合[JS-prototype&proto&new](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-__proto__%26%26prototype%26%26new.md)可以得到`Line.prototype.__proto__ = Point.prototype`
     
 * `super`在子类普通方法中使用 - 此时`super`指的是`parent.prototype`
 
