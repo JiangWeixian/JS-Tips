@@ -3,7 +3,7 @@
 
 <!-- TOC -->
 
-- [1. HTTP - 输入地址到显示页面](#1-http---输入地址到显示页面)
+- [HTTP - 输入地址到显示页面](#http---输入地址到显示页面)
   - [1.1. 概述](#11-概述)
     - [1.1.1. 建立连接概述](#111-建立连接概述)
   - [1.2. 优化](#12-优化)
@@ -91,7 +91,7 @@
 
 一般来说JS在下载和运行过程中都会干扰到HTML解析。所以一般会放在最后。
 
-![script干扰](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Broswer/img/script%E5%B9%B2%E6%89%B0.png)
+![script干扰](./img/script.png)
 
 和`CSS`一样，页面中的`JS`从开始到渲染涉及到三个过程：
 

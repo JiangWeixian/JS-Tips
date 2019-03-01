@@ -27,7 +27,7 @@
 
 * 发送数据包含有确认序列，**保证接受时候的数据顺序**。
 * 如果没有被确认就会被**重传**
-    ![tcp传输数据流程](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/Tcp_transport_example.gif)
+    ![tcp传输数据流程](./img/Tcp_transport_example.gif)
 * 接收端和发送端都会有一个**校验函数**保证数据准确性
 * **建立连接的方式是通过三次握手来建立**
 
@@ -37,7 +37,7 @@
 
 数据包结构如下：
 
-![tcp数据结构](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/tcpdata.PNG)
+![tcp数据结构](./img/tcpdata.png)
 
 由于以上种种限制，使得它不太适用实时的应用场景。所以类如流媒体，和游戏之类并不合适。
 
@@ -50,7 +50,7 @@
 
 在安全上定义的协议很少。数据包结构如下图：
 
-![udp数据结构](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/udpdata.PNG)
+![udp数据结构](./img/udpdata.png)
 
 ### 1.2.1. 和http的关系 - 超文本控制协议
 

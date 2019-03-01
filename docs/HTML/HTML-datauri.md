@@ -28,7 +28,7 @@ data:[<mime type>][;charset=<charset>][;<encoding>],<encoded data>
 
 支持类型如下：
 
-![datatype](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/HTML/img/datatype.PNG)
+![datatype](./img/datatype.png)
 
 任何一段`datauri`数据复制到浏览器地址中，都可以通过浏览器解析。具体解析为什么数据，取决于`mime type`
 

@@ -3,13 +3,13 @@
 <!-- TOC -->
 
 - [前端框架之间对比](#前端框架之间对比)
-        - [前置知识](#前置知识)
-            - [什么是virtual dom](#什么是virtual-dom)
-            - [如何实现virtual dom简易版本](#如何实现virtual-dom简易版本)
-        - [前端框架类型](#前端框架类型)
-        - [Vue](#vue)
-        - [Angular](#angular)
-        - [React](#react)
+    - [前置知识](#前置知识)
+      - [什么是virtual dom](#什么是virtual-dom)
+      - [如何实现virtual dom简易版本](#如何实现virtual-dom简易版本)
+    - [前端框架类型](#前端框架类型)
+    - [Vue](#vue)
+    - [Angular](#angular)
+    - [React](#react)
 
 <!-- /TOC -->
 
@@ -51,7 +51,7 @@
     
 假设我们有以下树结构：
 
-![virtual dom tree](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Vue/img/virtualdomtree.PNG)
+![virtual dom tree](./img/virtualdomtree.png)
 
 * 对树进行[深度遍历](https://zh.wikipedia.org/zh-hans/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2)，得到数组结构，得到每个节点标识，有利于比较虚拟`DOM`差异，以及后续更新。（**看了维基百科还是有问题，请看[这里](https://juejin.im/entry/5912bb9544d904007b0384f1)**）  
 * 节点差异记录在数组内，并记录差异类型。不同差异决定如何对真实`dom`如何操作。甚至节点只是移动了也会有差异类型，让框架知道只需要移动节点而不需要重新创建和差异节点。

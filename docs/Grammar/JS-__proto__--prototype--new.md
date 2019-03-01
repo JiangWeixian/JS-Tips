@@ -254,7 +254,7 @@ __proto__
 
 2. 更为具体例子可以看[这里](https://juejin.im/post/584e1ac50ce463005c618ca2)，我截了个图关键部分：
 
-    ![new干了什么](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/newdowhat.PNG)
+    ![new干了什么](./img/newdowhat.png)
 
 因此，设临时对象为`A`，以及士兵为`B`。
 
@@ -389,7 +389,7 @@ console.log(
 
 上面代码我们得到下图：
 
-![构造函数和原型](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB.PNG)
+![构造函数和原型](./img/prototypeandconstructor.png)
 
 
 * 两段代码可以得到 **prototype只有原型有。而newfoo想要操作prototype可以根据以上结论通过newfoo.__proto__来找到**(一般也不会这么做)

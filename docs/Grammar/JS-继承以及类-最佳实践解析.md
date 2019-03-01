@@ -157,7 +157,7 @@ parent.prototype.changename = function () {
 
 首先我们要要了解`new`关键字做了什么。
 
-![new干了什么](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Grammar/img/newdowhat.PNG)
+![new干了什么](./img/newdowhat.png)
 
 可以理解为用一个临时对象继承了`parent`，并返回。
 

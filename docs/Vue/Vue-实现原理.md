@@ -139,7 +139,7 @@
 
 **Step3:** 现在子节点都存在于新旧dom结构中，需要比较新旧子节点每一个节点(也就是说如果节点值得比较，需要进一步比较子节点。那么递归下去，先改变最低层节点然后一层层向上)，**是否需要递归判断，对于子节点队列判断方式如下图，每个节点判断方式和第一个步骤一致**：
 
-![diff2](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Vue/img/diff2.png)
+![diff2](./img/diff2.png)
 
 **Step4:** 其实很好理解为啥这么比较，可以类比 **快速排序算法。**
 

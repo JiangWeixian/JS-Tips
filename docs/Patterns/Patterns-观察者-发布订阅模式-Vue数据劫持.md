@@ -19,7 +19,7 @@
 * 参数2 - {}其中一个属性
 * 参数3
 
-    ![设置属性](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/Patterns/img/%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7.PNG)
+    ![设置属性](./img/setting.png)
 
     其中`get set`都是`function`
 

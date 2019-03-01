@@ -8,7 +8,7 @@
 
 现在可以建立一个`HTTP`请求，下载多个文件。如下图所示：
 
-![http2.0-文件下载](https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/img/http2.0%E6%96%87%E4%BB%B6%E8%AF%B7%E6%B1%82.png)
+![http2.0-文件下载](./img/http2filerequest.png)
 
 2. 压缩了请求头部分
 
