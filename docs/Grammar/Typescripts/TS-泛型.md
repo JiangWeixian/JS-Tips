@@ -40,6 +40,21 @@ let C: A | B
 
 `(<A>C).name`就可以让`C`暂时变为`A`类型。这个是灵活的，**因为也可以在这行代码之后变为`B`类型。为了调用其`age`的代码**
 
+:::warning
+但是这个和`jsx`语法没办法一起使用。因为`<>`会被解析为`html`语法。
+:::
+
+例如，使用以下方法。
+
+```js
+function getType (): A | B {
+  return {
+    age: 'age',
+  }
+}
+const C = getType() as A
+```
+
 ### 操作interface
 
 ```JavaScript
