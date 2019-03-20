@@ -1,14 +1,14 @@
 # 泛型
 > 比想象中重要
 
+[[toc]]
+
 ## 前言
 
 * 作用 - **捕捉输入参数的类型**
 * 语法 - `<>`
 
-## 使用
-
-### 使用在普通函数上
+## 使用在普通函数上
 
 ```js
 function a <T>(arg: T): T {}
@@ -19,7 +19,13 @@ function a <T>(arg: T): T {}
 * 其实更为灵活的是`T`可以在`arg`属性中`arg: { x: T }`这样的形式
 * 以及`<T extends xx>`来限制，**这个时候就会限制`arg`的输入类型，必须有`xx`的类型**
 
-### 使用在普通变量上
+**同时在`<>`中，如果写做`<T, U>`** 那么`U`可以基于`T`进行一些操作。也就是说在`<>`中。前后并没有什么优先级的关系。
+
+## 使用在Promise函数上
+
+可以通过`Prmomise<{ data: T[], ... }>`来决定返回的数据类型。
+
+## 使用在普通变量上
 
 假设
 ```js
@@ -55,10 +61,15 @@ function getType (): A | B {
 const C = getType() as A
 ```
 
-### 操作interface
+## 操作interface
 
 ```JavaScript
 interface x<T> {
   data: T
 }
 ```
+
+## 关键操作符号使用
+> keyof
+
+* [如何使用keyof](./TS-keyof.html) - 高级类型
