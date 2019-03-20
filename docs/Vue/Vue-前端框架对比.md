@@ -1,19 +1,7 @@
 # 前端框架之间对比
+[[toc]]
 
-<!-- TOC -->
-
-- [前端框架之间对比](#前端框架之间对比)
-    - [前置知识](#前置知识)
-      - [什么是virtual dom](#什么是virtual-dom)
-      - [如何实现virtual dom简易版本](#如何实现virtual-dom简易版本)
-    - [前端框架类型](#前端框架类型)
-    - [Vue](#vue)
-    - [Angular](#angular)
-    - [React](#react)
-
-<!-- /TOC -->
-
-### 前置知识
+## 前置知识
 
 框架的进化流程大致：
 
@@ -21,7 +9,7 @@
 2. 引入数据模型，当前端的数据模型改变的时候触发一些事件，前端有义务来控制当这些事件发生之后该做些什么
 3. 
 
-#### 什么是virtual dom
+### 什么是virtual dom
 
 * [参考文章-译文-十分细致的介绍](https://www.jianshu.com/p/bef1c1ee5a0e)
 * [参考文章-原文](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html)
@@ -38,7 +26,7 @@
 2. 然后根据数据生成`virtual dom{0}`
 3. 数据改变，改变`virtual dom{1}`。和`virtual dom{0}`比较，如果变化了，就更新`dom`。至于怎么检查是否发生了数据更新。就是另外一回事了。
 
-#### 如何实现virtual dom简易版本
+### 如何实现virtual dom简易版本
 
 * [来看看别人是怎么实现的？ - 解析](https://www.zhihu.com/question/29504639)
 * [github实现版本](https://github.com/Matt-Esch/virtual-dom)
@@ -59,7 +47,7 @@
 4. 将差异映射到真实`dom`上，依赖于之前创建的`virtual dom`结构。   
 
 
-### 前端框架类型
+## 前端框架类型
 
 [阮一峰科普](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
 
@@ -120,3 +108,20 @@ MVVM
     2. 得到新的虚拟`DOM`，和旧的比较
     3. 得到被改变的那些节点
     4. 更新具体的`DOM`阶段
+
+## 更为细节的对比
+
+### 回调函数
+
+对`React`来说，给组件添加回调函数和平时`dom`没事区别，如`a.onclikc = ...`。包括那些`event`的获取，传递函数等。
+
+但是对`Vue`来说有点不太一样了。如
+
+```js
+<a
+  onClick="handleclick(e)"
+>
+</a>
+```
+
+> 好像是`handleclick`与`handleclick(e)`并没有什么区别。注意这个`e`是来自`data`等数据来源（或者列表）。如果想要`event`，必须通过`$event`进行传递。**必然！`Vue`对语法解析依赖更为严重。**
