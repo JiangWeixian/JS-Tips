@@ -1,4 +1,4 @@
-# Enum
+# TS-Enum
 
 ## 前言
 

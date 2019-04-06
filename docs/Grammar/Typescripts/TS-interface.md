@@ -1,4 +1,4 @@
-# Interface
+# TS-Interface
 
 ## 任意数量的类型
 

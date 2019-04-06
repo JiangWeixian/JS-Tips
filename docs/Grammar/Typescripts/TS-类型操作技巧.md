@@ -56,3 +56,18 @@ const func = (arr: datas): {}
 ```
 
 我们如何获取`datas`中单个元素类型。可以通过`type single = datas[0]`
+
+## 类型操作符号
+
+:::tip
+注意和`js`中`&& ||`区分开来。因为在`ts`中，操作类型是通过`& |`
+:::
+
+其中：
+
+* `&` - 指的是取两个类型的合集
+* `|` - 指的是两个类型的交集
+
+## ReturnTypes
+
+用法是`ReturnTypes<typeof xxx>`。用处当然是获取`xxx`每个元素的类型了。
