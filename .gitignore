@@ -1,5 +1,5 @@
 /Demos/node_modules
 /.vscode/
-*node_modules
-./docs/.vuepress/dist/*
+/node_modules/
+/docs/.vuepress/dist/
 /dist/
