@@ -17,7 +17,7 @@
   },
   "scripts": {
     "prebuild": "tsc -p tsconfig.json && node docs/Menus/index.js && node docs/.vuepress/config.js",
-    "dev": "npx vuepress dev docs",
+    "dev": "npx prebuild && npx vuepress dev docs",
     "build": "npx vuepress build docs"
   },
   "repository": {
