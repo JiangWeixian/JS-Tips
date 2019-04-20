@@ -57,6 +57,10 @@
 
 * [css-link&@import](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/css-link%26%40import.md)
 
+## 实践
+
+* [如何使用clippath绘制电影票](/CSS/css-cilppath.html#refs)
+
 # **待分类目录**
 
 * [记录一次移动端调试奇怪一点](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/%E7%A7%BB%E5%8A%A8%E7%AB%AF.md)

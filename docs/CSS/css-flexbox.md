@@ -90,6 +90,34 @@
 
     > 假设父类100%，三个子元素。两个为flex-basis为200px，其中一个为0。然后设定`flex-basis`为0的`flex-grow`为`1`。布局就相当于100% - 200px * 2 = `flex-grow`为`1`那个元素的大小。如[flex.html-flex-basis-test](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/CSS/HTML/flex.html)
 
+    **在想要一个元素定高** 另外一个元素撑开剩余高度的时候有用（但是注意父类元素高度不能太小，以上有提到撑开父类的限制）。
+
+    ```html
+    <div class='parent'>
+      <div class='c1'>c1</div>
+      <div class='c2'>c2</div>
+    </div>
+    ```
+
+    ```css
+    .parent {
+      display: flex
+      flex-direction: 'column'
+    }
+
+    .c1, .c2 {
+      flex-basis: 0
+    }
+
+    .c1 {
+      flex-grow: 0
+    }
+
+    .c2 {
+      flex-grow: 1
+    }
+    ```
+
 # flex 小坑
 > 记录使用flexbox遇到的问题
 
