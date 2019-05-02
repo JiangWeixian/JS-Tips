@@ -25,7 +25,7 @@ module.exports = {
             { text: '主页', link: '/' },
             { text: '技术栈', link: '/Guide/' },
             { text: '目录', link: '/Menus/' },
-            { text: 'CHANGELOG', link: '/CHANGELOG/' },
+            { text: 'CHANGELOG', link: '/CHANGELOG.html' },
             { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
         ],
         sidebar: __assign({}, menus_1.getMenus(), { '/Guide/': [
