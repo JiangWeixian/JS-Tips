@@ -13,6 +13,7 @@ module.exports = {
       { text: '主页', link: '/' },
       { text: '技术栈', link: '/Guide/' },
       { text: '目录', link: '/Menus/' },
+      { text: 'CHANGELOG', link: '/CHANGELOG/' },
       { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
     ],
     sidebar: {
