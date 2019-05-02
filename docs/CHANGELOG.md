@@ -6,6 +6,7 @@
 ### 20190502
 
 * css - `fit-content`设置宽高
+* [ ] react - `init hooks`等待用法上的更新
 
 ### 20190501
 
