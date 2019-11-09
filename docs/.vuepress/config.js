@@ -1,7 +1,7 @@
 const pkg = require('../../package.json')
 
 module.exports = {
-  title: 'JS-Tips',
+  title: '蒋微咸博客',
   base: `/${pkg.repository.name}/`,
   description: '前端基础',
   plugins: [
