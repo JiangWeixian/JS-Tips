@@ -1,22 +1,31 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var menus_1 = require("../utils/menus");
 var config_1 = require("../config");
 module.exports = {
     title: 'JS-Tips',
     base: "/" + config_1.repo + "/",
     description: '前端基础',
+    plugins: [
+        [
+            '@vuepress/blog',
+            {
+                frontmatters: [
+                    {
+                        // Unique ID of current classification
+                        id: 'tag',
+                        // Decide that the frontmatter keys will be grouped under this classification
+                        keys: ['tag'],
+                        // Path of the `entry page` (or `list page`)
+                        path: '/tag/',
+                        // Layout of the `entry page`
+                        layout: 'Tags',
+                        // Layout of the `scope page`
+                        scopeLayout: 'Tag'
+                    },
+                ],
+            },
+        ],
+    ],
     head: [
         ['link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' }],
     ],
@@ -24,22 +33,12 @@ module.exports = {
         nav: [
             { text: '主页', link: '/' },
             { text: '技术栈', link: '/Guide/' },
-            { text: '目录', link: '/Menus/' },
+            { text: '目录', link: '/posts/' },
             { text: 'CHANGELOG', link: '/CHANGELOG.html' },
             { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
         ],
-        sidebar: __assign({}, menus_1.getMenus(), { '/Guide/': [
-                '',
-            ], '/Menus/': [
-                '',
-            ] }),
+        sidebar: 'auto',
         lastUpdated: true,
-        serviceWorker: {
-            updatePopup: {
-                message: '发现更新🎉',
-                button: '刷新',
-            },
-        },
     },
     markdown: {
         config: function (md) {

@@ -1,5 +1,10 @@
-/demos/node_modules
-/.vscode/
-/node_modules/
+# npm
+node_modules
+
+# editor
+.vscode
+.DS_Store
+
+# build
 /docs/.vuepress/dist/
 /dist/

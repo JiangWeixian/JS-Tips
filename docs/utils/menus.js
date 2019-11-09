@@ -13,8 +13,8 @@ var path = __importStar(require("path"));
 var fs = __importStar(require("fs"));
 var isEmpty = require('lodash/isEmpty');
 var folders = [];
-var isDirectory = function (value) {
-    return !path.extname(value).toLowerCase();
+exports.isDirectory = function (value) {
+    return fs.statSync(value).isDirectory();
 };
 exports.getVaildFolders = function () {
     if (!isEmpty(folders)) {
@@ -30,7 +30,7 @@ exports.getVaildFolders = function () {
         return config_1.rootPath + "/" + v;
     })
         .filter(function (v) {
-        return isDirectory(v);
+        return exports.isDirectory(v);
     });
     folders = valildFolders;
     return valildFolders;
@@ -38,44 +38,42 @@ exports.getVaildFolders = function () {
 var isMdFiles = function (value) {
     return path.extname(value).toLowerCase() === '.md';
 };
-exports.getChildMenus = function (dirPath) {
+exports.getChildMenus = function (dirPath, prefix) {
     var menus = [];
     var _files = fs
         .readdirSync(dirPath);
     _files.forEach(function (e) {
-        if (isDirectory(e) && e !== 'node_modules') {
-            menus = menus.concat(exports.getChildMenus(dirPath + "/" + e));
+        if (exports.isDirectory(dirPath + "/" + e) && e !== 'node_modules') {
+            menus = menus.concat(exports.getChildMenus(dirPath + "/" + e, prefix + "/" + e));
         }
         else {
             var isVaild = isMdFiles(e) && e !== 'README.md';
-            var dirFolder = path.basename(dirPath);
-            isVaild && menus.push(dirFolder + "/" + e.slice(0, e.length - 3).trim());
+            isVaild && formater_1.amendPathName([e], dirPath);
+            isVaild && menus.push(prefix + "/" + e.slice(0, e.length - 3).trim());
         }
     });
     return menus;
 };
 exports.getMenus = function () {
-    var valildFolders = !isEmpty(folders) && folders || exports.getVaildFolders();
+    var valildFolders = exports.getVaildFolders();
     var menus = {};
     valildFolders.forEach(function (dirpath) {
         var _files = fs
             .readdirSync(dirpath);
-        var _folders = _files.filter(function (v) { return isDirectory(v); });
+        var _folders = _files.filter(function (v) { return exports.isDirectory(dirpath + "/" + v); });
         _files = _files.filter(function (v) { return isMdFiles(v) && v !== 'README.md'; });
         _files = formater_1.amendPathName(_files, dirpath)
             .map(function (v) { return v.slice(0, v.length - 3).trim(); });
         var _folderName = path.basename(dirpath);
-        if (!isEmpty(_files)) {
-            _files = [''].concat(_files);
-            menus[formater_1.createRouterUrl(_folderName)] = _files;
-            if (!isEmpty(_folders)) {
-                var childMenus_1 = [];
-                _folders.forEach(function (e) {
-                    childMenus_1 = childMenus_1.concat(exports.getChildMenus(dirpath + "/" + e));
-                });
-                if (!isEmpty(childMenus_1)) {
-                    menus[formater_1.createRouterUrl(_folderName)] = _files.concat(childMenus_1);
-                }
+        _files = [''].concat(_files);
+        menus[formater_1.createRouterUrl(_folderName)] = _files;
+        if (!isEmpty(_folders)) {
+            var childMenus_1 = [];
+            _folders.forEach(function (e) {
+                childMenus_1 = childMenus_1.concat(exports.getChildMenus(dirpath + "/" + e, e));
+            });
+            if (!isEmpty(childMenus_1)) {
+                menus[formater_1.createRouterUrl(_folderName)] = _files.concat(childMenus_1);
             }
         }
     });
