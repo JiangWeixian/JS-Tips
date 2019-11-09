@@ -69,7 +69,7 @@ module.exports = {
     nav: [
       { text: '主页', link: '/' },
       { text: '技术栈', link: '/Guide/' },
-      { text: '目录', link: '/posts/' },
+      { text: '列表', link: '/posts/' },
       { text: 'CHANGELOG', link: '/CHANGELOG.html' },
       { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
     ],
