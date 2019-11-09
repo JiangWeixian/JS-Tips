@@ -3990,6 +3990,10 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
+medium-zoom@^1.0.4:
+  version "1.0.4"
+  resolved "https://npm.iftech.dev/medium-zoom/-/medium-zoom-1.0.4.tgz#b1063093f81151a19989489589edf28e6090630c"
+
 mem@^4.0.0:
   version "4.3.0"
   resolved "https://npm.iftech.dev/mem/-/mem-4.3.0.tgz#461af497bc4ae09608cdb2e60eefb69bff744178"
@@ -5713,7 +5717,7 @@ slash@^2.0.0:
   version "2.0.0"
   resolved "https://npm.iftech.dev/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
 
-smoothscroll-polyfill@^0.4.3:
+smoothscroll-polyfill@^0.4.3, smoothscroll-polyfill@^0.4.4:
   version "0.4.4"
   resolved "https://npm.iftech.dev/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"
 
@@ -6561,6 +6565,12 @@ vuepress-plugin-gitalk-maker@^0.1.0:
   dependencies:
     gitalk "^1.5.0"
 
+vuepress-plugin-medium-zoom@^1.1.6:
+  version "1.1.6"
+  resolved "https://npm.iftech.dev/vuepress-plugin-medium-zoom/-/vuepress-plugin-medium-zoom-1.1.6.tgz#3908bd22c55bfe5a990e208949b8c809000e96df"
+  dependencies:
+    medium-zoom "^1.0.4"
+
 vuepress-plugin-sitemap@^2.3.0:
   version "2.3.1"
   resolved "https://npm.iftech.dev/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-2.3.1.tgz#51298aca77a5de96396fdbd1103e1637dd61ae6a"
@@ -6572,6 +6582,12 @@ vuepress-plugin-smooth-scroll@^0.0.3:
   resolved "https://npm.iftech.dev/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.3.tgz#6eff2d4c186cca917cc9f7df2b0af7de7c8c6438"
   dependencies:
     smoothscroll-polyfill "^0.4.3"
+
+vuepress-plugin-smooth-scroll@^0.0.7:
+  version "0.0.7"
+  resolved "https://npm.iftech.dev/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.7.tgz#ee0dc4b76eb487b115ae95049a5d749b581b8439"
+  dependencies:
+    smoothscroll-polyfill "^0.4.4"
 
 vuepress@1.2.0:
   version "1.2.0"

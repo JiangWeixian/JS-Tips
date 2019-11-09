@@ -49,6 +49,19 @@ module.exports = {
                 },
             },
         ],
+        [
+            'vuepress-plugin-medium-zoom',
+            {
+                selector: 'img',
+                delay: 1000,
+                options: {
+                    margin: 24,
+                    background: 'rgba(0, 0, 0, 0.6)',
+                    scrollOffset: 0,
+                },
+            },
+        ],
+        ['vuepress-plugin-smooth-scroll']
     ],
     head: [
         ['link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' }],
