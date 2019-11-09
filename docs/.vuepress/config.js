@@ -34,7 +34,21 @@ module.exports = {
                     twitter: 'jiangweixian',
                 }
             }
-        ]
+        ],
+        [
+            'gitalk-maker',
+            {
+                gitalkConfig: {
+                    clientID: '7acb66d273be3958c1dd',
+                    clientSecret: 'a1735bdbd0426bd65558bc302f58de44d42ba116',
+                    repo: 'JS-Tips',
+                    owner: 'JiangWeixian',
+                    admin: ['JiangWeixian'],
+                    // id: location.pathname, // 无法配置默认用 location.pathname
+                    distractionFreeMode: false,
+                },
+            },
+        ],
     ],
     head: [
         ['link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' }],
