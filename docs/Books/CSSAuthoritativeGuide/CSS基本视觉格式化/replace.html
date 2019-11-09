@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>测试替换元素和非替换元素</title>
+    <style>
+      div.test-replace {
+        width: 400px;
+        height: 40px
+      }
+      div.test-replace p {
+        width: auto;
+        margin-left: -40px;
+        background-color: red
+      }
+      span.test-inline {
+        width: 50px;
+        height: 50px;
+        margin: 20px;
+        padding-left: 20px;
+        background-color: red;
+      }
+      .test-lineheight {
+        line-height: 24px;
+        font-size: 12px;
+        border: 1px solid red;
+      }
+      .test-lineheight span.text-top {
+        line-height: 12px;
+        font-size: 12px;
+        vertical-align: text-top;
+        border: 1px solid blue;
+      }
+      .test-lineheight span.top {
+        line-height: 12px;
+        font-size: 12px;
+        vertical-align: top;
+        border: 1px solid blue;
+      }
+      .test-isexpand {
+        border: 1px solid red;
+      }
+      .test-isexpand span {
+        line-height: 48px;
+        border: 1px solid blue;
+      }
+      .test-height-lh {
+        width: 400px;
+        height: 100px;
+        border: 1px solid red;
+      }
+      .test-height-lh p {
+        height: 24px;
+        line-height: 2;
+        border: 1px solid red
+      }
+      .test-expandlh {
+        border: 1px solid red;
+        line-height: 24px;
+      }
+      .test-expandlh span {
+        line-height: 100px;
+        padding: 50px 0px;
+        /*display: inline-block;*/
+      }
+      .test-expandlh p {
+        line-height: 100px;
+        margin: 0px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="test-inline">xx</span>
+    <div class="test-replace">
+      <p></p>
+    </div>
+    <div class="test-replace">
+      <p>xxx</p>
+    </div>
+    <p class="test-isexpand">
+      <span>test-isexpand</span>
+    </p>
+    <p class="test-lineheight">
+      Lorem ipsum dolor <span class="text-top">tall</span> <span class="top">tall</span> sit amet consectetur adipisicing elit. Quae iure, distinctio ipsam fugiat consequuntur saepe debitis obcaecati pariatur harum non consectetur voluptas mollitia, unde dolorem eum est? Sunt nostrum hic inventore laborum sed id reiciendis unde dicta vitae nemo placeat laudantium consequatur, quam iure sapiente soluta at, expedita quod tempore! Quos soluta aspernatur ipsa iure debitis quo sapiente maiores culpa. Ad assumenda repellendus sint magnam laboriosam at! Sed cupiditate blanditiis porro a neque magnam, placeat sequi, ex unde fugit sint eveniet perferendis odio. A repellendus asperiores assumenda voluptate voluptates eum necessitatibus ut, animi porro dolorum. Rerum ducimus neque atque ratione? 
+    </p>
+    <div class="test-height-lh">
+      <p>xx</p>
+      <p>yy</p>
+    </div>
+    <div class="test-expandlh">
+      <p></p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. <span>xx</span>  Eaque, iste!
+    </div>
+  </body>
+</html>

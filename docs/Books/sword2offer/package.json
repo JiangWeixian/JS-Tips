@@ -1,0 +1,16 @@
+{
+  "name": "sword2offer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "singleton.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

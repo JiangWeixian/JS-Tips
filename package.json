@@ -7,13 +7,13 @@
     "doc": "docs"
   },
   "dependencies": {
-    "markdown-it-task-checkbox": "^1.0.6",
-    "vuepress": "^0.14.9"
+    "markdown-it-task-checkbox": "1.0.6",
+    "vuepress": "0.14.9"
   },
   "devDependencies": {
-    "@types/node": "^11.9.5",
-    "lodash": "^4.17.13",
-    "typescript": "^3.3.3333"
+    "@types/node": "11.9.5",
+    "lodash": "4.17.13",
+    "typescript": "3.3.3333"
   },
   "scripts": {
     "prebuild": "tsc -p tsconfig.json && node docs/Menus/index.js && node docs/.vuepress/config.js",
@@ -33,5 +33,5 @@
   "bugs": {
     "url": "https://github.com/JiangWeixian/JS-Tips/issues"
   },
-  "homepage": "https://github.com/JiangWeixian/JS-Tips#readme"
+  "homepage": "https://jiangweixian.github.io/JS-Tips/"
 }

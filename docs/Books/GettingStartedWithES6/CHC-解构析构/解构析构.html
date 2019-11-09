@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>解构析构</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <script type="text/babel">
+    let arr = [1, 2, 3]
+    let [x, ...y] = arr
+    console.log(x, y)
+
+    let obj = {name: 'eric', job: 'frontend', age: '21'}
+    let {name, ...yo} = obj
+    console.log(name, yo)
+
+    let a = [...arr, 4]
+    console.log('a', a)
+
+    let newobj = {...obj, name: 'newerci'}
+    console.log('newobj', newobj)
+
+    newobj = { name: 'newerci', ...obj}
+    console.log('newobj2', newobj)
+
+    var show = function (...args) {
+      console.log(args, Object.prototype.toString.call(args))
+    }
+
+    show(obj)
+
+    var show = function (...args) {
+      console.log('传入多个参数')
+      console.log(args, Object.prototype.toString.call(args))
+    }
+
+    show([[1, 2], [2, 3]])
+
+    var show = function ({name, age, job}) {
+      console.log(name, job, age)
+    }
+
+    show({...obj})
+    
+    let color = {color: 'blue'}
+    var show = function ({name}, {color}) {
+      console.log('多个解构析构', name, color)
+    }
+
+    show({...obj}, {...color})
+
+    var show = function (name, {color}) {
+      console.log('混合解构析构', name, color)
+    }
+
+    show({...obj}, {...color})
+  </script>
+</body>
+</html>
