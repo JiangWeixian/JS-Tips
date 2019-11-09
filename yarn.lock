@@ -3778,6 +3778,18 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://npm.iftech.dev/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
+lodash.defaultsdeep@4.6.1:
+  version "4.6.1"
+  resolved "https://npm.iftech.dev/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
+
+lodash.findindex@4.6.0:
+  version "4.6.0"
+  resolved "https://npm.iftech.dev/lodash.findindex/-/lodash.findindex-4.6.0.tgz#a3245dee61fb9b6e0624b535125624bb69c11106"
+
+lodash.isempty@4.4.0:
+  version "4.4.0"
+  resolved "https://npm.iftech.dev/lodash.isempty/-/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
+
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
   resolved "https://npm.iftech.dev/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
@@ -5269,6 +5281,10 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
 
+remove-markdown@0.3.0:
+  version "0.3.0"
+  resolved "https://npm.iftech.dev/remove-markdown/-/remove-markdown-0.3.0.tgz#5e4b667493a93579728f3d52ecc1db9ca505dc98"
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
@@ -5880,6 +5896,10 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
+striptags@3.1.1:
+  version "3.1.1"
+  resolved "https://npm.iftech.dev/striptags/-/striptags-3.1.1.tgz#c8c3e7fdd6fb4bb3a32a3b752e5b5e3e38093ebd"
+
 stylehacks@^4.0.0:
   version "4.0.3"
   resolved "https://npm.iftech.dev/stylehacks/-/stylehacks-4.0.3.tgz#6718fcaf4d1e07d8a1318690881e8d96726a71d5"
@@ -6394,6 +6414,20 @@ vuepress-html-webpack-plugin@^3.2.0:
     tapable "^1.0.0"
     toposort "^1.0.0"
     util.promisify "1.0.0"
+
+vuepress-plugin-autometa@^0.1.12:
+  version "0.1.12"
+  resolved "https://npm.iftech.dev/vuepress-plugin-autometa/-/vuepress-plugin-autometa-0.1.12.tgz#4fc478bfe8ae92b3adad0ce87237660db362d2bd"
+  dependencies:
+    lodash.defaultsdeep "4.6.1"
+    lodash.findindex "4.6.0"
+    lodash.isempty "4.4.0"
+    remove-markdown "0.3.0"
+    striptags "3.1.1"
+
+vuepress-plugin-code-copy@^1.0.4:
+  version "1.0.4"
+  resolved "https://npm.iftech.dev/vuepress-plugin-code-copy/-/vuepress-plugin-code-copy-1.0.4.tgz#14da382d4e0f973bb20422483ed9349ea62834bf"
 
 vuepress-plugin-container@^2.0.2:
   version "2.1.0"

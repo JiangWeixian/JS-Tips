@@ -1,5 +1,5 @@
 <template>
-  <div class=".list">
+  <div>
     <ol>
       <li
         v-for="page of filteredList"
@@ -13,7 +13,9 @@
         >
           {{ page.title }}
         </router-link>
-        {{ page.description }}
+        <p class="content" v-if="page.frontmatter">
+          {{ page.frontmatter && page.frontmatter.description }}
+        </p>
         <div class="last-updated">
           <span class="prefix">Last Updated</span>
           <span class="time">{{ page.lastUpdated }}</span>
@@ -38,17 +40,13 @@ export default {
 }
 </script>
 <style lang="stylus" scope>
-  .list
-    height 100vh
-    width 50%
-    overflow-y scroll
-    margin 0 auto
-  
   .post
     width 100%
-    padding 8px
+    display flex
+    flex-direction column
+    padding 16px
     list-style none
-    max-height 100px
+    height 100px
     margin-bottom 16px
     transition background-color ease 0.35s
     &:hover
@@ -56,10 +54,25 @@ export default {
 
   .link
     text-decoration none!important
+    flex-grow 0
+    flex-basis 0
+
+  .content
+    color #4e6e8e
+    margin 0px
+    line-height 1.5
+    flex-grow 1
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:-webkit-box; //作为弹性伸缩盒子模型显示。
+    -webkit-box-orient:vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+    -webkit-line-clamp:2; //显示的行
 
   .last-updated
     width 100%
     display flex
+    flex-grow 0
+    flex-basis 0
     justify-content flex-end
 
   .prefix

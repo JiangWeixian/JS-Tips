@@ -25,6 +25,16 @@ module.exports = {
                 ],
             },
         ],
+        ['vuepress-plugin-code-copy', true],
+        [
+            'vuepress-plugin-autometa',
+            {
+                author: {
+                    name: 'jiangweixian',
+                    twitter: 'jiangweixian',
+                }
+            }
+        ]
     ],
     head: [
         ['link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' }],

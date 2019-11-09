@@ -7,14 +7,16 @@
     "doc": "docs"
   },
   "dependencies": {
-    "markdown-it-task-checkbox": "1.0.6"
+    "markdown-it-task-checkbox": "1.0.6",
+    "vuepress-plugin-code-copy": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "11.9.5",
-    "@vuepress/plugin-blog": "^1.5.1",
+    "@vuepress/plugin-blog": "1.5.1",
     "lodash": "4.17.13",
     "typescript": "3.3.3333",
-    "vuepress": "1.2.0"
+    "vuepress": "1.2.0",
+    "vuepress-plugin-autometa": "0.1.12"
   },
   "scripts": {
     "prebuild": "tsc -p tsconfig.json && node docs/Menus/index.js && node docs/.vuepress/config.js",
