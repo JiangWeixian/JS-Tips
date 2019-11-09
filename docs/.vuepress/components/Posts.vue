@@ -6,6 +6,7 @@
         v-show="page.title"
         class="post"
         :key="page.key"
+        @click="() => jump(page.path)"
       >
         <router-link
           :to="page.path"
@@ -37,6 +38,11 @@ export default {
         })
     }
   },
+  methods: {
+    jump(url) {
+      this.$router.push(url)
+    }
+  }
 }
 </script>
 <style lang="stylus" scope>
@@ -48,7 +54,8 @@ export default {
     list-style none
     height 100px
     margin-bottom 16px
-    transition background-color ease 0.35s
+    cursor pointer
+    transition background-color 0.15s cubic-bezier(0.645, 0.045, 0.355, 1)
     &:hover
       background-color #f9f9f8
 

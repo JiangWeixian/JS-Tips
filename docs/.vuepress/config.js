@@ -3,7 +3,6 @@ const pkg = require('../../package.json')
 module.exports = {
   title: '蒋微咸博客',
   base: `/${pkg.repository.name}/`,
-  description: '前端基础',
   plugins: [
     [
       '@vuepress/blog',
