@@ -22,13 +22,13 @@
     "vuepress-plugin-autometa": "0.1.12"
   },
   "scripts": {
-    "prebuild": "tsc -p tsconfig.json && node docs/Menus/index.js && node docs/.vuepress/config.js",
-    "dev": "npm run prebuild && vuepress dev docs",
+    "dev": "vuepress dev docs",
     "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JiangWeixian/JS-Tips.git"
+    "url": "git+https://github.com/JiangWeixian/JS-Tips.git",
+    "name": "JS-Tips"
   },
   "keywords": [
     "blog",
