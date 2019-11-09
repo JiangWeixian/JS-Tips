@@ -77,8 +77,8 @@ module.exports = {
     lastUpdated: true,
   },
   markdown: {
-    config: (md: any) => {
-      md.use(require('markdown-it-task-checkbox'))
+    extendMarkdown: (md: any) => {
+      md.use(require('markdown-it-task-lists'))
     }
   }
 }

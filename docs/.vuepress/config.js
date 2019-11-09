@@ -78,8 +78,8 @@ module.exports = {
         lastUpdated: true,
     },
     markdown: {
-        config: function (md) {
-            md.use(require('markdown-it-task-checkbox'));
+        extendMarkdown: function (md) {
+            md.use(require('markdown-it-task-lists'));
         }
     }
 };

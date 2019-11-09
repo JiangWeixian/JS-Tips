@@ -7,11 +7,11 @@
     "doc": "docs"
   },
   "dependencies": {
-    "markdown-it-task-checkbox": "1.0.6",
-    "vuepress-plugin-code-copy": "^1.0.4",
-    "vuepress-plugin-gitalk-maker": "^0.1.0",
-    "vuepress-plugin-medium-zoom": "^1.1.6",
-    "vuepress-plugin-smooth-scroll": "^0.0.7"
+    "markdown-it-task-lists": "2.1.1",
+    "vuepress-plugin-code-copy": "1.0.4",
+    "vuepress-plugin-gitalk-maker": "0.1.0",
+    "vuepress-plugin-medium-zoom": "1.1.6",
+    "vuepress-plugin-smooth-scroll": "0.0.7"
   },
   "devDependencies": {
     "@types/node": "11.9.5",

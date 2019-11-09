@@ -3956,9 +3956,9 @@ markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.4.4.tgz#3dc7ce8b8fc17e5981c77cc398d1782319f37fbc"
 
-markdown-it-task-checkbox@1.0.6:
-  version "1.0.6"
-  resolved "https://npm.iftech.dev/markdown-it-task-checkbox/-/markdown-it-task-checkbox-1.0.6.tgz#9ebd7b6382e99162264605bc580f2ac118be4242"
+markdown-it-task-lists@2.1.1:
+  version "2.1.1"
+  resolved "https://npm.iftech.dev/markdown-it-task-lists/-/markdown-it-task-lists-2.1.1.tgz#f68f4d2ac2bad5a2c373ba93081a1a6848417088"
 
 markdown-it@^8.4.1:
   version "8.4.2"
@@ -6543,7 +6543,7 @@ vuepress-plugin-autometa@0.1.12:
     remove-markdown "0.3.0"
     striptags "3.1.1"
 
-vuepress-plugin-code-copy@^1.0.4:
+vuepress-plugin-code-copy@1.0.4:
   version "1.0.4"
   resolved "https://npm.iftech.dev/vuepress-plugin-code-copy/-/vuepress-plugin-code-copy-1.0.4.tgz#14da382d4e0f973bb20422483ed9349ea62834bf"
 
@@ -6559,13 +6559,13 @@ vuepress-plugin-disqus-comment@^0.2.3:
   dependencies:
     vue-disqus "^3.0.5"
 
-vuepress-plugin-gitalk-maker@^0.1.0:
+vuepress-plugin-gitalk-maker@0.1.0:
   version "0.1.0"
   resolved "https://npm.iftech.dev/vuepress-plugin-gitalk-maker/-/vuepress-plugin-gitalk-maker-0.1.0.tgz#8a3f9e9a2949d559c0ed27dc48a869577685e20c"
   dependencies:
     gitalk "^1.5.0"
 
-vuepress-plugin-medium-zoom@^1.1.6:
+vuepress-plugin-medium-zoom@1.1.6:
   version "1.1.6"
   resolved "https://npm.iftech.dev/vuepress-plugin-medium-zoom/-/vuepress-plugin-medium-zoom-1.1.6.tgz#3908bd22c55bfe5a990e208949b8c809000e96df"
   dependencies:
@@ -6577,17 +6577,17 @@ vuepress-plugin-sitemap@^2.3.0:
   dependencies:
     sitemap "^3.0.0"
 
+vuepress-plugin-smooth-scroll@0.0.7:
+  version "0.0.7"
+  resolved "https://npm.iftech.dev/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.7.tgz#ee0dc4b76eb487b115ae95049a5d749b581b8439"
+  dependencies:
+    smoothscroll-polyfill "^0.4.4"
+
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"
   resolved "https://npm.iftech.dev/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.3.tgz#6eff2d4c186cca917cc9f7df2b0af7de7c8c6438"
   dependencies:
     smoothscroll-polyfill "^0.4.3"
-
-vuepress-plugin-smooth-scroll@^0.0.7:
-  version "0.0.7"
-  resolved "https://npm.iftech.dev/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.7.tgz#ee0dc4b76eb487b115ae95049a5d749b581b8439"
-  dependencies:
-    smoothscroll-polyfill "^0.4.4"
 
 vuepress@1.2.0:
   version "1.2.0"
