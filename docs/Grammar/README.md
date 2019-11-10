@@ -1,25 +1,21 @@
-<a href="https://github.com/JiangWeixian/JS-Tips/tree/master/Grammar#%E5%85%A8%E9%83%A8%E7%9B%AE%E5%BD%95"><img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js"></img></a>
+# JS
 
-<!-- TOC -->
+<img src="https://img.shields.io/badge/you--dont--konw-javascript-F7DF1E?logo=javascript&style=for-the-badge" alt="js" />
 
-- [**文章内容分类**](#文章内容分类)
-  - [**继承与类**](#继承与类)
+- [JS](#js)
+  - [**继承与类**](#%e7%bb%a7%e6%89%bf%e4%b8%8e%e7%b1%bb)
   - [**`this`**](#this)
-  - [**作用域与闭包**](#作用域与闭包)
-  - [**事件循环**](#事件循环)
-    - [**异步操作**](#异步操作)
-  - [**性能与安全**](#性能与安全)
-  - [**优雅的操作DOM**](#优雅的操作dom)
-  - [**大数据**](#大数据)
-  - [**简单算法部分**](#简单算法部分)
-  - [**比较操作**](#比较操作)
-  - [**基础坑**](#基础坑)
+  - [**作用域与闭包**](#%e4%bd%9c%e7%94%a8%e5%9f%9f%e4%b8%8e%e9%97%ad%e5%8c%85)
+  - [**事件循环**](#%e4%ba%8b%e4%bb%b6%e5%be%aa%e7%8e%af)
+    - [**异步操作**](#%e5%bc%82%e6%ad%a5%e6%93%8d%e4%bd%9c)
+  - [**性能与安全**](#%e6%80%a7%e8%83%bd%e4%b8%8e%e5%ae%89%e5%85%a8)
+  - [**优雅的操作DOM**](#%e4%bc%98%e9%9b%85%e7%9a%84%e6%93%8d%e4%bd%9cdom)
+  - [**大数据**](#%e5%a4%a7%e6%95%b0%e6%8d%ae)
+  - [**简单算法部分**](#%e7%ae%80%e5%8d%95%e7%ae%97%e6%b3%95%e9%83%a8%e5%88%86)
+  - [**比较操作**](#%e6%af%94%e8%be%83%e6%93%8d%e4%bd%9c)
+  - [**基础坑**](#%e5%9f%ba%e7%a1%80%e5%9d%91)
   - [**`ES.next`**](#esnext)
-- [**待分类目录**](#待分类目录)
-
-<!-- /TOC -->
-
-# **文章内容分类**
+- [**待分类目录**](#%e5%be%85%e5%88%86%e7%b1%bb%e7%9b%ae%e5%bd%95)
 
 ## **继承与类**
 

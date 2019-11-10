@@ -1,6 +1,6 @@
 # 🗡&⛸ - React
 
-<img src='https://img.shields.io/badge/build--with-react-61DAFB?logo=react&style=for-the-badge' />
+<img src='https://img.shields.io/badge/made--with-react-61DAFB?logo=react&style=for-the-badge' />
 
 ## 前言
 

@@ -1,14 +1,9 @@
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/npm.png" height="43px" alt="npm"></img> 
+# npm
+<img src="https://img.shields.io/badge/works--on-npm-CB3837?logo=npm&style=for-the-badge" />
 
 > 一些好用的`npm`包解决特别的需求。同时一些好用软件。
 
-<!-- TOC -->
-
-- [**文章分类目录**](#文章分类目录)
-  - [**图片需求**](#图片需求)
-  - [**地图需求**](#地图需求)
-
-<!-- /TOC -->
+[[toc]]
 
 # **文章分类目录**
 > 解决需求的`NPM`使用体会；以需求分类

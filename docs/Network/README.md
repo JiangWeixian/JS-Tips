@@ -1,15 +1,16 @@
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/http.png" height="43px" alt="network"></img>
+# network
+
+<img src="https://img.shields.io/badge/goodbye-network-FF7139?logo=Mozilla Firefox&style=for-the-badge" />
 
 > 优化都有两面性。例如分开写CSS文件可以优化CSS-DOM构建，但是会增加HTTP请求；同时合在一起写的话，就是刚刚优缺点的调换。**所以注意权衡**。
 
-<!-- TOC -->
-
-- [**内容分类**](#内容分类)
-  - [**网络基础**](#网络基础)
-  - [**HTTP**](#http)
-  - [**网络性能优化**](#网络性能优化)
-
-<!-- /TOC -->
+- [network](#network)
+- [**内容分类**](#%e5%86%85%e5%ae%b9%e5%88%86%e7%b1%bb)
+  - [**网络基础**](#%e7%bd%91%e7%bb%9c%e5%9f%ba%e7%a1%80)
+  - [**安全策略**](#%e5%ae%89%e5%85%a8%e7%ad%96%e7%95%a5)
+  - [**AJAX**](#ajax)
+  - [**HTTP&HTTPS**](#httphttps)
+  - [**网络性能优化**](#%e7%bd%91%e7%bb%9c%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96)
 
 # **内容分类**
 

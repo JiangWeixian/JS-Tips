@@ -1,2 +1,3 @@
 # Config
-> 身为程序的基础
+
+<img src="https://img.shields.io/badge/i--am-developer-0A0A0A?logo=dev.to&style=for-the-badge" alt="js" />

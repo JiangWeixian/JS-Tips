@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img>
+<img src="https://img.shields.io/badge/uses-html-E34F26?logo=html5&style=for-the-badge" />
 
 ## **HTML.next**
 > 新功能都要考虑兼容性
