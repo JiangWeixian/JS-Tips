@@ -1,4 +1,9 @@
-# 前端技术栈 (WIP👷)
+# 前端技术栈
+::: warning
+This is under (WIP👷)
+:::
+
+[[toc]]
 
 ## 📋 - Table of Stacks
 
@@ -47,7 +52,7 @@
 
 > 不建议一开始就学习前端框架，原生是基础，很重要。**道友，能否筑基成功？**
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/javascript.png" height="44px" alt="js">
+<img src="https://img.shields.io/badge/you--dont--konw-javascript-F7DF1E?logo=javascript&style=for-the-badge" alt="js" />
 
 > MDN真的不错
 
@@ -81,7 +86,7 @@
 
 💯**检验：** 前端对算法或许会少一些。但是如果你想找一份工作的话，这是少不了的一部分知识储备。**因为这是检验你本科学习是否认真努力**
 
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/html.png" height="43px" alt="html"></img>
+<img src="https://img.shields.io/badge/uses-html-E34F26?logo=html5&style=for-the-badge" />
 
 > 建议和CSS入门之后，找慕课网的一些实践项目，一边实践一边巩固。这部分你真的需要实践。
 
@@ -91,7 +96,7 @@
     * [ ] 不要全部`DIV`，语义化你的`HTML`。**或许很难，但这是尝试的第一步。**
     * [ ] 除了手写`HTML`页面结构，还要知道如何通过`JS`操作`DOM`
     
-<img src="https://raw.githubusercontent.com/JiangWeixian/JS-Tips/master/img/css.png" height="43px" alt="css"></img>
+<img src="https://img.shields.io/badge/css-is--awesome-1572B6?logo=css3&style=for-the-badge" />
 
 > `JavaScript`就像是功法，`CSS`会让你拥有属性。从外观上展示你的能力。**一些建议，CSS/HTML不一定需要全部看完再去实践，可以选择实践之后，再回过头来看看一看。优化你之前的实践内容**
 

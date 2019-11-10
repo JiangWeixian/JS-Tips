@@ -1,8 +1,21 @@
 <template>
-  <div>
-    <ol>
+  <div class="container">
+    <ul
+      class="categories"
+    >
       <li
-        v-for="page of filteredList"
+        v-for="key in Object.keys(categories)"
+        :key="key"
+        :class="{ category__selected: key === selectedCategory, category: true }"
+        @click="() => handleSelected(key)"
+      >
+        <p>{{ key }}</p>
+        <span class="badge">{{ categories[key].length }}</span>
+      </li>
+    </ul>
+    <ol class="posts">
+      <li
+        v-for="page of filtedPosts"
         v-show="page.title"
         class="post"
         :key="page.key"
@@ -28,26 +41,56 @@
 
 <script>
 export default {
+  data() {
+    return {
+      selectedCategory: ''
+    }
+  },
   computed: {
-    filteredList() {
+    posts() {
       // Order by publish date, desc
       return this.$site.pages
         .filter(item => item.path !== '/')
         .sort((a, b) => {
           return new Date(b.frontmatter.date || b.lastUpdated) - new Date(a.frontmatter.date || a.lastUpdated)
         })
-    }
+    },
+    filtedPosts() {
+      if (this.selectedCategory) {
+        return this.categories[this.selectedCategory]
+      } else {
+        return this.posts
+      }
+    },
+    categories() {
+      const result = {}
+      this.posts
+        .filter(v => !!v.relativePath)
+        .forEach((post) => {
+          const currentCategory = post.relativePath.split('/')[0]
+          if (!currentCategory.endsWith('md')) {
+            if (!result[currentCategory]) {
+              result[currentCategory] = [post]
+            } else {
+              result[currentCategory].push(post)
+            }
+          }
+        })
+      return result
+    },
   },
   methods: {
     jump(url) {
       this.$router.push(url)
+    },
+    handleSelected(category) {
+      this.selectedCategory = category
     }
   }
 }
 </script>
 <style lang="stylus" scope>
   .post
-    width 100%
     display flex
     flex-direction column
     padding 16px
@@ -76,7 +119,6 @@ export default {
     -webkit-line-clamp:2; //显示的行
 
   .last-updated
-    width 100%
     display flex
     flex-grow 0
     flex-basis 0
@@ -90,4 +132,41 @@ export default {
     text-indent 8px
     color #4e6e8e
     font-size 0.8em
+
+  @media (max-width: 1144px)
+    .categories
+      display none
+  .categories
+    width 300px
+    height 100vh
+    position fixed
+    left 0px
+    top 100px
+    margin 0px
+    padding 0px
+    border-right 1px solid #f9f9f8
+  .category
+    list-style none
+    display flex
+    align-items center
+    justify-content flex-start
+    cursor pointer
+    padding-left 16px
+    height 32px
+    border-left 4px solid white
+    &__selected
+      border-left-color #0540a9
+      background-color #f9f9f8
+      p
+        color #0540a9
+        font-weight 500
+    p
+      margin 0px
+      padding 0px
+    .badge
+      margin 0 8px
+      line-height 20px
+      width 20px
+      height 20px
+      text-align right 
 </style>
