@@ -1,10 +1,10 @@
-# network
+# Network
 
 <img src="https://img.shields.io/badge/goodbye-network-FF7139?logo=Mozilla Firefox&style=for-the-badge" />
 
 > 优化都有两面性。例如分开写CSS文件可以优化CSS-DOM构建，但是会增加HTTP请求；同时合在一起写的话，就是刚刚优缺点的调换。**所以注意权衡**。
 
-- [network](#network)
+- [Network](#network)
 - [**内容分类**](#%e5%86%85%e5%ae%b9%e5%88%86%e7%b1%bb)
   - [**网络基础**](#%e7%bd%91%e7%bb%9c%e5%9f%ba%e7%a1%80)
   - [**安全策略**](#%e5%ae%89%e5%85%a8%e7%ad%96%e7%95%a5)
@@ -20,17 +20,16 @@
 
 > 数据发送到接收，经过怎样的过程
 
-* [网络基础-DNS解析过程](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/DNS-%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90.md) / 从`.->com->baidu.com->www.baidu.com`最终获取了`IP`地址
-* [网络基础-输入URL到显示全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%BB%A5%E5%8F%8A%E8%AF%B7%E6%B1%82%E4%BC%98%E5%8C%96.md) / DNS解析是其中一部分。介绍了`HTML-DOM/CSS-DOM`绘制页面过程
-* [网络基础-计算机网络](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
-* [DNS-原理](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/DNS-%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90.md) / 输入链接解析`IP`过程
-* [TCP-三次握手缺陷](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%BC%BA%E9%99%B7.md)
+* [网络基础-DNS解析过程](/Network/DNS-原理解析.md) / 从`.->com->baidu.com->www.baidu.com`最终获取了`IP`地址
+* [网络基础-输入URL到显示全过程](/Network/HTTP-输入url到显示页面以及请求优化.md) / DNS解析是其中一部分。介绍了`HTML-DOM/CSS-DOM`绘制页面过程
+* [网络基础-计算机网络](/Network/计算机网络.md)
+* [TCP-三次握手缺陷](/Network/TCP-三次握手缺陷.md)
 
 ## **安全策略**
 
 **同源策略**
 
-* [跨域-代理跨域原理](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F-%E4%BB%A3%E7%90%86%E8%B7%A8%E5%9F%9F%E5%8E%9F%E7%90%86.md) / 跨域只发生在浏览器和服务器之间
+* [跨域-代理跨域原理](/) / 跨域只发生在浏览器和服务器之间
 * [跨域-CORS/JSOP](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%B7%A8%E5%9F%9F%E5%A4%84%E7%90%86.md) / 跨域处理的两种方式
 
 **攻击防范**
