@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "core-js": "^3.4.2",
     "markdown-it-task-lists": "2.1.1",
     "vuepress-plugin-blog-multidir": "1.0.5",
     "vuepress-plugin-code-copy": "1.0.4",
