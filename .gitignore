@@ -8,3 +8,4 @@ node_modules
 # build
 /docs/.vuepress/dist/
 /dist/
+public
