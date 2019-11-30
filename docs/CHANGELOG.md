@@ -1,7 +1,15 @@
 # CHANGELOG
 > Update What?
 
-[[toc]]
+- [CHANGELOG](#changelog)
+    - [20191130](#20191130)
+    - [20190502](#20190502)
+    - [20190501](#20190501)
+
+### 20191130
+
+- [how to test react components](/React/React-test.md)
+- update guide
 
 ### 20190502
 

@@ -1,16 +1,16 @@
+---
+tag: menu
+---
+
 # 🗡&⛸ - React
 
 <img src='https://img.shields.io/badge/made--with-react-61DAFB?logo=react&style=for-the-badge' />
-
-## 前言
 
 很多在`Vue`全家桶需要的库对`React`来说都是第三方的。所以在`React`很注重开发体验。
 
 对于学习React来说。从头开始实践`React-template`是非常重要的。**而不是使用`react`官方提供的工具。**
 
-自己实践了一份[react-state-redux-ts](https://github.com/JiangWeixian/LearningWebpack/tree/react-simple-TS)
-
-## Menu
+自己实践了一份[react-template](https://github.com/JiangWeixian/templates/tree/master/packages/react-template)
 
 > 对于`react`你需要是思考的是很多最佳实践
 
