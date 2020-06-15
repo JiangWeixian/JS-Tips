@@ -1,24 +1,21 @@
 # proto && prototype && constructor && new
 > 正确继承情况下，子类设置方法或者属性(指的是赋值或者替换，引用类型内部数据修改还是会的)不会添加到父类。`__proto__`和`prototye`区别在于前者才有我们所说的指向功能。
 
-<!-- TOC -->
-
 - [proto && prototype && constructor && new](#proto--prototype--constructor--new)
-  - [1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)
-  - [1.2. proto && prototype 进一步](#12-proto--prototype-进一步)
-  - [1.3. 类 - new关键字](#13-类---new关键字)
-  - [1.4. 继承 - Object.create干了什么](#14-继承---objectcreate干了什么)
-    - [1.4.1. 继承 - prototype操作指南](#141-继承---prototype操作指南)
-  - [1.5. 分析为什么能够继承？](#15-分析为什么能够继承)
-    - [1.5.1. 番外 - 私有属性](#151-番外---私有属性)
-    - [1.5.2. 总结](#152-总结)
-  - [1.6. 链接](#16-链接)
-- [2. 内建数据类型](#2-内建数据类型)
-  - [2.1. 内建数据类型 - prototype](#21-内建数据类型---prototype)
+  - [前置知识 - 规则概述](#前置知识---规则概述)
+  - [proto && prototype 进一步](#proto--prototype-进一步)
+  - [类 - new关键字](#类---new关键字)
+  - [继承 - Object.create干了什么](#继承---objectcreate干了什么)
+    - [继承 - prototype操作指南](#继承---prototype操作指南)
+  - [分析为什么能够继承？](#分析为什么能够继承)
+    - [番外 - 私有属性](#番外---私有属性)
+    - [总结](#总结)
+  - [链接](#链接)
+- [内建数据类型](#内建数据类型)
+  - [内建数据类型 - prototype](#内建数据类型---prototype)
 
-<!-- /TOC -->
 
-## 1.1. 前置知识 - 规则概述
+## 前置知识 - 规则概述
 
 1. 这三个数值怎么查看？
 
@@ -66,7 +63,7 @@
 
 5. `new`关键字会创造 **原型**
 
-## 1.2. proto && prototype 进一步
+## proto && prototype 进一步
 
 > `__proto__ && prototype && construtor`指向问题？
 
@@ -242,7 +239,7 @@ __proto__
     
 * `prototype`比较常用，**继承基本就是它**，从以上应该可以知道它在干嘛。在**前置知识中第二点**我们知道`prototype`的存在位置。
 
-## 1.3. 类 - new关键字
+## 类 - new关键字
 
 > 首先要知道对象中(proto&prototype&constructor)位置信息。`__proto__>constructor>prototype>(__proto__+constructor)`
 
@@ -294,7 +291,7 @@ __proto__
 
 现在在`A`上找方法就会去`__proto__`上面寻找，也就是`B.prototype`
 
-## 1.4. 继承 - Object.create干了什么
+## 继承 - Object.create干了什么
 
 `Object.create`内部具体结构如下:
 
@@ -318,7 +315,7 @@ __proto__
   __proto__
 ```
 
-### 1.4.1. 继承 - prototype操作指南
+### 继承 - prototype操作指南
 
 但是在[JS-继承](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中明明可以通过`foo.prototype.xx`来操作`prototype`。**所以上诉第二点是在通过`new`关键词创建的实例的情况下**，即如果
 
@@ -400,7 +397,7 @@ console.log(
 **想要找到`b`上面的方法，先从自己本身寻找属性方法，然后会从`b.__proto__`上面找**，这句话含义为通过`new`关键字(或者其他继承方式)，**父类的属性和方法并不会复制到实例上**，实例的属性和方法是通过 **向父类查找的** [操作方法见JS语言精粹-CH3](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E8%AF%AD%E8%A8%80%E7%B2%BE%E7%B2%B9/CH3-%E5%AF%B9%E8%B1%A1)，[详细分析见JS高级程序设计](https://github.com/JiangWeixian/JS-Books/tree/master/JS%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/CH4-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98)
 
 
-## 1.5. 分析为什么能够继承？
+## 分析为什么能够继承？
 
 在[JS继承](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E7%BB%A7%E6%89%BF.md)中，我总结了可以通过以下方式继承！
 
@@ -492,7 +489,7 @@ __proto__
 
 由于`Bar.prototype = Foo.prototype`那么`Bar.prototype.speak = function () {}`不同于以上有一个`__proto__`阻挡。所以同样也会添加到`Foo`。子类也能够修改父类了。
 
-### 1.5.1. 番外 - 私有属性
+### 番外 - 私有属性
 
 除了在函数内部以及`prototype`上定义属性之外。还有一种比较奇怪的方式。
 
@@ -578,7 +575,7 @@ var bar = new Bar()
 
 但是明显此时`bar`是可以访问到`newname`的。
 
-### 1.5.2. 总结
+### 总结
 
 1. 由于`__proto__`具有向上查找的特性。
 2. `new or object.ceate`具有替换`__proto__ value`某个`prototype`所以可以实现继承`prototype`上的属性方法。
@@ -588,15 +585,15 @@ var bar = new Bar()
 
 见[JS-继承与类-类与类的原型]()
 
-## 1.6. 链接
+## 链接
 
 * [外文解析-我觉得写的不错](http://dmitrysoshnikov.com/ecmascript/javascript-the-core/)  
 
-# 2. 内建数据类型
+# 内建数据类型
 
 > 内建类型和`function`一样都有`prototype`
 
-## 2.1. 内建数据类型 - prototype
+## 内建数据类型 - prototype
 
 在[1.1. 前置知识 - 规则概述](#11-前置知识---规则概述)中指出`var a = {}`没有`prototype`，而`function f`是有的。
 

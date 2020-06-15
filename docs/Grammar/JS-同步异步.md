@@ -1,50 +1,32 @@
 # JavaScript中的同步异步
 
-<!-- TOC -->
-
 - [JavaScript中的同步异步](#javascript中的同步异步)
-  - [1.1. 前置知识 - JavaScript与同步异步定义](#11-前置知识---javascript与同步异步定义)
-  - [1.2. 前置知识 - 同步异步定义](#12-前置知识---同步异步定义)
-  - [前置知识 - `console.log`是异步吗？](#前置知识---consolelog是异步吗)
-  - [1.3. 什么是异步?](#13-什么是异步)
-    - [1.3.1. 什么是回调的异步函数](#131-什么是回调的异步函数)
-  - [1.4. 实现异步](#14-实现异步)
-  - [1.5. 链接](#15-链接)
+  - [前置知识 - JavaScript与同步异步定义](#前置知识---javascript与同步异步定义)
+  - [前置知识 - 同步异步定义](#前置知识---同步异步定义)
+  - [什么是异步?](#什么是异步)
+    - [什么是回调的异步函数](#什么是回调的异步函数)
+  - [实现异步](#实现异步)
+  - [链接](#链接)
 
-<!-- /TOC -->
-
-## 1.1. 前置知识 - JavaScript与同步异步定义
+## 前置知识 - JavaScript与同步异步定义
 
 `JavaScript`是单线程的。
 
 但是根据[JavaScript-事件队列](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)理解，为了效率考虑，在主线程之外有一个额外线程来**挂起那些回调、`promise`和延迟(settimeout)执行。**
 
-## 1.2. 前置知识 - 同步异步定义
+## 前置知识 - 同步异步定义
 
 [同步异步概念解析](https://juejin.im/entry/58ae4636b123db0052b1caf8)提到。
 
-> 同步：在发出一个同步调用时，在没有得到结果之前，该调用就不返回。
-  异步：在发出一个异步调用后，调用者不会立刻得到结果，该调用就返回了。
+> 同步：在发出一个同步调用时，在没有得到结果之前，该调用就不返回。  
+> 异步：在发出一个异步调用后，调用者不会立刻得到结果，该调用就返回了。
 
 也就是说：
 
 * 同步会按照代码书写顺序执行
 * 异步则不是，**回调函数就是明显的异步函数**.
 
-## 前置知识 - `console.log`是异步吗？
-
-看下面这段代码你就知道，其实`console.log`其实是....同步的。
-
-```JavaScript
-var b = {}
-console.log(b)
-b.obj = 'a'
-```
-在[JS-异步编程]()中，这是错误的一点。因为这上面提到Nodejs中`console.log`是同步的，浏览器中`console.log`是异步的。
-
-可能和书比较老有关系，现在要知道`console.log`其实是同步的。
-
-## 1.3. 什么是异步?
+## 什么是异步?
 
 以`JavaScript`举例，第一事件想到**回调函数以及类似的还有`promise`**。
 
@@ -62,15 +44,17 @@ next()
 存在一种情况，`func`执行很长导致后面执行代码被阻塞而无法执行。就像是以下代码：
 
 ```JavaScript
-function func () {
-  // 运行很久
-  return 1
+async function delay () {
+  // 运行10s
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 10000)
+  })
 }
-let i = func()
+let i = await delay()
 console.log(i)
 ```
-
-> 我没有办法用`setTimeout`来模拟运行很久之后再`return`的行为，因为`setTimeout`在`JavaScript`会挂起在任务队列中(不在主线程中)。
 
 * **i**要很久才会打印出来。
 * 假设`func`和`console.log(i)`是同一个逻辑中的函数，那么就没有必要因为`func`来延迟后面的函数(指的是`console.log(i)`之后的函数)。
@@ -94,7 +78,7 @@ function func (fn) {
 
 可以发现`console.log('这是之后的代码')`先执行，然后才是`console.log(2)`。
 
-### 1.3.1. 什么是回调的异步函数
+### 什么是回调的异步函数
 
 回调函数和异步的回调函数是两个东西。**任何函数名作为参数传递都可以认为是回调函数。**
 
@@ -173,19 +157,19 @@ func
 callback
 ```
 
-## 1.4. 实现异步
+## 实现异步
 
 * 回调 - 之前已经说明了。
 * 监听(发布订阅) - 我先添加`key=xx event`的回调函数，等到`key=xx event`事件发生之后，**手动触发**这个回调函数。
   * 其中添加`key=xx event`就是订阅的过程。
   * 等到`key=xx event`事件发生之后，**手动**这个回调函数。这个就是发布的过程。
-  * 具体可见[自定义的发布订阅](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6.md)以及[JavaScript设计模式-发布订阅](https://github.com/JiangWeixian/JS-Books/blob/master/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(Desgin-Patterns)/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F.md)
+  * [JavaScript设计模式-发布订阅](/docs/Books/JSDesgin-Patterns/设计模式/发布订阅模式.md)
 * `Promise`
 
 
-## 1.5. 链接
+## 链接
 
-结合[JavaScript-事件队列理解](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
+结合[JavaScript-事件队列理解](/docs/Grammar/JS-Promise%26EventLoop%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%98%9F%E5%88%97.md)
 
 * [阮一峰异步编程](http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html)
 * [同步异步概念解析](https://juejin.im/entry/58ae4636b123db0052b1caf8)
