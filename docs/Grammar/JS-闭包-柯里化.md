@@ -1,17 +1,13 @@
 # 柯里化&反柯里化
 > JS - 闭包；柯里化反柯里化区别在于，前者就是参数先传(`return function`仍旧可以使用前传的参数)，后者参数后传递。
 
-<!-- TOC -->
-
 - [柯里化&反柯里化](#柯里化反柯里化)
   - [柯里化](#柯里化)
-  - [我的理解](#我的理解)
     - [提前返回](#提前返回)
     - [参数复用](#参数复用)
   - [反柯里化](#反柯里化)
   - [链接](#链接)
 
-<!-- /TOC -->
 
 ## 柯里化
 
@@ -32,8 +28,6 @@ function callback() {
 通过`callback()()`的方式调用。
 
 如果使用`var anyname = callback()`这样重命名里面的返回函数之后，就可以通过`anyname()`来使用。
-
-## 我的理解
 
 柯里化的优点，算是上一篇链接中文章的再解释。
 
@@ -85,8 +79,6 @@ var addEvent = (function(){
 
 ### 参数复用
 
-我觉得这是闭包的体现。
-
 因为如果第一个函数`outter`内部返回了另外的函数`inner`，那么这个`inner`是能够得到`outter`里面定义的变量。
 
 就是 **模块或者类**一样(在多次执行情况下，仍旧可以访问到内部变量。而且是同一个)，例如：
@@ -100,12 +92,9 @@ function f () {
   return inner
 }
 var outter = f()
-outter()
-outter()
-outter()
-0
-1
-2
+outter() // 0
+outter() // 1
+outter() // 2
 ```
 
 ## 反柯里化
@@ -140,7 +129,7 @@ Function.prototype.unCurrying = function () {
 * 然后push就是一个`uncurring`返回的函数
 * `push()`再执行之后，传入参数改变`Array.prototype.push`指向。
 
-可以通过`push(obj , '1', '2')`其中`obj`就是一个类`Array`数组。
+可以通过`push(obj , '1', '2')`其中`obj`就是一个类`Array`数组。这样是语义上更加函数化了，`push`不再是 `array`上面的特有函数，而是变为一个通用的函数。
 
 ## 链接
 
