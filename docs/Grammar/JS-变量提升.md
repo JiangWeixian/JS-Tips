@@ -11,8 +11,7 @@
 * `referenceerror` - 没有声明过程
 
 ## var - 变量提升
-
-> 一个`undefined`的变量被提升
+> 变量被提升作用域顶部
 
 ```JavaScript
 console.log(x)
