@@ -1,14 +1,12 @@
 # JS块级作用域
 
-## 正文
-
 JS是没有块级作用域这一说的。在`ES6`中引入了`let const`才有了块级作用域这一说。
 
 例如
 
 ```JavaScript
 {
-    let a
+  let a
 }
 ```
 
@@ -18,7 +16,7 @@ JS是没有块级作用域这一说的。在`ES6`中引入了`let const`才有�
 
 ```JavaScript
 (function(){
-    //代码
+  //代码
 })
 ```
 
@@ -28,7 +26,7 @@ JS是没有块级作用域这一说的。在`ES6`中引入了`let const`才有�
 
 ```JavaScript
 if (x) {
-    var a = function() {}
+  var a = function() {}
 }
 ```
 
