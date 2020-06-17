@@ -1,44 +1,46 @@
 # JS-浏览器-Promise&EventLoop函数执行队列
 > `EventLoop`实现有所不同，本文先讨论浏览器版本的。
 
-<!-- TOC -->
-
 - [JS-浏览器-Promise&EventLoop函数执行队列](#js-浏览器-promiseeventloop函数执行队列)
-  - [1.1. 前置知识 - 规则设定](#11-前置知识---规则设定)
-  - [1.2. 前置知识 - 什么是回调，别以为你知道了](#12-前置知识---什么是回调别以为你知道了)
-  - [1.3. 前置知识 - 任务队列分类](#13-前置知识---任务队列分类)
-  - [1.4. 证明规则2/3 - 优先级分析](#14-证明规则23---优先级分析)
-    - [1.4.1. 证明规则1 - 加入DOM事件](#141-证明规则1---加入dom事件)
-  - [1.5. 规则综合使用 - 理论分析](#15-规则综合使用---理论分析)
-    - [1.5.1. 复杂的简单例子](#151-复杂的简单例子)
-  - [1.6. 阻塞](#16-阻塞)
-  - [1.7. 纯粹的Promise](#17-纯粹的promise)
-    - [1.7.1. Promise含有阻塞的例子](#171-promise含有阻塞的例子)
-    - [1.7.2. 超级复杂的例子](#172-超级复杂的例子)
-  - [1.8. 链接](#18-链接)
+  - [前置知识](#前置知识)
+    - [规则设定](#规则设定)
+    - [什么是回调](#什么是回调)
+    - [任务队列分类](#任务队列分类)
+  - [优先级分析](#优先级分析)
+    - [证明规则2/3](#证明规则23)
+    - [证明规则1](#证明规则1)
+  - [理论分析](#理论分析)
+    - [复杂的简单例子](#复杂的简单例子)
+  - [延迟不为0](#延迟不为0)
+  - [纯粹的Promise](#纯粹的promise)
+    - [Promise含有阻塞的例子](#promise含有阻塞的例子)
+    - [超级复杂的例子](#超级复杂的例子)
+  - [链接](#链接)
 
-<!-- /TOC -->
+## 前置知识
 
-## 1.1. 前置知识 - 规则设定
+### 规则设定
 
-1. **任务队列内的代码只能够在主线程的代码执行完毕之后执行**。
-  * 即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
-  * DOM触发事件即使触发了也要等到主线程事件执行完毕之后，才能执行
-2. 对于`Main>A.tasks>B.tasks`有优先级。意味着前一个优先级任务队列如果不执行完毕，是不会接着执行后一个任务队列。
-3. (**很重要**)新建一个`Promise`，比如`new Promise()`其实是主线程代码！而后面的`then`才是任务队列的代码。至于为什么？可以看[(TODO)JS-Promise自实现]()。
-4. (**很重要**)先添加第一层任务加入任务队列，然后当某个具体任务执行的时候，在加入其中创建的任务队列。
+1. 任务队列内的代码只能够在**主线程的代码执行完毕之后执行**。
+   * 即使是`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
+   * `DOM`触发事件即使触发了也要等到主线程执行完毕之后，才能执行
+2. 对于`Main>A.tasks>B.tasks`有优先级。意味着前一个优先级任务队列如果不执行完毕，是不会接着执行后一个任务队列。可查看[任务队列分类](#任务队列分类)。
+3. 新建一个`Promise`
+   - 比如`new Promise()`中的代码其实是主线程代码！
+   - 而后面的`then`才是任务队列的代码。至于为什么？
+4. 先添加第一层任务加入任务队列，然后当某个具体任务执行的时候，再加入其中创建的任务队列。
     * 例如 **复杂的简单例子**中先加入`S1 S2`。在`S1`执行的时候才会加入里面任务，而`S2`里面的任务只有在`S2`执行的时候才会加入
     * 加入意为注册，注册时间就是 **其父类开始运行的时间**。
     
-      > 如`p-then`内部含有`timeout`，可以保证`p-then`(注册时间是(0,0))。但是`p-then`执行在主线程之后，假设主线程执行了1s。`p-then`内部`timeout`注册时间就是从`1s`开始.见[JS-eventloop-innode-promisedelay]() - `p-then`内部`timeout`就是(1s, 0.5s)
+      如`p-then`内部含有`timeout`，可以保证`p-then`(注册时间是(0,0))。但是`p-then`执行在主线程之后，假设主线程执行了1s。`p-then`内部`timeout`注册时间就是从`1s`开始.见[JS-eventloop-innode-promisedelay]() - `p-then`内部`timeout`就是(1s, 0.5s)
 
-## 1.2. 前置知识 - 什么是回调，别以为你知道了
+### 什么是回调
 
-[回调函数是什么](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)
+[回调函数是什么](/docs/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)
 
 由规则可可知道，回调函数可以包裹在`settimout=0`的函数，也是在主线程函数执行完毕之后再执行。
 
-## 1.3. 前置知识 - 任务队列分类
+### 任务队列分类
 
 看以下[博客](https://blog.csdn.net/wky_csdn/article/details/77477146)总结得到的。
 
@@ -51,7 +53,7 @@
 
 那么什么代码是任务队列？
 
-就是那些具有回调函数的代码，例如`settimeout&promise&dom事件监听函数`（可能总结不准确）。任务队列细分，有优先级别(比如`Promise`优先级别比`settimeout`优先级高的)：
+就是那些具有回调函数的代码，例如`settimeout & promise & dom-event`（可能总结不准确）。任务队列细分，有优先级别(比如`Promise`优先级别比`settimeout`优先级高的)：
 
 * `marcotask`(为了后面行文方面我这里 设定为 **B-tasks**) - `setTimeout, setInterval, setImmediate, I/O, rendering`转换为中文，就是定时器几类，网络(因为属于IO)，DOM交互
 * `mircotask`(设定为 **A-tasks**) - `Promise`也就是属于这个队列，
@@ -62,11 +64,13 @@
 2. A.tasks
 3. B.tasks
 
-## 1.4. 证明规则2/3 - 优先级分析
+## 优先级分析
 
-> settimeout&promise&dom优先级
+### 证明规则2/3 
 
-> 再来看一段代码，了解一下主线程和任务队列是如何影响的
+> `settimeout` & `promise` & `dom-event`优先级
+
+再来看一段代码，了解一下主线程和任务队列是如何影响的
 
 ```JavaScript
 console.log('script start');
@@ -86,7 +90,7 @@ console.log('script end');
 
 代码执行结果为：
 
-```JavaScript
+```
 script start
 script end
 promise1
@@ -96,7 +100,7 @@ setTimeout
 
 可以发现主线程就是两个`console.log`。所以输出
 
-```JavaScript
+```
 script start
 script end
 ```
@@ -105,7 +109,7 @@ script end
 
 且在任务队列里面`promise`有比`settimeout`级别高。
 
-```JavaScript
+```
 script start
 script end
 promise1
@@ -113,11 +117,11 @@ promise2
 setTimeout
 ```
 
-### 1.4.1. 证明规则1 - 加入DOM事件
+### 证明规则1
 
 > 同样也证明了规则2
 
-而[回调函数](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)优先级比`settimeout`高(感觉应该是触发便插入到`B.tasks`之前)如下：
+而[回调函数](/docs/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)优先级比`settimeout`高(感觉应该是触发便插入到`B.tasks`之前)如下：
 
 ```JavaScript
 function callback() {
@@ -140,42 +144,41 @@ callback()
 
 如果再`callback()`执行期间，点击页面，会发现 **回调出现时间是早于`settimeout`**。会发生 **10s之后 callback->promise->回调*5->settimeout**。
 
-## 1.5. 规则综合使用 - 理论分析
+## 理论分析
 
-> 进入`Main`才是执行，进入任何一个队列都是等待执行
+> 进入`Main`线程才是执行，进入任何一个队列都是等待执行
 
 以[恍然大雾的一篇文章](https://mp.weixin.qq.com/s/1iHmsIjh2mLqaOUvkR2RZA?)理论解析下面代码(如果觉得我解释不够明白，看这个)
 
 ```JavaScript
 // 主线程的等待1s执行函数
 function sleep(time) {
-    let startTime = new Date();
-    while (new Date() - startTime < time) {}
-    console.log('<--Next Loop-->');
+  let startTime = new Date();
+  while (new Date() - startTime < time) {}
+  console.log('<--Next Loop-->');
 }
 
 console.log('script start')
 setTimeout(() => { // 此为S1
-    console.log('timeout1');
-    setTimeout(() => { // 此为S12
-        console.log('timeout3');
-        sleep(1000);
-    });
-    new Promise((resolve) => { // 此为S1P
-        console.log('timeout1_promise');
-        resolve();
-    }).then(() => {
-        console.log('timeout1_then');
-    });
-    sleep(1000);
+  console.log('timeout1');
+  setTimeout(() => { // 此为S12
+      console.log('timeout3');
+      sleep(1000);
+  });
+  new Promise((resolve) => { // 此为S1P
+      console.log('timeout1_promise');
+      resolve();
+  }).then(() => {
+      console.log('timeout1_then');
+  });
+  sleep(1000);
 });
 console.log('script end')
 ```
 
+*来自[@你的肖同学](https://www.jianshu.com/p/b221e6e36dcb)*
 
-来自[@你的肖同学](https://www.jianshu.com/p/b221e6e36dcb)
-
-由 [1.3. 前置知识 - 任务队列分类]()解释，此时页面中有三个队列：
+由 [任务队列分类](#任务队列分类)解释，此时页面中有三个队列：
 
 1. Main = []
 2. A.tasks = []
@@ -213,45 +216,45 @@ console.log('script end')
 
 是不是觉得还神气的...
 
-### 1.5.1. 复杂的简单例子
+### 复杂的简单例子
 
 > 分析多个`timeout`，但是因为前后两个timeout以及内部并没有设置时间间隔。例子算简单。
 
 ```JavaScript
 function sleep(time) {
-    let startTime = new Date();
-    while (new Date() - startTime < time) {}
-    console.log('<--Next Loop-->');
+  let startTime = new Date();
+  while (new Date() - startTime < time) {}
+  console.log('<--Next Loop-->');
 }
 
 setTimeout(() => { // S1
-    console.log('timeout1');
-    setTimeout(() => { // S11
-        console.log('timeout3');
-        sleep(1000);
-    });
-    new Promise((resolve) => { //S1P
-        console.log('timeout1_promise');
-        resolve();
-    }).then(() => {
-        console.log('timeout1_then');
-    });
+  console.log('timeout1');
+  setTimeout(() => { // S11
+    console.log('timeout3');
     sleep(1000);
+  });
+  new Promise((resolve) => { //S1P
+    console.log('timeout1_promise');
+    resolve();
+  }).then(() => {
+    console.log('timeout1_then');
+  });
+  sleep(1000);
 });
      
 setTimeout(() => { // S2
-    console.log('timeout2');
-    setTimeout(() => {
-        console.log('timeout4');
-        sleep(1000);
-    });
-    new Promise((resolve) => { //S2P
-        console.log('timeout2_promise');
-        resolve();
-    }).then(() => {
-        console.log('timeout2_then');
-    });
+  console.log('timeout2');
+  setTimeout(() => {
+    console.log('timeout4');
     sleep(1000);
+  });
+  new Promise((resolve) => { //S2P
+    console.log('timeout2_promise');
+    resolve();
+  }).then(() => {
+    console.log('timeout2_then');
+  });
+  sleep(1000);
 });
 ```
 
@@ -259,7 +262,7 @@ setTimeout(() => { // S2
 
 1. Step1
 
-    ```JavaScript
+    ```
     1. Main = []
     2. A.tasks = []
     3. B.tasks = [S1, S2]
@@ -267,7 +270,7 @@ setTimeout(() => { // S2
 
 2. Step2 - 执行`S1`，执行其中三个主线程(**原因见上一节**)，并将`S1P.then`加入`A.tasks`，将`S11`加入`B.tasks`
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -278,7 +281,7 @@ setTimeout(() => { // S2
     ```    
 3. Step3 - 发现`A.tasks`中含有任务，所以执行`S1P.then`
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -291,7 +294,7 @@ setTimeout(() => { // S2
 
 4. Step4 - 发现`B.tasks`中含有任务`S2,S11`在任务队列中先后关系，所以先执行`S2`。其中情况和`S1`这里加速进行说明。执行完成`S2P.then`之后，将`S21`加入`B.tasks`。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -307,7 +310,7 @@ setTimeout(() => { // S2
     ``` 
 5. Step5 - 并开始执行`S11`。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -323,9 +326,9 @@ setTimeout(() => { // S2
     2. A.tasks = []
     3. B.tasks = [S21]
     ```   
-5. Step6 - 执行`S21`和上一个一致。   
+6. Step6 - 执行`S21`和上一个一致。   
  
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -342,19 +345,58 @@ setTimeout(() => { // S2
       ]
     ```   
 
-## 1.6. 阻塞
+## 延迟不为0
 
-> 以上举例都不含都假设`settimout=0`的时候情况，如果现在`settimout=delay`时间不等于0。会发生什么？可以预见由于之前延迟时间都是一致的`0`。在`B.tasks`中运行任务都是以队列的先后顺序运行。现在有了延迟，而且是延迟中的嵌套。
+以上举例都不含都假设`settimout=0`的时候情况，如果现在`settimout=delay`时间不等于0。会发生什么？可以预见由于之前延迟时间都是一致的`0`。在`B.tasks`中运行任务都是以队列的先后顺序运行。现在有了延迟，而且是延迟中的嵌套。
 
-> 重申一遍：进入main才是执行，进入其他任务队列都是注册；主线程执行不影响统一[阶段异步任务]()注册。
+> **💡 NOTE**  
+进入main才是执行，进入其他任务队列都是注册；主线程执行不影响统一[阶段异步任务]()注册。
 
-> 增加规则：**对于不同延迟时间的事件，以注册时间和延迟时间之和作为排序条件**。
+增加规则：**对于不同延迟时间的事件，以注册时间和延迟时间之和作为排序条件**。
 
 以[JS-eventloop-innode-simple-delay1.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-eventloop-innode-simple-delay1.js)为例。设定 **(x, y)** 就是 **在x时候注册，然后预计y秒后发生。**
 
+```JavaScript
+function sleep(time) {
+  let startTime = new Date();
+  while (new Date() - startTime < time) {}
+  console.log('<--Next Loop-->');
+}
+
+setTimeout(() => { //S1
+  console.log('timeout1');
+  setTimeout(() => { //S11
+      console.log('timeout3');
+      sleep(1000);
+  });
+  new Promise((resolve) => { // S1P
+      console.log('timeout1_promise');
+      resolve();
+  }).then(() => { // S1P.then
+      console.log('timeout1_then');
+  });
+  sleep(1000);
+});
+   
+setTimeout(() => { //S2
+  console.log('timeout2');
+  setTimeout(() => { //S21
+      console.log('timeout4');
+      sleep(1000);
+  });
+  new Promise((resolve) => { //S2P
+      console.log('timeout2_promise');
+      resolve();
+  }).then(() => { //S2P.then
+      console.log('timeout2_then');
+  });
+  sleep(1000);
+}, 500);
+```
+
 1. Step1
 
-    ```JavaScript
+    ```
     1. Main = []
     2. A.tasks = []
     3. B.tasks = [(0s, 0s)S1, (0s, 0.5s)S2]
@@ -362,7 +404,7 @@ setTimeout(() => { // S2
 
 2. Step2 - 执行`S1`，执行其中三个主线程(**原因见上一节**)，并将`S1P.then`加入`A.tasks`，将`S11`加入`B.tasks`。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -373,7 +415,7 @@ setTimeout(() => { // S2
     ```    
 3. Step3 - 发现`A.tasks`中含有任务，所以执行`S1P.then`。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -384,31 +426,27 @@ setTimeout(() => { // S2
     3. B.tasks = [(0s, 0.5s)S2, (0s, 0s)S11]
     ``` 
 
-    为了验证 **增加规则的正确性！** [JS-eventloop-innode-simple-delay2.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-eventloop-innode-simple-delay2.js) 给`S1`也加入了`500ms`延迟，那么`(0s, 0s)S11`就变为`(0.5s, 0s)S11`，则优先执行`S2`然后才是`S11`(因为来到队列的先后顺序不同)
-
-    同样如果给`S11`加入`500ms or 大于500ms`延迟的话，那么`(0s, 0s)S11`就变为`(0s, 0.5s)S11`。还是先执行`S2`
-
 4. Step4 - 发现`B.tasks`中 **根据排序规则** 先执行`S11`。**此时要特别注意：** 因为执行完成S11之后，S1的`cb`全部完成，耗时`1s`。而结合`(0s, 0.5s)S2`来看，**由于注册时间早就早就开始，所以在S1运行的时候，S2延迟已经开始计算。其实已经超过了`S2`理应运行的时间**。所以要特别注意 **S2内部任务函数的注册时间**。执行的时候主线程代码没有什么问题以及`p2-then`，注册`S21`(是从1s开始注册，而不是`0.5s`)
 
-    ```JavaScript
+    ```
     1. Main = [
-      timeout1,
-      timeout1_promise,
-      <--Next Loop-->,
-      timeout1_then,
-      timeout3,
-      <--Next Loop-->,
-      timeout2,
-      timeout2_promise,
-      <--Next Loop-->,
-      timeout2_then,
+        timeout1,
+        timeout1_promise,
+        <--Next Loop-->,
+        timeout1_then,
+        timeout3,
+        <--Next Loop-->,
+        timeout2,
+        timeout2_promise,
+        <--Next Loop-->,
+        timeout2_then,
       ]
     2. A.tasks = []
     3. B.tasks = [(1s, 0s)S21]
     ``` 
 5. Step5 - 并开始执行`S21`。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -425,11 +463,11 @@ setTimeout(() => { // S2
       ]
     ``` 
 
-**让S2先执行，依照上面STEP2-`S11`加入`500ms or 大于500ms`延迟的**
+    **让S2先执行，依照上面STEP2-`S11`加入`500ms or 大于500ms`延迟的**
 
 4. Step4 - `B.tasks-S2`，执行的时候主线程代码没有什么问题以及`p2-then`，注册`S21`,**无论如何S1中主线程的代码都是执行了，所以开始从1s开始注册**。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -442,9 +480,9 @@ setTimeout(() => { // S2
     2. A.tasks = []
     3. B.tasks = [(0s, 0.5s)S11, (1s, 0s)S21]
     ```
-4. Step5 - `S21 and S11`。两个`S21(1+0)`以及`S11(0+0.5)`。后者小于前者，所以后者先运行。
+5. Step5 - `S21 and S11`。两个`S21(1+0)`以及`S11(0+0.5)`。后者小于前者，所以后者先运行。
 
-    ```JavaScript
+    ```
     1. Main = [
       timeout1,
       timeout1_promise,
@@ -462,7 +500,11 @@ setTimeout(() => { // S2
 
     **那么如果我们设置`S11`加入大于(不等于)`1s`延迟的。可以预见`S21`是优先于`S11`**。见[JS-eventloop-simple-delay3.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-eventloop-innode-simple-delay3.js)
 
-## 1.7. 纯粹的Promise
+> **💡 NOTE**  
+为了验证 **增加规则的正确性！** 可以在Step3进行以下操作 [JS-eventloop-innode-simple-delay2.js](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Grammar/JS/JS-eventloop-innode-simple-delay2.js) 给`S1`也加入了`500ms`延迟，那么`(0s, 0s)S11`就变为`(0.5s, 0s)S11`，则优先执行`S2`然后才是`S11`(因为来到队列的先后顺序不同)  
+同样如果给`S11`加入`500ms or 大于500ms`延迟的话，那么`(0s, 0s)S11`就变为`(0s, 0.5s)S11`。还是先执行`S2`
+
+## 纯粹的Promise
 
 > 上面是各种情况混合，先来简单的介绍一下只有Promise
 
@@ -550,7 +592,7 @@ Promise.resolve()
 
 最后一步不写了。
 
-### 1.7.1. Promise含有阻塞的例子
+### Promise含有阻塞的例子
 
 > 上面任务都是同一个时间。并没有延迟，如果在异步任务有延迟。**延迟知识代表加入队列的时间不同**。所有含有阻塞的例子都会有 **体现第五点规则**
 
@@ -667,7 +709,7 @@ console.log('script end');
     2. A.tasks = []
     3. B.tasks = []
     ```
-### 1.7.2. 超级复杂的例子
+### 超级复杂的例子
 
 > 按照上一节步骤，也一定可以分析出来。理解阻塞的`Promise`执行之后才会加入后面的包裹在`settimeout`的`promise`。和不阻塞是不一样的。
 
@@ -801,7 +843,7 @@ Promise.resolve()
 
 **可以试着修改`t(p1-then2-in)`为延迟200ms执行，会发现其是先于S1执行的**
 
-## 1.8. 链接
+## 链接
 
 * [恍然大雾的一篇文章](https://mp.weixin.qq.com/s/1iHmsIjh2mLqaOUvkR2RZA?)
 * [提到了任务注册时间和预计消耗时间](http://www.alloyteam.com/2015/10/turning-to-javascript-series-from-settimeout-said-the-event-loop-model/#prettyPhoto)
