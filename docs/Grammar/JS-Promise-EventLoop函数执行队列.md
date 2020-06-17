@@ -753,7 +753,7 @@ Promise.resolve()
 
 试着解析：
 
-```JavaScript
+```
 // Step1
 1. Main = [
   ]
