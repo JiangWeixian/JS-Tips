@@ -66,9 +66,9 @@ module.exports = {
   ],
   themeConfig: {
     nav: [
-      { text: '主页', link: '/' },
-      { text: '技术栈', link: '/guide/' },
-      { text: '列表', link: '/posts/' },
+      { text: 'HOME', link: '/' },
+      { text: 'STACKS', link: '/guide/' },
+      { text: 'BLOG', link: '/posts/' },
       { text: 'CHANGELOG', link: '/CHANGELOG.html' },
       { text: 'Github', link: 'https://github.com/JiangWeixian/JS-Tips/' },
     ],
