@@ -1,7 +1,7 @@
 const pkg = require('../../package.json')
 
 module.exports = {
-  title: '蒋微咸博客',
+  title: 'Jiangweixian',
   base: `/${pkg.repository.name}/`,
   plugins: [
     [
@@ -63,6 +63,7 @@ module.exports = {
   ],
   head: [
     [ 'link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' } ],
+    [ 'link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap' }]
   ],
   themeConfig: {
     nav: [

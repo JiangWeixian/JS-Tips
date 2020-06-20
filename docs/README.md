@@ -1,9 +1,10 @@
 ---
 home: true
-heroImage: /img/logo.jpg
-heroText: 蒋微咸
-tagline: Be a creator!
+heroImage: /img/avatar.jpeg
+heroText: 蒋微咸·Jiangweixian
+tagline: 👨🏻‍💻·🎮
 ---
 
 -----
-<Resume />
+<Portfolio />
+
