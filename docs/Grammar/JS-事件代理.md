@@ -51,7 +51,7 @@ element.addEventLister(event, function, useCapture)
 前两个参数很好理解:
 
 * event - `click`
-* function - 传递默认参数`window.event`，如果想要传递其他参数，可以参考[demos-drag](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/content.md)
+* function - 传递默认参数`window.event`，如果想要传递其他参数，可以参考[demos-drag](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/demos/content.md)
 * useCapture - `true`代表的捕获，`false`代表冒泡
 
 **事件发生的三个阶段**

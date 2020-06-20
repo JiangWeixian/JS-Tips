@@ -39,7 +39,7 @@
 
 ### 1.1.3. 清除浮动
 
-我使用得是`clear: both`这个方案，见[clear.html](https://github.com/JiangWeixian/JS-Tips/blob/master/Demos/clearfloat.html)
+我使用得是`clear: both`这个方案，见[clear.html](https://github.com/JiangWeixian/JS-Tips/blob/master/demos/clearfloat.html)
 
 ## 1.2. 定位
 

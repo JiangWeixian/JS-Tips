@@ -39,4 +39,4 @@
 
 ## 链接
 
-[清除浮动例子](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/Demos/clearfloat.html)
+[清除浮动例子](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/demos/clearfloat.html)
