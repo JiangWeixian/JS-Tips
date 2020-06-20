@@ -1,16 +1,20 @@
 # SCRIPT
 > script标签；注意defer和async
 
-## 解释了`script`标签上的属性
+- [SCRIPT](#script)
+  - [defer&async](#deferasync)
+    - [tips](#tips)
+  - [文档类型](#文档类型)
+  - [noscript标签](#noscript标签)
+
+## defer&async
 
 `script`标签和`css`一样的会阻塞`html`解析。（如果写在头部，会下载`script and css`然后再去解析`dom`）。因此和书写位置有关。
 
-* `defer or async` - [异步](https://github.com/JiangWeixian/JS-Tips/blob/master/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)下载(这里异步说的是不会阻塞`html`解析)。两个还有小区别
-  * `defer` - 解析`html`的时候，一起下载，同时`html`解析完毕之后，执行`js`
-  * `async` - 解析`html`的时候，一起下载，下载完毕只有，执行`js`
+* `defer or async` - [异步](/docs/Grammar/JS-%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.md)下载(这里异步说的是不会阻塞`html`解析)。两个还有小区别
+  * `defer` - 解析`html`的时候，一起下载，**同时`html`解析完毕之后**，执行`js`
+  * `async` - 解析`html`的时候，一起下载，**下载完毕之后**，执行`js`
 * src - 这个就没有不要写了
-
-其他属性用到都不大。
 
 ### tips
 
@@ -19,7 +23,7 @@
 
 ## 文档类型
 
-见[<!doctype html> 解释](https://github.com/JiangWeixian/JS-Tips/blob/master/HTML/HTML-DOCTYPE.md)
+见[<!doctype html> 解释](/docs/HTML/HTML-DOCTYPE.md)
 
 ## noscript标签
 
