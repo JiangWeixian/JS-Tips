@@ -22,6 +22,8 @@ tag: script
 
 ## TL;DR
 
+![script干扰](/docs/Network/img/script.png)
+
 1. 现代浏览器一般都支持并行下载(在不开启`defer or async`会干扰其他资源下载)，所以改变性能只剩下，下载过程和运行过程是否影响DOM
 2. `DOMContentload`意味着`htmldom`解析完成 = `html + normal and defer script`
 3. `normal and defer`一定保证在`DOMContentload`之前执行，而`async`无法保证，取决于下载速度和大小。
