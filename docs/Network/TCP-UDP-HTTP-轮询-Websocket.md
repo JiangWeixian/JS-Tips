@@ -1,22 +1,21 @@
 # TCP、UDP、HTTP、轮询、Websocket
 
-<!-- TOC -->
-
 - [TCP、UDP、HTTP、轮询、Websocket](#tcpudphttp轮询websocket)
-  - [1.1. tcp - 传输控制协议](#11-tcp---传输控制协议)
-  - [1.2. udp - 用户数据报协议](#12-udp---用户数据报协议)
-    - [1.2.1. 和http的关系 - 超文本控制协议](#121-和http的关系---超文本控制协议)
-  - [1.3. http 长连接、短连接、长轮询、短链接](#13-http-长连接短连接长轮询短链接)
-    - [1.3.1. 前置知识 - 长连接短连接意义](#131-前置知识---长连接短连接意义)
-    - [1.3.2. 轮询、长轮询 - 服务端推送技术](#132-轮询长轮询---服务端推送技术)
-  - [1.4. websocket](#14-websocket)
-    - [1.4.1. 建立链接](#141-建立链接)
-    - [1.4.2. Q&A](#142-qa)
-    - [1.4.3. 第三方](#143-第三方)
+  - [TCP](#tcp)
+  - [UDP](#udp)
+    - [和http的关系](#和http的关系)
+  - [http 长连接、短连接、长轮询、短链接](#http-长连接短连接长轮询短链接)
+    - [前置知识 - 长连接短连接意义](#前置知识---长连接短连接意义)
+    - [轮询、长轮询](#轮询长轮询)
+      - [轮询](#轮询)
+      - [长轮询](#长轮询)
+  - [websocket](#websocket)
+    - [建立链接](#建立链接)
+    - [Q&A](#qa)
+    - [第三方](#第三方)
 
-<!-- /TOC -->
-
-## 1.1. tcp - 传输控制协议
+## TCP
+> 传输控制协议
 
 [维基百科定义](https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE)
 
@@ -41,7 +40,8 @@
 
 由于以上种种限制，使得它不太适用实时的应用场景。所以类如流媒体，和游戏之类并不合适。
 
-## 1.2. udp - 用户数据报协议
+## UDP
+> 用户数据报协议
 
 不可靠传递
 
@@ -52,7 +52,8 @@
 
 ![udp数据结构](./img/udpdata.png)
 
-### 1.2.1. 和http的关系 - 超文本控制协议
+### 和http的关系
+> 超文本控制协议
 
 基于`tcp`。
 
@@ -60,9 +61,9 @@
 
 看请求头和响应头，以及反应的状态码。
 
-## 1.3. http 长连接、短连接、长轮询、短链接
+## http 长连接、短连接、长轮询、短链接
 
-### 1.3.1. 前置知识 - 长连接短连接意义
+### 前置知识 - 长连接短连接意义
 
 首先要知道一个事实
 
@@ -70,31 +71,30 @@
 
 所以我们可以得到几个结论：
 
-1. HTTP不一定建立在TCP基础之上，如果有些硬件不支持TCP。任何可靠的传输协议都是可以作为HTTP基础。
-2. 长连接短连接时相对于TCP来说的，而HTTP只是数据传输格式应用
+1. `HTTP`不一定建立在TCP基础之上，如果有些硬件不支持TCP。任何可靠的传输协议都是可以作为`HTTP`基础。
+2. 长连接短连接时相对于TCP来说的，而`HTTP`只是数据传输格式应用
 
 长连接和短连接可以做以下区分
 
-* 短连接 - HTTP请求一次就断开额度tcp连接
-* 长连接 - HTTP请求多次断开，以为了减少`tcp`建立连接资源的目的而设置。会在 **响应头**里面`connection`加入`keep-alive`的代码。**这个时HTTP1.1就开始默认支持的手段。**
+* 短连接 - `HTTP`请求一次就断开额度`tcp`连接
+* 长连接 - `HTTP`请求多次断开，以为了减少`tcp`建立连接资源的目的而设置。会在 **响应头**里面`connection`加入`keep-alive`的代码。**这个时HTTP1.1就开始默认支持的手段。**
 
 **长连接的意义在于，因为建立连接的实践消耗时远远大于建立连接之后传输数据的实践消耗。** 所以每次HTTP请求一次就断开的方式对现在网页来说时不够的。而在现代网页中如何体现，因为每个服务器都有地址(我指的是是IP地址而不是URL地址)存在，TCP以IP(网络层)地址为基础建立连接。那么 **对于同一个服务器下的HTTP资源请求，HTTP完全可以[复用同一个TCP连接](https://zh.wikipedia.org/wiki/HTTP%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5)。**
 
-> 题外话。上面TCP报头只有端口号，没有IP地址。对于端口号，HTTP默认是80(或者在HTTP HEADERS中指定)，所以这一点还好；而TCP是在传输层，IP地址是在网络，一个在上一个在下的关系。由[计算机网络基础](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)中提到的，OSI模型顺序是从上到小的关系。所以到了TCP一层之后(分装好数据)，IP地址在网络层中指定，和TCP无关。来自[知乎](https://www.zhihu.com/question/54795054)。这部分详情见[输入URL全过程](https://github.com/JiangWeixian/JS-Tips/blob/master/docs/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/HTTP-%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2.md)
+那么，`TCP`是如何做到长连接么？
 
-那么，TCP是如何做到长连接么？
-
-回到之前TCP建立连接的方式，三次握手建立连接。**如果存在第四次握手就断开连接。** 那么如果客户端不发送第四次请求时不会断开连接的，还存在以下一种问题：
+回到之前`TCP`建立连接的方式，三次握手建立连接。**如果存在第四次握手就断开连接。** 那么如果客户端不发送第四次请求时不会断开连接的，还存在以下一种问题：
 
 1. 客户端没有要求断开，服务器如何确定客户端还存在，而不是因为 **客户端消失了而断开连接**
 
 所以有一个叫做 [心跳机制](https://blog.csdn.net/pmt123456/article/details/58233999)的东西，服务器会在客户端没有数据传输情况下，发出询问。如果客户端应答了，那么就保持连接，如果没有，就断开。**但是存在极端情况，很长时间内客户端是没有数据传输的。服务器维持一个长连接是消耗资源的。所以在客户端长时间没有断开情况下，服务器会主动断开。**
 
-### 1.3.2. 轮询、长轮询 - 服务端推送技术
+### 轮询、长轮询
+> 服务端推送技术
 
 就现在来说，轮询其实并不是一种 **直观意义上的长连接的方式。** 而是一种服务器向客户端推送数据的方式，因为在轮询中客户端会一致发送请求。
 
-**轮询**
+#### 轮询
 
 不刷新页面情况下，实现推送。
 
@@ -102,13 +102,13 @@
 
 ```javascript
 function poll() {
-    setTimeout(function() {
-        $.get("/path/to/server", function(data, status) {
-            console.log(data);
-            // 发起下一次请求
-            poll();
-        });
-    }, 10000);
+  setTimeout(function() {
+    $.get("/path/to/server", function(data, status) {
+      console.log(data);
+      // 发起下一次请求
+      poll();
+    });
+  }, 10000);
 }
 ```
 
@@ -116,9 +116,8 @@ function poll() {
 
 * 每隔一段时间请求数据，成功之后再一次请求数据
 
-**长轮询**
-
-[长轮询](https://zhuanlan.zhihu.com/p/25690011)
+#### 长轮询
+> [长轮询](https://zhuanlan.zhihu.com/p/25690011)
 
 和以上传统方式不同的是，需要服务器配合使用。为了抵消轮询的缺陷，所以应该出现主动停止连接情况，如下：
 
@@ -133,35 +132,35 @@ function poll() {
 ```javascript
 // $.ajax来自JQ
 var updater = {
-    poll: function () {
-        $.ajax({
-            url: "/longpolling",
-            type: "POST",
-            dataType: "text",
-            success: updater.onSuccess,
-            error: updater.onError
-        });
-    },
-    onSuccess: function (data, dataStatus) {
-        try {
-            $("p").append(data + "<br>");
-        }
-        catch (e) {
-            // 这里就是服务器要求断开链接的情况
-            updater.onError();
-            return;
-        }
-        // 收到回复后再次发出请求
-        interval = window.setTimeout(updater.poll, 0);
-    },
-    onError: function () {
-        // 中断链接
-        console.log("Poll error;");
+  poll: function () {
+    $.ajax({
+      url: "/longpolling",
+      type: "POST",
+      dataType: "text",
+      success: updater.onSuccess,
+      error: updater.onError
+    });
+  },
+  onSuccess: function (data, dataStatus) {
+    try {
+      $("p").append(data + "<br>");
     }
+    catch (e) {
+      // 这里就是服务器要求断开链接的情况
+      updater.onError();
+      return;
+    }
+    // 收到回复后再次发出请求
+    interval = window.setTimeout(updater.poll, 0);
+  },
+  onError: function () {
+    // 中断链接
+    console.log("Poll error;");
+  }
 
 };
 function transfer() {
-    updater.poll();
+  updater.poll();
 }
 
 transfer()
@@ -175,7 +174,7 @@ transfer()
 
 > 成功继续请求，不成功中断链接
 
-## 1.4. websocket
+## websocket
 
 [教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
 
@@ -193,7 +192,7 @@ transfer()
 * 数据同样要从应用层封装到`tcp`
 * 同样也要建立一个三次握手的`TCP`。
 
-### 1.4.1. 建立链接
+### 建立链接
 
 `websocket`链接地址通常是`ws://example.com:80/some/path`，和`http`建立链接一致：
 
@@ -212,33 +211,33 @@ transfer()
 
 这部分符合`http`请求然后响应的特点。**之后就是`websocket`通信过程，并没有建立链接的过程**
 
-### 1.4.2. Q&A
+### Q&A
 
 * 首先是通信过程，
 
-    > **在轮询中**，服务器没有主动发送消息的能力，之所以能够通信是因为客户端一致在发送请求(这个行为符合`http`请求然后响应的特点)。**在websocket中** 并不是通过这种方式(向服务器发送数据并不期望有返回结果)，至于如何实时的监听服务端数据，这个问题就和服务器如何监听`http`请求一样，属于比较低层的实现。
+    **在轮询中**，服务器没有主动发送消息的能力，之所以能够通信是因为客户端一致在发送请求(这个行为符合`http`请求然后响应的特点)。**在websocket中** 并不是通过这种方式(向服务器发送数据并不期望有返回结果)，至于如何实时的监听服务端数据，这个问题就和服务器如何监听`http`请求一样，属于比较低层的实现。
     
 * [如何保持连接](https://juejin.im/post/5a05d89051882540f36305df)
 
-    > 由于低层还是一个`tcp`链接，在[1.3.1. 前置知识 - 长连接短连接意义]()提到一个心跳机制，这是保持长连接不断开的关键。
+    由于低层还是一个`tcp`链接，在[1.3.1. 前置知识 - 长连接短连接意义]()提到一个心跳机制，这是保持长连接不断开的关键。
     
 * 假设`http`不是请求响应的模式，`websocket`做了哪些改进？
 
-    > 数据更为精简。不需要发送那么头部信息。
+    数据更为精简。不需要发送那么头部信息。
 
 * 同源策略
 
-    > 和ajax不同，没有同源策略。服务器需要通过服务端的`origin`字段来判断来自哪部分的链接。
+    和ajax不同，没有同源策略。服务器需要通过服务端的`origin`字段来判断来自哪部分的链接。
 
-### 1.4.3. 第三方
+### 第三方
 
 * `socket.io`就是利用`websocket`实现的。 - 建立连接以 **http**开头
     
-    > `socket.io`使用过程中，服务器和客户端都需要使用`socket.io`这个库，通过它的方式建立连接。估计这也是它为什么可以使用`http`建立连接。
+    `socket.io`使用过程中，服务器和客户端都需要使用`socket.io`这个库，通过它的方式建立连接。估计这也是它为什么可以使用`http`建立连接。
     
 * [nodejs-ws模块教程](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014727922914053479c966220f47da91991fa9c27ac3ea000) / 以`ws`开头 
 
-    > 这里要求服务端使用`ws`模块，客户端只需要支持`websocket`协议的浏览器就可以了。与`ws`开头的地址建立链接。
+    这里要求服务端使用`ws`模块，客户端只需要支持`websocket`协议的浏览器就可以了。与`ws`开头的地址建立链接。
 
 **比较`ws`模块以及`socket.io`模块**
 
