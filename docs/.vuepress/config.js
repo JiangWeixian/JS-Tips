@@ -63,7 +63,8 @@ module.exports = {
   ],
   head: [
     [ 'link', { rel: 'icon', href: '/favicon.png', type: 'image/x-icon' } ],
-    [ 'link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap' }]
+    [ 'link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap' }],
+    [ 'link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@400;700&display=swap' }]
   ],
   themeConfig: {
     nav: [

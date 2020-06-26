@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio">
-    <h4>你可以在这里找到我 🎫</h4>
+    <h3>你可以在这里找到我 🎫</h3>
     <ul class="list">
       <li class="social">
         <img width="16" src="https://simpleicons.org/icons/github.svg" />
@@ -19,7 +19,7 @@
       </li>
     </ul>
     <hr />
-    <h4>你可通过以下方式联系我 📪</h4>
+    <h3>你可通过以下方式联系我 📪</h3>
     <ul class="list">
       <li class="social">
         <span>📪</span>
@@ -27,7 +27,7 @@
       </li>
     </ul>
     <hr />
-    <h4>这是我做过的项目 👨🏻‍💻</h4>
+    <h3>这是我做过的项目 👨🏻‍💻</h3>
     <ul class="repos list">
       <li
         v-for="repository in repositories"
@@ -72,6 +72,11 @@ export default {
           name: 'gh-quick-command',
           description: 'command for github.com',
         },
+        {
+          url: 'https://github.com/JiangWeixian/cheatsheets',
+          name: 'cheatsheets',
+          description: 'open-source cheatsheet management system',
+        },
       ]
     }
   },
@@ -84,17 +89,22 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .portfolio
+    font-size 16px
+    h3 
+      font-size 20px
+      margin 16px 0px
+    a
+      font-weight bold
   .list
     margin 0px
     padding 0px
   @media (max-width: 719px)
     .repos
       flex-direction column
-  
   .social
     display flex
     align-items center
-    font-size 14px
     margin-bottom 8px
     *
       margin-right 8px
